@@ -1,4 +1,4 @@
-// @flow
+const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 
 /**
  * External dependencies
@@ -30,14 +30,14 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["product"];
+const entryPointNames = ["hello"];
 
 const externals = {
   react: "React"
 };
 entryPointNames.forEach(entryPointName => {
-  externals["@calderaPayProduct/" + entryPointName] = {
-    this: ["calderaPayProduct", entryPointName]
+  externals["@calderaWordPressPlugin/" + entryPointName] = {
+    this: ["calderaWordPressPlugin", entryPointName]
   };
 });
 
@@ -64,12 +64,12 @@ wpDependencies.forEach(wpDependency => {
 const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: entryPointNames.reduce((memo, entryPointName) => {
-    memo[entryPointName] = "./scripts/" + entryPointName + "/index.js";
+    memo[entryPointName] = "./src/blocks/" + entryPointName + "/index.js";
     return memo;
   }, {}),
   externals,
   output: {
-    filename: "src/[name]/build/index.js",
+    filename: "src/blocks/[name]/build/index.js",
     path: __dirname,
     library: ["calderaPayProduct", "[name]"],
     libraryTarget: "this"
@@ -90,7 +90,7 @@ const config = {
       }
     ]
   },
-  plugins: [cssExtractTextPlugin],
+  plugins: [cssExtractTextPlugin,FlowBabelWebpackPlugin],
   stats: {
     children: false
   }

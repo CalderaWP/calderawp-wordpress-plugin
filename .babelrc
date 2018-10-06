@@ -3,9 +3,9 @@
     "@wordpress/default",
       "@babel/preset-env",
       "@babel/preset-react",
-    "flow"
+    "@babel/preset-flow"
   ],
   "plugins": [
-    ["@wordpress/babel-plugin-makepot", { "output": "languages/dropit.pot" }]
+    ["@wordpress/babel-plugin-makepot", { "output": "languages/dropit.pot" }, "transform-flow-comments"]
   ]
 }

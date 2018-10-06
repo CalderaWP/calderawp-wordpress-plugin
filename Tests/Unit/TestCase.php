@@ -5,6 +5,7 @@ namespace calderawp\WordPressPlugin\Tests\Unit;
 use Brain\Monkey;
 //Import PHP unit test case.
 //Must be aliased to avoid having two classes of same name in scope.
+use calderawp\WordPressPlugin\Tests\Traits\SharedFactories;
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
 
 /**
@@ -15,6 +16,7 @@ use PHPUnit\Framework\TestCase as FrameworkTestCase;
  */
 abstract class TestCase extends FrameworkTestCase
 {
+    use SharedFactories;
 	/**
 	 * Prepares the test environment before each test.
 	 */

@@ -23,6 +23,9 @@ class BlockType extends BlockRelated
     /** @var Attribute[] */
     protected $attributes;
 
+
+
+
     /**
      * @return string
      */
@@ -141,6 +144,7 @@ class BlockType extends BlockRelated
         $this->attributes = $attributes;
         return $this;
     }
+
 
 
 }

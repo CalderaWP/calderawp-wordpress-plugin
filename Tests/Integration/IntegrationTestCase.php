@@ -3,6 +3,7 @@
 namespace calderawp\WordPressPlugin\Tests\Integration;
 
 use Brain\Monkey;
+use calderawp\WordPressPlugin\Tests\Traits\SharedFactories;
 use Mockery;
 
 /**
@@ -14,6 +15,7 @@ use Mockery;
  */
 abstract class IntegrationTestCase extends \WP_UnitTestCase
 {
+    use SharedFactories;
 	/**
 	 * Prepares the test environment before each test.
 	 */
