@@ -2,7 +2,7 @@
 
 exports[`Edit callback for block Matches snapshot when selected 1`] = `
 <div
-  className="components-base-control"
+  className="components-base-control caldera-name-hello-edit"
 >
   <div
     className="components-base-control__field"
@@ -20,7 +20,9 @@ exports[`Edit callback for block Matches snapshot when selected 1`] = `
 `;
 
 exports[`Save callback for block Matches snapshot 1`] = `
-<div>
+<div
+  className="caldera-salutation--name-hello-display"
+>
   Hi
    
   Roy

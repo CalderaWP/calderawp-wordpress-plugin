@@ -3,6 +3,9 @@ import renderer from "react-test-renderer";
 import React from "react";
 import Save from './Save';
 import Edit from './Edit';
+import {InspectorControls} from '@wordpress/editor';
+
+
 const attributeDefaults = {
 	name: 'Roy',
 	salutation: 'Hi'
@@ -42,15 +45,21 @@ describe('Edit callback for block', () => {
 	it( 'Matches snapshot when selected',() => {
 		expect(
 			renderer.create(
-				<Edit
-					attributes={attributeDefaults}
-					setAttributes={setAttributes}
-					className={'a'}
-					isSelected={true}
-				/>
+				<React.Fragment>
+					<Edit
+						attributes={attributeDefaults}
+						setAttributes={setAttributes}
+						className={'a'}
+						isSelected={true}
+					/>
+					<InspectorControls.Slot />
+				</React.Fragment>
+
 			).toJSON()
 		).toMatchSnapshot()
-	})
+	});
+
+
 
 
 

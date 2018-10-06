@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display component Matches snapshot 1`] = `
-<div>
+<div
+  className="caldera-salutation--name-hello-display"
+>
    
   Roy
 </div>
@@ -10,7 +12,7 @@ exports[`Display component Matches snapshot 1`] = `
 exports[`Edit component Matches snapshot 1`] = `
 Array [
   <div
-    className="components-base-control"
+    className="components-base-control caldera-name-hello-edit"
 >
     <div
         className="components-base-control__field"
@@ -26,7 +28,7 @@ Array [
     </div>
 </div>,
   <div
-    className="components-base-control"
+    className="components-base-control caldera-salutation-hello-edit"
 >
     <div
         className="components-base-control__field"
