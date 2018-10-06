@@ -4,7 +4,10 @@ import React from "react";
 import Save from './Save';
 import Edit from './Edit';
 import {InspectorControls} from '@wordpress/editor';
-
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {componentClassName} from "../../control-factory/componentClassName";
+Enzyme.configure({adapter: new Adapter()});
 
 const attributeDefaults = {
 	name: 'Roy',
@@ -58,6 +61,47 @@ describe('Edit callback for block', () => {
 			).toJSON()
 		).toMatchSnapshot()
 	});
+
+	it( 'Matches snapshot when not selected',() => {
+		expect(
+			renderer.create(
+				<React.Fragment>
+					<Edit
+						attributes={attributeDefaults}
+						setAttributes={setAttributes}
+						className={'a'}
+						isSelected={false}
+					/>
+					<InspectorControls.Slot />
+				</React.Fragment>
+
+			).toJSON()
+		).toMatchSnapshot()
+	});
+
+
+	it( 'Has usable name control',() => {
+		const className = componentClassName('hello', 'name', 'edit');
+		const component = mount(
+			<React.Fragment>
+				<Edit
+					attributes={attributeDefaults}
+					setAttributes={setAttributes}
+					className={'a'}
+					isSelected={true}
+				/>
+				<InspectorControls.Slot />
+			</React.Fragment>
+		);
+
+
+		const event = {target: {value: "Mike"}};
+		const input = component.children().find('.'+className).children().find('input');
+		expect(input.length).toBe(1);
+		input.simulate('change', event);
+		expect(attributes.name).toBe('Mike');
+	});
+
 
 
 

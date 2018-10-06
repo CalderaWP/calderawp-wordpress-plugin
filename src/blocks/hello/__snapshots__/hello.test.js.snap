@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Edit callback for block Matches snapshot when not selected 1`] = `
+<div
+  className="caldera-salutation--name-hello-display"
+>
+  <span>
+    Hi
+  </span>
+   
+  <span>
+    Roy
+  </span>
+</div>
+`;
+
 exports[`Edit callback for block Matches snapshot when selected 1`] = `
 <div
   className="components-base-control caldera-name-hello-edit"
@@ -23,8 +37,12 @@ exports[`Save callback for block Matches snapshot 1`] = `
 <div
   className="caldera-salutation--name-hello-display"
 >
-  Hi
+  <span>
+    Hi
+  </span>
    
-  Roy
+  <span>
+    Roy
+  </span>
 </div>
 `;

@@ -4,8 +4,11 @@ exports[`Display component Matches snapshot 1`] = `
 <div
   className="caldera-salutation--name-hello-display"
 >
+  <span />
    
-  Roy
+  <span>
+    Roy
+  </span>
 </div>
 `;
 
