@@ -2,11 +2,17 @@
 
 namespace calderawp\WordPressPlugin\Tests\Unit;
 
+use calderawp\WordPressPlugin\Blocks\Collection;
 use calderawp\WordPressPlugin\Container;
 
 class ContainerTest extends TestCase
 {
 
+    /**
+     * @covers \calderawp\WordPressPlugin\Container::__construct()
+     * @covers \calderawp\WordPressPlugin\Container::$rootUrl
+     * @covers \calderawp\WordPressPlugin\Container::getRootUrl()
+     */
     public function testGetRootUrl()
     {
         $url = 'https://foo.com';
@@ -14,7 +20,7 @@ class ContainerTest extends TestCase
             'a',
             $url
         );
-        $this->assertEquals($url,$container->getRootUrl());
+        $this->assertEquals($url, $container->getRootUrl());
     }
 
     /**
@@ -22,7 +28,8 @@ class ContainerTest extends TestCase
      * @covers \calderawp\WordPressPlugin\Container::$namespace
      */
     public function testInitBlocks()
-    {        $url = 'https://foo.com';
+    {
+        $url = 'https://foo.com';
 
         $dir = 'foo/bar';
         $container = new Container(
@@ -30,14 +37,14 @@ class ContainerTest extends TestCase
             $url
         );
 
-        $blocksJson =  $this->getBlocksJson();
+        $blocksJson = $this->getBlocksJson();
         $container->initBlocks(
             $blocksJson
         );
         $this->assertEquals(1,
             $container->
             getBlockCollection()
-            ->getCount()
+                ->getCount()
         );
         $this->assertAttributeEquals(
             $blocksJson['namespace'],
@@ -53,7 +60,11 @@ class ContainerTest extends TestCase
     }
 
 
-
+    /**
+     * @covers \calderawp\WordPressPlugin\Container::__construct()
+     * @covers \calderawp\WordPressPlugin\Container::$dirName
+     * @covers \calderawp\WordPressPlugin\Container::getDirName()
+     */
     public function testGetDirName()
     {
         $dir = 'foo/bar';
@@ -61,6 +72,21 @@ class ContainerTest extends TestCase
             $dir,
             'https://foo.com'
         );
-        $this->assertEquals($dir,$container->getDirName());
+        $this->assertEquals($dir, $container->getDirName());
+    }
+
+    /**
+     * @covers \calderawp\WordPressPlugin\Container::setUpContainer()
+     */
+    public function testSetUpContainer()
+    {
+        $container = new Container(
+            'a',
+            'https://foo.com'
+        );
+        $this->assertEquals(
+            Collection::class,
+            get_class($container->getBlockCollection())
+        );
     }
 }

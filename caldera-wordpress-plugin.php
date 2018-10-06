@@ -11,4 +11,18 @@
 */
 
 
+do_action( 'calderawp/WordPressPlugin/init', new \calderawp\WordPressPlugin\Container(
+    plugin_dir_path( __FILE__ ),
+    plugins_url('', __FILE__ )
+));
+
+add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlugin\Container $container){
+    $container->initBlocks(
+        json_decode(
+            file_get_contents( __DIR__ . '/blocks.json' ),
+            true
+        )
+    );
+} );
+
 include_once __DIR__ .'/vendor/autoload.php';

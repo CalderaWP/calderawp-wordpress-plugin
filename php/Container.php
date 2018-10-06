@@ -11,10 +11,28 @@ use calderawp\WordPressPlugin\Contracts\ContainerContract;
 class Container extends \calderawp\CalderaContainers\Service\Container implements ContainerContract
 {
 
-protected $packageName;
+    /**
+     * @var
+     */
+    protected $packageName;
+    /**
+     * @var
+     */
     protected $namespace;
+    /**
+     * @var string
+     */
     protected $dirName;
+    /**
+     * @var string
+     */
     protected $rootUrl;
+
+    /**
+     * Container constructor.
+     * @param string $dirName
+     * @param string $rootUrl
+     */
     public function __construct(string $dirName, string $rootUrl)
     {
         $this->dirName = $dirName;
@@ -22,6 +40,9 @@ protected $packageName;
         $this->setUpContainer();
     }
 
+    /**
+     *
+     */
     protected function setUpContainer()
     {
         $this->singleton( 'BLOCKS_COLLECTION', function(){
@@ -30,15 +51,25 @@ protected $packageName;
     }
 
 
+    /**
+     * @return string
+     */
     public function getDirName() : string {
         return $this->dirName;
     }
 
+    /**
+     * @return string
+     */
     public function getRootUrl() : string
     {
         return $this->rootUrl;
     }
 
+    /**
+     * @param array $blocksJson
+     * @throws Exception
+     */
     public function initBlocks(array $blocksJson )
     {
         $this->packageName = $blocksJson['packageName'];
@@ -65,6 +96,9 @@ protected $packageName;
     }
 
 
+    /**
+     *
+     */
     public function registerBlocks()
     {
         /** @var Collection $collection */
