@@ -1,7 +1,9 @@
 {
-  "presets": ["@wordpress/default",
+  "presets": [
+    "@wordpress/default",
       "@babel/preset-env",
-      "@babel/preset-react"
+      "@babel/preset-react",
+    "flow"
   ],
   "plugins": [
     ["@wordpress/babel-plugin-makepot", { "output": "languages/dropit.pot" }]

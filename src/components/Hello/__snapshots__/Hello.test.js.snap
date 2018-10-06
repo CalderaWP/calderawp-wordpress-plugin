@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display component Matches snapshot 1`] = `
+<div>
+   
+  Roy
+</div>
+`;
+
+exports[`Edit component Matches snapshot 1`] = `
+Array [
+  <div
+    className="components-base-control"
+>
+    <div
+        className="components-base-control__field"
+    >
+        <input
+            aria-describedby={undefined}
+            className="components-text-control__input"
+            id="inspector-text-control-0"
+            onChange={[Function]}
+            type="text"
+            value="Roy"
+        />
+    </div>
+</div>,
+  <div
+    className="components-base-control"
+>
+    <div
+        className="components-base-control__field"
+    >
+        <input
+            aria-describedby={undefined}
+            className="components-text-control__input"
+            id="inspector-text-control-1"
+            onChange={[Function]}
+            type="text"
+            value={undefined}
+        />
+    </div>
+</div>,
+]
+`;

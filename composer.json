@@ -36,7 +36,7 @@
             "calderawp\\WordPressPlugin\\": "php"
         },
         "files": [
-
+            "./react-wp-scripts.php"
         ]
     },
     "autoload-dev": {

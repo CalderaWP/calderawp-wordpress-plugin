@@ -4,21 +4,21 @@
   "blocks":
     [
       {
-        "title" : "Price Block",
-        "slug": "price",
+        "title" : "Say Hi",
+        "slug": "hello",
         "category": "common",
         "wpDependencies": [
           "editor",
           "components"
         ],
         "attributes" :{
-          "price": {
-            "type": "number",
-            "default": "0.00"
-          },
-          "currency": {
+          "name": {
             "type": "string",
-            "default": "USD"
+            "default": "Roy"
+          },
+          "salutation": {
+            "type": "string",
+            "default": "Hi"
           }
         }
       }

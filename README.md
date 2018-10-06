@@ -11,11 +11,20 @@ Requires git and Composer and npm and Yarn
 
 * Clone From Github:
     - `git clone git@github.com:CalderaWP/caldera-wordpress-plugin`
-
+* Build for development:
+    - `yarn && composer install`
 
 ## Development
 
 ### JavaScript
+
+* Start dev server for React app
+    - `yarn start:app`
+* Run JavaScript tests
+    - `yarn test`
+* Run Flow analysis
+    - `yarn flow`
+
 
 ### PHP
 * All PHP is developed in `/php`
@@ -26,10 +35,6 @@ Requires git and Composer and npm and Yarn
 
 * Run Unit Tests:
     - `composer test:unit`
-
-## Release
-*To create a ZIP file without development scripts and tests:
-    - `composer zip`
     
     
 ### Install Local Development Environment

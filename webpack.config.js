@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * External dependencies
  */
@@ -5,7 +7,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Main CSS loader for everything but blocks..
 const cssExtractTextPlugin = new ExtractTextPlugin({
-  filename: "./scripts/[name]/build/style.css"
+  filename: "./src/[name]/build/style.css"
 });
 
 // Configuration for the ExtractTextPlugin.
@@ -28,7 +30,7 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["product",];
+const entryPointNames = ["product"];
 
 const externals = {
   react: "React"
@@ -67,7 +69,7 @@ const config = {
   }, {}),
   externals,
   output: {
-    filename: "scripts/[name]/build/index.js",
+    filename: "src/[name]/build/index.js",
     path: __dirname,
     library: ["calderaPayProduct", "[name]"],
     libraryTarget: "this"
