@@ -1,0 +1,26 @@
+{
+  "packageName": "calderaWordPressPlugin",
+  "namespace": "caldera-wordpress-plugin",
+  "blocks":
+    [
+      {
+        "title" : "Price Block",
+        "slug": "price",
+        "category": "common",
+        "wpDependencies": [
+          "editor",
+          "components"
+        ],
+        "attributes" :{
+          "price": {
+            "type": "number",
+            "default": "0.00"
+          },
+          "currency": {
+            "type": "string",
+            "default": "USD"
+          }
+        }
+      }
+  ]
+}

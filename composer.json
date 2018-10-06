@@ -1,0 +1,73 @@
+{
+    "name": "calderawp/caldera-wordpress-plugin",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Josh Pollock",
+            "email": "josh@calderawp.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/CalderaWP/caldera-interop"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/CalderaWP/caldera-forms"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/CalderaWP/caldera-ghost-runner"
+        },
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "minimum-stability" : "dev",
+    "require": {
+        "php": "^7.1",
+        "calderawp/caldera-containers": "^0.2.0",
+        "calderawp/caldera-interop": "dev-vast-simplify"
+    },
+    "autoload": {
+        "psr-4": {
+            "calderawp\\WordPressPlugin\\": "php"
+        },
+        "files": [
+
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "calderawp\\WordPressPlugin\\Tests\\": "Tests/"
+        }
+    },
+    "require-dev": {
+        "php": "^7.1",
+        "brain/monkey": "^2.2",
+        "mockery/mockery": ">=0.9 <2",
+        "phpunit/phpunit": "~5.7.9",
+        "squizlabs/php_codesniffer": "^3.2",
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "wpackagist-plugin/gutenberg":"*",
+        "johnpbloch/wordpress" : "*",
+        "Desertsnowman/caldera-forms": "dev-develop"
+    },
+    "scripts" : {
+        "tests" : "composer fixes && composer sniffs && composer test:unit",
+        "test:unit": "phpunit --testsuite=unit",
+        "phpunit-v": "phpunit --version",
+        "sniffs" : "phpcs php/ && phpcs Tests/",
+        "fixes" : "phpcbf php/ && phpcbf Tests/",
+        "lints" : "parallel-lint ./php  --blame --exclude vendor && parallel-lint ./Tests  --blame --exclude vendor",
+        "zip": "bash ./bin/create-zip.sh",
+        "wp:install": "bash ./bin/install-docker.sh && composer wp:config",
+        "wp:activate": "bash ./bin/activate-plugin.sh",
+        "wp:config": "docker-compose run --rm cli wp rewrite structure '/%postname%/'",
+        "wp:start": "docker-compose up -d",
+        "wp:tests": "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist",
+        "wp:destroy": "docker-compose rm --stop --force"
+    }
+}

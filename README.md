@@ -1,0 +1,87 @@
+# Caldera WordPress Plugin
+
+
+## Requirements
+* PHP 7.1 + 
+
+
+
+## Install
+Requires git and Composer and npm and Yarn
+
+* Clone From Github:
+    - `git clone git@github.com:CalderaWP/caldera-wordpress-plugin`
+
+
+## Development
+
+### JavaScript
+
+### PHP
+* All PHP is developed in `/php`
+
+#### Testing PHP
+* Run PHP Tests, Lints And Sniffs
+    - `composer tests`
+
+* Run Unit Tests:
+    - `composer test:unit`
+
+## Release
+*To create a ZIP file without development scripts and tests:
+    - `composer zip`
+    
+    
+### Install Local Development Environment
+A  local development environment is included, and provided. It is used for integration tests. Requires Composer, Docker and Docker Compose.
+
+* Install Local Environment And WordPress "Unit" Test Suite
+- `composer wp:install`
+
+You should now have WordPress at [http://localhost:8218/](http://localhost:8218/)
+* Username: admin
+* password: password
+
+### Using Already Installed Local Development Environment
+
+* (re)Start Server: Once server is installed, you can start it again
+- `composer wp:start`
+
+* (re)Activate Plugins
+- `composer wp:activate`
+
+* (re)Set WordPress permalinks
+- `composer wp:config`
+
+### Testing With Local Environment
+Tests will also run in Travis on each push. You should also run tests locally as you develop.
+
+#### Install Test Suites
+Follow the steps above to create local development environment, then you can use the commands listed in the next section.
+### Install Local Development Environment
+A  local development environment is included, and provided. It is used for integration tests. Requires Composer, Docker and Docker Compose.
+
+* Install Local Environment And WordPress "Unit" Test Suite
+- `composer wp:install`
+
+
+You should now have WordPress at [http://localhost:8218/](http://localhost:8218/)
+* Username: admin
+* password: password
+
+### Using Already Installed Local Development Environment
+
+* (re)Start Server: Once server is installed, you can start it again
+- `composer wp:start`
+
+* (re)Activate Plugins
+- `composer wp:activate`
+
+* (re)Set WordPress permalinks
+- `composer wp:config`
+
+### Testing With Local Environment
+Tests will also run in Travis on each push. You should also run tests locally as you develop.
+
+#### Install Test Suites
+Follow the steps above to create local development environment, then you can use the commands listed in the next section.
