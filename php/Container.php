@@ -12,8 +12,17 @@ class Container extends \calderawp\CalderaContainers\Service\Container implement
 {
 
 protected $packageName;
-    protected $namespace ;
-    public function __construct()
+    protected $namespace;
+    protected $dirName;
+    protected $rootUrl;
+    public function __construct(string $dirName, string $rootUrl)
+    {
+        $this->dirName = $dirName;
+        $this->rootUrl = $rootUrl;
+        $this->setUpContainer();
+    }
+
+    protected function setUpContainer()
     {
         $this->singleton( 'BLOCKS_COLLECTION', function(){
             return new Collection();
@@ -22,11 +31,13 @@ protected $packageName;
 
 
     public function getDirName() : string {
-
+        return $this->dirName;
     }
 
     public function getRootUrl() : string
-    {}
+    {
+        return $this->rootUrl;
+    }
 
     public function initBlocks(array $blocksJson )
     {
@@ -34,16 +45,21 @@ protected $packageName;
         $this->namespace = $blocksJson[ 'namespace'];
         $blocks = $blocksJson[ 'blocks'];
         /** @var Collection $collection */
-        $collection = $this->make('BLOCKS_COLLECTION' );
+        $collection = $this->getBlockCollection();
         $blockTypes = [];
         foreach ( $blocks as $block ){
 
             try {
                 $blockTypes[] = BlockType::fromArray($block);
             } catch (\Exception $e) {
+                throw Exception::formOtherException($e);
             }
         }
-        $collection->setBlocks($blockTypes );
+        try{
+            $collection->setBlocks($blockTypes );
+        } catch (\Exception $e) {
+            throw Exception::formOtherException($e);
+        }
 
 
     }
@@ -52,7 +68,7 @@ protected $packageName;
     public function registerBlocks()
     {
         /** @var Collection $collection */
-        $collection = $this->make('BLOCKS_COLLECTION' );
+        $collection = $this->getBlockCollection();
         foreach ( $collection->getBlocks() as $block ){
             $regiser = new RegisterBlock(
                 $block,
@@ -65,6 +81,13 @@ protected $packageName;
     }
     }
 
+    /**
+     * @return Collection
+     */
+    public function getBlockCollection() : Collection
+    {
+        return $this->make('BLOCKS_COLLECTION');
+    }
 
 
 }

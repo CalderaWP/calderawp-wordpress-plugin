@@ -23,6 +23,7 @@ class CollectionTest extends TestCase
 
     /**
      * @covers \calderawp\WordPressPlugin\Blocks\Collection::setBlocks()
+     * @covers \calderawp\WordPressPlugin\Blocks\Collection::getCount()
      */
     public function testSetBlocks()
     {
@@ -50,7 +51,22 @@ class CollectionTest extends TestCase
             2,
             count( $collection->getBlocks() )
         );
+        $this->assertEquals(
+            2,
+             $collection->getCount()
+        );
+    }
 
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\Collection::getCount()
+     */
+    public function testGetCountEmpty()
+    {
+        $collection = new Collection();
+        $this->assertEquals(
+            0,
+            $collection->getCount()
+        );
     }
 
 

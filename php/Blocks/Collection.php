@@ -16,6 +16,9 @@ class Collection
     /** @var BlockType[] */
     protected $blocks;
 
+    /** @var int */
+    private $count;
+
     /**
      * @var string
      */
@@ -62,7 +65,9 @@ class Collection
      */
     public function getBlocks(): array
     {
-        return $this->blocks;
+        return ! empty($this->blocks )
+            ? $this->blocks
+            : [];
     }
 
 
@@ -83,6 +88,14 @@ class Collection
         }
         $this->blocks = $blocks;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount() : int
+    {
+        return count( $this->getBlocks() );
     }
 
 
