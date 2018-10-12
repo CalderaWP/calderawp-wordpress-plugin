@@ -4,6 +4,8 @@
 namespace calderawp\WordPressPlugin\Blocks;
 
 
+use calderawp\WordPressPlugin\Exception;
+
 /**
  * Class RegisterBlock
  * @package calderawp\WordPressPlugin\Blocks
@@ -46,29 +48,47 @@ class RegisterBlock
     public function register()
     {
 
-        $dir = dirname(__FILE__);
+        if (!function_exists('register_block_type')) {
+            return;
+        }
         $slug = $this->blockType->getSlug();
-        $index_js = "src/blocks/$slug/build/index.js";
-        wp_register_script(
-            $this->handle(false),
-            $this->url($index_js),
-            $this->blockType->getWpDependencies()
-            //filemtime($this->filePath($index_js))
-        );
+        $index_js = "/src/blocks/$slug/build/index.js";
+
+        if (!
+            wp_register_script(
+                $this->handle(false),
+                $this->url($index_js),
+                $this->blockType->getWpDependencies(),
+                filemtime($this->filePath($index_js))
+            )
+        ) {
+            throw new Exception(sprintf('Can not register block editor script for block %s', $this->blockName()));
+        }
 
 
-        $style_css = "src/blocks/$slug/build/style.css";
-        wp_register_style(
-            $this->handle(true),
-            $this->url($style_css),
-            []
-            //filemtime($this->filePath($style_css))
-        );
+        $style_css = "/src/blocks/$slug/build/style.css";
+        if (!
+            wp_register_style(
+                $this->handle(true),
+                $this->url($style_css),
+                [],
+                filemtime($this->filePath($style_css))
+            )
+        ) {
+            throw new Exception(sprintf('Can not register block editor CSS for block %s', $this->blockName()));
+
+        }
 
         register_block_type($this->blockName(), array(
-            'editor_script' => $this->handle(false ),
-            'style' => $this->handle(true ),
+            'editor_script' => $this->handle(false),
+            'style' => $this->handle(true),
         ));
+
+        if (!\WP_Block_Type_Registry::get_instance()->is_registered($this->blockName())) {
+            throw new Exception(sprintf('Can not register block %s', $this->blockName()));
+
+        }
+
     }
 
     /**
@@ -86,7 +106,7 @@ class RegisterBlock
      */
     public function filePath(string $file): string
     {
-        return sprintf( '%s/%s',$this->dirName, $file);
+        return sprintf('%s/%s', $this->dirName, $file);
     }
 
     /**
@@ -105,6 +125,6 @@ class RegisterBlock
      */
     public function blockName()
     {
-        return sprintf('%s/%s', $this->namespace, $this->blockType->getSlug() );
+        return sprintf('%s/%s', $this->namespace, $this->blockType->getSlug());
     }
 }

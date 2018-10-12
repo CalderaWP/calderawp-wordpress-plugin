@@ -98,6 +98,8 @@ describe('createBlockArgs', () => {
 
 describe( 'registerBlock', () => {
 	const block = registerBlock(prepared,blocks.namespace);
+
+
 	it( 'returns well-formed object', () => {
 		expect( typeof block ).toBe('object');
 		expect( block.attributes.name.default).toBe( 'Roy' );

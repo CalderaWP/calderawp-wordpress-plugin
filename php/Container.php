@@ -104,14 +104,14 @@ class Container extends \calderawp\CalderaContainers\Service\Container implement
         /** @var Collection $collection */
         $collection = $this->getBlockCollection();
         foreach ( $collection->getBlocks() as $block ){
-            $regiser = new RegisterBlock(
+            $register = new RegisterBlock(
                 $block,
                 $this->getDirName(),
                 $this->getRootUrl(),
                 $this->namespace
 
             );
-            $regiser->register();
+            $register->register();
     }
     }
 
