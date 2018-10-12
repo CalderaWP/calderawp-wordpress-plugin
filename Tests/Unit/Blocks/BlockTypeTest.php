@@ -43,6 +43,41 @@ class BlockTypeTest extends TestCase
         );
     }
 
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\BlockType::getWpDependencies()
+     * @covers \calderawp\WordPressPlugin\Blocks\BlockType::$wpDependencies
+     */
+    public function testGetWpDependencies()
+    {
+
+        $deps = [
+            'wp-blocks',
+            'components',
+            'editor',
+            'wp-api-request'
+        ];
+        $blockType = new BlockType();
+
+        $blockType
+            ->setWpDependencies($deps);
+
+        $this->assertEquals(
+            [
+                'wp-blocks',
+                'wp-components',
+                'wp-editor',
+                'wp-api-request'
+            ],
+            $blockType->getWpDependencies()
+        );
+
+    }
+
+    /**
+     *
+     * @covers \calderawp\WordPressPlugin\Blocks\BlockType::setWpDependencies()
+     * @covers \calderawp\WordPressPlugin\Blocks\BlockType::$wpDependencies
+     */
     public function testSetWpDependencies()
     {
         $deps = [
@@ -88,10 +123,6 @@ class BlockTypeTest extends TestCase
 
     }
 
-    public function testGetWpDependencies()
-    {
-
-    }
 
     public function testGetAttributes()
     {
