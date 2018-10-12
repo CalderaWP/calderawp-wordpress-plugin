@@ -67,7 +67,16 @@ class BlockType extends BlockRelated
      */
     public function getWpDependencies(): array
     {
-        return $this->wpDependencies;
+        return array_map(
+            function($handle){
+                if( 0 === strpos($handle, 'wp-') ){
+                    return $handle;
+                }
+                return sprintf('wp-%s', $handle );
+            },
+            $this->wpDependencies
+        );
+
     }
 
     /**
