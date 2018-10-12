@@ -8,7 +8,7 @@ import {InspectorControls} from '@wordpress/editor'
 import type {GutenbergEditProps} from "../types";
 import React from 'react';
 
-export default function (props: GutenbergEditProps) {
+export default function(props: GutenbergEditProps) {
 	const {attributes, setAttributes, isSelected, className} = props;
 	const {name,salutation} = attributes;
 	const onChangeSalutation = (salutation) => {setAttributes({salutation})};
