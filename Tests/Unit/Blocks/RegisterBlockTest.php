@@ -9,6 +9,9 @@ use calderawp\WordPressPlugin\Tests\Unit\TestCase;
 class RegisterBlockTest extends TestCase
 {
 
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\RegisterBlock::handle()
+     */
     public function testHandle()
     {
         $register = new RegisterBlock(
@@ -33,7 +36,9 @@ class RegisterBlockTest extends TestCase
 
     }
 
-
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\RegisterBlock::blockName()
+     */
     public function testBlockName()
     {
         $register = new RegisterBlock(
@@ -48,7 +53,9 @@ class RegisterBlockTest extends TestCase
             $register->blockName()
         );
     }
-
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\RegisterBlock::url()
+     */
     public function testUrl()
     {
         $register = new RegisterBlock(
@@ -65,7 +72,9 @@ class RegisterBlockTest extends TestCase
 
 
     }
-
+    /**
+     * @covers \calderawp\WordPressPlugin\Blocks\RegisterBlock::filePath()
+     */
     public function testFilePath()
     {
 
@@ -81,6 +90,5 @@ class RegisterBlockTest extends TestCase
             $register->filePath('food' )
         );
     }
-
 
 }

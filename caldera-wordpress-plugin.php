@@ -25,7 +25,7 @@ add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlug
 add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlugin\Container $container){
     add_action( 'init', function() use($container) {
         $container->registerBlocks();
-    
+
     });
 }, 3 );
 

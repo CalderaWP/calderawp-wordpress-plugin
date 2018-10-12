@@ -53,7 +53,6 @@ class RegisterBlock
         }
         $slug = $this->blockType->getSlug();
         $index_js = "/src/blocks/$slug/build/index.js";
-
         if (!
             wp_register_script(
                 $this->handle(false),
@@ -86,10 +85,20 @@ class RegisterBlock
 
         if (!\WP_Block_Type_Registry::get_instance()->is_registered($this->blockName())) {
             throw new Exception(sprintf('Can not register block %s', $this->blockName()));
-
         }
 
+        add_action( 'enqueue_block_editor_assets', function() use ($index_js) {
+            wp_enqueue_script($this->handle(false),
+                $this->url($index_js),
+                $this->blockType->getWpDependencies(),
+                filemtime($this->filePath($index_js)));
+            wp_enqueue_style($this->handle(true));
+        });
+
     }
+
+
+
 
     /**
      * @param string $uri
