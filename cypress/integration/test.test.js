@@ -2,7 +2,6 @@
 const site = Cypress.env( "wp_site" );
 const {url,user,pass} = site;
 
-
 beforeEach(  () => {
 	cy.visit( url + '/wp-login.php' );
 	cy.wait( 500 );
@@ -19,13 +18,6 @@ beforeEach(  () => {
 } );
 
 
-
-describe('My First Test', function() {
-	it('Does not do much!', function() {
-		expect(true).to.equal(true)
-	});
-});
-
 describe( 'Caldera Forms admin main page', () => {
 	beforeEach(  () => {
 		cy.visit(  url + '/wp-admin/admin.php?page=caldera-forms');
@@ -39,5 +31,18 @@ describe( 'Caldera Forms admin main page', () => {
 		cy.get('.cf-create-form-button').click();
 		cy.url().should('include', 'edit')
 		cy.get( '.caldera-element-type-label' ).contains(name);
+	});
+});
+
+
+describe( 'Block', () => {
+	beforeEach(  () => {
+		cy.visit(  url + '/wp-admin/post-new.php');
+	});
+	it( 'Can insert CF Block', () => {
+		cy.wait(200);
+		cy.get('.edit-post-header-toolbar button.components-button.components-icon-button.editor-inserter__toggle').click({force: true});
+		cy.get( 'button.editor-block-types-list__item.editor-block-list-item-calderaforms-cform' ).click({force: true});
+		cy.get( '.editor-block-list__layout' ).contains('Caldera Form' );
 	});
 });
