@@ -71,7 +71,7 @@ const config = {
   output: {
     filename: "src/blocks/[name]/build/index.js",
     path: __dirname,
-    library: ["calderaPayProduct", "[name]"],
+    library: ["calderaFormsWordPressPlugin", "[name]"],
     libraryTarget: "this"
   },
   resolve: {

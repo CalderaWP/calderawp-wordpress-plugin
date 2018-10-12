@@ -1,4 +1,3 @@
-import "babel-polyfill"
 import {
 	HelloDisplay,
 
@@ -7,7 +6,7 @@ import {Fragment,createElement} from '@wordpress/element';
 import React from 'react';
 import type {GutenbergSaveProps} from "../types";
 
-export default function (props: GutenbergSaveProps) {
+export default function Save(props: GutenbergSaveProps) {
 	const {attributes} = props;
 	const {name,salutation} = attributes;
 

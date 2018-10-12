@@ -90,6 +90,11 @@ describe('createBlockArgs', () => {
 		expect( prepared.category).toBe('widget');
 	});
 
+	it( 'deletes slug and wp depencies', () => {
+		expect( prepared.hasOwnProperty( 'wpDependencies' ) ).toBe(false);
+		expect( prepared.hasOwnProperty( 'slug' ) ).toBe(false);
+	});
+
 
 	it('Matches snapshot', () => {
 		expect(JSON.stringify(prepared)).toMatchSnapshot();

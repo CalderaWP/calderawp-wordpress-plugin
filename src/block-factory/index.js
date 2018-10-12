@@ -6,5 +6,6 @@ export {
 	createBlockArgs,
 	registerBlock,
 	findBlock,
-	blocks,nameSpace
+	blocks,
+	nameSpace
 }

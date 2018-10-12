@@ -1,3 +1,5 @@
+import "babel-polyfill"
+
 import '../../jest/matchMedia.mock'
 import renderer from "react-test-renderer";
 import React from "react";

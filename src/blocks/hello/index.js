@@ -1,4 +1,5 @@
-import {createBlockArgs,
+import {
+	createBlockArgs,
 	registerBlock,
 	findBlock,
 	blocks,
@@ -8,7 +9,7 @@ import Edit from './Edit';
 import Save from './Save';
 registerBlock(
 	createBlockArgs(
-		findBlock('name'),
+		findBlock('hello',blocks),
 		nameSpace,
 		Edit,
 		Save
