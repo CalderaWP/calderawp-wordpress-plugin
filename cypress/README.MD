@@ -37,3 +37,8 @@ Same as `Conditionals - hide type - text fields`
     - FormId: CF5bc26604eaf3c
     - Form Name: Calculations Checkbox
     - Page Slug: 'calculations-checkbox'
+    
+* `Calculations - Manual
+    - FormId: CF5bc26a30e6032
+    - Form Name: Calculations Manual
+    - Page Slug: 'calculations-manual'
