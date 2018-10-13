@@ -117,6 +117,26 @@ export const cfFieldSetValue = ( fieldId,newValue ) => {
 
 /**
  * Check value for Caldera Forms radio/checkbox, by field ID
+ **
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {String} valueToCheck Value to set
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldCheckValue = ( fieldId,valueToCheck ) => {
+	return getCfField(fieldId).check(valueToCheck);
+};
+
+/**
+ * Check all values for Caldera Forms radio/checkbox, by field ID
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldCheckAllValues = ( fieldId ) => {
+	return getCfField(fieldId).check();
+};
+
+/**
+ * UnCheck value for Caldera Forms radio/checkbox, by field ID
  *
  * Note: clears field first
  *
@@ -124,6 +144,30 @@ export const cfFieldSetValue = ( fieldId,newValue ) => {
  * @param {String} valueToCheck Value to set
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldCheckValue = ( fieldId,valueToCheck ) => {
-	return getCfField(fieldId).check(valueToCheck);
+export const cfFieldUnCheckValue = ( fieldId,valueToCheck ) => {
+	return getCfField(fieldId).uncheck(valueToCheck);
+};
+
+/**
+ * Check if a Caldera Forms field is disabled, by field ID
+ *
+ * Use: Check if a field is disabled by conditional
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldIsDisabled = (fieldId) => {
+	return getCfField(fieldId).should('be.disabled');
+};
+
+/**
+ * Check if a Caldera Forms field is NOT disabled, by field ID
+ *
+ * Use: Check if a field is disabled by conditional
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldIsNotDisabled = (fieldId) => {
+	return getCfField(fieldId).not('be.disabled');
 };
