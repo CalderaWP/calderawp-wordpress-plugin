@@ -12,6 +12,7 @@
 
 include_once __DIR__ . '/vendor/autoload.php';
 
+add_filter( 'caldera_forms_render_assets_minify', '__return_false' );
 
 add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlugin\Container $container){
     $container->initBlocks(

@@ -1,7 +1,9 @@
 import {
 	visitPage,
 	getCfField,
-	clearCfField,
+	getCfFieldIdAttr,
+	getCfFieldSelector,
+	getCfFormIdAttr,
 	cfFieldIsVisible,
 	cfFieldDoesNotExist,
 	cfFieldHasValue,
@@ -10,29 +12,31 @@ import {
 	cfFieldCheckValue
 } from '../support/util';
 
+const controlField = 'fld_471602';
+const controlField2 = 'fld_4533316';
+const textField = 'fld_6735870';
+const textFieldWithDefault = 'fld_8484460';
 
+const textFieldAsNumber = 'fld_2782690';
+const textFieldAsNumberWithDefault = 'fld_9936249';
+
+const button1 = 'fld_8729978';
+const button2 = 'fld_8576859';
+
+const hideMaskedInput = 'fld_53474';
+const maskedInput = 'fld_7507195';
+
+const formId = 'CF5bc200019a22f';
 
 /**
  * Tests for when conditions are hide type
  */
-describe('Conditionals - hide type - text fields', () => {
+describe.skip('Conditionals - hide type - text fields', () => {
 	beforeEach(() => {
 		visitPage('conditional-hide-test');
 	});
 
-	const controlField = 'fld_471602';
-	const controlField2 = 'fld_4533316';
-	const textField = 'fld_6735870';
-	const textFieldWithDefault = 'fld_8484460';
 
-	const textFieldAsNumber = 'fld_2782690';
-	const textFieldAsNumberWithDefault = 'fld_9936249';
-
-	const button1 = 'fld_8729978';
-	const button2 = 'fld_8576859';
-
-	const hideMaskedInput = 'fld_53474';
-	const maskedInput = 'fld_7507195';
 
 	it('Hide and update values of regular text fields', () => {
 		//Set a value in text field and then hide text fields
@@ -145,4 +149,24 @@ describe('Conditionals - hide type - text fields', () => {
 		cfFieldHasValue(maskedInput,newValue);
 
 	});
+});
+
+
+describe( 'state when using hide conditionals', () => {
+	beforeEach(() => {
+		visitPage('conditional-hide-test');
+	});
+
+	it( 'Loads state object in window scope',() => {
+		cy.window().then((theWindow) => {
+			assert.isObject(theWindow.cfstate);
+			expect(theWindow.cfstate).to.have.property(getCfFormIdAttr(formId));
+			const state = theWindow.cfstate[getCfFormIdAttr(formId)];
+			assert.isObject(state);
+		});
+	});
+
+
+
+
 });

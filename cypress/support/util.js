@@ -2,14 +2,14 @@
  * Get site details
  * @type {any}
  */
-export const site = Cypress.env( 'wp_site' );
-export const {url,user,pass} = site;
+export const site = Cypress.env('wp_site');
+export const {url, user, pass} = site;
 export const login = () => {
-	cy.visit( url + '/wp-login.php' );
-	cy.wait( 500 );
-	cy.get( '#user_login' ).type( user );
-	cy.get( '#user_pass' ).type( pass );
-	cy.get( '#wp-submit' ).click();
+	cy.visit(url + '/wp-login.php');
+	cy.wait(500);
+	cy.get('#user_login').type(user);
+	cy.get('#user_pass').type(pass);
+	cy.get('#wp-submit').click();
 };
 
 /**
@@ -21,7 +21,8 @@ export const activatePlugin = (pluginSlug) => {
 	const selector = 'tr[data-slug="' + pluginSlug + '"] .activate a';
 	if (Cypress.$(selector).length > 0) {
 		cy.get(selector).click();
-	};
+	}
+	;
 };
 /**
  * Go to a plugin page
@@ -32,7 +33,7 @@ export const visitPluginPage = (pluginSlug) => {
 };
 
 export const visitPage = (pageSlug) => {
-	cy.visit( `${url}/${pageSlug}` );
+	cy.visit(`${url}/${pageSlug}`);
 };
 
 /**
@@ -42,7 +43,17 @@ export const visitPage = (pageSlug) => {
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
 export const getCfField = (fieldId) => {
-	return cy.get( `[data-field="${fieldId}"]`);
+	return cy.get(getCfFieldSelector(fieldId));
+};
+
+/**
+ * Get the selector for a Caldera Forms field by ID
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {String}
+ */
+export const getCfFieldSelector = (fieldId) => {
+	return `[data-field="${fieldId}"]`;
 };
 
 /**
@@ -67,7 +78,7 @@ export const cfFieldIsVisible = (fieldId) => {
 	return getCfField(fieldId).should('be.visible');
 };
 
-/**
+/**v
  * Check if Caldera Forms field does NOT exist on DOM by field ID
  *
  * Use: Check if field was hidden by conditional logic.
@@ -85,11 +96,11 @@ export const cfFieldDoesNotExist = (fieldId) => {
  * @param {String|Number} value Value to assert. Evaluated as string (numbers will be cast to string)
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldHasValue = (fieldId,value) => {
-	if( 'number' === typeof  value ){
+export const cfFieldHasValue = (fieldId, value) => {
+	if ('number' === typeof  value) {
 		value = value.toString(10);
 	}
-	return getCfField(fieldId).should('have.value',value);
+	return getCfField(fieldId).should('have.value', value);
 };
 
 /**
@@ -98,7 +109,7 @@ export const cfFieldHasValue = (fieldId,value) => {
  * @param {String} newValue Value to set
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldSelectValue = ( fieldId,newValue ) => {
+export const cfFieldSelectValue = (fieldId, newValue) => {
 	return getCfField(fieldId).select(newValue);
 };
 
@@ -111,7 +122,7 @@ export const cfFieldSelectValue = ( fieldId,newValue ) => {
  * @param {String} newValue Value to set
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldSetValue = ( fieldId,newValue ) => {
+export const cfFieldSetValue = (fieldId, newValue) => {
 	return clearCfField(fieldId).type(newValue);
 };
 
@@ -122,7 +133,7 @@ export const cfFieldSetValue = ( fieldId,newValue ) => {
  * @param {String} valueToCheck Value to set
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldCheckValue = ( fieldId,valueToCheck ) => {
+export const cfFieldCheckValue = (fieldId, valueToCheck) => {
 	return getCfField(fieldId).check(valueToCheck);
 };
 
@@ -131,7 +142,7 @@ export const cfFieldCheckValue = ( fieldId,valueToCheck ) => {
  * @param {String} fieldId CF Field ID, not ID attribute
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldCheckAllValues = ( fieldId ) => {
+export const cfFieldCheckAllValues = (fieldId) => {
 	return getCfField(fieldId).check();
 };
 
@@ -144,7 +155,7 @@ export const cfFieldCheckAllValues = ( fieldId ) => {
  * @param {String} valueToCheck Value to set
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
-export const cfFieldUnCheckValue = ( fieldId,valueToCheck ) => {
+export const cfFieldUnCheckValue = (fieldId, valueToCheck) => {
 	return getCfField(fieldId).uncheck(valueToCheck);
 };
 
@@ -170,4 +181,26 @@ export const cfFieldIsDisabled = (fieldId) => {
  */
 export const cfFieldIsNotDisabled = (fieldId) => {
 	return getCfField(fieldId).not('be.disabled');
+};
+
+/**
+ * Get the field ID attribute for a Caldera Forms field by field ID
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {Number} formCount Optional. Form count, default is 1
+ * @return {string}
+ */
+export const getCfFieldIdAttr = (fieldId, formCount = 1) => {
+	return `${fieldId}_${formCount}`;
+};
+
+/**
+ * Get the field ID attribute for a Caldera Form by form ID
+ *
+ * @param {String} formId CF Form ID, not ID attribute
+ * @param {Number} formCount Optional. Form count, default is 1
+ * @return {string}
+ */
+export const getCfFormIdAttr = (formId, formCount = 1) => {
+	return `${formId}_${formCount}`;
 };
