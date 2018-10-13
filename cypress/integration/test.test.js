@@ -1,8 +1,8 @@
 
-const site = Cypress.env( "wp_site" );
+const site = Cypress.env( 'wp_site' );
 const {url,user,pass} = site;
 
-beforeEach(  () => {
+before(  () => {
 	cy.visit( url + '/wp-login.php' );
 	cy.wait( 500 );
 	cy.get( '#user_login' ).type( user );

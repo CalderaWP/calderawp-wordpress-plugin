@@ -1,11 +1,9 @@
 {
   "env": {
-
     "wp_site" : {
       "url" : "http://localhost:8218",
       "user": "admin",
       "pass": "password"
     }
-
   }
 }

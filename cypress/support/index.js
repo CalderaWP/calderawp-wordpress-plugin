@@ -16,5 +16,10 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+/** Persist WordPress Cookies **/
+Cypress.Cookies.defaults({
+	whitelist: /wordpress_.*/
+});
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
