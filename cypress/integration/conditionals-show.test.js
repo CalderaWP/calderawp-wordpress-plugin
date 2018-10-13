@@ -7,14 +7,135 @@ import {
 	cfFieldHasValue,
 	cfFieldSelectValue,
 	cfFieldSetValue,
-	cfFieldCheckValue
+	cfFieldCheckValue, cfFieldUnCheckValue, cfFieldOptionIsChecked, cfFieldOptionIsSelected
 } from '../support/util';
 
+describe('Conditionals - show type - select fields', () => {
+	beforeEach(() => {
+		visitPage('show-conditionals-select');
+	});
+
+	const formId = 'CF5bc235072e2a8';
+	const showCheckbox = 'fld_7176956';
+	const checkbox1 = 'fld_5440278';
+	const checkbox2 = 'fld_921826';
+	const extraField = 'fld_1034558';
+
+	const showRadio = 'fld_7631843';
+	const radio1 = 'fld_464591';
+
+	const showOthers = 'fld_1734075';
+	const dropDown = 'fld_520708';
+	const stateProvidence = 'fld_5313777';
+	const date = 'fld_888212';
 
 
-/**
- * Tests for when conditions are hide type
- */
+
+	it( 'Hides and shows based on checkbox', () => {
+		cfFieldDoesNotExist(checkbox1);
+		cfFieldDoesNotExist(checkbox2);
+
+		cfFieldCheckValue(showCheckbox,'show1');
+		cfFieldIsVisible(checkbox1);
+		cfFieldUnCheckValue(checkbox1, 'ck1c' );//uncheck default
+		cfFieldDoesNotExist(checkbox2);
+
+		cfFieldCheckValue(showCheckbox,'show2');
+		cfFieldIsVisible(checkbox1);
+		cfFieldIsVisible(checkbox2);
+
+		cfFieldUnCheckValue(showCheckbox, 'show2' );
+		cfFieldDoesNotExist(checkbox2);
+
+		cfFieldUnCheckValue(showCheckbox, 'show1' );
+		cfFieldDoesNotExist(checkbox1);
+
+		cfFieldCheckValue(showCheckbox, 'showBoth');
+		cfFieldIsVisible(checkbox1);
+		cfFieldIsVisible(checkbox2);
+
+		cfFieldCheckValue(checkbox1,'ck1a');
+		cfFieldCheckValue(checkbox2,'ck3b');
+		cfFieldIsVisible(extraField);
+
+		cfFieldUnCheckValue(checkbox1,'ck1a');
+		cfFieldUnCheckValue(checkbox2,'ck3b');
+		cfFieldDoesNotExist(extraField);
+
+		cfFieldCheckValue(checkbox2,'ck2b');
+		cfFieldIsVisible(extraField);
+
+	});
+
+	it( 'hides and shows based on radio field', () => {
+		cfFieldIsVisible(radio1);
+
+		cfFieldCheckValue(showRadio,'No');
+		cfFieldDoesNotExist(radio1);
+
+		cfFieldCheckValue(showRadio,'Yes');
+		cfFieldIsVisible(radio1);
+
+	});
+
+	it( 'Preserves values of checkboxes', () => {
+		cfFieldCheckValue(showCheckbox,'show1');
+		cfFieldOptionIsChecked(checkbox1, 'ck1c');
+		cfFieldCheckValue(checkbox1, 'ck1a');
+
+		cfFieldUnCheckValue(showCheckbox,'show1');
+		cfFieldCheckValue(showRadio,'Yes' );
+		cfFieldCheckValue(showCheckbox,'show1');
+		cfFieldOptionIsChecked(checkbox1, 'ck1c');
+		cfFieldOptionIsChecked(checkbox1, 'ck1a');
+
+	});
+
+	it( 'Preserves values of radios', () => {
+
+		cfFieldCheckValue(showRadio,'Yes' );
+		cfFieldOptionIsChecked(radio1, 'r1b');
+		cfFieldCheckValue(radio1, 'r1c');
+		cfFieldCheckValue(showRadio,'No' );
+		cfFieldCheckValue(showRadio,'Yes' );
+		cfFieldOptionIsChecked(radio1,'r1c');
+
+	});
+
+	it( 'Preserves values of dropdown', () => {
+		cfFieldCheckValue(showOthers,'Yes' );
+		cfFieldOptionIsSelected(dropDown, 's1b');
+
+		cfFieldSelectValue(dropDown, 's1c' );
+
+		cfFieldCheckValue(showOthers,'No' );
+		cfFieldCheckValue(showRadio,'Yes' );
+		cfFieldCheckValue(showOthers,'Yes' );
+
+		cfFieldOptionIsSelected(dropDown,'s1c');
+	});
+
+	it( 'preserves value of date', () => {
+		cfFieldCheckValue(showOthers, 'Yes' );
+		cfFieldSetValue(date, '2019-01-01' );
+		cfFieldCheckValue(showOthers, 'No' );
+		cfFieldDoesNotExist(date);
+		cfFieldCheckValue(showOthers, 'Yes' );
+		cfFieldHasValue(date, '2019-01-01');
+
+	});
+
+	it( 'preserves value of state/Providence field', () => {
+		cfFieldCheckValue(showOthers, 'Yes' );
+		cfFieldSelectValue(stateProvidence, 'PA' );
+		cfFieldCheckValue(showOthers, 'No' );
+		cfFieldDoesNotExist(date);
+		cfFieldCheckValue(showOthers, 'Yes' );
+		cfFieldHasValue(stateProvidence, 'PA');
+
+	});
+});
+
 describe('Conditionals - show type - text fields', () => {
 	beforeEach(() => {
 		visitPage('conditional-show-test');

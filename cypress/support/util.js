@@ -113,6 +113,12 @@ export const cfFieldSelectValue = (fieldId, newValue) => {
 	return getCfField(fieldId).select(newValue);
 };
 
+
+export const cfFieldIsValueSelected = (fieldId,value) => {
+	return cfFieldOptionIsSelected(fieldId,value);
+};
+
+
 /**
  * Set new value for Caldera Forms text-like field, by field ID
  *

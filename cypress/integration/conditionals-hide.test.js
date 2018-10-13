@@ -126,7 +126,7 @@ describe('Conditionals - hide type - text fields', () => {
 		cfFieldDoesNotExist(button2);
 	});
 
-	it('can hide masked input and it works right', () => {
+	it.skip('can hide masked input and it works right', () => {
 		const value = '11-ab-2a';
 		cfFieldSetValue(maskedInput, value);
 
@@ -304,6 +304,5 @@ describe('Conditionals - hide type - select fields', () => {
 		cfFieldCheckValue(hideOthers, 'No');
 		cfFieldHasValue(date,'2111-11-11');
 	});
-
 
 });
