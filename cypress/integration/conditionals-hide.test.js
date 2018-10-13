@@ -15,7 +15,7 @@ import {
 /**
  * Tests for when conditions are hide type
  */
-describe('Conditionals - hide type', () => {
+describe('Conditionals - hide type - text fields', () => {
 	beforeEach(() => {
 		visitPage('conditional-hide-test');
 	});
