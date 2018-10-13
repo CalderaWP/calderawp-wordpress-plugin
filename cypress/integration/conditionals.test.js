@@ -6,7 +6,8 @@ import {
 	cfFieldDoesNotExist,
 	cfFieldHasValue,
 	cfFieldSelectValue,
-	cfFieldSetValue
+	cfFieldSetValue,
+	cfFieldCheckValue
 } from '../support/util';
 
 
@@ -20,11 +21,19 @@ describe('Conditionals - hide type', () => {
 	});
 
 	const controlField = 'fld_471602';
+	const controlField2 = 'fld_4533316';
 	const textField = 'fld_6735870';
 	const textFieldWithDefault = 'fld_8484460';
 
 	const textFieldAsNumber = 'fld_2782690';
 	const textFieldAsNumberWithDefault = 'fld_9936249';
+
+	const button1 = 'fld_8729978';
+	const button2 = 'fld_8576859';
+
+	const hideMaskedInput = 'fld_53474';
+	const maskedInput = 'fld_7507195';
+
 	it('Hide and update values of regular text fields', () => {
 		//Set a value in text field and then hide text fields
 		cfFieldSetValue(textField,'Mike');
@@ -92,5 +101,48 @@ describe('Conditionals - hide type', () => {
 		cfFieldIsVisible(textFieldWithDefault);
 		cfFieldIsVisible(textFieldAsNumber);
 		cfFieldIsVisible(textFieldAsNumberWithDefault);
+	});
+
+	it( 'can hide and show based on text value', () => {
+		cfFieldSetValue(controlField2, 'Hide 1' );
+		cfFieldDoesNotExist(button1);
+		cfFieldIsVisible(button2);
+
+		cfFieldSetValue(controlField2, 'Hide 2' );
+		cfFieldIsVisible(button1);
+		cfFieldDoesNotExist(button2);
+
+		cfFieldSetValue(controlField2, 'Hi Roy' );
+		cfFieldIsVisible(button1);
+		cfFieldIsVisible(button2);
+
+		cfFieldSetValue(controlField2, 'Hide Both' );
+		cfFieldDoesNotExist(button1);
+		cfFieldDoesNotExist(button2);
+	});
+
+	it( 'can hide masked input and it works right', () => {
+		const value = '11-ab-2a';
+		cfFieldSetValue(maskedInput, value);
+
+		//Hide it
+		cfFieldCheckValue(hideMaskedInput, 'Yes' );
+		cfFieldDoesNotExist(maskedInput);
+
+		//Show it
+		cfFieldCheckValue(hideMaskedInput, 'No' );
+		cfFieldHasValue(maskedInput,value);
+
+		//Attempt to set an invalid value
+		getCfField(maskedInput).type( 'Roy' );
+		cfFieldHasValue(maskedInput,value);
+
+		//Set a valid value
+		const newValue ='11-ar-3s';
+		cfFieldSetValue(maskedInput,newValue)
+		cfFieldHasValue(maskedInput,newValue);
+		getCfField(maskedInput,'1adadssada1');
+		cfFieldHasValue(maskedInput,newValue);
+
 	});
 });

@@ -103,7 +103,7 @@ export const cfFieldSelectValue = ( fieldId,newValue ) => {
 };
 
 /**
- * Set new value for Caldera Forms field, by field ID
+ * Set new value for Caldera Forms text-like field, by field ID
  *
  * Note: clears field first
  *
@@ -113,4 +113,17 @@ export const cfFieldSelectValue = ( fieldId,newValue ) => {
  */
 export const cfFieldSetValue = ( fieldId,newValue ) => {
 	return clearCfField(fieldId).type(newValue);
+};
+
+/**
+ * Check value for Caldera Forms radio/checkbox, by field ID
+ *
+ * Note: clears field first
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {String} valueToCheck Value to set
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldCheckValue = ( fieldId,valueToCheck ) => {
+	return getCfField(fieldId).check(valueToCheck);
 };
