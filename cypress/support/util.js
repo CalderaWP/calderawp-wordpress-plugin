@@ -204,3 +204,30 @@ export const getCfFieldIdAttr = (fieldId, formCount = 1) => {
 export const getCfFormIdAttr = (formId, formCount = 1) => {
 	return `${formId}_${formCount}`;
 };
+
+export const cfFieldIsChecked = (fieldId, value ) => {
+	expect(getCfField(fieldId)).not.to.be.checked
+};
+
+/**
+ * Get a checkbox option for a Caldera Forms checkbox field, by field Id and option value.
+ * @param fieldId
+ * @param optionValue
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const getCfCheckboxOption =(fieldId, optionValue) => {
+	return cy.get(`input[data-field="${fieldId}"][value="${optionValue}"]`);
+};
+
+export const cfFieldOptionIsChecked = (fieldId, optionValue ) => {
+	return getCfCheckboxOption(fieldId,optionValue).should('be.checked');
+};
+
+export const cfFieldOptionIsNotChecked = (fieldId, optionValue ) => {
+	return getCfCheckboxOption(fieldId,optionValue).not('be.checked');
+};
+
+export const cfFieldOptionIsSelected = (fieldId, value ) => {
+
+	return getCfField(fieldId).should('have.value', value);
+}
