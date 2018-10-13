@@ -16,7 +16,6 @@ import {
 before(() => {
 	login();
 	activatePlugin('caldera-forms')
-
 });
 
 /**

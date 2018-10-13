@@ -53,7 +53,8 @@
         "jakub-onderka/php-parallel-lint": "^1.0",
         "wpackagist-plugin/gutenberg":"*",
         "johnpbloch/wordpress" : "*",
-        "Desertsnowman/caldera-forms": "dev-develop"
+        "Desertsnowman/caldera-forms": "dev-develop",
+        "calderawp/ghost-runner": "dev-master"
     },
     "scripts" : {
         "tests" : "composer fixes && composer sniffs && composer test:unit",
@@ -68,6 +69,7 @@
         "wp:config": "docker-compose run --rm cli wp rewrite structure '/%postname%/'",
         "wp:start": "docker-compose up -d",
         "wp:tests": "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist",
-        "wp:destroy": "docker-compose rm --stop --force"
+        "wp:destroy": "docker-compose rm --stop --force",
+        "cf:form-import": "docker-compose run --rm cli wp cgr import"
     }
 }

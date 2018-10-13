@@ -47,6 +47,12 @@ You should now have WordPress at [http://localhost:8218/](http://localhost:8218/
 * Username: admin
 * password: password
 
+#### Setup plugins and test forms
+* Activate Plugins
+    - `composer wp:activate`
+* Import test forms
+    - `composer cf:form-import`
+
 ### Using Already Installed Local Development Environment
 
 * (re)Start Server: Once server is installed, you can start it again

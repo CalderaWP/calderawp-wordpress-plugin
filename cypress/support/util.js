@@ -4,7 +4,6 @@
  */
 export const site = Cypress.env( 'wp_site' );
 export const {url,user,pass} = site;
-
 export const login = () => {
 	cy.visit( url + '/wp-login.php' );
 	cy.wait( 500 );
@@ -30,4 +29,88 @@ export const activatePlugin = (pluginSlug) => {
  */
 export const visitPluginPage = (pluginSlug) => {
 	cy.visit(`${url}/wp-admin/admin.php?page=${pluginSlug}`);
+};
+
+export const visitPage = (pageSlug) => {
+	cy.visit( `${url}/${pageSlug}` );
+};
+
+/**
+ * Get a Caldera Forms field by ID
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const getCfField = (fieldId) => {
+	return cy.get( `[data-field="${fieldId}"]`);
+};
+
+/**
+ * Clear value of Caldera Forms field by ID
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const clearCfField = (fieldId) => {
+	return getCfField(fieldId).clear();
+};
+
+/**
+ * Check if Caldera Forms field is visible by ID
+ *
+ * Use: Check if field was unhidden by conditional logic.
+
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldIsVisible = (fieldId) => {
+	return getCfField(fieldId).should('be.visible');
+};
+
+/**
+ * Check if Caldera Forms field does NOT exist on DOM by field ID
+ *
+ * Use: Check if field was hidden by conditional logic.
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldDoesNotExist = (fieldId) => {
+	return getCfField(fieldId).should('not.exist');
+};
+
+/**
+ * Check if a Caldera Forms field exists and has a value, by field ID
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {String|Number} value Value to assert. Evaluated as string (numbers will be cast to string)
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldHasValue = (fieldId,value) => {
+	if( 'number' === typeof  value ){
+		value = value.toString(10);
+	}
+	return getCfField(fieldId).should('have.value',value);
+};
+
+/**
+ * Select an option of a Caldera Forms select field, by field ID
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {String} newValue Value to set
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldSelectValue = ( fieldId,newValue ) => {
+	return getCfField(fieldId).select(newValue);
+};
+
+/**
+ * Set new value for Caldera Forms field, by field ID
+ *
+ * Note: clears field first
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {String} newValue Value to set
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldSetValue = ( fieldId,newValue ) => {
+	return clearCfField(fieldId).type(newValue);
 };

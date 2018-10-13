@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "291521f20223aa36bbc8e026ab528caf",
+    "content-hash": "d337568d5f4ab2fb11642463d9a10189",
     "packages": [
         {
             "name": "calderawp/caldera-containers",
@@ -850,6 +850,76 @@
             ],
             "description": "Caldera Forms Query Library",
             "time": "2018-07-10T21:12:12+00:00"
+        },
+        {
+            "name": "calderawp/ghost-runner",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CalderaWP/caldera-ghost-runner",
+                "reference": "677f10283896511327783586953262bdcc3667c5"
+            },
+            "require": {
+                "php": ">=5.6",
+                "pimple/pimple": "^3.2",
+                "rmccue/requests": ">=1.0"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.2"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-0": {
+                    "Requests": "library/"
+                },
+                "psr-4": {
+                    "calderawp\\ghost\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "calderawp\\ghost\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tests": [
+                    "composer fixes && composer sniffs && composer test"
+                ],
+                "test": [
+                    "composer unit-tests"
+                ],
+                "unit-tests": [
+                    "phpunit --testsuite=unit"
+                ],
+                "phpunit-v": [
+                    "phpunit --version"
+                ],
+                "sniffs": [
+                    "phpcs src/ && phpcs tests/"
+                ],
+                "fixes": [
+                    "phpcbf src/ && phpcbf tests/"
+                ],
+                "lints": [
+                    "parallel-lint ./src  --blame --exclude vendor && parallel-lint ./tests  --blame --exclude vendor"
+                ],
+                "production-update": [
+                    "composer update --prefer-stable -o --no-dev"
+                ]
+            },
+            "license": [
+                "GPLv2+"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Pollock",
+                    "email": "Josh@CalderaWP.com"
+                }
+            ],
+            "description": "Ghost Inspector Client as a WordPress Plugin",
+            "time": "2018-10-13T14:03:49+00:00"
         },
         {
             "name": "composer/installers",
@@ -2282,6 +2352,55 @@
             "time": "2018-04-03T15:59:15+00:00"
         },
         {
+            "name": "rmccue/requests",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmccue/Requests.git",
+                "reference": "4055bc412f128bb298735d5e1b0189eff41f1340"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmccue/Requests/zipball/4055bc412f128bb298735d5e1b0189eff41f1340",
+                "reference": "4055bc412f128bb298735d5e1b0189eff41f1340",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "requests/test-server": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Requests": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan McCue",
+                    "homepage": "http://ryanmccue.info"
+                }
+            ],
+            "description": "A HTTP library written in PHP, for human beings.",
+            "homepage": "http://github.com/rmccue/Requests",
+            "keywords": [
+                "curl",
+                "fsockopen",
+                "http",
+                "idna",
+                "ipv6",
+                "iri",
+                "sockets"
+            ],
+            "time": "2017-12-13T02:37:47+00:00"
+        },
+        {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "dev-master",
             "source": {
@@ -3038,7 +3157,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "calderawp/caldera-interop": 20,
-        "desertsnowman/caldera-forms": 20
+        "desertsnowman/caldera-forms": 20,
+        "calderawp/ghost-runner": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
