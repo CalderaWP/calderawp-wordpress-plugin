@@ -27,4 +27,13 @@ Same as `Conditionals - hide type - text fields`
     - FormId: CF5bc21a0e818ab
     - Form Name: Conditionals Disable Type
     - Page Slug: conditionals-disable-test
+
+* `Calculations - money style`
+    - FormId: CF5bc25cfa53898
+    - Form Name: Calculation Money
+    - Page Slug: calculation-money
     
+* `Calculations - With Checkbox`
+    - FormId: CF5bc26604eaf3c
+    - Form Name: Calculations Checkbox
+    - Page Slug: 'calculations-checkbox'

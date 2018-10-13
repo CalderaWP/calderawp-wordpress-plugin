@@ -10,164 +10,63 @@ import {
 	cfFieldCheckValue,
 	cfFieldIsDisabled,
 	cfFieldUnCheckValue,
-	cfFieldIsNotDisabled, cfFieldCheckAllValues
+	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldGetCalcFieldValueIs
 } from '../support/util';
 
 
-
-/**
- * Tests for when conditions are hide type
- */
-describe('Conditionals - disable type - text fields', () => {
+describe('Calculations - money style', () => {
 	beforeEach(() => {
-		visitPage('conditionals-disable-test');
+		visitPage('calculation-money');
 	});
 
-	const disabler = 'fld_9551037';
+	const formId = 'CF5bc25cfa53898';
+	const calc1 = 'fld_3231357';
+	const calc1Quantity = 'fld_3087149';
+	const calc1Option = 'fld_9132898';
 
-	const textField = 'fld_3067684';
-	const colorField = 'fld_6740475';
-	const phoneBetterField = 'fld_4913550';
-	const phoneBasicField = 'fld_3414426';
-	const numberField = 'fld_8059884';
-	const submitButton = 'fld_9529943';
-	const emailField = 'fld_7867333';
-	const urlField = 'fld_8461580';
-	const fields = [
-		textField,
-		colorField,
-		phoneBasicField,
-		phoneBetterField,
-		numberField,
-		submitButton,
-		urlField,
-		emailField
-	];
+	const calc2 = 'fld_8673305';
+	const calc2Opt1 = 'fld_7613122';
+	const calc2Opt2 = 'fld_6377680';
 
-	it( 'Disables text field',() => {
-		cfFieldCheckValue(disabler,'disableText');
-		cfFieldIsDisabled(textField);
+	const calc3 = 'fld_8223213';
+	const calc3opt = 'fld_3489682';
 
-		cfFieldUnCheckValue(disabler,'disableText');
-		cfFieldIsNotDisabled(textField);
-		cfFieldSetValue(textField,'Noms');
-		cfFieldHasValue(textField,'Noms');
+	it( 'Price option + Quantity option', () => {
+		cfFieldGetCalcFieldValueIs(calc1, '5.00' );
 
-		cfFieldCheckValue(disabler,'disableText');
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(textField);
+		cfFieldSetValue(calc1Quantity, 42 );
+		cfFieldGetCalcFieldValueIs(calc1, '42.00' );
 
-		cfFieldSetValue(textField,'Noms!');
-		cfFieldHasValue(textField,'Noms!');
-	});
+		cfFieldSelectValue(calc1Option,'1');
+		cfFieldGetCalcFieldValueIs(calc1, '4200.00' );
 
-	it( 'Disables color field',() => {
-		cfFieldCheckValue(disabler,'disableColor');
-		cfFieldIsDisabled(colorField);
-
-		cfFieldUnCheckValue(disabler,'disableColor');
-		cfFieldIsNotDisabled(colorField);
-		cfFieldSetValue(colorField,'#FFFFFF');
-		cfFieldHasValue(colorField,'#FFFFFF');
-
-		cfFieldCheckValue(disabler,'disableColor');
-		cfFieldIsDisabled(colorField);
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(colorField);
-
-		cfFieldSetValue(colorField,'#FFFF00');
-		cfFieldHasValue(colorField,'#FFFF00');
-	});
-
-	it( 'Disables phone better field',() => {
-		cfFieldCheckValue(disabler,'disablePhoneBetter');
-		cfFieldIsDisabled(phoneBetterField);
-
-		cfFieldUnCheckValue(disabler,'disablePhoneBetter');
-		cfFieldIsNotDisabled(phoneBetterField);
-		cfFieldSetValue(phoneBetterField,'(111) 123-4567');
-		cfFieldHasValue(phoneBetterField,'(111) 123-4567');
-
-		cfFieldCheckValue(disabler,'disablePhoneBetter');
-		cfFieldIsDisabled(phoneBetterField);
-
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(phoneBetterField);
-		cfFieldSetValue(phoneBetterField,'(111) 123-4561');
-		cfFieldHasValue(phoneBetterField,'(111) 123-4561');
+		cfFieldSetValue(calc1Quantity, 41 );
+		cfFieldGetCalcFieldValueIs(calc1, '4100.00' );
 
 	});
 
-	it( 'Disables phone basic field',() => {
-		cfFieldCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsDisabled(phoneBasicField);
+	it( 'Radio-based options', () => {
+		cfFieldGetCalcFieldValueIs(calc2, '5.00' );
+		cfFieldCheckValue(calc2Opt1, '2' );
+		cfFieldGetCalcFieldValueIs(calc2, '7.00' );
+		cfFieldCheckValue(calc2Opt1, '1' );
+		cfFieldGetCalcFieldValueIs(calc2, '6.00' );
 
-		cfFieldUnCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsNotDisabled(phoneBasicField);
+		cfFieldCheckValue(calc2Opt2, '2');
+		cfFieldGetCalcFieldValueIs(calc2, '26.00' );
 
-		cfFieldCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsDisabled(phoneBasicField);
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(phoneBasicField);
-
+		cfFieldCheckValue(calc2Opt2, '1');
+		cfFieldGetCalcFieldValueIs(calc2, '16.00' );
 	});
 
+	it( 'Divides and accounts for hidden field being hidden', () => {
+		cfFieldGetCalcFieldValueIs(calc3,'5.00');
+		cfFieldCheckValue(calc2Opt1, '2' );
+		cfFieldGetCalcFieldValueIs(calc3,'6.00');
+		cfFieldCheckValue(calc3opt, 'Yes');
+		cfFieldGetCalcFieldValueIs(calc3,'12.00');
+		cfFieldUnCheckValue(calc3opt, 'Yes');
+		cfFieldGetCalcFieldValueIs(calc3,'6.00');
 
-	it( 'Disables phone basic field',() => {
-		cfFieldCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsDisabled(phoneBasicField);
-
-		cfFieldUnCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsNotDisabled(phoneBasicField);
-
-		cfFieldCheckValue(disabler,'disablePhoneBasic');
-		cfFieldIsDisabled(phoneBasicField);
-
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(phoneBasicField);
 	});
-
-	it( 'Disables url  field',() => {
-		cfFieldCheckValue(disabler,'disableUrl');
-		cfFieldIsDisabled(urlField);
-
-		cfFieldUnCheckValue(disabler,'disableUrl');
-		cfFieldIsNotDisabled(urlField);
-
-		cfFieldCheckValue(disabler,'disableUrl');
-		cfFieldIsDisabled(urlField);
-
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(urlField);
-	});
-
-	it( 'Disables email field',() => {
-		cfFieldCheckValue(disabler,'disableEmail');
-		cfFieldIsDisabled(emailField);
-
-		cfFieldUnCheckValue(disabler,'disableEmail');
-		cfFieldIsNotDisabled(emailField);
-
-		cfFieldCheckValue(disabler,'disableEmail');
-		cfFieldIsDisabled(emailField);
-
-		cfFieldCheckValue(disabler,'disableNone');
-		cfFieldIsNotDisabled(emailField);
-	});
-
-	it( 'Disables none when all are checked, including disable all', () => {
-		cfFieldCheckAllValues(disabler);
-		fields.forEach( fieldId => {
-			cfFieldIsNotDisabled(fieldId);
-		});
-	});
-
-	it( 'Disables all when all are checked, except disable all', () => {
-		cfFieldCheckAllValues(disabler);
-		cfFieldUnCheckValue(disabler, 'disableNone')
-		fields.forEach( fieldId => {
-			cfFieldIsDisabled(fieldId);
-		});
-	});
-
 });
