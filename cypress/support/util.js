@@ -78,6 +78,18 @@ export const cfFieldIsVisible = (fieldId) => {
 	return getCfField(fieldId).should('be.visible');
 };
 
+/**
+ * Check if Caldera Forms field is NOT visible by ID
+ *
+ * Use: Check if field is on a different page AND not hidden by conditional logic
+
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldIsNotVisible = (fieldId) => {
+	return getCfField(fieldId).not('be.visible');
+};
+
 /**v
  * Check if Caldera Forms field does NOT exist on DOM by field ID
  *
@@ -211,13 +223,18 @@ export const getCfFormIdAttr = (formId, formCount = 1) => {
 	return `${formId}_${formCount}`;
 };
 
+/**
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param value
+ */
 export const cfFieldIsChecked = (fieldId, value ) => {
 	expect(getCfField(fieldId)).not.to.be.checked
 };
 
 /**
  * Get a checkbox option for a Caldera Forms checkbox field, by field Id and option value.
- * @param fieldId
+ * @param {String} fieldId CF Field ID, not ID attribute
  * @param optionValue
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
@@ -225,6 +242,12 @@ export const getCfCheckboxOption =(fieldId, optionValue) => {
 	return cy.get(`input[data-field="${fieldId}"][value="${optionValue}"]`);
 };
 
+/**
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param optionValue
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
 export const cfFieldOptionIsChecked = (fieldId, optionValue ) => {
 	return getCfCheckboxOption(fieldId,optionValue).should('be.checked');
 };
@@ -233,11 +256,23 @@ export const cfFieldOptionIsNotChecked = (fieldId, optionValue ) => {
 	return getCfCheckboxOption(fieldId,optionValue).not('be.checked');
 };
 
+/**
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param value
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
 export const cfFieldOptionIsSelected = (fieldId, value ) => {
 
 	return getCfField(fieldId).should('have.value', value);
 };
 
+/**
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param value
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
 export const cfFieldCalcFieldValueIs = (fieldId, value) => {
 	return 	cy.get( `[data-calc-field="${fieldId}`).should('have.value', value);
 };
@@ -268,5 +303,14 @@ export const cfFieldSummaryContainsValues = (fieldSelector,containsValues) => {
 	containsValues.forEach( value => {
 		cfFieldSummaryContains(fieldSelector,value);
 	})
+};
 
+/**
+ * Click a button by field Id
+ *
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldClickButton = (fieldId) => {
+	return cy.get(`.btn${getCfFieldSelector(fieldId)}`).click();
 };
