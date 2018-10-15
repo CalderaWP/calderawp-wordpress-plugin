@@ -236,8 +236,8 @@ export const cfFieldOptionIsNotChecked = (fieldId, optionValue ) => {
 export const cfFieldOptionIsSelected = (fieldId, value ) => {
 
 	return getCfField(fieldId).should('have.value', value);
-}
+};
 
 export const cfFieldGetCalcFieldValueIs = (fieldId, value) => {
 	return 	cy.get( `[data-calc-field="${fieldId}`).should('have.value', value);
-}
+};

@@ -203,7 +203,7 @@ describe('Conditionals - show type - text fields', () => {
 	});
 
 
-	it( 'can show masked input and it works right', () => {
+	it.skip( 'can show masked input and it works right', () => {
 		const value = '11-ab-2a';
 		cfFieldCheckValue(showMaskedInput, 'Yes');
 		cfFieldIsVisible(maskedInput);

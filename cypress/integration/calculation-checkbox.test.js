@@ -94,13 +94,13 @@ describe('Calculations - With Checkbox', () => {
 		cfFieldGetCalcFieldValueIs(calc3, '12.00' );
 		cfFieldGetCalcFieldValueIs(calc4, '12.001' );
 
-		cfFieldCheckValue(hideCheck, 'Yes' );
+		cfFieldSelectValue(hideCheck, 'Yes' );
 		cfFieldGetCalcFieldValueIs(calc1, '10.00' );
 		cfFieldGetCalcFieldValueIs(calc2, '10.001' );
 		cfFieldGetCalcFieldValueIs(calc3, '10.00' );
 		cfFieldGetCalcFieldValueIs(calc4, '10.001' );
 
-		cfFieldUnCheckValue(hideCheck, 'Yes' );
+		cfFieldSelectValue(hideCheck, '' );
 		cfFieldGetCalcFieldValueIs(calc1, '12.00' );
 		cfFieldGetCalcFieldValueIs(calc2, '12.001' );
 		cfFieldGetCalcFieldValueIs(calc3, '12.00' );

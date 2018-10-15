@@ -27,7 +27,6 @@ describe('Calculations - manual', () => {
 	const num2 = 'fld_8094639';
 
 	it( 'Has the right initial values', () => {
-		expect(1).equals(1);
 		cfFieldGetCalcFieldValueIs(calc1,'-1.8386476455831817');
 		cfFieldGetCalcFieldValueIs(calc2,'-2');
 		cfFieldSetValue(num1,101.01);
