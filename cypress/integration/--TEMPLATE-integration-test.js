@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 

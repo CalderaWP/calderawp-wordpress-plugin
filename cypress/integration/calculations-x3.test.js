@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -28,8 +28,8 @@ describe('Name of test', () => {
 
 
 	function testInitialLoad() {
-		cfFieldGetCalcFieldValueIs(mathCalc,'0');
-		cfFieldGetCalcFieldValueIs(roundMathCalc,'0');
+		cfFieldCalcFieldValueIs(mathCalc,'0');
+		cfFieldCalcFieldValueIs(roundMathCalc,'0');
 	}
 
 	it( 'Has the correct initial load', () => {
@@ -39,13 +39,13 @@ describe('Name of test', () => {
 		testInitialLoad();
 		cfFieldSetValue(numberField, 10);
 
-		cfFieldGetCalcFieldValueIs(mathCalc,'0.6483608274590866');
-		cfFieldGetCalcFieldValueIs(roundMathCalc,'1');
+		cfFieldCalcFieldValueIs(mathCalc,'0.6483608274590866');
+		cfFieldCalcFieldValueIs(roundMathCalc,'1');
 
 		cfFieldSetValue(numberField, -351);
 
-		cfFieldGetCalcFieldValueIs(mathCalc,'1.1577507304420032');
-		cfFieldGetCalcFieldValueIs(roundMathCalc,'1');
+		cfFieldCalcFieldValueIs(mathCalc,'1.1577507304420032');
+		cfFieldCalcFieldValueIs(roundMathCalc,'1');
 
 	});
 

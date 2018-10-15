@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -27,7 +27,7 @@ describe('Name of test', () => {
 	const option2Select = 'fld_8186270';
 
 	function testInitialLoad() {
-		cfFieldGetCalcFieldValueIs(totalCalc, '0.00');
+		cfFieldCalcFieldValueIs(totalCalc, '0.00');
 
 	}
 
@@ -39,12 +39,12 @@ describe('Name of test', () => {
 		testInitialLoad();
 
 		cfFieldSelectValue(option1Select, '4' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '4.28');
+		cfFieldCalcFieldValueIs(totalCalc, '4.28');
 
 		cfFieldSelectValue(option2Select, 'Two' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '6.42');
+		cfFieldCalcFieldValueIs(totalCalc, '6.42');
 
 		cfFieldSelectValue(option1Select, '3' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '5.35');
+		cfFieldCalcFieldValueIs(totalCalc, '5.35');
 	});
 });

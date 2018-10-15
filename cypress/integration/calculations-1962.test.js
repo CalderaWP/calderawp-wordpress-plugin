@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -31,10 +31,10 @@ describe('Name of test', () => {
 	const radio = 'fld_105161';
 
 	function testInitialLoad() {
-		cfFieldGetCalcFieldValueIs(dropDownCalc, '200');
-		cfFieldGetCalcFieldValueIs(checkboxCalc, '100');
-		cfFieldGetCalcFieldValueIs(radioCalc, '100');
-		cfFieldGetCalcFieldValueIs(selectsDividedByCalc, '400');
+		cfFieldCalcFieldValueIs(dropDownCalc, '200');
+		cfFieldCalcFieldValueIs(checkboxCalc, '100');
+		cfFieldCalcFieldValueIs(radioCalc, '100');
+		cfFieldCalcFieldValueIs(selectsDividedByCalc, '400');
 	}
 
 	it( 'Has the right initial load', () => {
@@ -44,15 +44,15 @@ describe('Name of test', () => {
 	it( 'Does the math correctly after intial load', () => {
 		testInitialLoad();
 		cfFieldSetValue(numberField,-10);
-		cfFieldGetCalcFieldValueIs(selectsDividedByCalc, '-40');
+		cfFieldCalcFieldValueIs(selectsDividedByCalc, '-40');
 
 		cfFieldSelectValue(dropdown, '10' );
-		cfFieldGetCalcFieldValueIs(dropDownCalc, '100' );
-		cfFieldGetCalcFieldValueIs(selectsDividedByCalc, '-30' );
+		cfFieldCalcFieldValueIs(dropDownCalc, '100' );
+		cfFieldCalcFieldValueIs(selectsDividedByCalc, '-30' );
 
 		cfFieldCheckValue(radio,'20' );
-		cfFieldGetCalcFieldValueIs(radioCalc, '200');
-		cfFieldGetCalcFieldValueIs(selectsDividedByCalc, '-40');
+		cfFieldCalcFieldValueIs(radioCalc, '200');
+		cfFieldCalcFieldValueIs(selectsDividedByCalc, '-40');
 
 	});
 

@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -29,9 +29,9 @@ describe('Name of test', () => {
 
 
 	function testInitialLoad() {
-		cfFieldGetCalcFieldValueIs(discountCalc, '0.00');
-		cfFieldGetCalcFieldValueIs(totalCalc, '100.00');
-		cfFieldGetCalcFieldValueIs(grandTotalCalc, '100.00');
+		cfFieldCalcFieldValueIs(discountCalc, '0.00');
+		cfFieldCalcFieldValueIs(totalCalc, '100.00');
+		cfFieldCalcFieldValueIs(grandTotalCalc, '100.00');
 	}
 
 	it( 'Has the correct initial load', () => {
@@ -41,16 +41,16 @@ describe('Name of test', () => {
 	it( 'Updates and does math correctly', () => {
 		testInitialLoad();
 		cfFieldCheckValue(selectionsCheckbox, '200' );
-		cfFieldGetCalcFieldValueIs(discountCalc, '10.00');
-		cfFieldGetCalcFieldValueIs(grandTotalCalc, '290.00');
+		cfFieldCalcFieldValueIs(discountCalc, '10.00');
+		cfFieldCalcFieldValueIs(grandTotalCalc, '290.00');
 
 		cfFieldCheckValue(selectionsCheckbox, '300' );
-		cfFieldGetCalcFieldValueIs(discountCalc, '30.00');
-		cfFieldGetCalcFieldValueIs(grandTotalCalc, '570.00');
+		cfFieldCalcFieldValueIs(discountCalc, '30.00');
+		cfFieldCalcFieldValueIs(grandTotalCalc, '570.00');
 
 		cfFieldUnCheckValue(selectionsCheckbox, '200' );
-		cfFieldGetCalcFieldValueIs(discountCalc, '0.00');
-		cfFieldGetCalcFieldValueIs(grandTotalCalc, '400.00');
+		cfFieldCalcFieldValueIs(discountCalc, '0.00');
+		cfFieldCalcFieldValueIs(grandTotalCalc, '400.00');
 	});
 
 });

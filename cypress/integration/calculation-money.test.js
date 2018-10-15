@@ -10,7 +10,7 @@ import {
 	cfFieldCheckValue,
 	cfFieldIsDisabled,
 	cfFieldUnCheckValue,
-	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldGetCalcFieldValueIs
+	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -32,41 +32,41 @@ describe('Calculations - money style', () => {
 	const calc3opt = 'fld_3489682';
 
 	it( 'Price option + Quantity option', () => {
-		cfFieldGetCalcFieldValueIs(calc1, '5.00' );
+		cfFieldCalcFieldValueIs(calc1, '5.00' );
 
 		cfFieldSetValue(calc1Quantity, 42 );
-		cfFieldGetCalcFieldValueIs(calc1, '42.00' );
+		cfFieldCalcFieldValueIs(calc1, '42.00' );
 
 		cfFieldSelectValue(calc1Option,'1');
-		cfFieldGetCalcFieldValueIs(calc1, '4200.00' );
+		cfFieldCalcFieldValueIs(calc1, '4200.00' );
 
 		cfFieldSetValue(calc1Quantity, 41 );
-		cfFieldGetCalcFieldValueIs(calc1, '4100.00' );
+		cfFieldCalcFieldValueIs(calc1, '4100.00' );
 
 	});
 
 	it( 'Radio-based options', () => {
-		cfFieldGetCalcFieldValueIs(calc2, '5.00' );
+		cfFieldCalcFieldValueIs(calc2, '5.00' );
 		cfFieldCheckValue(calc2Opt1, '2' );
-		cfFieldGetCalcFieldValueIs(calc2, '7.00' );
+		cfFieldCalcFieldValueIs(calc2, '7.00' );
 		cfFieldCheckValue(calc2Opt1, '1' );
-		cfFieldGetCalcFieldValueIs(calc2, '6.00' );
+		cfFieldCalcFieldValueIs(calc2, '6.00' );
 
 		cfFieldCheckValue(calc2Opt2, '2');
-		cfFieldGetCalcFieldValueIs(calc2, '26.00' );
+		cfFieldCalcFieldValueIs(calc2, '26.00' );
 
 		cfFieldCheckValue(calc2Opt2, '1');
-		cfFieldGetCalcFieldValueIs(calc2, '16.00' );
+		cfFieldCalcFieldValueIs(calc2, '16.00' );
 	});
 
 	it( 'Divides and accounts for hidden field being hidden', () => {
-		cfFieldGetCalcFieldValueIs(calc3,'5.00');
+		cfFieldCalcFieldValueIs(calc3,'5.00');
 		cfFieldCheckValue(calc2Opt1, '2' );
-		cfFieldGetCalcFieldValueIs(calc3,'6.00');
+		cfFieldCalcFieldValueIs(calc3,'6.00');
 		cfFieldCheckValue(calc3opt, 'Yes');
-		cfFieldGetCalcFieldValueIs(calc3,'12.00');
+		cfFieldCalcFieldValueIs(calc3,'12.00');
 		cfFieldUnCheckValue(calc3opt, 'Yes');
-		cfFieldGetCalcFieldValueIs(calc3,'6.00');
+		cfFieldCalcFieldValueIs(calc3,'6.00');
 
 	});
 });

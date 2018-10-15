@@ -12,7 +12,7 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldGetCalcFieldValueIs
+	cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -30,9 +30,9 @@ describe('Name of test', () => {
 	const hidden = 'fld_7400054';
 
 	function testIntialLoad() {
-		cfFieldGetCalcFieldValueIs(calcNumber1, '1');
-		cfFieldGetCalcFieldValueIs(calcNumber2, '0');
-		cfFieldGetCalcFieldValueIs(multiplyCalc, '1');
+		cfFieldCalcFieldValueIs(calcNumber1, '1');
+		cfFieldCalcFieldValueIs(calcNumber2, '0');
+		cfFieldCalcFieldValueIs(multiplyCalc, '1');
 	}
 
 	it( 'Has the right math on initial load', () => {
@@ -42,19 +42,19 @@ describe('Name of test', () => {
 
 	it( 'Updates after initial load with correct math', () => {
 		cfFieldSetValue(number2,  5);
-		cfFieldGetCalcFieldValueIs(calcNumber1, '1');
-		cfFieldGetCalcFieldValueIs(calcNumber2, '5');
-		cfFieldGetCalcFieldValueIs(multiplyCalc, '6');
+		cfFieldCalcFieldValueIs(calcNumber1, '1');
+		cfFieldCalcFieldValueIs(calcNumber2, '5');
+		cfFieldCalcFieldValueIs(multiplyCalc, '6');
 
 		cfFieldSetValue(number1,  10);
-		cfFieldGetCalcFieldValueIs(calcNumber1, '10');
-		cfFieldGetCalcFieldValueIs(calcNumber2, '5');
-		cfFieldGetCalcFieldValueIs(multiplyCalc, '51');
+		cfFieldCalcFieldValueIs(calcNumber1, '10');
+		cfFieldCalcFieldValueIs(calcNumber2, '5');
+		cfFieldCalcFieldValueIs(multiplyCalc, '51');
 
 		cfFieldSetValue(number2,  -50);
-		cfFieldGetCalcFieldValueIs(calcNumber1, '10');
-		cfFieldGetCalcFieldValueIs(calcNumber2, '-50');
-		cfFieldGetCalcFieldValueIs(multiplyCalc, '-499');
+		cfFieldCalcFieldValueIs(calcNumber1, '10');
+		cfFieldCalcFieldValueIs(calcNumber2, '-50');
+		cfFieldCalcFieldValueIs(multiplyCalc, '-499');
 	});
 
 });

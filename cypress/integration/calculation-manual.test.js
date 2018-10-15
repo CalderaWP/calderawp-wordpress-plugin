@@ -10,7 +10,7 @@ import {
 	cfFieldCheckValue,
 	cfFieldIsDisabled,
 	cfFieldUnCheckValue,
-	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldGetCalcFieldValueIs
+	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldCalcFieldValueIs
 } from '../support/util';
 
 
@@ -27,14 +27,14 @@ describe('Calculations - manual', () => {
 	const num2 = 'fld_8094639';
 
 	it( 'Has the right initial values', () => {
-		cfFieldGetCalcFieldValueIs(calc1,'-1.8386476455831817');
-		cfFieldGetCalcFieldValueIs(calc2,'-2');
+		cfFieldCalcFieldValueIs(calc1,'-1.8386476455831817');
+		cfFieldCalcFieldValueIs(calc2,'-2');
 		cfFieldSetValue(num1,101.01);
-		cfFieldGetCalcFieldValueIs(calc1,'-1.0071353170445643');
-		cfFieldGetCalcFieldValueIs(calc2,'-1');
+		cfFieldCalcFieldValueIs(calc1,'-1.0071353170445643');
+		cfFieldCalcFieldValueIs(calc2,'-1');
 		cfFieldSetValue(num1,22);
-		cfFieldGetCalcFieldValueIs(calc1,'0.0193404636415895');
-		cfFieldGetCalcFieldValueIs(calc2,'0');
+		cfFieldCalcFieldValueIs(calc1,'0.0193404636415895');
+		cfFieldCalcFieldValueIs(calc2,'0');
 
 
 	})
