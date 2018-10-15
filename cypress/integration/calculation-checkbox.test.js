@@ -10,7 +10,9 @@ import {
 	cfFieldCheckValue,
 	cfFieldIsDisabled,
 	cfFieldUnCheckValue,
-	cfFieldIsNotDisabled, cfFieldCheckAllValues, cfFieldGetCalcFieldValueIs
+	cfFieldIsNotDisabled,
+	cfFieldCheckAllValues,
+	cfFieldGetCalcFieldValueIs
 } from '../support/util';
 
 
