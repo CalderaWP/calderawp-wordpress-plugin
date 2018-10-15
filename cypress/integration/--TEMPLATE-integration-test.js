@@ -24,13 +24,16 @@ describe('Name of test', () => {
 	const formId = 'cf111';
 
 
-	it( 'Has the right title', () => {
-		expect(1).equals(1);
-		cy.get( '.entry-title' ).contains( 'Hello world' );
-	});
+	function testInitialLoad() {
+		//Define how it loads here
+	}
 
-	it( 'Does something', () => {
-		expect(1).equals(1);
+	it( 'Has the correct initial load', () => {
+		testInitialLoad();
+	});
+	it( 'Does something else', () => {
+		testInitialLoad();
+		//test form
 	});
 
 });
