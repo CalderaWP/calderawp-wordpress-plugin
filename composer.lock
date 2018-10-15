@@ -118,12 +118,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "60f1cdaef97cb59998922ce6252255fbfaa742d6"
+                "reference": "92ab93e18163df880458f31bd1d4a51239e53a9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/60f1cdaef97cb59998922ce6252255fbfaa742d6",
-                "reference": "60f1cdaef97cb59998922ce6252255fbfaa742d6",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/92ab93e18163df880458f31bd1d4a51239e53a9d",
+                "reference": "92ab93e18163df880458f31bd1d4a51239e53a9d",
                 "shasum": ""
             },
             "require": {
@@ -179,7 +179,7 @@
                 "iterators",
                 "php"
             ],
-            "time": "2018-10-09T19:27:36+00:00"
+            "time": "2018-10-15T15:10:34+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -624,7 +624,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CalderaWP/caldera-forms",
-                "reference": "2afc529010944665dc7d192401949b6dfea22a9d"
+                "reference": "c05144a35f4c8912117b271b08cfb5bf025865f5"
             },
             "require": {
                 "calderawp/caldera-containers": "^0.2.0",
@@ -688,7 +688,7 @@
                 "forms",
                 "wordpress"
             ],
-            "time": "2018-10-11T21:41:16+00:00"
+            "time": "2018-10-15T16:57:47+00:00"
         },
         {
             "name": "antecedent/patchwork",
@@ -1047,12 +1047,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "8f58c558d3263405c13df40489c35fe1eefd8f0e"
+                "reference": "8c8c1afee0f929f17528fe1721de5d58e15f71c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8f58c558d3263405c13df40489c35fe1eefd8f0e",
-                "reference": "8f58c558d3263405c13df40489c35fe1eefd8f0e",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/8c8c1afee0f929f17528fe1721de5d58e15f71c7",
+                "reference": "8c8c1afee0f929f17528fe1721de5d58e15f71c7",
                 "shasum": ""
             },
             "require": {
@@ -1094,7 +1094,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2018-09-25T21:32:24+00:00"
+            "time": "2018-10-15T11:30:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

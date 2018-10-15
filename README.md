@@ -96,3 +96,8 @@ Tests will also run in Travis on each push. You should also run tests locally as
 
 #### Install Test Suites
 Follow the steps above to create local development environment, then you can use the commands listed in the next section.
+
+### Other CLI Commands
+
+* `cwp import`
+    - Import all test forms that are not currently imported
