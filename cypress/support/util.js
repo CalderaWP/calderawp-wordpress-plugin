@@ -314,3 +314,11 @@ export const cfFieldSummaryContainsValues = (fieldSelector,containsValues) => {
 export const cfFieldClickButton = (fieldId) => {
 	return cy.get(`.btn${getCfFieldSelector(fieldId)}`).click();
 };
+
+export const cfFieldGetWrapper = (fieldId ) => {
+	return cy.get(`div[data-field-wrapper="${fieldId}"]` );
+};
+
+export const cfAlertHasText = (formId, text = 'Form has been successfully submitted. Thank you.' ) => {
+	return cy.get( `.caldera-grid[data-cf-form-id="${formId}"] .alert` ).contains(text );
+}
