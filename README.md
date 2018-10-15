@@ -101,3 +101,5 @@ Follow the steps above to create local development environment, then you can use
 
 * `cwp import`
     - Import all test forms that are not currently imported
+* `cwp pages`
+    - Add pages, with form shortcodes needed to run tests.

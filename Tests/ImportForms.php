@@ -10,7 +10,12 @@ class ImportForms
 
     /** @var string */
     protected $dirPath;
-    public function __construct(string  $dirPath = '')
+
+    /**
+     * ImportForms constructor.
+     * @param string $dirPath Optional. Path to directory with test forms
+     */
+    public function __construct(string $dirPath = '')
     {
         if( empty( $dirPath ) ){
             $dirPath = dirname(__FILE__, 2 ).'/cypress/forms';
@@ -19,6 +24,11 @@ class ImportForms
     }
 
 
+    /**
+     * Import test forms
+     *
+     * @return int|void
+     */
     public function import()
     {
         $formFiles = scandir( $this->dirPath );
