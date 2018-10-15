@@ -13,14 +13,20 @@ Requires git and Composer and npm and Yarn
     - `git clone git@github.com:CalderaWP/caldera-wordpress-plugin`
 * Build for development:
     - `yarn && composer install`
+* Setup test and local development environment:
+    - `composer wp:install && composer wp:activate && composer cf:form-import`
 
-## Development
 
+### end to end (e2e) Tests
+e2e tests are written using cypress.io in the directory `cypress`.
+
+* Launch the test runner for cypress:
+    `yarn test:e2e`
 ### JavaScript
 
 * Start dev server for React app
     - `yarn start:app`
-* Run JavaScript tests
+* Run JavaScript Unit Tests
     - `yarn test`
 * Run Flow analysis
     - `yarn flow`
@@ -28,6 +34,7 @@ Requires git and Composer and npm and Yarn
 
 ### PHP
 * All PHP is developed in `/php`
+
 
 #### Testing PHP
 * Run PHP Tests, Lints And Sniffs
