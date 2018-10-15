@@ -34,3 +34,9 @@ do_action( 'calderawp/WordPressPlugin/init', new \calderawp\WordPressPlugin\Cont
     plugin_dir_path( __FILE__ ),
     plugins_url('', __FILE__ )
 ));
+
+add_action(  'caldera_forms_admin_init',function(){
+    remove_action(  'caldera_forms_admin_init', array( Caldera_Forms_Admin::class , 'init_privacy_settings' ) );
+
+},5 );
+

@@ -26,7 +26,7 @@ describe('Name of test', () => {
 
 	it( 'Has the right title', () => {
 		expect(1).equals(1);
-		cy.get( '.entry-title' ).contains( 'Hello World' );
+		cy.get( '.entry-title' ).contains( 'Hello world' );
 	});
 
 	it( 'Does something', () => {
