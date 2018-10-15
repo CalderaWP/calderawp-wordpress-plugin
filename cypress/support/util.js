@@ -241,3 +241,32 @@ export const cfFieldOptionIsSelected = (fieldId, value ) => {
 export const cfFieldCalcFieldValueIs = (fieldId, value) => {
 	return 	cy.get( `[data-calc-field="${fieldId}`).should('have.value', value);
 };
+
+/**
+ * Check that a summary field contains a value
+ *
+ * @param {String} fieldSelector Selector for field
+ * @param {mixed} contains Value to check for
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+export const cfFieldSummaryContains = (fieldSelector,contains) => {
+	return cy
+		.get( fieldSelector )
+		.find( '.caldera-forms-summary-value' )
+		.contains(contains);
+};
+
+/**
+ * Check that a summary field contains values
+ *
+ * @param {String} fieldSelector Selector for field
+ * @param {array} containsValues Values to check for
+ * @param fieldSelector
+ * @param containsValues
+ */
+export const cfFieldSummaryContainsValues = (fieldSelector,containsValues) => {
+	containsValues.forEach( value => {
+		cfFieldSummaryContains(fieldSelector,value);
+	})
+
+};

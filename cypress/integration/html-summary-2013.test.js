@@ -12,7 +12,9 @@ import {
 	cfFieldUnCheckValue,
 	cfFieldIsNotDisabled,
 	cfFieldCheckAllValues,
-	cfFieldCalcFieldValueIs, getCfFieldSelector
+	cfFieldCalcFieldValueIs, getCfFieldSelector,
+	cfFieldSummaryContains,
+	cfFieldSummaryContainsValues
 } from '../support/util';
 
 
@@ -29,19 +31,7 @@ describe('Name of test', () => {
 
 	const summaryField = 'fld_5594906';
 
-	const cfFieldSummaryContains = (fieldSelector,contains) => {
-		return cy
-			.get( fieldSelector )
-			.find( '.caldera-forms-summary-value' )
-			.contains(contains);
-	};
 
-	const cfFieldSummaryContainsValues = (fieldSelector,containsValues) => {
-		containsValues.forEach( value => {
-			cfFieldSummaryContains(fieldSelector,value);
-		})
-
-	}
 	it( 'Updates summary', () => {
 		const selector = `#html-content-${summaryField}_1`;
 		cfFieldSummaryContains(`#html-content-${summaryField}_1`, '2' );
