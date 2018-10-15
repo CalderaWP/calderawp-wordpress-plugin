@@ -321,4 +321,15 @@ export const cfFieldGetWrapper = (fieldId ) => {
 
 export const cfAlertHasText = (formId, text = 'Form has been successfully submitted. Thank you.' ) => {
 	return cy.get( `.caldera-grid[data-cf-form-id="${formId}"] .alert` ).contains(text );
+};
+
+/**
+ * Test how many options a select field should have
+ * 
+ * @param {String} fieldId CF Field ID, not ID attribute
+ * @param {number} number Number of options select field should have
+ * @return {Chai.Assertion}
+ */
+export const cfFieldHasOptions = (fieldId, number ) => {
+	return expect(Cypress.$(`${getCfFieldSelector(fieldId)}`).find( 'option' ).length ).equals(number);
 }
