@@ -74,7 +74,8 @@ A  local development environment is included, and provided. It is used for integ
 
 * Install Local Environment And WordPress "Unit" Test Suite
 - `composer wp:install`
-
+* Import test forms and put them on pages
+- `composer cf:test:install`
 
 You should now have WordPress at [http://localhost:8218/](http://localhost:8218/)
 * Username: admin

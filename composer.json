@@ -71,6 +71,6 @@
         "wp:start": "docker-compose up -d",
         "wp:tests": "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist",
         "wp:destroy": "docker-compose rm --stop --force",
-        "cf:form-import": "docker-compose run --rm cli wp cgr import"
+        "cf:test:install": "docker-compose run --rm cli wp cwp import && docker-compose run --rm cli wp cwp pages"
     }
 }
