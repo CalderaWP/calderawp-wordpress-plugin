@@ -21,16 +21,13 @@ describe('Name of test', () => {
 		visitPage('x1-calculations-create1-5-5-dev1-5-6-2');
 	});
 
-	const formId = 'CF59dd15667a03b';
-	const totalCalc = 'fld_8997460';
-	const option1Checkbox = 'fld_3993413';
-	const option2Select = 'fld_5161425';
-
-
-
+	const formId = 'CF59dd5d8e95ffb';
+	const totalCalc = 'fld_6617658';
+	const option1Select = 'fld_8172473';
+	const option2Select = 'fld_8186270';
 
 	function testInitialLoad() {
-		cfFieldGetCalcFieldValueIs(totalCalc, '25.00');
+		cfFieldGetCalcFieldValueIs(totalCalc, '0.00');
 
 	}
 
@@ -40,20 +37,15 @@ describe('Name of test', () => {
 
 	it( 'Updates and does math correctly', () => {
 		testInitialLoad();
-		cfFieldCheckValue(option1Checkbox, 'Yes' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '35.00');
 
-		cfFieldSelectValue(option2Select, 'Big' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '40.00');
+		cfFieldSelectValue(option1Select, '4' );
+		cfFieldGetCalcFieldValueIs(totalCalc, '4.28');
 
-		cfFieldUnCheckValue(option1Checkbox, 'Yes' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '30.00');
+		cfFieldSelectValue(option2Select, 'Two' );
+		cfFieldGetCalcFieldValueIs(totalCalc, '5.32');
 
-		cfFieldSelectValue(option2Select, 'Small' );
-		cfFieldGetCalcFieldValueIs(totalCalc, '26.00');
-
-
-
+		cfFieldSelectValue(option1Select, '4' );
+		cfFieldGetCalcFieldValueIs(totalCalc, '4.28');
 	});
 
 });
