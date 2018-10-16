@@ -23,6 +23,7 @@ function _manually_load_plugin()
 {
     require dirname(__FILE__, 2) . '/caldera-wordpress-plugin.php';
     require dirname(__FILE__, 2) . '/wp-content/plugins/caldera-forms/caldera-core.php';
+    require dirname(__FILE__, 2) . '/wp-content/plugins/gutenberg/gutenberg.php';
 }
 
 // Start up the WP testing environment.

@@ -87,7 +87,7 @@ class RegisterBlockTest extends TestCase
 
         $this->assertEquals(
             'DIR/DIR/food',
-            $register->filePath('food' )
+            $register->filePath('/food' )
         );
     }
 

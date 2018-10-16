@@ -4,8 +4,17 @@
 ## Requirements
 * PHP 7.1 + 
 
+1. WordPress "Unit" Tests in CF with phpunit Runs in CI/CD
+2. JavaScript unit tests in CF
 
 
+4. Cypress e2e tests
+5. Isolated unit testing
+
+
+3. Ghost Inspector Testing
+
+Merge
 ## Install
 Requires git and Composer and npm and Yarn
 

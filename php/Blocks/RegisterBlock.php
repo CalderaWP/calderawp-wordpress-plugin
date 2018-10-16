@@ -115,7 +115,7 @@ class RegisterBlock
      */
     public function filePath(string $file): string
     {
-        return sprintf('%s/%s', $this->dirName, $file);
+        return  $this->dirName . $file;
     }
 
     /**

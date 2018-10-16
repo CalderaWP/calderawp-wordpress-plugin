@@ -21,8 +21,7 @@ export const activatePlugin = (pluginSlug) => {
 	const selector = 'tr[data-slug="' + pluginSlug + '"] .activate a';
 	if (Cypress.$(selector).length > 0) {
 		cy.get(selector).click();
-	}
-	;
+	};
 };
 /**
  * Go to a plugin page
@@ -325,7 +324,7 @@ export const cfAlertHasText = (formId, text = 'Form has been successfully submit
 
 /**
  * Test how many options a select field should have
- * 
+ *
  * @param {String} fieldId CF Field ID, not ID attribute
  * @param {number} number Number of options select field should have
  * @return {Chai.Assertion}
