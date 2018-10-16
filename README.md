@@ -29,6 +29,8 @@ Requires git and Composer and npm and Yarn
 ### end to end (e2e) Tests
 e2e tests are written using cypress.io in the directory `cypress`.
 
+See: `cypress/README.md`
+
 * Launch the test runner for cypress:
     `yarn test:e2e`
 ### JavaScript

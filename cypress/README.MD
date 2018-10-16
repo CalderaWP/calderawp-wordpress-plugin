@@ -1,44 +1,13 @@
+Run tests:
 
-## Test Suites
-*  `Conditionals - hide type - text fields`
-    - FormId: CF5bc25738c82c2
-    - Form Name: Conditionals Text Hide Type
-    - Page Slug: conditional-hide-test
-* `state when using hide conditionals`
-Same as `Conditionals - hide type - text fields`
+1) Start local dev environment (See main readme)
+2) Start test runner (See main readme)
+3) Choose a test suite to run from Cypress menu
 
-
-* `Conditionals - hide type - select fields`
-    - FormId: CF5bc257d7eb85a 
-    - Form Name: Conditionals Select Hide Type
-    - Page Slug: hide-conditionals-select
-
-* `Conditionals - show type - select fields`
-    - FormId: CF5bc235072e2a8
-    - Form Name: Conditionals Select Show Type
-    - Page Slug: show-conditionals-select
-    
-* `Conditionals - show type - text fields`
-    - FormId: CF5bc200019a22f
-    - Form Name: Conditionals Text Show Type
-    - Page Slug: conditional-show-test
-    
-* `Conditionals - disable type - text fields`
-    - FormId: CF5bc21a0e818ab
-    - Form Name: Conditionals Disable Type
-    - Page Slug: conditionals-disable-test
-
-* `Calculations - money style`
-    - FormId: CF5bc25cfa53898
-    - Form Name: Calculation Money
-    - Page Slug: calculation-money
-    
-* `Calculations - With Checkbox`
-    - FormId: CF5bc26604eaf3c
-    - Form Name: Calculations Checkbox
-    - Page Slug: 'calculations-checkbox'
-    
-* `Calculations - Manual
-    - FormId: CF5bc26a30e6032
-    - Form Name: Calculations Manual
-    - Page Slug: 'calculations-manual'
+## How To Add A Test
+* Export your form
+* save form in `cypress/forms` using form ID as file name
+* Add an entry in `cypress/test.json` to `forms` with:
+    - `formId` - Required. The ID of the form
+    - `pageSlug` - Optional. Slug of page to put form on. Skip for admin tests.
+    - `ghostId` - Optional. ID of Ghost Inspector test if it exists.
