@@ -23,14 +23,21 @@ export const activatePlugin = (pluginSlug) => {
 		cy.get(selector).click();
 	};
 };
+
+function pluginUrl(pluginSlug) {
+	return `${url}/wp-admin/admin.php?page=${pluginSlug}`;
+}
+
 /**
  * Go to a plugin page
  * @param {string} pluginSlug
  */
 export const visitPluginPage = (pluginSlug) => {
-	cy.visit(`${url}/wp-admin/admin.php?page=${pluginSlug}`);
+	cy.visit(pluginUrl(pluginSlug));
 };
-
+export const visitFormEditor = (formId) => {
+	cy.visit(`${pluginUrl('caldera-forms')}&edit=${formId}` );
+}
 export const visitPage = (pageSlug) => {
 	cy.visit(`${url}/${pageSlug}`);
 };
@@ -331,4 +338,16 @@ export const cfAlertHasText = (formId, text = 'Form has been successfully submit
  */
 export const cfFieldHasOptions = (fieldId, number ) => {
 	return expect(Cypress.$(`${getCfFieldSelector(fieldId)}`).find( 'option' ).length ).equals(number);
-}
+};
+
+export const cfEditorGetFieldPreview = (fieldId) => {
+	return cy.get( 'div[data-config="fld_8586141"]' );
+};
+
+export const cfEditorIsFieldPreviewVisible = (fieldId ) => {
+	return cfEditorGetFieldPreview(fieldId).should('be.visible');
+};
+
+export const cfEditorIsFieldPreviewNotVisible = (fieldId ) => {
+	return cfEditorGetFieldPreview(fieldId).not('be.visible');
+};
