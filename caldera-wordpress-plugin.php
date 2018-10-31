@@ -29,6 +29,24 @@ add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlug
 }, 3 );
 
 
+add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlugin\Container $container){
+    add_action( 'save_post', function( $postId) {
+        wp_queue()->push( new \calderawp\WordPressPlugin\Jobs\WritePostToJson( $postId, __DIR__ . '/wp-json') );
+    });
+    add_action( 'profile_update', function ($userId){
+            if( file_exists( __DIR__ . '/wp-json/users/' . $userId . '.json'  ) ){
+                wp_queue()->push( new \calderawp\WordPressPlugin\Jobs\WriteUserToJson( $userId, __DIR__ . '/wp-json' ) );
+            }
+    } );
+
+    add_filter( '-wp_queue_default_connection', function() {
+        return 'sync';
+    } );
+
+
+}, 3 );
+
+
 
 do_action( 'calderawp/WordPressPlugin/init', new \calderawp\WordPressPlugin\Container(
     plugin_dir_path( __FILE__ ),
@@ -39,4 +57,6 @@ add_action(  'caldera_forms_admin_init',function(){
     remove_action(  'caldera_forms_admin_init', array( Caldera_Forms_Admin::class , 'init_privacy_settings' ) );
 
 },5 );
+
+
 

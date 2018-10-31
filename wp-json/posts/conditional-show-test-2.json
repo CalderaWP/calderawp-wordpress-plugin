@@ -1,0 +1,43 @@
+{
+  "data": {
+    "id": 110,
+    "date": "2018-10-31T16:59:32",
+    "date_gmt": "2018-10-31T16:59:32",
+    "guid": {
+      "rendered": "http:\/\/localhost:8218\/?p=110"
+    },
+    "modified": "2018-10-31T17:14:02",
+    "modified_gmt": "2018-10-31T17:14:02",
+    "slug": "conditional-show-test-2",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost:8218\/conditional-show-test-2\/",
+    "title": {
+      "rendered": "Conditionals Text  Show Type"
+    },
+    "content": {
+      "rendered": "<p>[caldera_forms id=&#8221;CF5bc200019a22f&#8221;]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<\/p>\n\n<div class=\"caldera-salutation--name-hello-display\"><span>Hia<\/span> <span>Royaaa<\/span><\/div>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>[caldera_forms id=&#8221;CF5bc200019a22f&#8221;]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa Hia Royaaa<\/p>\n",
+      "protected": false
+    },
+    "author": 0,
+    "featured_media": 0,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [
+      1
+    ],
+    "tags": []
+  },
+  "headers": {
+    "Link": "<http:\/\/localhost:8218\/conditional-show-test-2\/>; rel=\"alternate\"; type=text\/html"
+  },
+  "status": 200
+}

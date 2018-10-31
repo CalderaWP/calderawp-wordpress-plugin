@@ -29,7 +29,8 @@
     "require": {
         "php": "^7.1",
         "calderawp/caldera-containers": "^0.2.0",
-        "calderawp/caldera-interop": "dev-vast-simplify"
+        "calderawp/caldera-interop": "dev-vast-simplify",
+        "a5hleyrich/wp-queue": "dev-master"
     },
     "autoload": {
         "psr-4": {
