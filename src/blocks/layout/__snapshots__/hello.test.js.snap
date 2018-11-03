@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit callback for block Matches snapshot when not selected 1`] = `
+<div
+  className="caldera-salutation--name-hello-display"
+>
+  <span>
+    Hi
+  </span>
+   
+  <span>
+    Roy
+  </span>
+</div>
+`;
+
+exports[`Edit callback for block Matches snapshot when selected 1`] = `
+<div
+  className="components-base-control caldera-name-hello-edit"
+>
+  <div
+    className="components-base-control__field"
+  >
+    <input
+      aria-describedby={undefined}
+      className="components-text-control__input"
+      id="inspector-text-control-0"
+      onChange={[Function]}
+      type="text"
+      value="Roy"
+    />
+  </div>
+</div>
+`;
+
+exports[`Save callback for block Matches snapshot 1`] = `
+<div
+  className="caldera-salutation--name-hello-display"
+>
+  <span>
+    Hi
+  </span>
+   
+  <span>
+    Roy
+  </span>
+</div>
+`;

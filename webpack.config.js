@@ -1,5 +1,4 @@
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
-
 /**
  * External dependencies
  */
@@ -30,7 +29,7 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["hello"];
+const entryPointNames = ["hello","layout"];
 
 const externals = {
   react: "React"

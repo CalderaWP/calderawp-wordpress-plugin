@@ -1,7 +1,6 @@
 import React from 'react';
 import type {EditProps} from "../types";
 import NameEdit from './NameEdit';
-import SalutationEdit from './SalutationEdit';
 import type {Node} from 'react'
 
 export default function (props: EditProps): Node {
