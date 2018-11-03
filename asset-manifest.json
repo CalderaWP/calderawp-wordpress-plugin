@@ -1,0 +1,5 @@
+{
+  "https://localhost:3001/main.js": "https://localhost:3001/static/js/bundle.js",
+  "https://localhost:3001/main.js.map": "https://localhost:3001/static/js/bundle.js.map",
+  "https://localhost:3001/index.html": "https://localhost:3001/index.html"
+}

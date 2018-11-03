@@ -69,8 +69,9 @@
         "wp:install": "bash ./bin/install-docker.sh && composer wp:config",
         "wp:activate": "bash ./bin/activate-plugin.sh",
         "wp:config": "docker-compose run --rm cli wp rewrite structure '/%postname%/'",
-        "wp:start": "docker-compose up -d",
-        "wp:server:url": "bash bash ./bin/echo-server-url.sh",
+        "wp:start": "composer wp:server-start && composer wp:server-url",
+        "wp:server-start": "docker-compose up -d",
+        "wp:server-url": "bash  ./bin/echo-server-url.sh",
         "wp:tests": "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist",
         "wp:destroy": "docker-compose rm --stop --force",
         "cf:test:install": "docker-compose run --rm cli wp cwp import && docker-compose run --rm cli wp cwp pages"

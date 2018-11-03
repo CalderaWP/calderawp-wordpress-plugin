@@ -1,58 +1,44 @@
 // @flow
 
 import React from 'react';
-import {
-	HelloEdit,
-	HelloDisplay
-}  from './components/Hello';
+
+import {FakeGutenbergEditorWrap,FakeGutenbergPostTitle} from "./FakeGutenberg";
+// Gutenberg JS Style
+import '@frontkom/gutenberg-js/build/css/block-library/style.css';
+import '@frontkom/gutenberg-js/build/css/components/style.css';
+import '@frontkom/gutenberg-js/build/css/nux/style.css';
+import '@frontkom/gutenberg-js/build/css/editor/style.css';
+import '@frontkom/gutenberg-js/build/css/block-library/theme.css';
+import '@frontkom/gutenberg-js/build/css/block-library/edit-blocks.css';
+import '@frontkom/gutenberg-js/build/css/style.css';
+
+
+import EntryBlocks from './EntryBlocks';
 type Props = {
-	name: string,
-	salutation: string
+
 }
 
 type State = {
-	...Props
 }
 
 
+
+
+
 class App extends React.Component<Props,State> {
-	constructor(props:Props){
-		super(props);
-		this.state = {
-			...props,
-			salutation: props.salutation ? props.salutation : 'Hi'
-		}
-	}
 
-	setName = (name:string) => {
-		this.setState({name})
-	};
 
-	setSalutation = (salutation:string) => {
-		this.setState({salutation})
-	};
 
-	render() {
-		const {
-			name,
-			salutation
-		} = this.state;
-		return (
-			<div>
-				<HelloDisplay
-					name={name}
-					salutation={salutation}
-				/>
-				<HelloEdit
-					name={name}
-					salutation={salutation}
-					salutationControlLabel={'Salutation'}
-					onChangeSalutation={this.setSalutation}
-					nameControlLabel={'Name'}
-					onChangeName={this.setName}
-				/>
-			</div>
+	render () {
+
+	return (
+
+			<FakeGutenbergEditorWrap>
+				<FakeGutenbergPostTitle title={'Caldera WordPress Plugin'}/>
+				<EntryBlocks/>
+			</FakeGutenbergEditorWrap>
 		)
+
 	}
 }
 
