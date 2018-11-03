@@ -1,44 +1,10 @@
 // @flow
 import React, {Component, Fragment} from 'react';
+import type {FormTypes,FormsCollection,KeyedFormCollection} from "./flow-types/formTypes";
+import type {Entry,EntriesCollection,EntryField, EntryFieldCollection} from "./flow-types/entryTypes";
+import {EntryViewer} from "./components/EntryViewer/EntryViewer";
 
-
-
-type Form = {
-	name:string, ID:string
-}
-
-type FormsCollection = Array<Form>;
-type KeyedFormCollection = {
-	[key: string]: Form
-};
-type EntryField = {
-	id: number,
-	entry_id: number,
-	field_id: string,
-	slug: string,
-	value: string|number|boolean|Array<string|number|boolean>
-}
-type EntryFieldCollection = {
-	[key: string]: EntryField,
-};
-
-type Entry = {
-	form_id: string,
-	id: number,
-	user: {
-		name: string,
-		email:string,
-	},
-	fields: EntryFieldCollection
-}
-
-
-type EntriesCollection = {
-	[key: number]: Entry,
-}
-
-const ChooseForm = (props: {forms: FormsCollection, currentFormId: string, onChange: (string) => void }) => {
-
+export const ChooseForm = (props: {forms: FormsCollection, currentFormId: string, onChange: (string) => void }) => {
 	return (
 		<div>
 			<label>Choose Form</label>
@@ -47,14 +13,14 @@ const ChooseForm = (props: {forms: FormsCollection, currentFormId: string, onCha
 			value={ props.currentFormId }
 			onChange={ (event) => {props.onChange(event.target.value)} }
 		>
-			{ props.forms.map( (form: Form) => ( <option key={form.ID} value={form.ID}>{form.name}</option>) )}
+			{ props.forms.map( (form: FormTypes) => ( <option key={form.ID} value={form.ID}>{form.name}</option>) )}
 		</select>
 		</div>
 	);
 
 };
 
-const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: number, onChange: (number) => void } ) =>{
+export const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: number, onChange: (number) => void } ) =>{
 	return <div>
 		<label>Choose Entry</label>
 		<select
@@ -68,71 +34,15 @@ const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: number, on
 };
 
 
-const EntryFieldView = (props: {entryField: EntryField}) => {
-	return <Fragment>{props.entryField.value}</Fragment>
-};
 
 
-const TableCell = (props) =>{
-	return <td>{props.children}</td>
-};
 
-const EntryRow = (props: {entry: Entry} ) => {
-	const {entry} = props;
-	return (
-		<tr>
-			<th scope="row">{entry.id}</th>
-			{Object.values(entry.fields).map( (entryField : EntryField ) => {
-				return (<TableCell><EntryFieldView entryField={entryField}/></TableCell>);
-			})}
-		</tr>
-	);
-};
 
-const EntryRows = (props: {entries: EntriesCollection} ) => {
-	return (
-		<Fragment>
-			{Object.values(props.entries).map( (entry : Entry ) => {
-				return (<EntryRow entry={entry}/>)
-			})}
-		</Fragment>
-	);
-};
 
-const EntryHeaders = (props: {entries: EntriesCollection} ) => {
-	const {entries} = props;
-	const firstEntry = Object.values(props.entries)[0];
-	return (
-		<tr>
-			<th scope="col">ID</th>
-			{Object.values(firstEntry.fields).map( (entryField : EntryField ) => {
-				return (<th key={entryField.id}>{entryField.slug}</th>);
-			})}
-		</tr>
-	);
-};
 
-const EntryViewer = (props: {currentEntryId:number,entries:EntriesCollection,getCurrentEntry:() => Entry}) => {
-	const {currentEntryId,entries,getCurrentEntry} = props;
-	if( JSON.stringify(entries) === JSON.stringify({}) ){
-		return <div>No Entries</div>
-	}
-	return(
-		<table>
-			<thead>
-				<EntryHeaders entries={entries}/>
-			</thead>
-			<tbody>
-			{currentEntryId &&
-				<EntryRow entry={getCurrentEntry()}/>
-			}
-			{!currentEntryId &&
-				<EntryRows entries={entries} />
-			}
-			</tbody>
-		</table>
-	)
-};
+
+
+
 
 type Props = {}
 
