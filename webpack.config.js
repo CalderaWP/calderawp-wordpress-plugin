@@ -1,4 +1,9 @@
 const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
+
+const blockDefinitions = require( './blocks.json' );
+const blockSlugs = [];
+blockDefinitions.blocks.forEach(block=>  {blockSlugs.push( block.slug)});
+
 /**
  * External dependencies
  */
@@ -29,7 +34,7 @@ const extractConfig = {
   ]
 };
 
-const entryPointNames = ["hello","layout"];
+const entryPointNames = blockSlugs;
 
 const externals = {
   react: "React"

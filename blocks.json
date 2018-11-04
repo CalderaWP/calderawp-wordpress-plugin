@@ -40,6 +40,25 @@
             "default": "Hi"
           }
         }
+      },
+      {
+        "title": "Entry",
+        "slug": "entry",
+        "category": "common",
+        "wpDependencies": [
+          "editor",
+          "components"
+        ],
+        "attributes": {
+          "formId": {
+            "type": "string",
+            "default": ""
+          },
+          "entryId": {
+            "type": "number",
+            "default": 0
+          }
+        }
       }
   ]
 }

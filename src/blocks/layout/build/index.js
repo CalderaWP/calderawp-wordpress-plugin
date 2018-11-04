@@ -94,7 +94,7 @@ this[undefined] =
 /*! exports provided: packageName, namespace, blocks, default */
 /***/ (function(module) {
 
-eval("module.exports = {\"packageName\":\"calderaWordPressPlugin\",\"namespace\":\"caldera-wordpress-plugin\",\"blocks\":[{\"title\":\"Say Hi\",\"slug\":\"hello\",\"category\":\"common\",\"wpDependencies\":[\"editor\",\"components\"],\"attributes\":{\"name\":{\"type\":\"string\",\"default\":\"Roy\"},\"salutation\":{\"type\":\"string\",\"default\":\"Hi\"}}},{\"title\":\"Layout\",\"slug\":\"layout\",\"category\":\"common\",\"wpDependencies\":[\"editor\",\"components\"],\"attributes\":{\"name\":{\"type\":\"string\",\"default\":\"Roy\"},\"salutation\":{\"type\":\"string\",\"default\":\"Hi\"}}}]};\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./blocks.json?");
+eval("module.exports = {\"packageName\":\"calderaWordPressPlugin\",\"namespace\":\"caldera-wordpress-plugin\",\"blocks\":[{\"title\":\"Say Hi\",\"slug\":\"hello\",\"category\":\"common\",\"wpDependencies\":[\"editor\",\"components\"],\"attributes\":{\"name\":{\"type\":\"string\",\"default\":\"Roy\"},\"salutation\":{\"type\":\"string\",\"default\":\"Hi\"}}},{\"title\":\"Layout\",\"slug\":\"layout\",\"category\":\"common\",\"wpDependencies\":[\"editor\",\"components\"],\"attributes\":{\"name\":{\"type\":\"string\",\"default\":\"Roy\"},\"salutation\":{\"type\":\"string\",\"default\":\"Hi\"}}},{\"title\":\"Entry\",\"slug\":\"entry\",\"category\":\"common\",\"wpDependencies\":[\"editor\",\"components\"],\"attributes\":{\"formId\":{\"type\":\"string\",\"default\":\"\"},\"entryId\":{\"type\":\"number\",\"default\":0}}}]};\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./blocks.json?");
 
 /***/ }),
 

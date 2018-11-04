@@ -70,8 +70,8 @@ class RegisterBlock
             wp_register_style(
                 $this->handle(true),
                 $this->url($style_css),
-                [],
-                filemtime($this->filePath($style_css))
+                []
+                //filemtime($this->filePath($style_css))
             )
         ) {
             throw new Exception(sprintf('Can not register block editor CSS for block %s', $this->blockName()));
@@ -80,7 +80,7 @@ class RegisterBlock
 
         register_block_type($this->blockName(), array(
             'editor_script' => $this->handle(false),
-            'style' => $this->handle(true),
+            //'style' => $this->handle(true),
         ));
 
         if (!\WP_Block_Type_Registry::get_instance()->is_registered($this->blockName())) {
@@ -92,7 +92,7 @@ class RegisterBlock
                 $this->url($index_js),
                 $this->blockType->getWpDependencies(),
                 filemtime($this->filePath($index_js)));
-            wp_enqueue_style($this->handle(true));
+           // wp_enqueue_style($this->handle(true));
         });
 
     }

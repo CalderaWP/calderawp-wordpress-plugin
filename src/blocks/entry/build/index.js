@@ -82,7 +82,7 @@ this[undefined] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/blocks/hello/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/blocks/entry/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1346,17 +1346,6 @@ eval("\nvar addToUnscopables = __webpack_require__(/*! ./_add-to-unscopables */ 
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es6.function.name.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es6.function.name.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var dP = __webpack_require__(/*! ./_object-dp */ \"./node_modules/core-js/modules/_object-dp.js\").f;\nvar FProto = Function.prototype;\nvar nameRE = /^\\s*function ([^ (]*)/;\nvar NAME = 'name';\n\n// 19.2.4.2 name\nNAME in FProto || __webpack_require__(/*! ./_descriptors */ \"./node_modules/core-js/modules/_descriptors.js\") && dP(FProto, NAME, {\n  configurable: true,\n  get: function () {\n    try {\n      return ('' + this).match(nameRE)[1];\n    } catch (e) {\n      return '';\n    }\n  }\n});\n\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./node_modules/core-js/modules/es6.function.name.js?");
-
-/***/ }),
-
 /***/ "./node_modules/core-js/modules/web.dom.iterable.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/modules/web.dom.iterable.js ***!
@@ -1428,135 +1417,38 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/blocks/hello/Edit.js":
+/***/ "./src/blocks/entry/Edit.js":
 /*!**********************************!*\
-  !*** ./src/blocks/hello/Edit.js ***!
+  !*** ./src/blocks/entry/Edit.js ***!
   \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Edit; });\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es6.function.name */ \"./node_modules/core-js/modules/es6.function.name.js\");\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_Hello__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Hello */ \"./src/components/Hello/index.js\");\n/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ \"@wordpress/element\");\n/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/editor */ \"@wordpress/editor\");\n/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\nfunction Edit(props) {\n  var attributes = props.attributes,\n      setAttributes = props.setAttributes,\n      isSelected = props.isSelected,\n      className = props.className;\n  var name = attributes.name,\n      salutation = attributes.salutation;\n\n  var onChangeSalutation = function onChangeSalutation(salutation) {\n    setAttributes({\n      salutation: salutation\n    });\n  };\n\n  var onChangeName = function onChangeName(name) {\n    setAttributes({\n      name: name\n    });\n  };\n\n  if (isSelected) {\n    return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__[\"Fragment\"], null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__[\"InspectorControls\"], null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_Hello__WEBPACK_IMPORTED_MODULE_1__[\"HelloControlsEdit\"], {\n      name: name,\n      salutation: salutation,\n      onChangeSalutation: onChangeSalutation\n    })), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_Hello__WEBPACK_IMPORTED_MODULE_1__[\"HelloInlineEdit\"], {\n      name: name,\n      salutation: salutation,\n      onChangeName: onChangeName\n    }));\n  }\n\n  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_components_Hello__WEBPACK_IMPORTED_MODULE_1__[\"HelloDisplay\"], {\n    name: name,\n    salutation: salutation\n  });\n}\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/hello/Edit.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Edit; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction Edit(props) {\n  var attributes = props.attributes,\n      setAttributes = props.setAttributes,\n      isSelected = props.isSelected,\n      className = props.className;\n}\n;\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/entry/Edit.js?");
 
 /***/ }),
 
-/***/ "./src/blocks/hello/Save.js":
+/***/ "./src/blocks/entry/Save.js":
 /*!**********************************!*\
-  !*** ./src/blocks/hello/Save.js ***!
+  !*** ./src/blocks/entry/Save.js ***!
   \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Save; });\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es6.function.name */ \"./node_modules/core-js/modules/es6.function.name.js\");\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_Hello__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Hello */ \"./src/components/Hello/index.js\");\n/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ \"@wordpress/element\");\n/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nfunction Save(props) {\n  var attributes = props.attributes;\n  var name = attributes.name,\n      salutation = attributes.salutation;\n  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_Hello__WEBPACK_IMPORTED_MODULE_1__[\"HelloDisplay\"], {\n    name: name,\n    salutation: salutation\n  });\n}\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/hello/Save.js?");
+eval("\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/entry/Save.js?");
 
 /***/ }),
 
-/***/ "./src/blocks/hello/index.js":
+/***/ "./src/blocks/entry/index.js":
 /*!***********************************!*\
-  !*** ./src/blocks/hello/index.js ***!
+  !*** ./src/blocks/entry/index.js ***!
   \***********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _block_factory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../block-factory */ \"./src/block-factory/index.js\");\n/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit */ \"./src/blocks/hello/Edit.js\");\n/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Save */ \"./src/blocks/hello/Save.js\");\n\n\n\nObject(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"registerBlock\"])(Object(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"createBlockArgs\"])(Object(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"findBlock\"])('hello', _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"blocks\"]), _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"nameSpace\"], _Edit__WEBPACK_IMPORTED_MODULE_1__[\"default\"], _Save__WEBPACK_IMPORTED_MODULE_2__[\"default\"]), _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"nameSpace\"]);\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/hello/index.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Display.js":
-/*!*****************************************!*\
-  !*** ./src/components/Hello/Display.js ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es6.function.name */ \"./node_modules/core-js/modules/es6.function.name.js\");\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../control-factory/componentClassName */ \"./src/control-factory/componentClassName.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"div\", {\n    className: Object(_control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_2__[\"componentClassName\"])('hello', 'salutation--name', 'display')\n  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"span\", null, props.salutation), \" \", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(\"span\", null, props.name));\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Display.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Edit.js":
-/*!**************************************!*\
-  !*** ./src/components/Hello/Edit.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Edit_Inline__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit/Inline */ \"./src/components/Hello/Edit/Inline.js\");\n/* harmony import */ var _Edit_Controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit/Controls */ \"./src/components/Hello/Edit/Controls.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Edit_Inline__WEBPACK_IMPORTED_MODULE_1__[\"default\"], props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Edit_Controls__WEBPACK_IMPORTED_MODULE_2__[\"default\"], props));\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Edit.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Edit/Controls.js":
-/*!***********************************************!*\
-  !*** ./src/components/Hello/Edit/Controls.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _SalutationEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SalutationEdit */ \"./src/components/Hello/Edit/SalutationEdit.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SalutationEdit__WEBPACK_IMPORTED_MODULE_1__[\"default\"], props));\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Edit/Controls.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Edit/Inline.js":
-/*!*********************************************!*\
-  !*** ./src/components/Hello/Edit/Inline.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _NameEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NameEdit */ \"./src/components/Hello/Edit/NameEdit.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NameEdit__WEBPACK_IMPORTED_MODULE_1__[\"default\"], props));\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Edit/Inline.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Edit/NameEdit.js":
-/*!***********************************************!*\
-  !*** ./src/components/Hello/Edit/NameEdit.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es6.function.name */ \"./node_modules/core-js/modules/es6.function.name.js\");\n/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ \"@wordpress/components\");\n/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../control-factory/componentClassName */ \"./src/control-factory/componentClassName.js\");\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  var nameControlLabel = props.nameControlLabel,\n      name = props.name,\n      onChangeName = props.onChangeName;\n  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__[\"TextControl\"], {\n    className: Object(_control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_3__[\"componentClassName\"])('hello', 'name', 'edit'),\n    label: nameControlLabel,\n    value: name,\n    onChange: onChangeName\n  });\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Edit/NameEdit.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/Edit/SalutationEdit.js":
-/*!*****************************************************!*\
-  !*** ./src/components/Hello/Edit/SalutationEdit.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ \"@wordpress/components\");\n/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../control-factory/componentClassName */ \"./src/control-factory/componentClassName.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  var salutationControlLabel = props.salutationControlLabel,\n      salutation = props.salutation,\n      onChangeSalutation = props.onChangeSalutation;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__[\"TextControl\"], {\n    className: Object(_control_factory_componentClassName__WEBPACK_IMPORTED_MODULE_2__[\"componentClassName\"])('hello', 'salutation', 'edit'),\n    label: salutationControlLabel,\n    value: salutation,\n    onChange: onChangeSalutation\n  });\n});\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/Edit/SalutationEdit.js?");
-
-/***/ }),
-
-/***/ "./src/components/Hello/index.js":
-/*!***************************************!*\
-  !*** ./src/components/Hello/index.js ***!
-  \***************************************/
-/*! exports provided: HelloEdit, HelloDisplay, HelloInlineEdit, HelloControlsEdit */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit */ \"./src/components/Hello/Edit.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HelloEdit\", function() { return _Edit__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Display */ \"./src/components/Hello/Display.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HelloDisplay\", function() { return _Display__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _Edit_Inline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit/Inline */ \"./src/components/Hello/Edit/Inline.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HelloInlineEdit\", function() { return _Edit_Inline__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _Edit_Controls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit/Controls */ \"./src/components/Hello/Edit/Controls.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HelloControlsEdit\", function() { return _Edit_Controls__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/components/Hello/index.js?");
-
-/***/ }),
-
-/***/ "./src/control-factory/componentClassName.js":
-/*!***************************************************!*\
-  !*** ./src/control-factory/componentClassName.js ***!
-  \***************************************************/
-/*! exports provided: componentClassName */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"componentClassName\", function() { return componentClassName; });\nvar componentClassName = function componentClassName(familyName, name, context) {\n  return \"caldera-\".concat(name, \"-\").concat(familyName, \"-\").concat(context);\n};\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/control-factory/componentClassName.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _block_factory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../block-factory */ \"./src/block-factory/index.js\");\n/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit */ \"./src/blocks/entry/Edit.js\");\n/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Save */ \"./src/blocks/entry/Save.js\");\n/* harmony import */ var _Save__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Save__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\nObject(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"registerBlock\"])(Object(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"createBlockArgs\"])(Object(_block_factory__WEBPACK_IMPORTED_MODULE_0__[\"findBlock\"])('hello', _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"blocks\"]), _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"nameSpace\"], _Edit__WEBPACK_IMPORTED_MODULE_1__[\"default\"], _Save__WEBPACK_IMPORTED_MODULE_3___default.a), _block_factory__WEBPACK_IMPORTED_MODULE_0__[\"nameSpace\"]);\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/entry/index.js?");
 
 /***/ }),
 
@@ -1568,39 +1460,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, exports) {
 
 eval("(function() { module.exports = this[\"wp\"][\"blocks\"]; }());\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/external_%7B%22this%22:%5B%22wp%22,%22blocks%22%5D%7D?");
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!*********************************************!*\
-  !*** external {"this":["wp","components"]} ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("(function() { module.exports = this[\"wp\"][\"components\"]; }());\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/external_%7B%22this%22:%5B%22wp%22,%22components%22%5D%7D?");
-
-/***/ }),
-
-/***/ "@wordpress/editor":
-/*!*****************************************!*\
-  !*** external {"this":["wp","editor"]} ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("(function() { module.exports = this[\"wp\"][\"editor\"]; }());\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/external_%7B%22this%22:%5B%22wp%22,%22editor%22%5D%7D?");
-
-/***/ }),
-
-/***/ "@wordpress/element":
-/*!******************************************!*\
-  !*** external {"this":["wp","element"]} ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("(function() { module.exports = this[\"wp\"][\"element\"]; }());\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/external_%7B%22this%22:%5B%22wp%22,%22element%22%5D%7D?");
 
 /***/ }),
 

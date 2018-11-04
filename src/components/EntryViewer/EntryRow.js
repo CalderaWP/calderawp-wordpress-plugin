@@ -1,6 +1,6 @@
 // @flow
 
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import type {Entry,EntryField} from "../../flow-types/entryTypes";
 import {EntryFieldView} from "./EntryFieldView";
 
@@ -14,7 +14,11 @@ export const EntryRow = (props: {entry: Entry} ) => {
 		<tr>
 			<th scope="row">{entry.id}</th>
 			{Object.values(entry.fields).map( (entryField : EntryField ) => {
-				return (<TableCell><EntryFieldView entryField={entryField}/></TableCell>);
+				return (
+					<TableCell key={entryField.id}>
+						<EntryFieldView entryField={entryField}/>
+					</TableCell>
+				);
 			})}
 		</tr>
 	);

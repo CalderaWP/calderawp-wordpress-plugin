@@ -788,9 +788,9 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@caldera-labs/api-client@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.6.0.tgz#e773127e92a30985654294fc0006c9c6ee49a2f1"
+"@caldera-labs/api-client@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@caldera-labs/api-client/-/api-client-0.6.1.tgz#6187f1224f23cef1e184c7cce02173ed9823a1fb"
 
 "@cypress/listr-verbose-renderer@0.4.1":
   version "0.4.1"
