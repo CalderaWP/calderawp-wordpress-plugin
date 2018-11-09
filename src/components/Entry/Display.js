@@ -3,13 +3,8 @@
 import React, {Fragment} from 'react';
 import type {DisplayProps} from "./types";
 import type {Node} from 'react'
-import {componentClassName} from "../../control-factory/componentClassName";
-import {EntryViewer} from "../EntryViewer/EntryViewer";
-
-import {Spinner} from '@wordpress/components'
 import {EntryFieldView} from "../EntryViewer/EntryFieldView";
-import {getFieldFromCollection} from "../EntryViewer/EntryHeaders";
-import type {Entry, EntryField} from "../../flow-types/entryTypes";
+import Grid from "react-css-grid";
 
 export default function (props: DisplayProps): Node {
 	const {
@@ -20,37 +15,26 @@ export default function (props: DisplayProps): Node {
 		before,
 		after
 	} = props;
-	if (!entryId) {
+
+	if( ! formId || ! entryId || ! entryFieldId ){
 		return <Fragment/>
 	}
+	let entryField = {};
+	if( entry.hasOwnProperty(entryFieldId) ){
+		//id or datestamp
+		entryField = {value: entry[entryFieldId]};
+	}
+	else if( ! entry.hasOwnProperty('fields') || ! entry.fields.hasOwnProperty(entryFieldId)){
+		return <Fragment/>
+	}else{
+		entryField = entry.fields[entryFieldId];
+	}
 
-	const entryFieldViewProps = (entry:Entry,entryFieldId:string) => {
-		let fieldType = 'text';
-		let entryField  = {};
-		if (entryFieldId) {
-			entryField = entry.hasOwnProperty('fields' ) && entry.fields.hasOwnProperty(entryFieldId) ? entry.fields[entryFieldId] : null;
-			if (entryField) {
-				fieldType = entryField.type;
-			}
-		}
-
-		return {
-			fieldType,
-			entryField,
-		}
-	};
-
-
-
-
-	return (
-		<div
-			className={componentClassName('hello', 'salutation--name', 'display')}
-		>
-			{entryFieldId &&
-				<Fragment><Fragment>{before}</Fragment><EntryFieldView {...entryFieldViewProps()} /><Fragment>{after}</Fragment></Fragment>
-			}
-
-		</div>
+	return(
+		<Grid>
+			<Fragment>{before}</Fragment>
+			<EntryFieldView entryField={entryField} fieldType={'text'} />
+			<Fragment>{after}</Fragment>
+		</Grid>
 	);
 }

@@ -1,3 +1,4 @@
+
 // @flow
 
 import React, {Fragment,createElement} from 'react';
@@ -8,11 +9,9 @@ import {
 	EntryEdit,
 	EntryFieldView
 } from  '../../components/Entry'
-import {InspectorControls} from "@wordpress/editor";
-
 import {formsAdminApiClient} from "../../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";
 import type {FormType} from "../../flow-types/formType";
-
+import {findFormById} from "../../components/Entry/findFormById";
 
 const API_URL = CF_ADMIN.api.root.replace(/\/$/, "");
 const NONCE = CF_ADMIN.api.nonce;
@@ -33,18 +32,13 @@ function getEntries(formId:string,page:number) : Promise<any>{
 }
 
 
-
-
-
 let entry = {};
 let form = {};
 let entries = {};
 
 
 
-export function findFormById(forms, formId) {
-	return forms.find((__form: FormType) => formId === __form.ID);
-}
+
 
 export default function Edit(props) {
 	const {attributes, setAttributes, isSelected, className,id} = props;

@@ -33,7 +33,7 @@
     "test:e2e:run": "./node_modules/.bin/cypress run --record --key=abc123 --parallel"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
@@ -42,6 +42,7 @@
     "@wordpress/browserslist-config": "^2.2.2",
     "@wordpress/i18n": "^1.2.3",
     "autoprefixer": "^7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.0.3",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
@@ -69,6 +70,7 @@
     "react-dom": "^16.4.1",
     "react-test-renderer": "^16.5.2",
     "react-wp-scripts": "^0.2.0",
+    "regenerator-runtime": "^0.12.1",
     "sass-loader": "^6.0.6",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",

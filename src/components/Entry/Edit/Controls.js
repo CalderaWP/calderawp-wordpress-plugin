@@ -1,16 +1,14 @@
-import React, {createElement,Fragment} from 'react';
+import React, {createElement, Fragment} from 'react';
 import type {EditProps} from "../types";
-import {findFormById} from "../../../blocks/entryValue/Edit";
+import {findFormById} from "../findFormById";
 import type {Node} from 'react'
 
-import Inline from "./Inline";
 import {ChooseForm} from "../../controls/ChooseForm";
 import {ChooseEntryField} from "../../controls/ChooseEntryField";
 import {ChooseEntry} from "../../controls/ChooseEntry";
-import {
-	EntryBeforeEdit,
-	EntryAfterEdit
-} from '../../../components/Entry';
+import BeforeControl from '../../../components/Entry/Edit/BeforeControl';
+import AfterControl from '../../../components/Entry/Edit/AfterControl';
+
 export default function (props: EditProps,): Node {
 	const {
 		entries,
@@ -27,10 +25,10 @@ export default function (props: EditProps,): Node {
 		setAfter,
 		forms
 	} = props;
-	return <p>Controls</p>;
-	if( ! props.form ){
-		form = findFormById( forms,formId);
-	}else{
+	let form = {};
+	if (!props.form) {
+		form = findFormById(forms, formId);
+	} else {
 		form = props.form;
 	}
 
@@ -40,19 +38,21 @@ export default function (props: EditProps,): Node {
 			currentFormId={formId}
 			onSetForm={onSetForm}
 			instanceId={instanceId}
+			key={1}
 		/>
 	];
 
-	if( formId ){
+	if (formId) {
 		elements.push(<ChooseEntry
 			entries={entries}
 			currentEntry={entryId}
 			onSetEntry={onSetEntry}
 			instanceId={instanceId}
+			key={2}
 		/>);
 	}
 
-	if( entryId ){
+	if (entryId) {
 		elements.push(<ChooseEntryField
 			currentEntry={entryId}
 			form={form}
@@ -60,23 +60,26 @@ export default function (props: EditProps,): Node {
 			instanceId={instanceId}
 			entries={entries}
 			entryFieldId={entryFieldId}
+			key={3}
+
 		/>);
-	}
-
-	if( entryId ){
 		elements.push(
-			<EntryBeforeEdit
-				before={before}
+			<BeforeControl
 				setBefore={setBefore}
+				before={before}
+				instanceId={instanceId}
+				key={5}
 			/>
 		);
 		elements.push(
-			<EntryAfterEdit
-				after={after}
+			<AfterControl
 				setAfter={setAfter}
+				after={after}
+				instanceId={instanceId}
+				key={6}
 			/>
 		);
 	}
 
-	return createElement( Fragment, {},elements );
+	return createElement(Fragment, {}, elements);
 }

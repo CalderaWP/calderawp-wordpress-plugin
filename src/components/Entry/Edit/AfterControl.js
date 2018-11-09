@@ -28,7 +28,7 @@ export default function (props: EditAfterProps): Node {
 				<input
 					type="text"
 					value={after}
-					onChange={setAfter}
+					onChange={(event) => setAfter(event.target.value)}
 					id={id}
 				/>
 			</Fragment>

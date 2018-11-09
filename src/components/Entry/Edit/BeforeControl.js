@@ -28,7 +28,7 @@ export default function (props: EditBeforeProps): Node {
 				<input
 					type="text"
 					value={before}
-					onChange={setBefore}
+					onChange={(event) => setBefore(event.target.value)}
 				/>
 			</Fragment>
 		)

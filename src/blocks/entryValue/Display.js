@@ -3,26 +3,15 @@ import React, {Fragment} from 'react';
 import type {GutenbergSaveProps} from "../types";
 import {EntryFieldView,EntryDisplay} from '../../components/Entry/';
 
-import {select} from '@wordpress/data';
 import {state} from "@caldera-labs/state";
 import type {DisplayProps} from "../../components/Entry/types";
 import {entryApiClient} from "./Edit";
 import Grid from 'react-css-grid'
 
-
-function getEntries(formId,pageNumber){
-	const selectors = select( state.CALDERA_FORMS_ENTRIES_SLUG);
-	if( 'object' === typeof selectors ){
-		return selectors.getPageOfEntries(formId, pageNumber);
-	}
-
-	return {};
-
-}
-
 function getEntry( formId:string,entryId:number): Promise<any>{
 	return entryApiClient.makeRequest( `entries/${formId}/${entryId}`);
 }
+
 
 
 export default function Display(props:DisplayProps) {

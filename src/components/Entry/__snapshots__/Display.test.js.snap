@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry display component Displays when all props are provided and matches snapshot 1`] = `
+<div
+  className="sc-bdVaJa eHjUkg"
+  width={320}
+>
+  Before
+  Josh
+  After
+</div>
+`;
+
+exports[`Entry display component Returns a fragment if not enough to display 1`] = `null`;

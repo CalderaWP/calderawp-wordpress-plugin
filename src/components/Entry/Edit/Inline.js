@@ -6,9 +6,7 @@ import {ChooseEntry} from "../../controls/ChooseEntry";
 import {ChooseEntryField} from "../../controls/ChooseEntryField";
 import BeforeControl from './BeforeControl';
 import AfterControl from './AfterControl';
-//import {EntryFieldView} from "../../EntryViewer/EntryFieldView";
-//import Grid from 'react-css-grid'
-//import Display from "../../../blocks/entryValue/Display";
+
 import ReactHoverObserver from 'react-hover-observer';
 
 
@@ -58,7 +56,6 @@ export default function (props: EditProps): Node {
 	if( entryFieldId ){
 		return (
 			<Fragment>
-
 			<span>
 				<BeforeControl
 					setBefore={setBefore}
