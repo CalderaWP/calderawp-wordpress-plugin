@@ -12,6 +12,7 @@ import {formsAdminApiClient} from "../../../wp-content/plugins/caldera-forms/cli
 import {findFormById} from "../../components/Entry/findFormById";
 import {InspectorControls} from '@wordpress/editor';
 import Controls from "../../components/Entry/Edit/Controls";
+import {getFieldFromCollection} from "../../components/EntryViewer/EntryHeaders";
 
 const API_URL = CF_ADMIN.api.root.replace(/\/$/, "");
 const NONCE = CF_ADMIN.api.nonce;
@@ -38,7 +39,20 @@ export default function Edit(props) {
 	const {fieldId, entryId, formId, before, after} = attributes;
 	const setBefore = (before) => setAttributes({before});
 	const setAfter = (after) => setAttributes({after});
-	const setFieldId = (fieldId) => setAttributes({fieldId});
+	const setFieldId = (fieldId) => {
+		let update : {
+			before?:string,
+			fieldId:string
+		} = {fieldId};
+		if( ! before ){
+			const formFields = Object.assign( form.field_details.entry_list, form.field_details.order );
+			const field = getFieldFromCollection(formFields,fieldId);
+			if( field ){
+				update.before= field.label + ' : ';
+			}
+		}
+		setAttributes(update);
+	}
 
 	const setEntryId = (entryId) => {
 		setAttributes({entryId});
