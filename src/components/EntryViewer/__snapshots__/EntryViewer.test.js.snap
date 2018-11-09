@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry Viewer components  EntryFieldView matches snapshot 1`] = `"Josh"`;
+
+exports[`Entry Viewer components  EntryFieldView matches snapshot 2`] = `"Josh"`;
+
+exports[`Entry Viewer components  EntryHeader matches snapshot with labelWith 1`] = `"Label Me!"`;
+
+exports[`Entry Viewer components  EntryHeader matches snapshot without label 1`] = `"first_name"`;
+
+exports[`Entry Viewer components  EntryHeaders matches snapshot  1`] = `
+<tr>
+  <th
+    scope="col"
+  >
+    ID
+  </th>
+  <th>
+    first_name
+  </th>
+  <th>
+    last_name
+  </th>
+  <th>
+    email_address
+  </th>
+  <th>
+    comments_questions
+  </th>
+</tr>
+`;
+
+exports[`Entry Viewer components  EntryRow matches snapshot 1`] = `
+<tr>
+  <th
+    scope="row"
+  >
+    1
+  </th>
+  <td>
+    Josh
+  </td>
+  <td>
+    Pollock
+  </td>
+  <td>
+    jpollock412@gmail.com
+  </td>
+  <td>
+    Message
+    
+    Second Line
+  </td>
+</tr>
+`;
+
+exports[`Entry Viewer components  EntryRow matches snapshot 2`] = `
+Array [
+  <tr>
+    <th
+        scope="row"
+    >
+        1
+    </th>
+    <td>
+        Josh
+    </td>
+    <td>
+        Pollock
+    </td>
+    <td>
+        jpollock412@gmail.com
+    </td>
+    <td>
+        Message
+        
+        Second Line
+    </td>
+</tr>,
+  <tr>
+    <th
+        scope="row"
+    >
+        2
+    </th>
+    <td>
+        Roy
+    </td>
+    <td>
+        Sivan
+    </td>
+    <td>
+        roy@hiroy.club
+    </td>
+    <td>
+        fs
+    </td>
+</tr>,
+]
+`;
