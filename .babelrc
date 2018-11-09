@@ -1,11 +1,23 @@
 {
   "presets": [
     "@wordpress/default",
-      "@babel/preset-env",
-      "@babel/preset-react",
+    "@babel/preset-env",
+    "@babel/preset-react",
     "@babel/preset-flow"
   ],
   "plugins": [
-    ["@wordpress/babel-plugin-makepot", { "output": "languages/dropit.pot" }, "transform-flow-comments"]
+    [
+      "@wordpress/babel-plugin-makepot",
+      {
+        "output": "languages/dropit.pot"
+      },
+      "transform-flow-comments",
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ]
 }

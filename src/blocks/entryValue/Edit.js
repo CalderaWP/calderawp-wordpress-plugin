@@ -2,7 +2,6 @@
 
 import React, {Fragment,createElement} from 'react';
 import * as cfApi from "@caldera-labs/api-client";
-import {dispatch} from '@wordpress/data'
 import {state} from "@caldera-labs/state";
 import Display from "./Display";
 import {
@@ -41,9 +40,6 @@ let entry = {};
 let form = {};
 let entries = {};
 
-function setEntries(entries,formId,PageNumber){
-	dispatch( state.CALDERA_FORMS_ENTRIES_SLUG ).setEntries(entries,formId,PageNumber );
-}
 
 
 export function findFormById(forms, formId) {
@@ -69,7 +65,6 @@ export default function Edit(props) {
 					entry = entries[entryId];
 				}
 				form = findFormById(forms, formId)
-				setEntries(entries,formId,1);
 				setAttributes({formId});
 			}).catch(e => {
 				entries = {};
@@ -78,6 +73,8 @@ export default function Edit(props) {
 
 			});
 	};
+
+	window.foo = entries;
 
 	let forms = CF_ADMIN ? CF_ADMIN.forms : {};
 		forms = Object.values(forms);

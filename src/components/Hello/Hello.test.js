@@ -5,8 +5,8 @@ import {
 	HelloDisplay
 } from './index';
 
-describe( "Display component", () => {
-	it( "Matches snapshot", () => {
+describe.skip( "Display component", () => {
+	it.skip( "Matches snapshot", () => {
 		expect(
 			renderer.create(
 				<HelloDisplay
@@ -17,8 +17,8 @@ describe( "Display component", () => {
 	});
 });
 
-describe( "Edit component", () => {
-	it( "Matches snapshot", () => {
+describe.skip( "Edit component", () => {
+	it.skip( "Matches snapshot", () => {
 		expect(
 			renderer.create(
 				<HelloEdit
