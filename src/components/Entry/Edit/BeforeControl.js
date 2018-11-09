@@ -28,6 +28,7 @@ export default function (props: EditBeforeProps): Node {
 				<input
 					type="text"
 					value={before}
+					placeholder={'Text to show before value'}
 					onChange={(event) => setBefore(event.target.value)}
 				/>
 			</Fragment>

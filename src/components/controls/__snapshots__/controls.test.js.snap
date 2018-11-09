@@ -33,60 +33,62 @@ Array [
 `;
 
 exports[`Choosing controls Choose entry field 1`] = `
-<div>
+Array [
   <label
+    className=""
     htmlFor="caldera-forms-entry-field-chooser-54fds"
-  >
+>
     Choose Field
-  </label>
+</label>,
   <select
     className="caldera-forms-entry-field-chooser"
     id="caldera-forms-entry-field-chooser-54fds"
     onChange={[Function]}
     value="fld_8768091"
-  >
+>
     <option
-      value={null}
+        value={null}
     >
-      --
+        --
     </option>
     <option
-      value="id"
+        value="id"
     >
-      ID
+        ID
     </option>
     <option
-      value="datestamp"
+        value="datestamp"
     >
-      Submitted
+        Submitted
     </option>
     <option
-      value="fld_8768091"
+        value="fld_8768091"
     >
-      First Name
+        First Name
     </option>
     <option
-      value="fld_9970286"
+        value="fld_9970286"
     >
-      Last Name
+        Last Name
     </option>
     <option
-      value="fld_6009157"
+        value="fld_6009157"
     >
-      Email Address
+        Email Address
     </option>
     <option
-      value="fld_7683514"
+        value="fld_7683514"
     >
-      Comments / Questions
+        Comments / Questions
     </option>
-  </select>
-</div>
+</select>,
+]
 `;
 
 exports[`Choosing controls Choose form 1`] = `
 <div>
   <label
+    className=""
     htmlFor="caldera-forms-form-chooser-54fds"
   >
     Choose Form
@@ -114,6 +116,7 @@ exports[`Choosing controls Choose form 1`] = `
 exports[`Choosing controls Choose form when there no forms to choose from 1`] = `
 <div>
   <label
+    className=""
     htmlFor="caldera-forms-form-chooser-54fds"
   >
     Choose Form
@@ -130,6 +133,7 @@ exports[`Choosing controls Choose form when there no forms to choose from 1`] = 
 exports[`Choosing controls Choose form with no forms selected 1`] = `
 <div>
   <label
+    className=""
     htmlFor="caldera-forms-form-chooser-54fds"
   >
     Choose Form

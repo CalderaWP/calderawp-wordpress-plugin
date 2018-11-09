@@ -12,6 +12,10 @@ import ReactHoverObserver from 'react-hover-observer';
 
 export default function (props: EditProps): Node {
 	const {forms, entries, formId, entryId, onSetForm, onSetEntry, instanceId, onSetField, entryFieldId,before,after,setBefore,setAfter} = props;
+	if( 'undefined' === typeof forms ){
+		return <Fragment/>
+	}
+
 	const form = forms.find(form => formId === form.ID);
 	if (!formId) {
 		return <ChooseForm
@@ -32,6 +36,20 @@ export default function (props: EditProps): Node {
 	}
 
 	let entryField = null;
+
+	function getChooseEntryField() {
+		const hideLabel = entryFieldId && entryFieldId.length;
+		return <ChooseEntryField
+			currentEntry={entryId}
+			form={form}
+			onSetField={onSetField}
+			instanceId={instanceId}
+			entries={entries}
+			entryFieldId={entryFieldId}
+			hideLabel={hideLabel}
+		/>;
+	}
+
 	if (entryId && ! entryFieldId) {
 
 		const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
@@ -39,16 +57,8 @@ export default function (props: EditProps): Node {
 			entryField = entry.fields[entryFieldId];
 
 		}
-
 		return (
-			<ChooseEntryField
-				currentEntry={entryId}
-				form={form}
-				onSetField={onSetField}
-				instanceId={instanceId}
-				entries={entries}
-				entryFieldId={entryFieldId}
-			/>
+			getChooseEntryField()
 		)
 
 	}
@@ -56,23 +66,18 @@ export default function (props: EditProps): Node {
 	if( entryFieldId ){
 		return (
 			<Fragment>
-			<span>
-				<BeforeControl
-					setBefore={setBefore}
-					before={before}
-					instanceId={instanceId}
-					hideLabel={true}
-				/>
-			</span>
+				<span>
+					<BeforeControl
+						setBefore={setBefore}
+						before={before}
+						instanceId={instanceId}
+						hideLabel={true}
+					/>
+				</span>
 
 				<span>
-				<ChooseEntry
-					entries={entries}
-					currentEntry={entryId}
-					onSetEntry={onSetEntry}
-					instanceId={instanceId}
-				/>
-			</span>
+					{getChooseEntryField()}
+				</span>
 
 				<span>
 				<AfterControl

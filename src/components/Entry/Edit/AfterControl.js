@@ -28,6 +28,7 @@ export default function (props: EditAfterProps): Node {
 				<input
 					type="text"
 					value={after}
+					placeholder={'Text to show after value'}
 					onChange={(event) => setAfter(event.target.value)}
 					id={id}
 				/>

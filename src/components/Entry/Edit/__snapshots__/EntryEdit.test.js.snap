@@ -11,6 +11,7 @@ Array [
   <input
     id="caldera-after-entryValue-edit-54fds"
     onChange={[Function]}
+    placeholder="Text to show after value"
     type="text"
     value="After"
 />,
@@ -52,6 +53,7 @@ Array [
 </label>,
   <input
     onChange={[Function]}
+    placeholder="Text to show before value"
     type="text"
     value="Before"
 />,
@@ -68,6 +70,7 @@ Array [
 </label>,
   <input
     onChange={[Function]}
+    placeholder="Text to show before value"
     type="text"
     value="Before"
 />,
@@ -78,6 +81,7 @@ exports[`Controls component Match snapshot with all props set 1`] = `
 Array [
   <div>
     <label
+        className=""
         htmlFor="caldera-forms-form-chooser-54fds"
     >
         Choose Form
@@ -127,55 +131,54 @@ Array [
         2
     </option>
 </select>,
-  <div>
-    <label
-        htmlFor="caldera-forms-entry-field-chooser-54fds"
+  <label
+    className=""
+    htmlFor="caldera-forms-entry-field-chooser-54fds"
+>
+    Choose Field
+</label>,
+  <select
+    className="caldera-forms-entry-field-chooser"
+    id="caldera-forms-entry-field-chooser-54fds"
+    onChange={[Function]}
+    value="fld_8768091"
+>
+    <option
+        value={null}
     >
-        Choose Field
-    </label>
-    <select
-        className="caldera-forms-entry-field-chooser"
-        id="caldera-forms-entry-field-chooser-54fds"
-        onChange={[Function]}
+        --
+    </option>
+    <option
+        value="id"
+    >
+        ID
+    </option>
+    <option
+        value="datestamp"
+    >
+        Submitted
+    </option>
+    <option
         value="fld_8768091"
     >
-        <option
-            value={null}
-        >
-            --
-        </option>
-        <option
-            value="id"
-        >
-            ID
-        </option>
-        <option
-            value="datestamp"
-        >
-            Submitted
-        </option>
-        <option
-            value="fld_8768091"
-        >
-            First Name
-        </option>
-        <option
-            value="fld_9970286"
-        >
-            Last Name
-        </option>
-        <option
-            value="fld_6009157"
-        >
-            Email Address
-        </option>
-        <option
-            value="fld_7683514"
-        >
-            Comments / Questions
-        </option>
-    </select>
-</div>,
+        First Name
+    </option>
+    <option
+        value="fld_9970286"
+    >
+        Last Name
+    </option>
+    <option
+        value="fld_6009157"
+    >
+        Email Address
+    </option>
+    <option
+        value="fld_7683514"
+    >
+        Comments / Questions
+    </option>
+</select>,
   <div
     className="components-base-control caldera-before-entryValue-edit"
 >
@@ -227,6 +230,7 @@ exports[`Controls component Match snapshot with form and entry selected only 1`]
 Array [
   <div>
     <label
+        className=""
         htmlFor="caldera-forms-form-chooser-54fds"
     >
         Choose Form
@@ -276,55 +280,54 @@ Array [
         2
     </option>
 </select>,
-  <div>
-    <label
-        htmlFor="caldera-forms-entry-field-chooser-54fds"
+  <label
+    className=""
+    htmlFor="caldera-forms-entry-field-chooser-54fds"
+>
+    Choose Field
+</label>,
+  <select
+    className="caldera-forms-entry-field-chooser"
+    id="caldera-forms-entry-field-chooser-54fds"
+    onChange={[Function]}
+    value=""
+>
+    <option
+        value={null}
     >
-        Choose Field
-    </label>
-    <select
-        className="caldera-forms-entry-field-chooser"
-        id="caldera-forms-entry-field-chooser-54fds"
-        onChange={[Function]}
-        value=""
+        --
+    </option>
+    <option
+        value="id"
     >
-        <option
-            value={null}
-        >
-            --
-        </option>
-        <option
-            value="id"
-        >
-            ID
-        </option>
-        <option
-            value="datestamp"
-        >
-            Submitted
-        </option>
-        <option
-            value="fld_8768091"
-        >
-            First Name
-        </option>
-        <option
-            value="fld_9970286"
-        >
-            Last Name
-        </option>
-        <option
-            value="fld_6009157"
-        >
-            Email Address
-        </option>
-        <option
-            value="fld_7683514"
-        >
-            Comments / Questions
-        </option>
-    </select>
-</div>,
+        ID
+    </option>
+    <option
+        value="datestamp"
+    >
+        Submitted
+    </option>
+    <option
+        value="fld_8768091"
+    >
+        First Name
+    </option>
+    <option
+        value="fld_9970286"
+    >
+        Last Name
+    </option>
+    <option
+        value="fld_6009157"
+    >
+        Email Address
+    </option>
+    <option
+        value="fld_7683514"
+    >
+        Comments / Questions
+    </option>
+</select>,
   <div
     className="components-base-control caldera-before-entryValue-edit"
 >
@@ -376,6 +379,7 @@ exports[`Controls component Match snapshot with form selected only 1`] = `
 Array [
   <div>
     <label
+        className=""
         htmlFor="caldera-forms-form-chooser-54fds"
     >
         Choose Form
@@ -421,6 +425,7 @@ Array [
 exports[`Controls component Match snapshot with just forms prop set 1`] = `
 <div>
   <label
+    className=""
     htmlFor="caldera-forms-form-chooser-54fds"
   >
     Choose Form
@@ -456,21 +461,23 @@ Array [
     </label>
     <input
         onChange={[Function]}
+        placeholder="Text to show before value"
         type="text"
         value="Before"
     />
 </span>,
   <span>
     <label
-        htmlFor="caldera-forms-entry-chooser-54fds"
+        className="sr-only screen-reader-text"
+        htmlFor="caldera-forms-entry-field-chooser-54fds"
     >
-        Choose Entry
+        Choose Field
     </label>
     <select
-        className="caldera-forms-entry-chooser"
-        id="caldera-forms-entry-chooser-54fds"
+        className="caldera-forms-entry-field-chooser"
+        id="caldera-forms-entry-field-chooser-54fds"
         onChange={[Function]}
-        value="1"
+        value="fld_8768091"
     >
         <option
             value={null}
@@ -478,14 +485,34 @@ Array [
             --
         </option>
         <option
-            value="1"
+            value="id"
         >
-            1
+            ID
         </option>
         <option
-            value="2"
+            value="datestamp"
         >
-            2
+            Submitted
+        </option>
+        <option
+            value="fld_8768091"
+        >
+            First Name
+        </option>
+        <option
+            value="fld_9970286"
+        >
+            Last Name
+        </option>
+        <option
+            value="fld_6009157"
+        >
+            Email Address
+        </option>
+        <option
+            value="fld_7683514"
+        >
+            Comments / Questions
         </option>
     </select>
 </span>,
@@ -499,6 +526,7 @@ Array [
     <input
         id="caldera-after-entryValue-edit-54fds"
         onChange={[Function]}
+        placeholder="Text to show after value"
         type="text"
         value="After"
     />
@@ -507,55 +535,56 @@ Array [
 `;
 
 exports[`Inline component Match snapshot with form and entry selected only 1`] = `
-<div>
+Array [
   <label
+    className=""
     htmlFor="caldera-forms-entry-field-chooser-54fds"
-  >
+>
     Choose Field
-  </label>
+</label>,
   <select
     className="caldera-forms-entry-field-chooser"
     id="caldera-forms-entry-field-chooser-54fds"
     onChange={[Function]}
     value=""
-  >
+>
     <option
-      value={null}
+        value={null}
     >
-      --
+        --
     </option>
     <option
-      value="id"
+        value="id"
     >
-      ID
+        ID
     </option>
     <option
-      value="datestamp"
+        value="datestamp"
     >
-      Submitted
+        Submitted
     </option>
     <option
-      value="fld_8768091"
+        value="fld_8768091"
     >
-      First Name
+        First Name
     </option>
     <option
-      value="fld_9970286"
+        value="fld_9970286"
     >
-      Last Name
+        Last Name
     </option>
     <option
-      value="fld_6009157"
+        value="fld_6009157"
     >
-      Email Address
+        Email Address
     </option>
     <option
-      value="fld_7683514"
+        value="fld_7683514"
     >
-      Comments / Questions
+        Comments / Questions
     </option>
-  </select>
-</div>
+</select>,
+]
 `;
 
 exports[`Inline component Match snapshot with form selected only 1`] = `
@@ -583,6 +612,7 @@ Array [
 exports[`Inline component Match snapshot with just forms prop set 1`] = `
 <div>
   <label
+    className=""
     htmlFor="caldera-forms-form-chooser-54fds"
   >
     Choose Form

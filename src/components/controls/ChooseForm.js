@@ -2,12 +2,14 @@
 import React from 'react';
 import type {FormType,FormsCollection} from "../../flow-types/formType";
 import type {FormChooserProps} from "../Entry/types";
-
+import classNames from 'classnames';
 export const ChooseForm = (props: FormChooserProps) => {
+
 	const id = 'caldera-forms-form-chooser-' + props.instanceId;
 	return (
 		<div>
 			<label
+				className={classNames({'sr-only': false})}
 				htmlFor={id}
 			>
 				Choose Form

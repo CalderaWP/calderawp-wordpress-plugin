@@ -29,7 +29,8 @@ export type EntryFieldChooserProps = {
 	onSetField: (number) => void,
 	instanceId: string,
 	entries:EntriesCollection,
-	entryFieldId: string
+	entryFieldId: string,
+	showLabel?:boolean
 };
 
 export type EditBeforeProps ={

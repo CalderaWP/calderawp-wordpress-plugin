@@ -11,13 +11,7 @@
       {
         "output": "languages/dropit.pot"
       },
-      "transform-flow-comments",
-      "transform-runtime",
-      {
-        "helpers": false,
-        "polyfill": true,
-        "regenerator": true
-      }
+      "transform-flow-comments"
     ]
   ]
 }
