@@ -2,18 +2,18 @@
 // @flow
 
 import React, {Fragment, createElement} from 'react';
-import * as cfApi from "@caldera-labs/api-client";
 import Display from "./Display";
 import {
 	EntryControlsEdit,
 	EntryInlineEdit
 } from '../../components/Entry'
-import {formsAdminApiClient} from "../../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";
 import {findFormById} from "../../components/Entry/findFormById";
 import {InspectorControls} from '@wordpress/editor';
 import Controls from "../../components/Entry/Edit/Controls";
 import {getFieldFromCollection} from "../../components/EntryViewer/EntryHeaders";
 
+import * as cfApi from "@caldera-labs/api-client";
+import {formsAdminApiClient} from "../../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";
 const API_URL = CF_ADMIN.api.root.replace(/\/$/, "");
 const NONCE = CF_ADMIN.api.nonce;
 

@@ -1,3 +1,5 @@
+/** globals CF_ADMIN */
+import {createElement} from '@wordpress/element';
 import {
 	createBlockArgs,
 	registerBlock,
@@ -7,16 +9,17 @@ import {
 } from '../../block-factory';
 import {InspectorControls} from '@wordpress/editor';
 
-import { InnerBlocks } from '@wordpress/editor';
+import {InnerBlocks} from '@wordpress/editor';
 import EntryListControls from "../../components/Entry/Edit/EntryListControls";
 
-let allowedBlocks = [ 'core/image', 'core/paragraph' ];
+let allowedBlocks = ['core/image', 'core/paragraph'];
 
-const Edit = ( {
-	   attributes,
-	   setAttributes,
-	   className,
-} )  =>{
+const Edit = ({
+				  attributes,
+				  setAttributes,
+				  className,
+				  id,
+			  }) => {
 	const {
 		formId,
 		entryId
@@ -30,48 +33,50 @@ const Edit = ( {
 		setAttributes({entryId});
 	};
 
+	let forms = CF_ADMIN ? CF_ADMIN.forms : {};
+	forms = Object.values(forms);
+
 	const editProps = {
 		entryId: entryId,
-		entries: entries,
+		entries: {},
 		onSetEntry: setEntryId,
 		formId: formId,
 		forms: forms,
-		form: form,
+		form: {},
 		onSetForm: setFormId,
 		instanceId: id,
 	};
 
 	const elements = [];
-	const controls = createElement( EntryListControls, editProps );
-	if( formId && entryId ){
+	const controls = createElement(EntryListControls, editProps);
+	if (formId && entryId) {
 		elements.push(
 			<InnerBlocks
-				allowedBlocks={ allowedBlocks }
+				allowedBlocks={allowedBlocks}
 			/>
 		);
-	}else{
+	} else {
 		elements.push(controls);
 	}
 
-	elements.push(createElement(InspectorControls,{},controls));
+	elements.push(createElement(InspectorControls, {}, controls));
 
-	return createElement('div', {classname}, elements );
+	return createElement('div', {classname}, elements);
 };
 
 const Save = () => {
 	return (
 		<div>
-			<InnerBlocks.Content />
+			<InnerBlocks.Content/>
 		</div>
 	);
 }
 registerBlock(
 	createBlockArgs(
-		findBlock('entry',blocks),
+		findBlock('entry', blocks),
 		nameSpace,
 		Edit,
 		Save
 	),
 	nameSpace
-
 );
