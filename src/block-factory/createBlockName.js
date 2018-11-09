@@ -9,5 +9,6 @@
  */
 export default function createBlockName( namespace: string, slug: string) : string
 {
-	return `${namespace}/${slug}`;
+	let name = `${namespace}/${slug}`;
+	return name.toLowerCase();
 }

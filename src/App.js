@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import * as cfApi from '@caldera-labs/api-client';
 
 import {FakeGutenbergEditorWrap,FakeGutenbergPostTitle} from "./FakeGutenberg";
@@ -24,7 +24,7 @@ type State = {
 }
 
 const API_URL = 'http://localhost:8218/wp-json/cf-api/v2';
-const NONCE = false;
+//const NONCE = false;
 
 const formsAdminApiClient = new cfApi.WpClient(API_URL );
 formsAdminApiClient.setCorsMode(true);
@@ -45,7 +45,7 @@ function getEntry( formId:string,entryId:number): Promise<any>{
 
 
 
-const Index = () => <h2>Home</h2>;
+//const Index = () => <h2>Home</h2>;
 
 class App extends React.Component<Props,State> {
 

@@ -44,7 +44,7 @@ export default function Edit(props: GutenbergEditProps) {
 				form = forms.hasOwnProperty(formId) ? forms[formId] : {};
 		});
 
-
+	let entries = {};
 	if( isSelected ){
 		return(
 			<Fragment>

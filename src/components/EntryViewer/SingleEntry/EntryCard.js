@@ -44,7 +44,7 @@ export default function( props: {
 
 
 							return EntryListItem(entryField, labelWith, fieldType);
-						});
+						})
 				}
 
 			</Fragment>
@@ -111,7 +111,7 @@ export default function( props: {
 										<button href="#" className="card-link">Action Two</button>
 									</div>
 							</div>);
-						});
+						})
 					}
 			</ul>
 		</div>

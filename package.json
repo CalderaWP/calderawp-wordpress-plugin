@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@caldera-labs/api-client": "^0.6.1",
+    "@caldera-labs/state": "^0.9.0",
     "@cypress/webpack-preprocessor": "^3.0.0",
     "@frontkom/gutenberg-js": "^2.6.1",
     "@wordpress/blocks": "^3.0.0",
@@ -12,9 +13,12 @@
     "@wordpress/editor": "^4.0.0",
     "@wordpress/jest-preset-default": "^2.0.5",
     "classnames": "^2.2.6",
+    "gravatar": "^1.6.0",
     "locutus": "^2.0.10",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
+    "react-css-grid": "^2.0.0-0",
+    "react-hover-observer": "^2.1.1",
     "react-oembed-container": "^0.3.0",
     "react-router-dom": "^4.3.1"
   },

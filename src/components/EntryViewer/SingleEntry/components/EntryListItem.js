@@ -1,5 +1,5 @@
 import {EntryHeader} from "../../EntryHeader";
-import {Fragment} from "../EntryOrderedList";
+import {Fragment} from "React";
 import {EntryFieldView} from "../../EntryFieldView";
 import React from "react";
 

@@ -59,6 +59,37 @@
             "default": 0
           }
         }
+      },
+      {
+        "title": "Entry Field",
+        "slug": "entryValue",
+        "category": "common",
+        "wpDependencies": [
+          "editor",
+          "components"
+        ],
+        "attributes": {
+          "formId": {
+            "type": "string",
+            "default": ""
+          },
+          "entryId": {
+            "type": "number",
+            "default": 0
+          },
+          "fieldId": {
+            "type": "string",
+            "default": ""
+          },
+          "before": {
+            "type" : "string",
+            "default": ""
+          },
+          "after": {
+            "type" : "string",
+            "default": ""
+          }
+        }
       }
   ]
 }

@@ -1,9 +1,10 @@
 // @flow
-import React from 'react';
+import React, {Fragment} from 'react';
 import type {Entry,EntriesCollection} from "../../flow-types/entryTypes";
+import type {EntryChooserProps} from "../Entry/types";
 
 
-export const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: number, onChange: (number) => void, instanceId: string } ) =>{
+export const ChooseEntry = (props: EntryChooserProps) =>{
 	const id = 'caldera-forms-entry-chooser-' + props.instanceId;
 	let options = [
 		{
@@ -12,18 +13,18 @@ export const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: num
 		}
 	];
 
-	if( JSON.stringify(props.entries)!= JSON.stringify({})){
-		Object.values(props.entries).map( (entry: Entry) => {
-			if( 'object' !== typeof  entry ){
-				return;
+	if( JSON.stringify(props.entries)!== JSON.stringify({})){
+		Object.values(props.entries).forEach( (entry: Entry) => {
+			if( 'object' === typeof  entry ){
+				options.push( {
+					value:entry.id,
+					label:entry.id
+				});
 			}
-			options.push( {
-				value:entry.id,
-				label:entry.id
-			});
+
 		});
 	}
-	return <div>
+	return <Fragment>
 		<label
 			htmlFor={id}
 		>
@@ -33,9 +34,9 @@ export const ChooseEntry = (props: {entries:EntriesCollection, currentEntry: num
 			id={ id }
 			className={'caldera-forms-entry-chooser'}
 			value={ props.currentEntry }
-			onChange={ (event) => {props.onChange(parseInt( event.target.value,10 ))} }
+			onChange={ (event) => {props.onSetEntry( event.target.value)} }
 		>
-			{ options.map( (option: {value:number,label:sring|number}) => ( <option key={option.value} value={option.value}>{option.label}</option>) )}
+			{ options.map( (option: {value:number,label:string|number}) => ( <option key={option.value} value={option.value}>{option.label}</option>) )}
 		</select>
-	</div>
+	</Fragment>
 };

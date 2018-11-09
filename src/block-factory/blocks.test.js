@@ -1,9 +1,7 @@
 import "babel-polyfill"
-import '../jest/matchMedia.mock'
 
 import {blocks,blockDefinitions,nameSpace} from "./blocks";
 import type {block} from "./types";
-import createBlockArgs from "./createBlockArgs";
 
 describe( 'namespace', () => {
 	it( 'is correct', () => {

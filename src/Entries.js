@@ -2,9 +2,6 @@
 import React, {Component, Fragment} from 'react';
 import type {FormType,FormsCollection,KeyedFormCollection} from "./flow-types/formType";
 import type {Entry,EntriesCollection} from "./flow-types/entryTypes";
-import {EntryViewer} from "./components/EntryViewer/EntryViewer";
-import {ChooseEntry} from "./components/controls/ChooseEntry";
-import {ChooseForm} from "./components/controls/ChooseForm";
 import {EntryEdit,EntryDisplay} from './components/Entry'
 type Props = {
 	getForms: (page:number) => Promise<any>,
@@ -16,7 +13,8 @@ type State = {
 	forms: FormsCollection,
 	currentFormId: string,
 	entries:EntriesCollection,
-	currentEntryId:number
+	currentEntryId:number,
+	entryFieldId:number
 };
 
 
@@ -26,16 +24,17 @@ class Entries extends Component<Props, State> {
 		forms: [],
 		currentFormId: '',
 		entries: {},
-		currentEntryId: 0
+		currentEntryId: 0,
+		entryFieldId: 0
 	};
 
 	setCurrentFormId = (currentFormId:string) => this.setState({currentFormId});
 	setCurrentEntryId = (currentEntryId:number) => this.setState({currentEntryId});
+	setEntryFieldId = (entryFieldId:number) => this.setState({entryFieldId});
 	componentDidMount() {
 		this.props.getForms(1)
 			.then((response:Response) => {return response.json();})
 			.then((response:KeyedFormCollection) => {
-			console.log(response);
 			this.setForms(Object.values(response));
 			//this.setCurrentForm('CF5bdddffe1bdd2');
 		});
@@ -105,7 +104,13 @@ class Entries extends Component<Props, State> {
 	};
 
 	render() {
-		const {forms,currentFormId,entries,currentEntryId} = this.state;
+		const {forms,currentFormId,entries,currentEntryId,entryFieldId} = this.state;
+		let form = {};
+		try {
+			form = this.getCurrentForm()
+		}catch (e) {
+			form = {};
+		}
 		return <Fragment>
 			<div>
 				<h3>FakeBlock</h3>
@@ -118,12 +123,16 @@ class Entries extends Component<Props, State> {
 						forms={forms}
 						onSetForm={this.setCurrentForm}
 						instanceId={'fakeBlock'}
+						onSetField={this.setEntryFieldId}
 					/>
 					<EntryDisplay
 						currentEntryId={currentEntryId}
 						entries={entries}
 						getCurrentEntry={this.getCurrentEntry}
-						form={this.getCurrentForm}/>
+						form={form}
+						entryFieldId={entryFieldId}
+						onSetField={this.setEntryFieldId}
+					/>
 				</div>
 
 

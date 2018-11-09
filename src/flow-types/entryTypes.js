@@ -3,7 +3,7 @@
 export type EntryField = {
 	id: number,
 	entry_id: number,
-	field_id: string,
+	field_id: number,
 	slug: string,
 	value: string|number|boolean|Array<string|number|boolean>
 }

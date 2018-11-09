@@ -16,7 +16,7 @@ export const EntryRow = (props: {entry: Entry} ) => {
 			{Object.values(entry.fields).map( (entryField : EntryField ) => {
 				return (
 					<TableCell key={entryField.id}>
-						<EntryFieldView entryField={entryField}/>
+						<EntryFieldView entryField={entryField} labelWith={entryField.slug}/>
 					</TableCell>
 				);
 			})}

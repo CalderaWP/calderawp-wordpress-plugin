@@ -61,7 +61,7 @@ class RegisterBlock
                 filemtime($this->filePath($index_js))
             )
         ) {
-            throw new Exception(sprintf('Can not register block editor script for block %s', $this->blockName()));
+            throw new Exception(sprintf('Can not register block editor script for block %s with URL %s', $this->blockName(), $index_js));
         }
 
 
@@ -77,6 +77,8 @@ class RegisterBlock
             throw new Exception(sprintf('Can not register block editor CSS for block %s', $this->blockName()));
 
         }
+
+
 
         register_block_type($this->blockName(), array(
             'editor_script' => $this->handle(false),
@@ -134,6 +136,6 @@ class RegisterBlock
      */
     public function blockName()
     {
-        return sprintf('%s/%s', $this->namespace, $this->blockType->getSlug());
+        return strtolower(sprintf('%s/%s', $this->namespace, $this->blockType->getSlug()));
     }
 }

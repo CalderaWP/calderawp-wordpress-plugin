@@ -7,37 +7,66 @@ type entryId = number;
 type formId = string;
 
 export type FormChooserProps = {
-	formId: formId,
 	forms: FormsCollection,
-	onSetForm: (formId:string)=> void
+	currentFormId: string,
+	onSetForm: (string) => void,
+	instanceId: string
 
 }
 
 
 export type EntryChooserProps = {
-	entryId:entryId,
 	entries: EntriesCollection,
-	onSetEntry: (entryId:number)=> void
-
-
+	currentEntry: number,
+	onSetEntry: (number) => void,
+	instanceId: string
 };
+
+
+export type EntryFieldChooserProps = {
+	currentEntry: Entry,
+	form: FormType,
+	onSetField: (number) => void,
+	instanceId: string,
+	entries:EntriesCollection,
+	entryFieldId: string
+};
+
+export type EditBeforeProps ={
+	setBefore: (before:string) => void,
+	before:string,
+	instanceId: string,
+	hideLabel?: boolean
+};
+
+export type EditAfterProps ={
+	setAfter: (after:string) => void,
+	after:string,
+	instanceId: string,
+	hideLabel?: boolean
+
+}
 
 //EntryViewerProps
 export type DisplayProps = {
-	currentEntryId:number,
-	entries:EntriesCollection,
-	getCurrentEntry:() => Entry,
-	form: FormType
+	entryId: entryId,
+	formId: formId,
+	entryFieldId:string,
+	entry: Entry,
+	before:string,
+	after: string,
 };
-
 
 
 export type EditProps = {
 	instanceId: string,
-	entryId:entryId,
-	formId:formId,
+	entryId: string,
+	formId: string,
+	...EditBeforeProps,
+	...EditAfterProps,
 	...FormChooserProps,
-	...EntryChooserProps
+	...EntryChooserProps,
+	...EntryFieldChooserProps
 }
 
 

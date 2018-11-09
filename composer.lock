@@ -4,8 +4,127 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ce1f71f4e352a7b25581a4b9527b83e",
+    "content-hash": "032292cf83025707819dcf6041780267",
     "packages": [
+        {
+            "name": "Desertsnowman/caldera-forms",
+            "version": "dev-feature/2766",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CalderaWP/caldera-forms",
+                "reference": "a49d116a5ef7a67fdc0d07413083b3c996556da0"
+            },
+            "require": {
+                "calderawp/caldera-containers": "^0.2.0",
+                "calderawp/caldera-forms-query": "dev-master",
+                "composer/installers": "^1.6",
+                "inpsyde/wonolog": "^1.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.2",
+                "johnpbloch/wordpress": "*",
+                "mockery/mockery": ">=0.9 <2",
+                "phpunit/phpunit": "~5.5.0",
+                "wpackagist-plugin/gutenberg": "*"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "calderawp\\calderaforms\\pro\\": "includes/cf-pro-client/classes/",
+                    "calderawp\\calderaforms\\cf2\\": "cf2"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "calderawp\\calderaforms\\Tests\\Unit\\": "tests/Unit/",
+                    "calderawp\\calderaforms\\Tests\\Util\\": "tests/Util/",
+                    "calderawp\\calderaforms\\Tests\\Integration\\": "tests/Integration/",
+                    "calderawp\\calderaforms\\Tests\\Util\\Traits\\": "tests/Util/Traits/"
+                },
+                "files": [
+                    "./tests/testing-cli.php"
+                ]
+            },
+            "scripts": {
+                "test:php": [
+                    "composer test:unit && composer wp:tests"
+                ],
+                "dev:install": [
+                    "composer install && npm install && composer wp:install && composer wp:activate && composer test:setup"
+                ],
+                "dev:destroy": [
+                    "composer nuke && composer wp:destroy"
+                ],
+                "nuke": [
+                    "rm package-lock.json && rm composer.lock && rm yarn.lock && rm -rf node_modules/ && rm -rf vendor"
+                ],
+                "wp:install": [
+                    "bash ./bin/install-docker.sh && composer wp:config"
+                ],
+                "wp:activate": [
+                    "bash ./bin/activate-plugin.sh"
+                ],
+                "test:setup": [
+                    "bash ./bin/setup-test-forms.sh"
+                ],
+                "test:delete": [
+                    "bash ./bin/delete-test-forms.sh"
+                ],
+                "wp:config": [
+                    "docker-compose run --rm cli wp rewrite structure '/%postname%/'"
+                ],
+                "wp:start": [
+                    "composer wp:server-start && composer wp:server-url"
+                ],
+                "wp:server-start": [
+                    "docker-compose up -d"
+                ],
+                "wp:server-url": [
+                    "bash ./bin/echo-server-url.sh"
+                ],
+                "wp:tests": [
+                    "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist"
+                ],
+                "wp:tests-now": [
+                    "docker-compose run --rm wordpress_phpunit phpunit --configuration phpunit-integration.xml.dist --group now"
+                ],
+                "wp:destroy": [
+                    "docker-compose rm --stop --force"
+                ],
+                "test:unit": [
+                    "phpunit --configuration phpunit-unit.xml.dist"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Pollock",
+                    "homepage": "https://JoshPress.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "David Cramer",
+                    "homepage": "http://cramer.co.za",
+                    "role": "Founding Developer"
+                },
+                {
+                    "name": "Nicolas Figueira",
+                    "homepage": "https://newo.me/",
+                    "role": "Contributing Developer"
+                }
+            ],
+            "description": "Create complex grid based, responsive forms easily with an easy to use drag and drop layout builder",
+            "homepage": "http://calderaforms.com",
+            "keywords": [
+                "caldera",
+                "forms",
+                "wordpress"
+            ],
+            "time": "2018-11-07T16:56:27+00:00"
+        },
         {
             "name": "a5hleyrich/wp-queue",
             "version": "dev-master",
@@ -98,6 +217,62 @@
             "time": "2018-05-05T22:43:14+00:00"
         },
         {
+            "name": "calderawp/caldera-forms-query",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CalderaWP/caldera-forms-query.git",
+                "reference": "37a7782a61b537fc442425348984a413313326df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CalderaWP/caldera-forms-query/zipball/37a7782a61b537fc442425348984a413313326df",
+                "reference": "37a7782a61b537fc442425348984a413313326df",
+                "shasum": ""
+            },
+            "require": {
+                "calderawp/caldera-containers": "^0.2",
+                "nilportugues/sql-query-builder": "^1.5",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "composer/installers": "~1.0",
+                "desertsnowman/caldera-forms": "dev-feature/2404",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "php": "^7.1",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.2"
+            },
+            "type": "library",
+            "extra": {
+                "installer-paths": {
+                    "Tests/plugins/{$name}/": [
+                        "type:wordpress-plugin"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "calderawp\\CalderaFormsQuery\\": "src"
+                },
+                "files": [
+                    "src/CalderaFormsQueries.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Pollock",
+                    "email": "josh@calderawp.com"
+                }
+            ],
+            "description": "Caldera Forms Query Library",
+            "time": "2018-07-10T21:12:12+00:00"
+        },
+        {
             "name": "calderawp/caldera-interop",
             "version": "dev-vast-simplify",
             "source": {
@@ -160,6 +335,126 @@
                 }
             ],
             "time": "2018-07-14T00:32:21+00:00"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "^4.8.36"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "time": "2018-08-27T06:10:37+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -236,12 +531,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "2798c457a4fc5a9bda4587ea0da9b177e22aff5a"
+                "reference": "51cb9063b8e07c2aa1e52f343de63ed08d822135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/2798c457a4fc5a9bda4587ea0da9b177e22aff5a",
-                "reference": "2798c457a4fc5a9bda4587ea0da9b177e22aff5a",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/51cb9063b8e07c2aa1e52f343de63ed08d822135",
+                "reference": "51cb9063b8e07c2aa1e52f343de63ed08d822135",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +588,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-10-08T11:42:37+00:00"
+            "time": "2018-11-03T10:47:53+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -301,12 +596,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "136531aa4e42f9b1971a47fb0faf60da00d2fefa"
+                "reference": "926eaa3ff73cde2becf652b785831bcb7618568a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/136531aa4e42f9b1971a47fb0faf60da00d2fefa",
-                "reference": "136531aa4e42f9b1971a47fb0faf60da00d2fefa",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/926eaa3ff73cde2becf652b785831bcb7618568a",
+                "reference": "926eaa3ff73cde2becf652b785831bcb7618568a",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +639,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2018-03-25T01:26:01+00:00"
+            "time": "2018-10-30T00:20:04+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -352,12 +647,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "4b981cdeb8c13d22a6c193554f8c686f53d5c958"
+                "reference": "23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/4b981cdeb8c13d22a6c193554f8c686f53d5c958",
-                "reference": "4b981cdeb8c13d22a6c193554f8c686f53d5c958",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68",
+                "reference": "23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68",
                 "shasum": ""
             },
             "require": {
@@ -404,13 +699,81 @@
             "keywords": [
                 "http",
                 "message",
+                "psr-7",
                 "request",
                 "response",
                 "stream",
                 "uri",
                 "url"
             ],
-            "time": "2018-07-29T08:09:46+00:00"
+            "time": "2018-11-01T01:48:29+00:00"
+        },
+        {
+            "name": "inpsyde/wonolog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inpsyde/Wonolog.git",
+                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
+                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "@stable",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.2.0",
+                "mikey179/vfsstream": "~1.6.4",
+                "phpunit/phpunit": "^5.7.21"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inpsyde\\Wonolog\\": "src"
+                },
+                "files": [
+                    "inc/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giuseppe Mazzapica",
+                    "email": "giuseppe.mazzapica@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Inpsyde GmbH",
+                    "email": "hello@inpsyde.com",
+                    "homepage": "https://inpsyde.com",
+                    "role": "Company"
+                }
+            ],
+            "description": "Monolog-based logging package for WordPress.",
+            "keywords": [
+                "debug",
+                "debugging",
+                "log",
+                "logger",
+                "logging",
+                "monolog",
+                "psr-3",
+                "wordpress"
+            ],
+            "time": "2018-05-15T15:39:44+00:00"
         },
         {
             "name": "league/fractal",
@@ -477,6 +840,86 @@
             "time": "2018-10-10T11:30:32+00:00"
         },
         {
+            "name": "monolog/monolog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "6bb347c040bb29f42c2c249714aac8c0e36c2454"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6bb347c040bb29f42c2c249714aac8c0e36c2454",
+                "reference": "6bb347c040bb29f42c2c249714aac8c0e36c2454",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/log": "^1.0.1"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "graylog2/gelf-php": "^1.4.2",
+                "jakub-onderka/php-parallel-lint": "^0.9",
+                "php-amqplib/php-amqplib": "~2.4",
+                "php-console/php-console": "^3.1.3",
+                "phpspec/prophecy": "^1.6.1",
+                "phpunit/phpunit": "^6.5",
+                "predis/predis": "^1.1",
+                "rollbar/rollbar": "^1.3",
+                "ruflin/elastica": ">=0.90 <3.0",
+                "sentry/sentry": "^1.9",
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "php-console/php-console": "Allow sending log messages to Google Chrome",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+                "sentry/sentry": "Allow sending log messages to a Sentry server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "http://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "time": "2018-11-06T09:31:18+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.34.0",
             "source": {
@@ -530,6 +973,125 @@
                 "time"
             ],
             "time": "2018-09-20T19:36:25+00:00"
+        },
+        {
+            "name": "nilportugues/sql-query-builder",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nilportugues/php-sql-query-builder.git",
+                "reference": "277e87a8bca2ab833b18baad751eba64d0ddddd2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nilportugues/php-sql-query-builder/zipball/277e87a8bca2ab833b18baad751eba64d0ddddd2",
+                "reference": "277e87a8bca2ab833b18baad751eba64d0ddddd2",
+                "shasum": ""
+            },
+            "require": {
+                "nilportugues/sql-query-formatter": "~1.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "nilportugues/php_backslasher": "~0.2",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NilPortugues\\Sql\\QueryBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nil Portugués Calderó",
+                    "email": "contact@nilportugues.com",
+                    "homepage": "http://nilportugues.com",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "http://shadowhand.me/",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "An elegant lightweight and efficient SQL QueryInterface BuilderInterface supporting bindings and complicated query generation.",
+            "homepage": "http://nilportugues.com",
+            "keywords": [
+                "builder",
+                "mysql",
+                "orm",
+                "query",
+                "query builder",
+                "sql"
+            ],
+            "time": "2018-08-20T16:15:21+00:00"
+        },
+        {
+            "name": "nilportugues/sql-query-formatter",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nilportugues/sql-query-formatter.git",
+                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nilportugues/sql-query-formatter/zipball/a539162a13e3217827237d5809fbaf25e136dc0e",
+                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "nilportugues/php_backslasher": "~0.2",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NilPortugues\\Sql\\QueryFormatter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nil Portugués Calderó",
+                    "email": "contact@nilportugues.com",
+                    "homepage": "http://nilportugues.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "A very lightweight PHP class that reformats unreadable and computer-generated SQL query statements to human-friendly, readable text.",
+            "homepage": "http://nilportugues.com",
+            "keywords": [
+                "format",
+                "formatter",
+                "mysql",
+                "parser",
+                "query",
+                "reformat",
+                "sql",
+                "sql server",
+                "tokenizer"
+            ],
+            "time": "2015-11-02T23:24:39+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -679,6 +1241,53 @@
                 "response"
             ],
             "time": "2016-08-06T14:39:51+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
+                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2018-04-03T15:59:15+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -853,12 +1462,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "35acf59e7dafd3ac919e16babaae0b6378fab564"
+                "reference": "a2531c9f5be1790bf90fe9bccc930b4704010f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/35acf59e7dafd3ac919e16babaae0b6378fab564",
-                "reference": "35acf59e7dafd3ac919e16babaae0b6378fab564",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/a2531c9f5be1790bf90fe9bccc930b4704010f09",
+                "reference": "a2531c9f5be1790bf90fe9bccc930b4704010f09",
                 "shasum": ""
             },
             "require": {
@@ -918,82 +1527,10 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-31T10:56:31+00:00"
+            "time": "2018-11-05T06:48:19+00:00"
         }
     ],
     "packages-dev": [
-        {
-            "name": "Desertsnowman/caldera-forms",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/caldera-forms",
-                "reference": "c05144a35f4c8912117b271b08cfb5bf025865f5"
-            },
-            "require": {
-                "calderawp/caldera-containers": "^0.2.0",
-                "calderawp/caldera-forms-query": "dev-master",
-                "inpsyde/wonolog": "^1.0",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5.5.0"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\calderaforms\\pro\\": "includes/cf-pro-client/classes/"
-                }
-            },
-            "scripts": {
-                "wp-install": [
-                    "docker-compose up --build -d"
-                ],
-                "wp-tests": [
-                    "composer wp-install && composer wp-unit-test"
-                ],
-                "wp-unit-test": [
-                    "docker-compose run wordpress vendor/bin/phpunit"
-                ],
-                "wp-start": [
-                    "docker-compose up"
-                ],
-                "wp-stop": [
-                    "docker-compose stop"
-                ],
-                "wp-remove": [
-                    "docker-compose down"
-                ]
-            },
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Pollock",
-                    "homepage": "https://JoshPress.net",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "David Cramer",
-                    "homepage": "http://cramer.co.za",
-                    "role": "Founding Developer"
-                },
-                {
-                    "name": "Nicolas Figueira",
-                    "homepage": "https://newo.me/",
-                    "role": "Contributing Developer"
-                }
-            ],
-            "description": "Create complex grid based, responsive forms easily with an easy to use drag and drop layout builder",
-            "homepage": "http://calderaforms.com",
-            "keywords": [
-                "caldera",
-                "forms",
-                "wordpress"
-            ],
-            "time": "2018-10-15T16:57:47+00:00"
-        },
         {
             "name": "antecedent/patchwork",
             "version": "2.1.8",
@@ -1100,62 +1637,6 @@
             "time": "2017-12-01T16:32:09+00:00"
         },
         {
-            "name": "calderawp/caldera-forms-query",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/caldera-forms-query.git",
-                "reference": "37a7782a61b537fc442425348984a413313326df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/caldera-forms-query/zipball/37a7782a61b537fc442425348984a413313326df",
-                "reference": "37a7782a61b537fc442425348984a413313326df",
-                "shasum": ""
-            },
-            "require": {
-                "calderawp/caldera-containers": "^0.2",
-                "nilportugues/sql-query-builder": "^1.5",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "composer/installers": "~1.0",
-                "desertsnowman/caldera-forms": "dev-feature/2404",
-                "jakub-onderka/php-parallel-lint": "^1.0",
-                "php": "^7.1",
-                "phpunit/phpunit": "^7.0",
-                "squizlabs/php_codesniffer": "^3.2"
-            },
-            "type": "library",
-            "extra": {
-                "installer-paths": {
-                    "Tests/plugins/{$name}/": [
-                        "type:wordpress-plugin"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\CalderaFormsQuery\\": "src"
-                },
-                "files": [
-                    "src/CalderaFormsQueries.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Pollock",
-                    "email": "josh@calderawp.com"
-                }
-            ],
-            "description": "Caldera Forms Query Library",
-            "time": "2018-07-10T21:12:12+00:00"
-        },
-        {
             "name": "calderawp/ghost-runner",
             "version": "dev-master",
             "source": {
@@ -1226,126 +1707,6 @@
             "time": "2018-10-13T14:03:49+00:00"
         },
         {
-            "name": "composer/installers",
-            "version": "v1.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/installers.git",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
-                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
-            },
-            "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "^4.8.36"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Composer\\Installers\\Plugin",
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Installers\\": "src/Composer/Installers"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kyle Robinson Young",
-                    "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama"
-                }
-            ],
-            "description": "A multi-framework Composer library installer",
-            "homepage": "https://composer.github.io/installers/",
-            "keywords": [
-                "Craft",
-                "Dolibarr",
-                "Eliasis",
-                "Hurad",
-                "ImageCMS",
-                "Kanboard",
-                "Lan Management System",
-                "MODX Evo",
-                "Mautic",
-                "Maya",
-                "OXID",
-                "Plentymarkets",
-                "Porto",
-                "RadPHP",
-                "SMF",
-                "Thelia",
-                "WolfCMS",
-                "agl",
-                "aimeos",
-                "annotatecms",
-                "attogram",
-                "bitrix",
-                "cakephp",
-                "chef",
-                "cockpit",
-                "codeigniter",
-                "concrete5",
-                "croogo",
-                "dokuwiki",
-                "drupal",
-                "eZ Platform",
-                "elgg",
-                "expressionengine",
-                "fuelphp",
-                "grav",
-                "installer",
-                "itop",
-                "joomla",
-                "kohana",
-                "laravel",
-                "lavalite",
-                "lithium",
-                "magento",
-                "majima",
-                "mako",
-                "mediawiki",
-                "modulework",
-                "modx",
-                "moodle",
-                "osclass",
-                "phpbb",
-                "piwik",
-                "ppi",
-                "puppet",
-                "pxcms",
-                "reindex",
-                "roundcube",
-                "shopware",
-                "silverstripe",
-                "sydes",
-                "symfony",
-                "typo3",
-                "wordpress",
-                "yawik",
-                "zend",
-                "zikula"
-            ],
-            "time": "2018-08-27T06:10:37+00:00"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "dev-master",
             "source": {
@@ -1406,12 +1767,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "f3e4601eba2586af780265ee81c97741e6da46ca"
+                "reference": "a8c1c7b982c989ad16c8f17f1834fa5df744b689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/f3e4601eba2586af780265ee81c97741e6da46ca",
-                "reference": "f3e4601eba2586af780265ee81c97741e6da46ca",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/a8c1c7b982c989ad16c8f17f1834fa5df744b689",
+                "reference": "a8c1c7b982c989ad16c8f17f1834fa5df744b689",
                 "shasum": ""
             },
             "require": {
@@ -1446,74 +1807,7 @@
             "keywords": [
                 "test"
             ],
-            "time": "2018-02-24T08:30:36+00:00"
-        },
-        {
-            "name": "inpsyde/wonolog",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inpsyde/Wonolog.git",
-                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
-                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
-                "shasum": ""
-            },
-            "require": {
-                "monolog/monolog": "@stable",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "brain/monkey": "^2.2.0",
-                "mikey179/vfsstream": "~1.6.4",
-                "phpunit/phpunit": "^5.7.21"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Inpsyde\\Wonolog\\": "src"
-                },
-                "files": [
-                    "inc/bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Giuseppe Mazzapica",
-                    "email": "giuseppe.mazzapica@gmail.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Inpsyde GmbH",
-                    "email": "hello@inpsyde.com",
-                    "homepage": "https://inpsyde.com",
-                    "role": "Company"
-                }
-            ],
-            "description": "Monolog-based logging package for WordPress.",
-            "keywords": [
-                "debug",
-                "debugging",
-                "log",
-                "logger",
-                "logging",
-                "monolog",
-                "psr-3",
-                "wordpress"
-            ],
-            "time": "2018-05-15T15:39:44+00:00"
+            "time": "2018-11-01T08:19:18+00:00"
         },
         {
             "name": "jakub-onderka/php-parallel-lint",
@@ -1757,86 +2051,6 @@
             "time": "2018-10-02T21:52:37+00:00"
         },
         {
-            "name": "monolog/monolog",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "334b8d8783a1262c3b8311d6599889d82e9cc58c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/334b8d8783a1262c3b8311d6599889d82e9cc58c",
-                "reference": "334b8d8783a1262c3b8311d6599889d82e9cc58c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1",
-                "psr/log": "^1.0.1"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0.0"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-                "doctrine/couchdb": "~1.0@dev",
-                "graylog2/gelf-php": "^1.4.2",
-                "jakub-onderka/php-parallel-lint": "^0.9",
-                "php-amqplib/php-amqplib": "~2.4",
-                "php-console/php-console": "^3.1.3",
-                "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^6.5",
-                "predis/predis": "^1.1",
-                "rollbar/rollbar": "^1.3",
-                "ruflin/elastica": ">=0.90 <3.0",
-                "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "^5.3|^6.0"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-                "php-console/php-console": "Allow sending log messages to Google Chrome",
-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-                "sentry/sentry": "Allow sending log messages to a Sentry server"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Monolog\\": "src/Monolog"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                }
-            ],
-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-            "homepage": "http://github.com/Seldaek/monolog",
-            "keywords": [
-                "log",
-                "logging",
-                "psr-3"
-            ],
-            "time": "2018-07-18T07:55:49+00:00"
-        },
-        {
             "name": "myclabs/deep-copy",
             "version": "1.x-dev",
             "source": {
@@ -1883,125 +2097,6 @@
                 "object graph"
             ],
             "time": "2018-06-11T23:09:50+00:00"
-        },
-        {
-            "name": "nilportugues/sql-query-builder",
-            "version": "1.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nilportugues/php-sql-query-builder.git",
-                "reference": "277e87a8bca2ab833b18baad751eba64d0ddddd2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nilportugues/php-sql-query-builder/zipball/277e87a8bca2ab833b18baad751eba64d0ddddd2",
-                "reference": "277e87a8bca2ab833b18baad751eba64d0ddddd2",
-                "shasum": ""
-            },
-            "require": {
-                "nilportugues/sql-query-formatter": "~1.2",
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "~1.9",
-                "nilportugues/php_backslasher": "~0.2",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NilPortugues\\Sql\\QueryBuilder\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nil Portugués Calderó",
-                    "email": "contact@nilportugues.com",
-                    "homepage": "http://nilportugues.com",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Woody Gilk",
-                    "email": "woody.gilk@gmail.com",
-                    "homepage": "http://shadowhand.me/",
-                    "role": "Contributor"
-                }
-            ],
-            "description": "An elegant lightweight and efficient SQL QueryInterface BuilderInterface supporting bindings and complicated query generation.",
-            "homepage": "http://nilportugues.com",
-            "keywords": [
-                "builder",
-                "mysql",
-                "orm",
-                "query",
-                "query builder",
-                "sql"
-            ],
-            "time": "2018-08-20T16:15:21+00:00"
-        },
-        {
-            "name": "nilportugues/sql-query-formatter",
-            "version": "v1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nilportugues/sql-query-formatter.git",
-                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nilportugues/sql-query-formatter/zipball/a539162a13e3217827237d5809fbaf25e136dc0e",
-                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "~1.9",
-                "nilportugues/php_backslasher": "~0.2",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NilPortugues\\Sql\\QueryFormatter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nil Portugués Calderó",
-                    "email": "contact@nilportugues.com",
-                    "homepage": "http://nilportugues.com",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "A very lightweight PHP class that reformats unreadable and computer-generated SQL query statements to human-friendly, readable text.",
-            "homepage": "http://nilportugues.com",
-            "keywords": [
-                "format",
-                "formatter",
-                "mysql",
-                "parser",
-                "query",
-                "reformat",
-                "sql",
-                "sql server",
-                "tokenizer"
-            ],
-            "time": "2015-11-02T23:24:39+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2161,12 +2256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
+                "reference": "3660b2eed90abdf92ac2e9dae9a238d2701bfa77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3660b2eed90abdf92ac2e9dae9a238d2701bfa77",
+                "reference": "3660b2eed90abdf92ac2e9dae9a238d2701bfa77",
                 "shasum": ""
             },
             "require": {
@@ -2216,7 +2311,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05T17:53:17+00:00"
+            "time": "2018-11-04T18:50:11+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2607,53 +2702,6 @@
                 "xunit"
             ],
             "time": "2017-06-30T09:13:00+00:00"
-        },
-        {
-            "name": "psr/log",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
-                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "Psr/Log/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "time": "2018-04-03T15:59:15+00:00"
         },
         {
             "name": "rmccue/requests",
@@ -3223,12 +3271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e"
+                "reference": "146df9107d072b61018148666d4921f11a584c75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6ad28354c04b364c3c71a34e4a18b629cc3b231e",
-                "reference": "6ad28354c04b364c3c71a34e4a18b629cc3b231e",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/146df9107d072b61018148666d4921f11a584c75",
+                "reference": "146df9107d072b61018148666d4921f11a584c75",
                 "shasum": ""
             },
             "require": {
@@ -3266,11 +3314,11 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-09-23T23:08:17+00:00"
+            "time": "2018-11-07T02:56:53+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-master",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
