@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntryListControls component Matches snapshot with all props 1`] = `
+Array [
+  <div>
+    <label
+        className=""
+        htmlFor="caldera-forms-form-chooser-54fds"
+    >
+        Choose Form
+    </label>
+    <select
+        className="caldera-forms-form-chooser"
+        id="caldera-forms-form-chooser-54fds"
+        onChange={[Function]}
+        value="CF5bde22b646ed0"
+    >
+        <option
+            value="CF5bde22a843265"
+        >
+            Not Contact Form
+        </option>
+        <option
+            value="CF5bde22b646ed0"
+        >
+            Contact Form
+        </option>
+    </select>
+</div>,
+  <label
+    htmlFor="caldera-forms-entry-chooser-54fds"
+>
+    Choose Entry
+</label>,
+  <select
+    className="caldera-forms-entry-chooser"
+    id="caldera-forms-entry-chooser-54fds"
+    onChange={[Function]}
+    value="1"
+>
+    <option
+        value={null}
+    >
+        --
+    </option>
+    <option
+        value="1"
+    >
+        1
+    </option>
+    <option
+        value="2"
+    >
+        2
+    </option>
+</select>,
+]
+`;
+
+exports[`EntryListControls component Matches snapshot with no entry selected  1`] = `
+Array [
+  <div>
+    <label
+        className=""
+        htmlFor="caldera-forms-form-chooser-54fds"
+    >
+        Choose Form
+    </label>
+    <select
+        className="caldera-forms-form-chooser"
+        id="caldera-forms-form-chooser-54fds"
+        onChange={[Function]}
+        value="CF5bde22b646ed0"
+    >
+        <option
+            value="CF5bde22a843265"
+        >
+            Not Contact Form
+        </option>
+        <option
+            value="CF5bde22b646ed0"
+        >
+            Contact Form
+        </option>
+    </select>
+</div>,
+  <label
+    htmlFor="caldera-forms-entry-chooser-54fds"
+>
+    Choose Entry
+</label>,
+  <select
+    className="caldera-forms-entry-chooser"
+    id="caldera-forms-entry-chooser-54fds"
+    onChange={[Function]}
+    value=""
+>
+    <option
+        value={null}
+    >
+        --
+    </option>
+    <option
+        value="1"
+    >
+        1
+    </option>
+    <option
+        value="2"
+    >
+        2
+    </option>
+</select>,
+]
+`;
+
+exports[`EntryListControls component Matches snapshot with no form selected  1`] = `
+<div>
+  <label
+    className=""
+    htmlFor="caldera-forms-form-chooser-54fds"
+  >
+    Choose Form
+  </label>
+  <select
+    className="caldera-forms-form-chooser"
+    id="caldera-forms-form-chooser-54fds"
+    onChange={[Function]}
+    value=""
+  >
+    <option
+      value="CF5bde22a843265"
+    >
+      Not Contact Form
+    </option>
+    <option
+      value="CF5bde22b646ed0"
+    >
+      Contact Form
+    </option>
+  </select>
+</div>
+`;

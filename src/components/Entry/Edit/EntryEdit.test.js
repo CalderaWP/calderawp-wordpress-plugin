@@ -10,7 +10,6 @@ import BeforeControl from "./BeforeControl";
 import Inline from './Inline';
 import Controls from './Controls';
 
-
 const _forms = require( '../../../__MOCK_DATA__/forms' )
 const forms = Object.values(_forms );
 const formId = 'CF5bde22b646ed0';
@@ -27,8 +26,6 @@ const onSetEntry = () => jest.fn();
 const onSetEntryField =jest.fn();
 const setBefore = () => jest.fn();
 const setAfter = () => jest.fn();
-
-
 
 describe( 'AfterControl', ()  => {
 	test( 'After editor with label hidden matches spapshots',() => {

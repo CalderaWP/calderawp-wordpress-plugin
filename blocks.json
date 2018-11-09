@@ -44,6 +44,7 @@
       {
         "title": "Entry",
         "slug": "entry",
+        "icon": "editor-justify",
         "category": "common",
         "wpDependencies": [
           "editor",
