@@ -19,7 +19,7 @@ import {entryStore, CALDERA_FORMS_ENTRIES_SLUG} from "../entryStore";
 import {ENTRY_VALUE_BLOCK_NAME} from "../entryValue";
 
 
-let allowedBlocks = [
+let ALLOWED_BLOCKS = [
 	'core/image',
 	'core/paragraph',
 	ENTRY_VALUE_BLOCK_NAME
@@ -33,9 +33,25 @@ const Edit = ({
   id,
   isSelected
 }) => {
+	let TEMPLATE = [
+		[ 'core/columns', {}, [
+			[ 'core/column', {}, [
+				[ 'core/image' ],
+			] ],
+			[ 'core/column', {}, [
+				[ 'core/paragraph', { placeholder: 'Enter side content...' } ],
+			] ],
+		] ],
+		[ENTRY_VALUE_BLOCK_NAME, {entryId: 1, formId: 'CF5bde22b646ed0', fieldId: 'fld_9970286'}],
+	];
+
 
 	if (!isSelected) {
-		return Display(className);
+		return <InnerBlocks
+			className={className}
+			template={ TEMPLATE }
+			allowed={ALLOWED_BLOCKS}
+		/>;
 	}
 
 	const {
@@ -61,6 +77,7 @@ const Edit = ({
 		instanceId={id}
 		key={1}
 	/>;
+
 	inspectorControlsElements.push(FormChooser);
 
 	const EntryChooser = <ChooseEntryWithSelect
@@ -78,33 +95,20 @@ const Edit = ({
 
 
 	if (formId && entryId) {
-		let template = [
-			['core/paragraph', {placeholder: 'Enter side content...'}],
-			['core/paragraph', {placeholder: 'Second Content'}]
-		];
 		const formFields = select(CALDERA_FORMS_ENTRIES_SLUG).getFormFieldsForEntry(formId);
 		if ('object' === typeof formFields) {
 			Object.values(formFields).forEach(formField => {
-				if (1 === 9 ) {
-					template.push([ENTRY_VALUE_BLOCK_NAME, {
-						entryId,
-						formId,
-						fieldId: formField.id,
-						before: formField.label + ' : '
-					}]);
-				}
+
+				TEMPLATE.push([ENTRY_VALUE_BLOCK_NAME, {
+					entryId,
+					formId,
+					fieldId: formField.id,
+					before: formField.label + ' : '
+				}]);
+
 			});
 		}
 
-		if (1===1) {
-			inlineElements.push(
-				<InnerBlocks
-					key={0}
-					allowedBlocks={allowedBlocks}
-					template={template}
-				/>
-			);
-		}
 	} else {
 		if (formId) {
 			inlineElements.push(EntryChooser);
@@ -113,8 +117,13 @@ const Edit = ({
 		}
 	}
 
-	//inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
-	inlineElements.push( createElement('div', {} ,'1') );
+	inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
+	const innerBlocks = <InnerBlocks
+		className={className}
+		template={ TEMPLATE }
+		allowed={ALLOWED_BLOCKS}
+	/>;
+	inlineElements.push( innerBlocks );
 	return createElement('div', {className}, inlineElements);
 };
 

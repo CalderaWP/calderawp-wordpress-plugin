@@ -7,6 +7,7 @@ import {
 } from '../../block-factory';
 import {createElement, Fragment} from '@wordpress/element';
 import {dispatch, select} from '@wordpress/data';
+import {InspectorControls} from '@wordpress/editor';
 import DisplayWithState from './DisplayWithState';
 import createBlockName from "../../block-factory/createBlockName";
 
@@ -39,16 +40,21 @@ const Edit = ({
 	set = setAttributes;
 	let entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {}
 	let form = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getForm(formId) : {};
-	const t = setTimeout(() => {
-		clearTimeout(t);
-		let _after = 'string' === typeof after ? after + ' ' : ' ';
-		dispatch( 'core/editor' ).updateBlockAttributes( clientId, {
-			...attributes,
-			after: _after
+	if (!set) {
+		set = true;
+
+		const t = setTimeout(() => {
+			clearTimeout(t);
+			let _after = 'string' === typeof after ? after + ' ' : ' ';
+			dispatch('core/editor').updateBlockAttributes(clientId, {
+				...attributes,
+				after: _after
+			});
+
+
 		});
 
-
-	});
+	}
 	if (!isSelected) {
 		if (formId && entryId && fieldId) {
 			const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
@@ -146,7 +152,7 @@ const Edit = ({
 		)
 	}
 
-	//inlineElements.push(InspectorControls, {},inspectorControlsElements);
+	inlineElements.push(createElement(InspectorControls, {},inspectorControlsElements));
 	return createElement('div', {className}, inlineElements);
 
 
