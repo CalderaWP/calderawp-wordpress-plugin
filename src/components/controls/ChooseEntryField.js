@@ -7,6 +7,13 @@ import type {EntryFieldChooserProps} from "../Entry/types";
 import classNames from "classnames";
 
 
+export function getFormFieldsOfForm(form:FormType) {
+	return  {
+		...form.field_details.entry_list,
+		...form.field_details.order
+	};
+}
+
 export const ChooseEntryField = (props: EntryFieldChooserProps) => {
 	const {
 		hideLabel,
@@ -16,10 +23,7 @@ export const ChooseEntryField = (props: EntryFieldChooserProps) => {
 		onSetField,
 		entryFieldId
 	} = props;
-	const formFields = {
-		...form.field_details.entry_list,
-		...form.field_details.order
-	};
+	const formFields = getFormFieldsOfForm(form);
 	const className = 'caldera-forms-entry-field-chooser';
 	const id = className + '-' + instanceId;
 

@@ -30,7 +30,7 @@ export type EntryFieldChooserProps = {
 	instanceId: string,
 	entries:EntriesCollection,
 	entryFieldId: string,
-	showLabel?:boolean
+	hideLabel?:boolean
 };
 
 export type EditBeforeProps ={

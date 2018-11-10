@@ -7,6 +7,7 @@ import {state,store} from '@caldera-labs/state';
 import * as cfApi from "@caldera-labs/api-client";
 import {formsAdminApiClient} from "../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";
 import {SET_FORM,SET_FORMS} from "../../wp-content/plugins/caldera-forms/clients/state/actions/form";
+import {getFormFieldsOfForm} from "../components/controls/ChooseEntryField";
 
 const {actions,selectors,reducers} = store;
 const {setForms,setForm} = actions;
@@ -38,6 +39,17 @@ const initialState =
 		...e,
 		forms,
 	};
+
+function findForm(state, formId) {
+	let form = {};
+	const {forms} = state;
+	const index = forms.findIndex(form => formId === form.ID);
+	if (index > -1) {
+		form = forms[index];
+	}
+	return form;
+}
+
 export function entryStoreFactory( slug,resolvers = {} ){
 	return registerStore(slug,{
 		reducer( state = {forms}, action ){
@@ -71,6 +83,9 @@ export function entryStoreFactory( slug,resolvers = {} ){
 			setEntries: (formId, pageNumber, entries) => actions.setEntries(formId, pageNumber, entries)
 		},
 		selectors : {
+			getFormFieldsForEntry(state,formId){
+				return getFormFieldsOfForm(findForm(state, formId));
+			},
 			getEntries(state,formId,pageNumber){
 				if (state.hasOwnProperty(formId) && state[formId].hasOwnProperty(pageNumber)) {
 					return state[formId][pageNumber];
@@ -81,12 +96,7 @@ export function entryStoreFactory( slug,resolvers = {} ){
 				return state.forms;
 			},
 			getForm(state,formId){
-				const {forms} = state;
-				const index = forms.findIndex( form => formId === form.ID);
-				if( index > -1 ){
-					return forms[index];
-				}
-				return [];
+				return findForm(state, formId);
 			}
 		},
 		resolvers
@@ -97,7 +107,6 @@ export const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG, {
 	getEntries(state,formId,pageNumber = 1){
 		getEntries(formId,pageNumber).then(r => r.json() )
 			.then( r => {
-				console.log(r);
 				dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId,pageNumber,r)
 			});
 	},

@@ -21,7 +21,7 @@ export type FormType = {
 	ID:string,
 	fields: FormFieldsCollection,
 	field_details: {
-		entryList: 	FormFieldsCollection,
+		entry_list: 	FormFieldsCollection,
 		order: 	FormFieldsCollection,
 
 	}

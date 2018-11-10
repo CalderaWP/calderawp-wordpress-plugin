@@ -7,15 +7,23 @@ import {
 	blocks,
 	nameSpace
 } from '../../block-factory';
-import {InspectorControls} from '@wordpress/editor';
-import {ChooseEntryWithSelect,ChooseEntryFieldWithSelect,FormChooserForEntriesWithSelect} from "../entryControlsWithState";
+import {InspectorControls, InnerBlocks} from '@wordpress/editor';
+import {select} from '@wordpress/data';
+import {
+	ChooseEntryWithSelect,
+	ChooseEntryFieldWithSelect,
+	FormChooserForEntriesWithSelect
+} from "../entryControlsWithState";
+import {entryStore, CALDERA_FORMS_ENTRIES_SLUG} from "../entryStore";
+import {ENTRY_VALUE_BLOCK_NAME} from "../entryValue";
 
-import {InnerBlocks} from '@wordpress/editor';
-import EntryListControls from "../../components/Entry/Edit/EntryListControls";
-import {ChooseForm} from "../../components/controls/ChooseForm";
-import {ChooseEntry} from "../../components/controls/ChooseEntry";
 
-let allowedBlocks = ['core/image', 'core/paragraph'];
+let allowedBlocks = [
+	'core/image',
+	'core/paragraph',
+	ENTRY_VALUE_BLOCK_NAME
+];
+
 
 const Edit = ({
 				  attributes,
@@ -36,8 +44,6 @@ const Edit = ({
 		setAttributes({entryId});
 	};
 
-	let forms = CF_ADMIN ? CF_ADMIN.forms : {};
-	forms = Object.values(forms);
 
 	const inlineElements = [];
 	const inspectorControlsElements = [];
@@ -59,22 +65,40 @@ const Edit = ({
 
 	/>
 
-	if( formId ){
+	if (formId) {
 		inspectorControlsElements.push(EntryChooser);
 	}
 
-	if( !entryId){
+	if (!entryId) {
 		inlineElements.push(EntryChooser);
 	}
 
+
 	if (formId && entryId) {
+		let template = [
+			['core/paragraph', {placeholder: 'Enter side content...'}],
+			['core/paragraph', {placeholder: 'Second Content'}]
+		];
+		const formFields = select(CALDERA_FORMS_ENTRIES_SLUG).getFormFieldsForEntry(formId);
+		if ('object' === typeof formFields) {
+			Object.values(formFields).forEach(formField => {
+				template.push([ENTRY_VALUE_BLOCK_NAME, {
+					entryId,
+					formId,
+					fieldId: formField.id,
+					before: formField.label + ' : '
+				}]);
+			});
+		}
+
 		inlineElements.push(
 			<InnerBlocks
 				key={0}
 				allowedBlocks={allowedBlocks}
+				template={template}
 			/>
 		);
-	}else{
+	} else {
 		inlineElements.push(FormChooser);
 	}
 
