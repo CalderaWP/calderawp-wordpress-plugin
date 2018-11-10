@@ -94,7 +94,7 @@ this[undefined] =
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/layout/index.js?");
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: ENOENT: no such file or directory, open '/Users/josh/caldera-dev/caldera-wordpress-plugin/src/blocks/layout/index.js'\");\n\n//# sourceURL=webpack://calderaFormsWordPressPlugin.%5Bname%5D/./src/blocks/layout/index.js?");
 
 /***/ })
 

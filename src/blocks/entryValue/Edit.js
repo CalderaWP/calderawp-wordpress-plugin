@@ -11,6 +11,8 @@ import {findFormById} from "../../components/Entry/findFormById";
 import {InspectorControls} from '@wordpress/editor';
 import Controls from "../../components/Entry/Edit/Controls";
 import {getFieldFromCollection} from "../../components/EntryViewer/EntryHeaders";
+import {state} from '@caldera-labs/state';
+const {CALDERA_FORMS_ENTRIES_SLUG} = state;
 
 import * as cfApi from "@caldera-labs/api-client";
 import {formsAdminApiClient} from "../../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";

@@ -61,7 +61,7 @@ const Edit = ({
 
 	elements.push(createElement(InspectorControls, {}, controls));
 
-	return createElement('div', {classname}, elements);
+	return createElement('div', {className}, elements);
 };
 
 const Save = () => {
