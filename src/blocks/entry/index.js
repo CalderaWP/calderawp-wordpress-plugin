@@ -8,9 +8,12 @@ import {
 	nameSpace
 } from '../../block-factory';
 import {InspectorControls} from '@wordpress/editor';
+import {ChooseEntryWithSelect,ChooseEntryFieldWithSelect,FormChooserForEntriesWithSelect} from "../entryControlsWithState";
 
 import {InnerBlocks} from '@wordpress/editor';
 import EntryListControls from "../../components/Entry/Edit/EntryListControls";
+import {ChooseForm} from "../../components/controls/ChooseForm";
+import {ChooseEntry} from "../../components/controls/ChooseEntry";
 
 let allowedBlocks = ['core/image', 'core/paragraph'];
 
@@ -36,32 +39,48 @@ const Edit = ({
 	let forms = CF_ADMIN ? CF_ADMIN.forms : {};
 	forms = Object.values(forms);
 
-	const editProps = {
-		entryId: entryId,
-		entries: {},
-		onSetEntry: setEntryId,
-		formId: formId,
-		forms: forms,
-		form: {},
-		onSetForm: setFormId,
-		instanceId: id,
-	};
+	const inlineElements = [];
+	const inspectorControlsElements = [];
 
-	const elements = [];
-	const controls = createElement(EntryListControls, editProps);
+	const FormChooser = <FormChooserForEntriesWithSelect
+		currentFormId={formId}
+		onSetForm={setFormId}
+		instanceId={id}
+		key={1}
+	/>;
+	inspectorControlsElements.push(FormChooser);
+
+	const EntryChooser = <ChooseEntryWithSelect
+		currentEntry={entryId}
+		onSetEntry={setEntryId}
+		instanceId={id}
+		currentFormId={formId}
+		key={2}
+
+	/>
+
+	if( formId ){
+		inspectorControlsElements.push(EntryChooser);
+	}
+
+	if( !entryId){
+		inlineElements.push(EntryChooser);
+	}
+
 	if (formId && entryId) {
-		elements.push(
+		inlineElements.push(
 			<InnerBlocks
+				key={0}
 				allowedBlocks={allowedBlocks}
 			/>
 		);
-	} else {
-		elements.push(controls);
+	}else{
+		inlineElements.push(FormChooser);
 	}
 
-	elements.push(createElement(InspectorControls, {}, controls));
+	inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
 
-	return createElement('div', {className}, elements);
+	return createElement('div', {className}, inlineElements);
 };
 
 const Save = () => {

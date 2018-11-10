@@ -4,25 +4,6 @@
   "blocks":
     [
       {
-        "title" : "Layout",
-        "slug": "layout",
-        "category": "common",
-        "wpDependencies": [
-          "editor",
-          "components"
-        ],
-        "attributes" :{
-          "name": {
-            "type": "string",
-            "default": "Roy"
-          },
-          "salutation": {
-            "type": "string",
-            "default": "Hi"
-          }
-        }
-      },
-      {
         "title": "Entry",
         "slug": "entry",
         "icon": "editor-justify",

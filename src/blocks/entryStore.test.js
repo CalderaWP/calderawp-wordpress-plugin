@@ -1,7 +1,7 @@
-import {CALDERA_FORMS_ENTRIES_SLUG,entryStore} from  './entryStore';
+import {CALDERA_FORMS_ENTRIES_SLUG,entryStoreFactory} from  './entryStore';
 import {dispatch,select} from  '@wordpress/data';
+const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG,{});
 describe( 'Entry selectors', () => {
-
 
 	it( 'Dispatches', () => {
 		const mockFn = jest.fn();
@@ -13,7 +13,7 @@ describe( 'Entry selectors', () => {
 
 	it( 'Dispatches entries update to state', () => {
 		dispatch( CALDERA_FORMS_ENTRIES_SLUG ).setEntries( 'cf1',1,{} );
-		expect(entryStore.getState()).toEqual( { cf1: { '1': {} }, forms: {} });
+		expect(entryStore.getState()).toEqual( { cf1: { '1': {} }, forms: [] });
 	});
 
 	it( 'Dispatches forms update to state', () => {
@@ -68,4 +68,15 @@ describe( 'Entry selectors', () => {
 		expect(selection).toEqual( {1:{a:1} });
 
 	});
+});
+
+describe( 'entryStoreFactory', () => {
+	it( 'Dispatches', () => {
+		const store = entryStoreFactory('FOOD');
+		const mockFn = jest.fn();
+		store.subscribe( mockFn );
+		dispatch( 'FOOD' ).setEntries( 'cf1',1,{} );
+		expect(mockFn.mock.calls.length).toBe(1);
+	});
+
 });
