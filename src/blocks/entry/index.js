@@ -26,11 +26,17 @@ let allowedBlocks = [
 
 
 const Edit = ({
-				  attributes,
-				  setAttributes,
-				  className,
-				  id,
-			  }) => {
+  attributes,
+  setAttributes,
+  className,
+  id,
+  isSelected
+}) => {
+
+	if (!isSelected) {
+		return Display(className);
+	}
+
 	const {
 		formId,
 		entryId
@@ -69,10 +75,6 @@ const Edit = ({
 		inspectorControlsElements.push(EntryChooser);
 	}
 
-	if (!entryId) {
-		inlineElements.push(EntryChooser);
-	}
-
 
 	if (formId && entryId) {
 		let template = [
@@ -99,7 +101,11 @@ const Edit = ({
 			/>
 		);
 	} else {
-		inlineElements.push(FormChooser);
+		if (formId) {
+			inlineElements.push(EntryChooser);
+		} else {
+			inlineElements.push(FormChooser);
+		}
 	}
 
 	inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
@@ -107,13 +113,18 @@ const Edit = ({
 	return createElement('div', {className}, inlineElements);
 };
 
-const Save = () => {
+function Display(className) {
 	return (
-		<div>
+		<div className={className}>
 			<InnerBlocks.Content/>
 		</div>
 	);
 }
+
+const Save = ({className}) => {
+	return Display(className);
+};
+
 registerBlock(
 	createBlockArgs(
 		findBlock('entry', blocks),

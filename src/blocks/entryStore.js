@@ -29,7 +29,6 @@ function getEntries(formId: string, page: number): Promise<any> {
 }
 
 const e = forms.reduce((acc, form) => {
-	console.log(acc,form);
 	acc[form.ID] = {1:{}};
 	return acc;
 }, {});
@@ -90,7 +89,7 @@ export function entryStoreFactory( slug,resolvers = {} ){
 				if (state.hasOwnProperty(formId) && state[formId].hasOwnProperty(pageNumber)) {
 					return state[formId][pageNumber];
 				}
-				return [];
+				return {};
 			},
 			getForms(state){
 				return state.forms;

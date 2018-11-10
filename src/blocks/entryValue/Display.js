@@ -1,17 +1,8 @@
 // @flow
 import React, {Fragment} from 'react';
-import type {GutenbergSaveProps} from "../types";
-import {EntryFieldView,EntryDisplay} from '../../components/Entry/';
-
-import {state} from "@caldera-labs/state";
+import {EntryFieldView} from '../../components/Entry/';
 import type {DisplayProps} from "../../components/Entry/types";
-import {entryApiClient} from "./Edit";
 import Grid from 'react-css-grid'
-
-function getEntry( formId:string,entryId:number): Promise<any>{
-	return entryApiClient.makeRequest( `entries/${formId}/${entryId}`);
-}
-
 
 
 export default function Display(props:DisplayProps) {
@@ -27,15 +18,13 @@ export default function Display(props:DisplayProps) {
 	if( ! formId || ! entryId || ! entryFieldId ){
 		return <Fragment/>
 	}
+
 	let entryField = {};
-	if( entry.hasOwnProperty(entryFieldId) ){
-		//id or datestamp
-		entryField = {value: entry[entryFieldId]};
-	}
-	else if( ! entry.hasOwnProperty('fields') || ! entry.fields.hasOwnProperty(entryFieldId)){
-		return <Fragment/>
-	}else{
+	if( entry.fields.hasOwnProperty(entryFieldId) ){
 		entryField = entry.fields[entryFieldId];
+	}
+	else{
+		return <Fragment/>
 	}
 
 	return(

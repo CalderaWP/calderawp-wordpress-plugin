@@ -252,6 +252,32 @@ describe( 'Inline component', ()  => {
 			)
 		).toMatchSnapshot();
 	} );
+
+
+	it( 'Match snapshot with render prop for ChooseEntryField passed',() => {
+		expect(
+			renderer.create(
+				<Inline
+					entryId={entryId}
+					entries={entries}
+					onSetEntry={mockFn}
+					formId={formId}
+					forms={forms}
+					form={form}
+					onSetForm={mockFn}
+					instanceId={instanceId}
+					onSetField={mockFn}
+					entryFieldId={entryFieldId}
+					before={beforeText}
+					after={afterText}
+					setBefore={mockFn}
+					setAfter={mockFn}
+					ChooseEntryField={<div>Hi Roy</div>}
+
+				/>
+			)
+		).toMatchSnapshot();
+	} );
 });
 describe( 'Controls component', ()  => {
 	const mockFn = jest.fn();

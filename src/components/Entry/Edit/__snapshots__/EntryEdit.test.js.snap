@@ -636,3 +636,42 @@ exports[`Inline component Match snapshot with just forms prop set 1`] = `
   </select>
 </div>
 `;
+
+exports[`Inline component Match snapshot with render prop for ChooseEntryField passed 1`] = `
+Array [
+  <span>
+    <label
+        className="sr-only screen-reader-text"
+        htmlFor="caldera-before-entryValue-edit-54fds"
+    >
+        Text Before Value
+    </label>
+    <input
+        onChange={[Function]}
+        placeholder="Text to show before value"
+        type="text"
+        value="Before"
+    />
+</span>,
+  <span>
+    <div>
+        Hi Roy
+    </div>
+</span>,
+  <span>
+    <label
+        className="sr-only screen-reader-text"
+        htmlFor="caldera-after-entryValue-edit-54fds"
+    >
+        Text After Value
+    </label>
+    <input
+        id="caldera-after-entryValue-edit-54fds"
+        onChange={[Function]}
+        placeholder="Text to show after value"
+        type="text"
+        value="After"
+    />
+</span>,
+]
+`;
