@@ -49,6 +49,12 @@ function findForm(state, formId) {
 	return form;
 }
 
+function findEntryPage(state,formId,pageNumber){
+	if (state.hasOwnProperty(formId) && state[formId].hasOwnProperty(pageNumber)) {
+		return state[formId][pageNumber];
+	}
+	return {};
+}
 export function entryStoreFactory( slug,resolvers = {} ){
 	return registerStore(slug,{
 		reducer( state = {forms}, action ){
@@ -85,11 +91,16 @@ export function entryStoreFactory( slug,resolvers = {} ){
 			getFormFieldsForEntry(state,formId){
 				return getFormFieldsOfForm(findForm(state, formId));
 			},
-			getEntries(state,formId,pageNumber){
-				if (state.hasOwnProperty(formId) && state[formId].hasOwnProperty(pageNumber)) {
-					return state[formId][pageNumber];
+			getEntries(state,formId,pageNumber=1){
+				return findEntryPage(state,formId,pageNumber);
+			},
+			getEntry(state,formId,entryId,pageNumber=1){
+				const page = findEntryPage(state,formId,1);
+				if( page.hasOwnProperty(entryId) ){
+					return page[entryId];
 				}
 				return {};
+
 			},
 			getForms(state){
 				return state.forms;
@@ -106,8 +117,11 @@ export const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG, {
 	getEntries(state,formId,pageNumber = 1){
 		getEntries(formId,pageNumber).then(r => r.json() )
 			.then( r => {
-				dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId,pageNumber,r)
+				if( ! r.code ){
+					dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId,pageNumber,r)
+				}
 			});
 	},
 
 });
+

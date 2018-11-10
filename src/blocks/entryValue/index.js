@@ -5,23 +5,30 @@ import {
 	blocks,
 	nameSpace
 } from '../../block-factory';
-import {createElement} from  '@wordpress/element';
-import {select} from  '@wordpress/data';
-import Display from './Display';
+import {createElement, Fragment} from '@wordpress/element';
+import {dispatch, select} from '@wordpress/data';
+import DisplayWithState from './DisplayWithState';
 import createBlockName from "../../block-factory/createBlockName";
-import {ChooseEntryWithSelect, FormChooserForEntriesWithSelect,ChooseEntryFieldWithSelect} from "../entryControlsWithState";
+
+import {
+	ChooseEntryWithSelect,
+	FormChooserForEntriesWithSelect,
+	ChooseEntryFieldWithSelect
+} from "../entryControlsWithState";
 import {EntryValueInlineEditor} from "../../components/Entry/Edit/Inline";
-import {CALDERA_FORMS_ENTRIES_SLUG} from '../entryStore';
+import {CALDERA_FORMS_ENTRIES_SLUG, entryStore} from '../entryStore';
 import {ChooseEntryField, getFormFieldsOfForm} from "../../components/controls/ChooseEntryField";
 import React from "react";
 import Inline from "../../components/Entry/Edit/Inline";
+
+let set = null;
 const Edit = ({
-	attributes,
-	setAttributes,
-	isSelected,
-	id,
-	className
-}) => {
+				  attributes,
+				  setAttributes,
+				  isSelected,
+				  clientId,
+				  className
+			  }) => {
 	const {
 		fieldId,
 		entryId,
@@ -29,22 +36,31 @@ const Edit = ({
 		before,
 		after
 	} = attributes;
-	const entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId,1) : {};
-	const form = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getForm(formId) : {};
+	set = setAttributes;
+	let entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {}
+	let form = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getForm(formId) : {};
+	const t = setTimeout(() => {
+		clearTimeout(t);
+		let _after = 'string' === typeof after ? after + ' ' : ' ';
+		dispatch( 'core/editor' ).updateBlockAttributes( clientId, {
+			...attributes,
+			after: _after
+		});
 
-	if( ! isSelected){
-		if( formId && entryId  && fieldId ){
+
+	});
+	if (!isSelected) {
+		if (formId && entryId && fieldId) {
 			const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
 			if (entry) {
-				return Display({
-					entryFieldId: fieldId,
-					entryId,
-					formId,
-					before,
-					after,
-					entry,
-					entries
-				});
+				return createElement(DisplayWithState, {
+						entryFieldId: fieldId,
+						entryId,
+						formId,
+						before,
+						after,
+					}
+				);
 			}
 		}
 		return <div> :) </div>
@@ -55,9 +71,9 @@ const Edit = ({
 	const setEntryId = (entryId) => setAttributes({entryId});
 	const setFieldId = (fieldId) => {
 		const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
-		if( entry && form.hasOwnProperty('fields')  ){
+		if (entry && form.hasOwnProperty('fields')) {
 			const fields = getFormFieldsOfForm(form);
-			if( 'object' === typeof fields && fields.hasOwnProperty(fieldId) ){
+			if ('object' === typeof fields && fields.hasOwnProperty(fieldId)) {
 				setAttributes({before: fields[fieldId].label + ' : '});
 
 			}
@@ -75,7 +91,7 @@ const Edit = ({
 	const FormChooser = <FormChooserForEntriesWithSelect
 		currentFormId={formId}
 		onSetForm={setFormId}
-		instanceId={id}
+		instanceId={clientId}
 		key={1}
 	/>;
 	inspectorControlsElements.push(FormChooser);
@@ -84,22 +100,22 @@ const Edit = ({
 	const EntryChooser = <ChooseEntryWithSelect
 		currentEntry={entryId}
 		onSetEntry={setEntryId}
-		instanceId={id}
+		instanceId={clientId}
 		currentFormId={formId}
 		key={2}
 
 	/>
 
-	if( formId ){
+	if (formId) {
 		inspectorControlsElements.push(EntryChooser);
 	}
 
-	const ChooseEntryField = function(hideLabel){
+	const ChooseEntryField = function (hideLabel) {
 		return <ChooseEntryFieldWithSelect
 			currentEntry={entryId}
 			form={form}
 			onSetField={setFieldId}
-			instanceId={id}
+			instanceId={clientId}
 			entries={entries}
 			entryFieldId={fieldId}
 			hideLabel={hideLabel}
@@ -107,36 +123,37 @@ const Edit = ({
 		/>
 	};
 
-	if( entryId ){
-		inspectorControlsElements.push( ChooseEntryField(false) );
+	if (entryId) {
+		inspectorControlsElements.push(ChooseEntryField(false));
 	}
-	if( ! formId ){
+	if (!formId) {
 		inlineElements.push(FormChooser);
-	}else if( ! entryId ){
+	} else if (!entryId) {
 		inlineElements.push(EntryChooser)
-	}else if( ! fieldId ){
+	} else if (!fieldId) {
 		inlineElements.push(ChooseEntryField(false))
-	}else{
+	} else {
 		inlineElements.push(
 			<EntryValueInlineEditor
-				instanceId={id}
+				instanceId={clientId}
 				before={before}
 				after={after}
 				setBefore={setBefore}
 				setAfter={setAfter}
-				getChooseEntryField={() => ChooseEntryField(true) }
+				getChooseEntryField={() => ChooseEntryField(true)}
 
 			/>
 		)
 	}
 
 	//inlineElements.push(InspectorControls, {},inspectorControlsElements);
-	return createElement('div',{className}, inlineElements );
-
+	return createElement('div', {className}, inlineElements);
 
 
 };
-const Save = () => {return null;};
+const Save = () => {
+	return null;
+};
 
 
 const blockArgs = createBlockArgs(
@@ -146,11 +163,13 @@ const blockArgs = createBlockArgs(
 	Save
 );
 
-export const ENTRY_VALUE_BLOCK_NAME = createBlockName(nameSpace,blockArgs.slug);
+export const ENTRY_VALUE_BLOCK_NAME = createBlockName(nameSpace, blockArgs.slug);
 let registered = false;
 if (!registered) {
 	registerBlock(
 		blockArgs, nameSpace
 	);
 	registered = true;
+
+
 }

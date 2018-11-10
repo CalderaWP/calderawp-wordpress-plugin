@@ -45,7 +45,7 @@ export function EntryValueInlineEditor(props: InlineEditorForEntryValue) {
 					/>
 				</span>
 
-			<span>
+				<span>
 					{getChooseEntryField()}
 				</span>
 

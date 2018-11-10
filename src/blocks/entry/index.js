@@ -7,6 +7,7 @@ import {
 	blocks,
 	nameSpace
 } from '../../block-factory';
+import React from 'react';
 import {InspectorControls, InnerBlocks} from '@wordpress/editor';
 import {select} from '@wordpress/data';
 import {
@@ -84,22 +85,26 @@ const Edit = ({
 		const formFields = select(CALDERA_FORMS_ENTRIES_SLUG).getFormFieldsForEntry(formId);
 		if ('object' === typeof formFields) {
 			Object.values(formFields).forEach(formField => {
-				template.push([ENTRY_VALUE_BLOCK_NAME, {
-					entryId,
-					formId,
-					fieldId: formField.id,
-					before: formField.label + ' : '
-				}]);
+				if (1 === 9 ) {
+					template.push([ENTRY_VALUE_BLOCK_NAME, {
+						entryId,
+						formId,
+						fieldId: formField.id,
+						before: formField.label + ' : '
+					}]);
+				}
 			});
 		}
 
-		inlineElements.push(
-			<InnerBlocks
-				key={0}
-				allowedBlocks={allowedBlocks}
-				template={template}
-			/>
-		);
+		if (1===1) {
+			inlineElements.push(
+				<InnerBlocks
+					key={0}
+					allowedBlocks={allowedBlocks}
+					template={template}
+				/>
+			);
+		}
 	} else {
 		if (formId) {
 			inlineElements.push(EntryChooser);
@@ -108,14 +113,15 @@ const Edit = ({
 		}
 	}
 
-	inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
-
+	//inlineElements.push(createElement(InspectorControls, {}, inspectorControlsElements));
+	inlineElements.push( createElement('div', {} ,'1') );
 	return createElement('div', {className}, inlineElements);
 };
 
 function Display(className) {
 	return (
 		<div className={className}>
+			<p>11</p>
 			<InnerBlocks.Content/>
 		</div>
 	);

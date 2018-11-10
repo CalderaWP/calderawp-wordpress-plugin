@@ -4,7 +4,7 @@
   "blocks":
     [
       {
-        "title": "Entry",
+        "title": "Caldera Forms Entry",
         "slug": "entry",
         "icon": "editor-justify",
         "category": "common",
@@ -24,7 +24,7 @@
         }
       },
       {
-        "title": "Entry Field",
+        "title": "Caldera Forms Entry Field",
         "slug": "entryValue",
         "category": "common",
         "wpDependencies": [

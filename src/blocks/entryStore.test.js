@@ -70,6 +70,17 @@ describe('Entry selectors', () => {
 
 	});
 
+	it('Selects an entry', () => {
+		const {setEntries} = select(CALDERA_FORMS_ENTRIES_SLUG);
+		const mockFn = jest.fn();
+		const e2 = {a:2, b:4};
+		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries('cf1', 1, {1: {a: 1}, 2: e2, 3:{a:11, b:4}});
+
+		const selection = select(CALDERA_FORMS_ENTRIES_SLUG).getEntry('cf1', 2,1);
+		expect(selection).toEqual(e2);
+
+	});
+
 	it('selector getFormFieldsForEntry', () => {
 		const fld1 = {
 			id: 'fld1'
