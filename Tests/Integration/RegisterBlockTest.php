@@ -12,7 +12,7 @@ class RegisterBlockTest extends IntegrationTestCase
         $dir = '/var/www/html/wp-content/plugins/caldera-wordpress-plugin';
         $url = 'http://localhost:8218/wp-content/plugins/caldera-wordpress-plugin';
         $blockType = $this->blockTypeFactory();
-        $slug = 'hello';
+        $slug = 'entry';
         $namespace = 'salad';
         $blockType->setSlug($slug);
         $register = new RegisterBlock(

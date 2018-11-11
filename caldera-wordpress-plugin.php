@@ -24,6 +24,11 @@ add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlug
 
 add_action( 'calderawp/WordPressPlugin/init', function( \calderawp\WordPressPlugin\Container $container){
     add_action( 'init', function() use($container) {
+    	$blocks = $container->getBlockCollection()
+			->getBlocks();
+
+		$container->getBlockCollection()
+			->setBlocks($blocks);
         $container->registerBlocks();
     });
 }, 3 );

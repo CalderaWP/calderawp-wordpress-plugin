@@ -23,7 +23,27 @@ class BlockType extends BlockRelated
     /** @var Attribute[] */
     protected $attributes;
 
+    /** @var callable */
+    protected $renderCallback;
 
+	/**
+	 * @return callable|null
+	 */
+	public function getRenderCallback()
+	{
+		return is_callable($this->renderCallback)? $this->renderCallback : null;
+	}
+
+	/**
+	 * @param mixed $renderCallback
+	 *
+	 * @return BlockType
+	 */
+	public function setRenderCallback(callable $renderCallback)
+	{
+		$this->renderCallback = $renderCallback;
+		return $this;
+	}
 
 
     /**

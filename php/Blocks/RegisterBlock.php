@@ -79,11 +79,14 @@ class RegisterBlock
         }
 
 
-
-        register_block_type($this->blockName(), array(
-            'editor_script' => $this->handle(false),
-            //'style' => $this->handle(true),
-        ));
+		$args = [
+			'editor_script' => $this->handle(false),
+			//'style' => $this->handle(true),
+		];
+        if( ! is_null( $this->blockType->getRenderCallback() ) ){
+        	$args[ 'render_callback' ]=  $this->blockType->getRenderCallback();
+		}
+        register_block_type($this->blockName(), $args );
 
         if (!\WP_Block_Type_Registry::get_instance()->is_registered($this->blockName())) {
             throw new Exception(sprintf('Can not register block %s', $this->blockName()));

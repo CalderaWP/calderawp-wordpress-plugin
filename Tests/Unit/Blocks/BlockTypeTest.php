@@ -95,7 +95,47 @@ class BlockTypeTest extends TestCase
         );
     }
 
-    /**
+	/**
+	 *
+	 * @covers \calderawp\WordPressPlugin\Blocks\BlockType::setRenderCallback()
+	 * @covers \calderawp\WordPressPlugin\Blocks\BlockType::$renderCallback
+	 */
+	public function testSetRenderCallback()
+	{
+		$r = function(){};
+		$blockType = new BlockType();
+
+		$blockType
+			->setRenderCallback($r);
+
+		$this->assertAttributeEquals(
+			$r,
+			'renderCallback',
+			$blockType
+		);
+	}
+
+	/**
+	 *
+	 * @covers \calderawp\WordPressPlugin\Blocks\BlockType::setRenderCallback()
+	 * @covers \calderawp\WordPressPlugin\Blocks\BlockType::getRenderCallback()
+	 * @covers \calderawp\WordPressPlugin\Blocks\BlockType::$renderCallback
+	 */
+	public function testGetRenderCallback()
+	{
+		$r = function(){};
+		$blockType = new BlockType();
+
+		$blockType
+			->setRenderCallback($r);
+
+		$this->assertEquals(
+			$r,
+			$blockType->getRenderCallback()
+		);
+	}
+
+	/**
      *
      * @covers \calderawp\WordPressPlugin\Blocks\BlockType::getAttributes()
      * @covers \calderawp\WordPressPlugin\Blocks\BlockType::setAttributes()
