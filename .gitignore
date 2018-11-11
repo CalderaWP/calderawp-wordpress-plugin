@@ -25,5 +25,6 @@ yarn-error.log*
 /qualpay-client/pg/vendor
 /qualpay-client/platform/vendor
 
-/wp-content
+wp-content/*
 /wordpress
+!wp-content/themes/theme
