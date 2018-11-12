@@ -6,7 +6,6 @@ import {
 	registerStore,
 	dispatch,
 	select,
-
 } from  '@wordpress/data';
 
 import {
@@ -20,7 +19,6 @@ import {
 	SET_FORMS
 } from "../../wp-content/plugins/caldera-forms/clients/state/actions/form";
 import {getFormFieldsOfForm} from "../components/controls/ChooseEntryField";
-
 
 const {
 	actions,
@@ -53,10 +51,12 @@ const e = forms.reduce((acc, form) => {
 	return acc;
 }, {});
 
-const initialState =
+export const initialState =
 	{
 		...e,
 		forms,
+		previewFormId: '',
+		previewEntryId: 0
 	};
 
 function findForm(state, formId) {
@@ -75,9 +75,25 @@ function findEntryPage(state,formId,pageNumber){
 	}
 	return {};
 }
+
+const SET_ENTRY_PREVIEW_FORM_ID = 'CALDERA_FORMS/ENTRIES/PREVIEW/FORM/ID';
+const SET_ENTRY_PREVIEW_ENTRY_ID = 'CALDERA_FORMS/ENTRIES/PREVIEW/ENTRY/ID';
+function setEntryPreviewFormId (formId ){
+	return {
+		type: SET_ENTRY_PREVIEW_FORM_ID,
+		formId
+	}
+}
+
+function setEntryPreviewEntryId( entryId ){
+	return {
+		type: SET_ENTRY_PREVIEW_ENTRY_ID,
+		entryId
+	}
+}
 export function entryStoreFactory( slug,resolvers = {} ){
 	return registerStore(slug,{
-		reducer( state = {forms}, action ){
+		reducer( state = {initialState}, action ){
 			switch( action.type ){
 				case SET_FORM :
 					const forms = [...state.forms];
@@ -96,16 +112,27 @@ export function entryStoreFactory( slug,resolvers = {} ){
 						...state,
 						forms: action.forms
 					};
+				case SET_ENTRY_PREVIEW_ENTRY_ID :
+					return {
+						...state,
+						previewEntryId: action.entryId
+					};
+				case SET_ENTRY_PREVIEW_FORM_ID :
+					return {
+						...state,
+						previewFormId: action.formId
+					};
 				default:
 					return reducers.entriesReducer(state,action);
 
 			}
-			//state = reducers.formsReducer(state,action);
 		},
 		actions: {
 			setForms,
 			setForm,
-			setEntries: (formId, pageNumber, entries) => actions.setEntries(formId, pageNumber, entries)
+			setEntries: (formId, pageNumber, entries) => actions.setEntries(formId, pageNumber, entries),
+			setEntryPreviewFormId,
+			setEntryPreviewEntryId
 		},
 		selectors : {
 			getFormFieldsForEntry(state,formId){
@@ -127,6 +154,12 @@ export function entryStoreFactory( slug,resolvers = {} ){
 			},
 			getForm(state,formId){
 				return findForm(state, formId);
+			},
+			getPreviewEntryId(state){
+				return state.previewEntryId;
+			},
+			getPreviewFormId(state){
+				return state.previewFormId;
 			}
 		},
 		resolvers

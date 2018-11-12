@@ -52,7 +52,7 @@ class RegisterBlock
             return;
         }
         $slug = $this->blockType->getSlug();
-        $index_js = "/src/blocks/$slug/build/index.js";
+        $index_js = "/build/$slug/index.js";
         if (!
             wp_register_script(
                 $this->handle(false),
@@ -65,7 +65,7 @@ class RegisterBlock
         }
 
 
-        $style_css = "/src/blocks/$slug/build/style.css";
+        $style_css = "/build/$slug/style.css";
         if (!
             wp_register_style(
                 $this->handle(true),
@@ -74,7 +74,7 @@ class RegisterBlock
                 //filemtime($this->filePath($style_css))
             )
         ) {
-            throw new Exception(sprintf('Can not register block editor CSS for block %s', $this->blockName()));
+           // throw new Exception(sprintf('Can not register block editor CSS for block %s', $this->blockName()));
 
         }
 

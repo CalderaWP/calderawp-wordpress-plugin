@@ -39,6 +39,7 @@ const Edit = ({
 		formId,
 		entryId
 	} = attributes;
+
 	let TEMPLATE = [
 		[ENTRY_VALUE_BLOCK_NAME, {entryId, formId}],
 	];

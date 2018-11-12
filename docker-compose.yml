@@ -9,7 +9,7 @@ services:
     environment:
       WORDPRESS_DB_PASSWORD: example
       ABSPATH: /usr/src/wordpress/
-      SCRIPT_DEBUG: true
+      SCRIPT_DEBUG: 'TRUE'
     volumes:
       - wordpress:/var/www/html
       - .:/var/www/html/wp-content/plugins/caldera-wordpress-plugin

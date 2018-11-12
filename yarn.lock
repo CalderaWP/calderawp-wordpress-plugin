@@ -1378,6 +1378,16 @@
     "@wordpress/is-shallow-equal" "^1.1.4"
     lodash "^4.17.10"
 
+"@wordpress/compose@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@wordpress/compose/-/compose-2.1.2.tgz#b9044aa590b6ad2a116297d6fcc4bb3122d124bc"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@wordpress/deprecated" "^2.0.3"
+    "@wordpress/element" "^2.1.7"
+    "@wordpress/is-shallow-equal" "^1.1.4"
+    lodash "^4.17.10"
+
 "@wordpress/core-data@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@wordpress/core-data/-/core-data-2.0.1.tgz#224109e098a40e204973a463a19b50bc279dd292"
@@ -1418,6 +1428,13 @@
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@wordpress/hooks" "^2.0.1"
+
+"@wordpress/deprecated@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@wordpress/deprecated/-/deprecated-2.0.3.tgz#f3de9feb12cf990e7bc5335f06da6a35843f55ce"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@wordpress/hooks" "^2.0.3"
 
 "@wordpress/dom-ready@^2.0.1":
   version "2.0.1"
@@ -1483,9 +1500,31 @@
     react "^16.4.1"
     react-dom "^16.4.1"
 
+"@wordpress/element@^2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@wordpress/element/-/element-2.1.7.tgz#f4f7443f09c4ead2d0d53a54d74bda6895cacb55"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@wordpress/escape-html" "^1.0.1"
+    lodash "^4.17.10"
+    react "^16.4.1"
+    react-dom "^16.4.1"
+
+"@wordpress/escape-html@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@wordpress/escape-html/-/escape-html-1.0.1.tgz#01d8fdbd356df8e21895453f9cc8fe628142d57b"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 "@wordpress/hooks@^2.0.0", "@wordpress/hooks@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@wordpress/hooks/-/hooks-2.0.1.tgz#16377629d15825ba822959bf2b510693346f8ac1"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
+"@wordpress/hooks@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@wordpress/hooks/-/hooks-2.0.3.tgz#287767eaa038d6434ce5a4c384ed29f73c4af58c"
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -1569,6 +1608,16 @@
     "@wordpress/i18n" "^3.0.0"
     lodash "^4.17.10"
     rememo "^3.0.0"
+
+"@wordpress/plugins@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@wordpress/plugins/-/plugins-2.0.8.tgz#1857dd54c9ffec3d77d3d976498d7871c8eaf401"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    "@wordpress/compose" "^2.1.2"
+    "@wordpress/element" "^2.1.7"
+    "@wordpress/hooks" "^2.0.3"
+    lodash "^4.17.10"
 
 "@wordpress/redux-routine@^3.0.0":
   version "3.0.0"

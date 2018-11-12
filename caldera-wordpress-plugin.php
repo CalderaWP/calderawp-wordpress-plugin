@@ -99,6 +99,24 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	add_action('init', function () use ($container) {
 
 		$container->registerBlocks();
+		add_action( 'admin_enqueue_scripts', function(){
+			if( LAYOUT_POST_TYPE === get_post_type( ) ){
+				wp_enqueue_script(
+					'layout-sidebar',
+					plugins_url('/build/layout/index.js', __FILE__ ),
+					[
+						'wp-plugins',
+						'wp-plugins',
+						'wp-element',
+						'wp-edit-post',
+						'wp-i18n',
+						'wp-data',
+						'wp-components',
+						'wp-editor'
+					] );
+
+			}
+		});
 		add_filter('allowed_block_types', function ($allowed_block_types, $post) use ($container) {
 			if ( $post->post_type !== LAYOUT_POST_TYPE ) {
 				$allowed_block_types = [

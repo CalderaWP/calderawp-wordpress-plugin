@@ -1,4 +1,4 @@
-import {CALDERA_FORMS_ENTRIES_SLUG, entryStoreFactory} from './entryStore';
+import {CALDERA_FORMS_ENTRIES_SLUG, entryStoreFactory,initalState} from './entryStore';
 import {dispatch, select} from '@wordpress/data';
 
 const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG, {});
@@ -14,7 +14,10 @@ describe('Entry selectors', () => {
 
 	it('Dispatches entries update to state', () => {
 		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries('cf1', 1, {});
-		expect(entryStore.getState()).toEqual({cf1: {'1': {}}, forms: []});
+		expect(entryStore.getState()).toEqual(
+			{"cf1": {"1": {}}, "initialState": {"forms":  [], "previewEntryId": 0, "previewFormId": ""}}
+
+		);
 	});
 
 	it('Dispatches forms update to state', () => {
@@ -112,6 +115,33 @@ describe('Entry selectors', () => {
 			...field_details.entry_list,
 			...field_details.order
 		}).toEqual(fields);
+
+	});
+
+	it( 'updates the preview form Id ', () => {
+		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntryPreviewFormId('cf1');
+		expect( entryStore.getState().previewFormId).toEqual('cf1');
+
+	});
+
+	it( 'updates the preview entry Id ', () => {
+		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntryPreviewEntryId(2);
+		expect( entryStore.getState().previewEntryId).toEqual(2);
+
+	});
+
+	it( 'updates and selects the preview form Id ', () => {
+		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntryPreviewFormId('cf1');
+		const selection = select(CALDERA_FORMS_ENTRIES_SLUG).getPreviewFormId();
+		expect( selection ).toEqual('cf1');
+
+	});
+
+	it( 'updates and selects the preview entry Id ', () => {
+		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntryPreviewEntryId(2);
+		const selection = select(CALDERA_FORMS_ENTRIES_SLUG).getPreviewEntryId();
+		expect( selection ).toEqual(2);
+
 	});
 });
 
