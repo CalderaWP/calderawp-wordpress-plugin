@@ -2,15 +2,35 @@ if( ! global._babelPolyfill ) {
 	require('babel-polyfill');
 }
 
-import {registerStore,dispatch,select} from  '@wordpress/data';
-import {state,store} from '@caldera-labs/state';
+import {
+	registerStore,
+	dispatch,
+	select,
+
+} from  '@wordpress/data';
+
+import {
+	state,
+	store
+} from '@caldera-labs/state';
 import * as cfApi from "@caldera-labs/api-client";
 import {formsAdminApiClient} from "../../wp-content/plugins/caldera-forms/clients/state/api/apiClients";
-import {SET_FORM,SET_FORMS} from "../../wp-content/plugins/caldera-forms/clients/state/actions/form";
+import {
+	SET_FORM,
+	SET_FORMS
+} from "../../wp-content/plugins/caldera-forms/clients/state/actions/form";
 import {getFormFieldsOfForm} from "../components/controls/ChooseEntryField";
 
-const {actions,selectors,reducers} = store;
-const {setForms,setForm} = actions;
+
+const {
+	actions,
+	selectors,
+	reducers
+} = store;
+const {
+	setForms,
+	setForm
+} = actions;
 const API_URL = 'object' === typeof CF_ADMIN ? CF_ADMIN.api.root.replace(/\/$/, "") : 'http://localhost:8218';
 let forms = 'object' === typeof CF_ADMIN ? CF_ADMIN.forms : {};
 forms = Object.values(forms);
