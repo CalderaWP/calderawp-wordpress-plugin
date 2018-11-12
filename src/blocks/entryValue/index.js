@@ -22,7 +22,7 @@ import {ChooseEntryField, getFormFieldsOfForm} from "../../components/controls/C
 import React from "react";
 import Inline from "../../components/Entry/Edit/Inline";
 
-let set = null;
+let set = false;
 const Edit = ({
 				  attributes,
 				  setAttributes,
@@ -37,9 +37,10 @@ const Edit = ({
 		before,
 		after
 	} = attributes;
-	set = setAttributes;
-	let entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {}
+
+	let entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {};
 	let form = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getForm(formId) : {};
+	set = false;
 	if (!set) {
 		set = true;
 
@@ -157,8 +158,29 @@ const Edit = ({
 
 
 };
-const Save = () => {
-	return null;
+const Save = ({attributes}) => {
+	const {
+		formId,
+		entryId,
+		fieldId,
+		className,
+		before,
+		after,
+	} = attributes;
+	const entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {};
+	const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
+	if (entry) {
+		return createElement(DisplayWithState, {
+				entryFieldId: fieldId,
+				entryId,
+				formId,
+				before,
+				after,
+
+			}
+		);
+	}
+
 };
 
 

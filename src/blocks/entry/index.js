@@ -17,13 +17,15 @@ import {
 } from "../entryControlsWithState";
 import {entryStore, CALDERA_FORMS_ENTRIES_SLUG} from "../entryStore";
 import {ENTRY_VALUE_BLOCK_NAME} from "../entryValue";
-
+import {addFilter} from '@wordpress/hooks';
 
 let ALLOWED_BLOCKS = [
 	'core/image',
 	'core/paragraph',
+	'core/columns',
 	ENTRY_VALUE_BLOCK_NAME
 ];
+
 
 
 const Edit = ({
@@ -33,16 +35,12 @@ const Edit = ({
   id,
   isSelected
 }) => {
+	const {
+		formId,
+		entryId
+	} = attributes;
 	let TEMPLATE = [
-		[ 'core/columns', {}, [
-			[ 'core/column', {}, [
-				[ 'core/image' ],
-			] ],
-			[ 'core/column', {}, [
-				[ 'core/paragraph', { placeholder: 'Enter side content...' } ],
-			] ],
-		] ],
-		[ENTRY_VALUE_BLOCK_NAME, {entryId: 1, formId: 'CF5bde22b646ed0', fieldId: 'fld_9970286'}],
+		[ENTRY_VALUE_BLOCK_NAME, {entryId, formId}],
 	];
 
 
@@ -51,13 +49,11 @@ const Edit = ({
 			className={className}
 			template={ TEMPLATE }
 			allowed={ALLOWED_BLOCKS}
+			templateLock={false}
 		/>;
 	}
 
-	const {
-		formId,
-		entryId
-	} = attributes;
+
 
 	const setFormId = (formId) => {
 		setAttributes({formId});
@@ -122,6 +118,8 @@ const Edit = ({
 		className={className}
 		template={ TEMPLATE }
 		allowed={ALLOWED_BLOCKS}
+		templateLock={false}
+
 	/>;
 	inlineElements.push( innerBlocks );
 	return createElement('div', {className}, inlineElements);
@@ -130,7 +128,6 @@ const Edit = ({
 function Display(className) {
 	return (
 		<div className={className}>
-			<p>11</p>
 			<InnerBlocks.Content/>
 		</div>
 	);
