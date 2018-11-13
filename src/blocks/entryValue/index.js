@@ -22,7 +22,6 @@ import {ChooseEntryField, getFormFieldsOfForm} from "../../components/controls/C
 import React from "react";
 import Inline from "../../components/Entry/Edit/Inline";
 
-let set = false;
 const Edit = ({
 				  attributes,
 				  setAttributes,
@@ -40,35 +39,17 @@ const Edit = ({
 
 	let entries = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getEntries(formId, 1)  : {};
 	let form = formId ? select(CALDERA_FORMS_ENTRIES_SLUG).getForm(formId) : {};
-	set = false;
-	if (!set) {
-		set = true;
 
-		const t = setTimeout(() => {
-			clearTimeout(t);
-			let _after = 'string' === typeof after ? after + ' ' : ' ';
-			dispatch('core/editor').updateBlockAttributes(clientId, {
-				...attributes,
-				after: _after
-			});
-
-
-		});
-
-	}
 	if (!isSelected) {
 		if (formId && entryId && fieldId) {
-			const entry = entries.hasOwnProperty(entryId) ? entries[entryId] : null;
-			if (entry) {
-				return createElement(DisplayWithState, {
-						entryFieldId: fieldId,
-						entryId,
-						formId,
-						before,
-						after,
-					}
-				);
-			}
+			return createElement(DisplayWithState, {
+					entryFieldId: fieldId,
+					entryId,
+					formId,
+					before,
+					after,
+				}
+			);
 		}
 		return <div> :) </div>
 	}

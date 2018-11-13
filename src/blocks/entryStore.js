@@ -62,9 +62,11 @@ export const initialState =
 function findForm(state, formId) {
 	let form = {};
 	const {forms} = state;
-	const index = forms.findIndex(form => formId === form.ID);
-	if (index > -1) {
-		form = forms[index];
+	if (forms) {
+		const index = forms.findIndex(form => formId === form.ID);
+		if (index > -1) {
+			form = forms[index];
+		}
 	}
 	return form;
 }
@@ -146,7 +148,9 @@ export function entryStoreFactory( slug,resolvers = {} ){
 				if( page.hasOwnProperty(entryId) ){
 					return page[entryId];
 				}
-				return {};
+				return {
+					fields: {}
+				};
 
 			},
 			getForms(state){
@@ -173,6 +177,8 @@ export const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG, {
 				if( ! r.code ){
 					dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId,pageNumber,r)
 				}
+
+				return r;
 			});
 	},
 
