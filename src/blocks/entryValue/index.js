@@ -42,7 +42,7 @@ const Edit = ({
 
 	if (!isSelected) {
 		if (formId && entryId && fieldId) {
-			return createElement(DisplayWithState, {
+				return createElement(DisplayWithState, {
 					entryFieldId: fieldId,
 					entryId,
 					formId,

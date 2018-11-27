@@ -1,4 +1,4 @@
-if( ! global._babelPolyfill ) {
+if (!global._babelPolyfill) {
 	require('babel-polyfill');
 }
 
@@ -6,7 +6,7 @@ import {
 	registerStore,
 	dispatch,
 	select,
-} from  '@wordpress/data';
+} from '@wordpress/data';
 
 import {
 	state,
@@ -43,11 +43,12 @@ function _getForms(page: number): Promise<any> {
 }
 
 function getEntries(formId: string, page: number): Promise<any> {
+	console.log(formId);
 	return entryApiClient.makeRequest(`entries/${formId}`, {page});
 }
 
 const e = forms.reduce((acc, form) => {
-	acc[form.ID] = {1:{}};
+	acc[form.ID] = {1: {}};
 	return acc;
 }, {});
 
@@ -71,7 +72,7 @@ function findForm(state, formId) {
 	return form;
 }
 
-function findEntryPage(state,formId,pageNumber){
+function findEntryPage(state, formId, pageNumber) {
 	if (state.hasOwnProperty(formId) && state[formId].hasOwnProperty(pageNumber)) {
 		return state[formId][pageNumber];
 	}
@@ -80,29 +81,31 @@ function findEntryPage(state,formId,pageNumber){
 
 const SET_ENTRY_PREVIEW_FORM_ID = 'CALDERA_FORMS/ENTRIES/PREVIEW/FORM/ID';
 const SET_ENTRY_PREVIEW_ENTRY_ID = 'CALDERA_FORMS/ENTRIES/PREVIEW/ENTRY/ID';
-function setEntryPreviewFormId (formId ){
+
+function setEntryPreviewFormId(formId) {
 	return {
 		type: SET_ENTRY_PREVIEW_FORM_ID,
 		formId
 	}
 }
 
-function setEntryPreviewEntryId( entryId ){
+function setEntryPreviewEntryId(entryId) {
 	return {
 		type: SET_ENTRY_PREVIEW_ENTRY_ID,
 		entryId
 	}
 }
-export function entryStoreFactory( slug,resolvers = {} ){
-	return registerStore(slug,{
-		reducer( state = {initialState}, action ){
-			switch( action.type ){
+
+export function entryStoreFactory(slug, resolvers = {}) {
+	return registerStore(slug, {
+		reducer(state = initialState, action) {
+			switch (action.type) {
 				case SET_FORM :
 					const forms = [...state.forms];
-					const index = forms.findIndex( form => action.form.ID === form.ID);
-					if( index > -1 ){
+					const index = forms.findIndex(form => action.form.ID === form.ID);
+					if (index > -1) {
 						forms[index] = action.form;
-					}else{
+					} else {
 						forms.push(action.forms);
 					}
 					return {
@@ -125,7 +128,7 @@ export function entryStoreFactory( slug,resolvers = {} ){
 						previewFormId: action.formId
 					};
 				default:
-					return reducers.entriesReducer(state,action);
+					return reducers.entriesReducer(state, action);
 
 			}
 		},
@@ -136,16 +139,16 @@ export function entryStoreFactory( slug,resolvers = {} ){
 			setEntryPreviewFormId,
 			setEntryPreviewEntryId
 		},
-		selectors : {
-			getFormFieldsForEntry(state,formId){
+		selectors: {
+			getFormFieldsForEntry(state, formId) {
 				return getFormFieldsOfForm(findForm(state, formId));
 			},
-			getEntries(state,formId,pageNumber=1){
-				return findEntryPage(state,formId,pageNumber);
+			getEntries(state, formId, pageNumber = 1) {
+				return findEntryPage(state, formId, pageNumber);
 			},
-			getEntry(state,formId,entryId,pageNumber=1){
-				const page = findEntryPage(state,formId,1);
-				if( page.hasOwnProperty(entryId) ){
+			getEntry(state, formId, entryId, pageNumber = 1) {
+				const page = findEntryPage(state, formId, 1);
+				if (page.hasOwnProperty(entryId)) {
 					return page[entryId];
 				}
 				return {
@@ -153,34 +156,48 @@ export function entryStoreFactory( slug,resolvers = {} ){
 				};
 
 			},
-			getForms(state){
-				return state.forms;
+			getForms(state) {
+				return state.forms
+					? state.forms
+					: [];
 			},
-			getForm(state,formId){
+			getForm(state, formId) {
 				return findForm(state, formId);
 			},
-			getPreviewEntryId(state){
-				return state.previewEntryId;
+			getPreviewEntryId(state) {
+				return state.previewEntryId
+					? state.previewEntryId
+					: 0;
 			},
-			getPreviewFormId(state){
-				return state.previewFormId;
+			getPreviewFormId(state) {
+				return state.previewFormId
+					? state.previewFormId
+					: '';
 			}
 		},
 		resolvers
 	});
 }
+
 export const {CALDERA_FORMS_ENTRIES_SLUG} = state;
 export const entryStore = entryStoreFactory(CALDERA_FORMS_ENTRIES_SLUG, {
-	getEntries(state,formId,pageNumber = 1){
-		getEntries(formId,pageNumber).then(r => r.json() )
-			.then( r => {
-				if( ! r.code ){
-					dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId,pageNumber,r)
-				}
+	getEntries(state, formId, pageNumber = 1) {
+		if (formId) {
+			getEntries(formId, pageNumber).then(r => r.json())
+				.then(r => {
+					if (!r.code) {
+						dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries(formId, pageNumber, r)
+					}
 
-				return r;
-			});
+					return r;
+				});
+		}
+
 	},
 
 });
+
+if (forms) {
+	dispatch(CALDERA_FORMS_ENTRIES_SLUG).setForms(forms);
+}
 

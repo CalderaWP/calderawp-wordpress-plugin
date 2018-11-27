@@ -95,7 +95,6 @@ const Edit = ({
 		const formFields = select(CALDERA_FORMS_ENTRIES_SLUG).getFormFieldsForEntry(formId);
 		if ('object' === typeof formFields) {
 			Object.values(formFields).forEach(formField => {
-
 				TEMPLATE.push([ENTRY_VALUE_BLOCK_NAME, {
 					entryId,
 					formId,
@@ -122,6 +121,7 @@ const Edit = ({
 		templateLock={false}
 
 	/>;
+
 	inlineElements.push( innerBlocks );
 	return createElement('div', {className}, inlineElements);
 };

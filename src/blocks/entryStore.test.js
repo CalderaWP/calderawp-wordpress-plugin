@@ -15,7 +15,7 @@ describe('Entry selectors', () => {
 	it('Dispatches entries update to state', () => {
 		dispatch(CALDERA_FORMS_ENTRIES_SLUG).setEntries('cf1', 1, {});
 		expect(entryStore.getState()).toEqual(
-			{"cf1": {"1": {}}, "initialState": {"forms":  [], "previewEntryId": 0, "previewFormId": ""}}
+			{"cf1": {"1": {}}, "forms":  [], "previewEntryId": 0, "previewFormId": ""}
 
 		);
 	});

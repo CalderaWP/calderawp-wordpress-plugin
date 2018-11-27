@@ -239,7 +239,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 			];
 
 			$post_type_object->template = array_merge($post_type_object->template, $fieldBlocks);
-			$post_type_object->template_lock = 'all';
+			$post_type_object->template_lock = 'false';
 		}, 25);
 
 	});
