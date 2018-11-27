@@ -9,13 +9,16 @@ import {
 } from '../../block-factory';
 import React from 'react';
 import {InspectorControls, InnerBlocks} from '@wordpress/editor';
-import {select} from '@wordpress/data';
+import {select,dispatch} from '@wordpress/data';
 import {
 	ChooseEntryWithSelect,
 	ChooseEntryFieldWithSelect,
 	FormChooserForEntriesWithSelect
 } from "../entryControlsWithState";
-import {entryStore, CALDERA_FORMS_ENTRIES_SLUG} from "../entryStore";
+import {
+	entryStore,
+	CALDERA_FORMS_ENTRIES_SLUG
+} from "../entryStore";
 import {ENTRY_VALUE_BLOCK_NAME} from "../entryValue";
 import {addFilter} from '@wordpress/hooks';
 
@@ -26,7 +29,13 @@ let ALLOWED_BLOCKS = [
 	ENTRY_VALUE_BLOCK_NAME
 ];
 
+const {
+	getPreviewFormId,
+	getPreviewEntryId,
+} = select( CALDERA_FORMS_ENTRIES_SLUG );
 
+const formId = getPreviewFormId();
+const entryId = getPreviewEntryId();
 
 const Edit = ({
   attributes,
@@ -35,10 +44,12 @@ const Edit = ({
   id,
   isSelected
 }) => {
+
 	const {
 		formId,
 		entryId
 	} = attributes;
+
 
 	let TEMPLATE = [
 		[ENTRY_VALUE_BLOCK_NAME, {entryId, formId}],
@@ -53,8 +64,6 @@ const Edit = ({
 			templateLock={false}
 		/>;
 	}
-
-
 
 	const setFormId = (formId) => {
 		setAttributes({formId});
@@ -93,6 +102,7 @@ const Edit = ({
 
 	if (formId && entryId) {
 		const formFields = select(CALDERA_FORMS_ENTRIES_SLUG).getFormFieldsForEntry(formId);
+		console.log(formFields);
 		if ('object' === typeof formFields) {
 			Object.values(formFields).forEach(formField => {
 				TEMPLATE.push([ENTRY_VALUE_BLOCK_NAME, {

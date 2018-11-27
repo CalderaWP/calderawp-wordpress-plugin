@@ -1,23 +1,31 @@
-import { registerPlugin }  from '@wordpress/plugins';
+import {registerPlugin} from '@wordpress/plugins';
 import {Fragment} from '@wordpress/element';
-import { PluginSidebar,PluginSidebarMoreMenuItem } from "@wordpress/editPost";
+import {PluginSidebar, PluginSidebarMoreMenuItem} from "@wordpress/editPost";
+import {SidebarContentWithState} from "./SidebarContent";
+import {blockDefinitions} from "../../block-factory/blocks";
+
+export const LAYOUT_SIDEBAR_NAME = 'layout-preview-sidebar';
+export const LAYOUT_SIDEBAR_TITLE = 'Layout Preview Settings';
+
 const Component = () => (
 	<Fragment>
 		<PluginSidebarMoreMenuItem
-			target="sidebar-name"
+			target={LAYOUT_SIDEBAR_NAME}
 		>
 			Layout Settings
 		</PluginSidebarMoreMenuItem>
 		<PluginSidebar
-			name="sidebar-name"
-			title="My Sidebar"
+			name={LAYOUT_SIDEBAR_NAME}
+			title={LAYOUT_SIDEBAR_TITLE}
 		>
-			Content of the sidebar
+			<SidebarContentWithState
+				instanceId={LAYOUT_SIDEBAR_NAME}
+			/>
 		</PluginSidebar>
 	</Fragment>
 );
 
-registerPlugin( 'layout-sidebar', {
+registerPlugin(LAYOUT_SIDEBAR_NAME, {
 	icon: 'smiley',
 	render: Component,
-} );
+});

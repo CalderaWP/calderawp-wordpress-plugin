@@ -3,8 +3,8 @@
   "namespace": "caldera-wordpress-plugin",
   "plugins": [
     {
-      "title" : "Layout settings",
-      "slug" : "layout"
+      "title" : "Layout Preview Settings",
+      "slug" : "layout-preview"
     }
   ],
   "blocks":
