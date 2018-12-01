@@ -1,6 +1,6 @@
 // @flow
 import React, {Fragment} from 'react';
-import type {Entry,EntriesCollection} from "../../flow-types/entryTypes";
+import type {Entry} from "../../flow-types/entryTypes";
 import type {EntryChooserProps} from "../Entry/types";
 
 

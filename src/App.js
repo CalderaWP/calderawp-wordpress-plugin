@@ -1,87 +1,145 @@
-// @flow
-
 import React from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+//import { BrowserRouter as Router, Link } from "react-router-dom";
 import * as cfApi from '@caldera-labs/api-client';
 
-import {FakeGutenbergEditorWrap,FakeGutenbergPostTitle} from "./FakeGutenberg";
-// Gutenberg JS Style
-import '@frontkom/gutenberg-js/build/css/block-library/style.css';
-import '@frontkom/gutenberg-js/build/css/components/style.css';
-import '@frontkom/gutenberg-js/build/css/nux/style.css';
-import '@frontkom/gutenberg-js/build/css/editor/style.css';
-import '@frontkom/gutenberg-js/build/css/block-library/theme.css';
-import '@frontkom/gutenberg-js/build/css/block-library/edit-blocks.css';
-import '@frontkom/gutenberg-js/build/css/style.css';
+import {EntryViewer} from "./components/EntryViewer/EntryViewer";
+import {ChooseForm} from "./components/controls/ChooseForm";
+import {ChooseEntry} from "./components/controls/ChooseEntry";
 
-
-import Entries from './Entries';
-type Props = {
-
-}
-
-type State = {
-}
 
 const API_URL = 'http://localhost:8218/wp-json/cf-api/v2';
 //const NONCE = false;
 
-const formsAdminApiClient = new cfApi.WpClient(API_URL );
+const formsAdminApiClient = new cfApi.WpClient(API_URL);
 formsAdminApiClient.setCorsMode(true);
-const entryApiClient =  new cfApi.EntriesClient(API_URL );
+const entryApiClient = new cfApi.EntriesClient(API_URL);
 entryApiClient.setCorsMode(true);
 
-function getForms(page:number) : Promise<any>{
-	return formsAdminApiClient.makeRequest( 'forms', {full:true,page});
+function getForms(page) {
+	return formsAdminApiClient.makeRequest('forms', {full: true, page});
 }
 
-function getEntries(formId:string,page:number) : Promise<any>{
-	return entryApiClient.makeRequest( `entries/${formId}`, {page});
-}
-
-function getEntry( formId:string,entryId:number): Promise<any>{
-	return entryApiClient.makeRequest( `entries/${formId}/${entryId}`);
+function getEntries(formId, page) {
+	return entryApiClient.makeRequest(`entries/${formId}`, {page});
 }
 
 
 
-//const Index = () => <h2>Home</h2>;
 
-class App extends React.Component<Props,State> {
+class App extends React.Component {
+	state = {
+		forms: [],
+		entries: {},
+		currentPage: 1,
+		currentEntryId: '2',
+		currentFormId: 'CF5be77c7b45877'
+	};
+
+	constructor(props){
+		super(props);
+		this.getCurrentEntry = this.getCurrentEntry.bind(this);
+		this.getCurrentForm = this.getCurrentForm.bind(this);
+
+		this.setCurrentForm = this.setCurrentForm.bind(this);
+		this.setCurrentEntry = this.setCurrentEntry.bind(this);
+
+		this.setEntriesViaApi = this.setEntriesViaApi.bind(this);
+		this.setFormsViaApi = this.setFormsViaApi.bind(this);
+	}
+
+	componentDidMount() {
+		this.setFormsViaApi();
+		this.setEntriesViaApi();
 
 
+	}
 
-	render () {
+	setEntriesViaApi(){
+		const {
+			currentFormId,
+			currentPage,
+		} = this.state;
+		getEntries(currentFormId, currentPage)
+			.then(r => r.json())
+			.then(entries => this.setState({entries}))
+	}
 
-	return (
+	setFormsViaApi(){
+		getForms()
+			.then(r => r.json())
+			.then(forms => {
+				if (!Array.isArray(forms)) {
+					forms = Object.values(forms);
+				}
+				this.setState({forms});
+			});
+	}
 
-		<Router>
+	getCurrentEntry(){
+		const {
+			currentEntryId,
+			entries
+		} = this.state;
+		return entries.hasOwnProperty(currentEntryId) ? entries[currentEntryId] : {};
+	};
+
+	getCurrentForm(){
+		const {
+			currentFormId,
+			forms
+		} = this.state;
+		return forms.find( form => currentFormId === form.ID );
+	}
+
+	setCurrentForm(currentFormId){
+		this.setState({currentFormId,currentEntryId: 0});
+		if( '' !== currentFormId ){
+			this.setFormsViaApi();
+			this.setEntriesViaApi();
+		}
+	}
+
+	setCurrentEntry(currentEntryId){
+		this.setState({currentEntryId});
+	}
+
+	render() {
+		const {
+			currentEntryId,
+			currentFormId,
+			entries,
+			forms
+		} = this.state;
+		if( JSON.stringify(entries) === JSON.stringify({}) ){
+			return <div>No Entries</div>
+		}
+		const form = this.getCurrentForm();
+		const currentEntry = this.getCurrentEntry();
+
+		return (
 			<div>
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/entries/">Entries</Link>
-						</li>
-
-					</ul>
-				</nav>
-				<FakeGutenbergEditorWrap>
-					<FakeGutenbergPostTitle title={'Caldera WordPress Plugin'}/>
-					<Entries
-						getEntries={getEntries}
-						getEntry={getEntry}
-						getForms={getForms}
-
+				<div>
+					<ChooseForm
+						forms={forms}
+						currentFormId={currentFormId}
+						onSetForm={this.setCurrentForm}
+						instanceId={'entry-viewer-form-chooser-in-app'}
 					/>
-
-				</FakeGutenbergEditorWrap>
+					<ChooseEntry
+						entries={entries}
+						currentEntry={currentEntry}
+						onSetEntry={this.setCurrentEntry}
+						instanceId={'entry-viewer-entry-chooser-in-app'}
+						form={form}
+					/>
+				</div>
+				<EntryViewer
+					currentEntryId={currentEntryId}
+					entries={entries}
+					getCurrentEntry={this.getCurrentEntry}
+					form={form}
+				/>
 			</div>
-		</Router>
-
-
 		)
 
 	}

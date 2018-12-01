@@ -99,6 +99,9 @@ exports[`Choosing controls Choose form 1`] = `
     onChange={[Function]}
     value="CF5bde22b646ed0"
   >
+    <option>
+       -- 
+    </option>
     <option
       value="CF5bde22a843265"
     >
@@ -126,7 +129,11 @@ exports[`Choosing controls Choose form when there no forms to choose from 1`] = 
     id="caldera-forms-form-chooser-54fds"
     onChange={[Function]}
     value=""
-  />
+  >
+    <option>
+       -- 
+    </option>
+  </select>
 </div>
 `;
 
@@ -144,6 +151,9 @@ exports[`Choosing controls Choose form with no forms selected 1`] = `
     onChange={[Function]}
     value=""
   >
+    <option>
+       -- 
+    </option>
     <option
       value="CF5bde22a843265"
     >
@@ -157,3 +167,5 @@ exports[`Choosing controls Choose form with no forms selected 1`] = `
   </select>
 </div>
 `;
+
+exports[`Update items handler Passes the right data to the callback 1`] = `[Function]`;

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type {FormType,FormsCollection} from "../../flow-types/formType";
+import type {FormType} from "../../flow-types/formType";
 import type {FormChooserProps} from "../Entry/types";
 import classNames from 'classnames';
 export const ChooseForm = (props: FormChooserProps) => {
