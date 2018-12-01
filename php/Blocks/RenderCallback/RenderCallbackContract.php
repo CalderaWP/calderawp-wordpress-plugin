@@ -13,6 +13,6 @@ interface RenderCallbackContract
 	/**
 	 * @return array
 	 */
-	public function getDefaultAtts();
+	public function getAtts();
 
 }

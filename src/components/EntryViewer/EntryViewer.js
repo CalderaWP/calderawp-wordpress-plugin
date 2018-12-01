@@ -1,17 +1,19 @@
 // @flow
 
-import React from 'react';
+import React, {Fragment} from 'react';
 import type {Entry,EntriesCollection} from "../../flow-types/entryTypes";
 import type {FormType} from "../../flow-types/formType";
 import {EntryHeaders} from "./EntryHeaders";
 import {EntryRow} from "./EntryRow";
 import {EntryRows} from "./EntryRows";
+import {EntryActions} from "./components/EntryActions";
+import {SingleEntry} from "./SingleEntry";
 
 type EntryViewerProps = {
 	currentEntryId:number,
 	entries:EntriesCollection,
 	getCurrentEntry:() => Entry,
-	form: FormType
+	form: FormType,
 };
 
 export const EntryViewer = (props: EntryViewerProps) => {
@@ -19,6 +21,7 @@ export const EntryViewer = (props: EntryViewerProps) => {
 	if( JSON.stringify(entries) === JSON.stringify({}) ){
 		return <div>No Entries</div>
 	}
+	
 	return(
 		<table>
 			<thead>
@@ -26,7 +29,14 @@ export const EntryViewer = (props: EntryViewerProps) => {
 			</thead>
 			<tbody>
 				{currentEntryId &&
-					<EntryRow entry={getCurrentEntry()}/>
+					<Fragment>
+
+						<SingleEntry
+							entry={getCurrentEntry()}
+							entryId={currentEntryId}
+							formId={form.ID}
+						/>
+					</Fragment>
 				}
 				{!currentEntryId &&
 					<EntryRows entries={entries} />

@@ -50,6 +50,9 @@ class App extends React.Component {
 	componentDidMount() {
 		this.setFormsViaApi();
 		this.setEntriesViaApi();
+		fetch( '/api/hello')
+			.then(r => r.json())
+			.then(r => console.log(r))
 
 
 	}

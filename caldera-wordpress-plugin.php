@@ -104,6 +104,19 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	}, 99 );
 
 
+	add_filter( \calderawp\WordPressPlugin\Blocks\RenderCallback\EntryValue::DEFULAT_ATTS_FILTER, function($atts){
+		if ( LAYOUT_POST_TYPE === get_post_type() ) {
+			foreach([
+				'entryId',
+				'formId'
+			] as $att){
+				if( ! empty( $_GET[ $att ] ) ){
+					$atts[$att] = sanitize_key($_GET[$att]);
+				}
+			}
+		}
+		return $atts;
+	});
 
 
 	add_action('init', function () use ($container) {
