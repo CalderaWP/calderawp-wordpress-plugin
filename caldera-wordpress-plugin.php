@@ -64,7 +64,7 @@ add_action('init', function () {
 		'show_ui' => TRUE,
 		'show_in_menu' => TRUE,
 		'query_var' => TRUE,
-		'rewrite' => [ 'slug' => 'Layout' ],
+		'rewrite' => [ 'slug' => 'layout' ],
 		'capability_type' => 'post',
 		'has_archive' => TRUE,
 		'hierarchical' => FALSE,
@@ -93,6 +93,16 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		}
 		return $show;
 	});
+
+	add_filter( 'template_include', function ( $template ) {
+
+		if ( LAYOUT_POST_TYPE === get_post_type() ) {
+			return __DIR__ . '/layout-view.php';
+		}
+
+		return $template;
+	}, 99 );
+
 
 
 

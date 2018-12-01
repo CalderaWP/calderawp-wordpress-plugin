@@ -9,15 +9,10 @@ class EntryValue implements RenderCallbackContract
 
 	protected  $args;
 
+	const DEFULAT_ATTS_FILTER = 'calderawp/WordPressPlugin/Blocks/RenderCallback/EntryValue/defaultAtts';
 	protected  function parseArgs($atts)
 	{
-		$this->args = array_merge([
-			'entryId' => 0,
-			'fieldId' => '',
-			'formId' => '',
-			'before' => '',
-			'after' => ''
-		], $atts);
+		$this->args = array_merge($this->getDefaultAtts(), $atts);
 	}
 
 	protected  function entryId()
@@ -44,6 +39,16 @@ class EntryValue implements RenderCallbackContract
 		return '<li>' . $this->args[ 'before' ];
 	}
 
+	public function getDefaultAtts()
+	{
+		return apply_filters( self::DEFULAT_ATTS_FILTER, [
+			'entryId' => 0,
+			'fieldId' => '',
+			'formId' => '',
+			'before' => '',
+			'after' => ''
+		]);
+	}
 
 	public function render(array $atts)
 	{
@@ -60,4 +65,5 @@ class EntryValue implements RenderCallbackContract
 		}
 
 	}
+
 }
