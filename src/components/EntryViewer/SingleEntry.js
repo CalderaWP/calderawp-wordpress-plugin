@@ -11,6 +11,8 @@ import {
 export class SingleEntry extends Component {
 	state = {
 		modalOpen: false,
+		sendPending: false,
+		message: ''
 
 	}
 
@@ -19,6 +21,7 @@ export class SingleEntry extends Component {
 		this.setClosed = this.setClosed.bind(this);
 		this.setOpened = this.setOpened.bind(this);
 		this.handleDownload = this.handleDownload.bind(this);
+		this.handleResend = this.handleResend.bind(this);
 	}
 
 	setClosed() {
@@ -27,6 +30,25 @@ export class SingleEntry extends Component {
 
 	setOpened() {
 		this.setState({modalOpen: true});
+	}
+
+	handleResend() {
+		this.setState({sendPending: true, message: ''});
+		fetch('/api/send')
+			.then(r => r.json())
+			.then(r => {
+				if (r.sent) {
+					this.setState({sendPending: false, message: r.message});
+				}
+
+				setTimeout(() => {
+					this.setState({message: ''});
+				}, 2000);
+			})
+			.catch(e => {
+				this.setState({sendPending: false, message: e.message});
+
+			})
 	}
 
 	handleDownload() {
@@ -39,9 +61,12 @@ export class SingleEntry extends Component {
 		window.open(url);
 	}
 
+
 	render() {
 		const {
-			modalOpen
+			modalOpen,
+			sendPending,
+			message
 		} = this.state;
 		const {
 			formId,
@@ -58,7 +83,19 @@ export class SingleEntry extends Component {
 					formId={formId}
 					onView={this.setOpened}
 					onDownload={this.handleDownload}
+					onResend={this.handleResend}
 				/>
+				{
+					sendPending &&
+					<span>Spinner</span>
+
+				}
+
+				{
+					message &&
+					<span>{message}</span>
+
+				}
 
 				<ReactModal
 
