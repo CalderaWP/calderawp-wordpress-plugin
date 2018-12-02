@@ -1,29 +1,45 @@
-import React, {Component,Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import ReactModal from "react-modal";
 import {EntryRow} from "./EntryRow";
 import {EntryActions} from "./components/EntryActions";
 import {EntryEmail} from "./components/EntryEmail";
+import {
+	entryViewUrl,
+	entryViewQueryString
+} from "./components/entryViewUrl";
+
 export class SingleEntry extends Component {
 	state = {
-		modalOpen:false,
+		modalOpen: false,
 
 	}
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.setClosed = this.setClosed.bind(this);
 		this.setOpened = this.setOpened.bind(this);
+		this.handleDownload = this.handleDownload.bind(this);
 	}
 
-	setClosed(){
-		this.setState({modalOpen:false})
+	setClosed() {
+		this.setState({modalOpen: false})
 	}
 
-	setOpened(){
-		this.setState({modalOpen:true});
+	setOpened() {
+		this.setState({modalOpen: true});
 	}
 
-	render(){
+	handleDownload() {
+		const {
+			formId,
+			entryId,
+		} = this.props;
+		const url = 'http://localhost:5000/pdf' + entryViewQueryString(entryId, formId);
+		window.open(url, '_blank');
+		window.open(url);
+	}
+
+	render() {
 		const {
 			modalOpen
 		} = this.state;
@@ -41,18 +57,21 @@ export class SingleEntry extends Component {
 					entryId={entryId}
 					formId={formId}
 					onView={this.setOpened}
+					onDownload={this.handleDownload}
 				/>
 
 				<ReactModal
 
 					isOpen={modalOpen}
 
-					onAfterOpen={() => {}}
-					onRequestClose={() => {}}
+					onAfterOpen={() => {
+					}}
+					onRequestClose={() => {
+					}}
 
 					closeTimeoutMS={0}
 
-					style={{ overlay: {}, content: {} }}
+					style={{overlay: {}, content: {}}}
 					/*
 					  String indicating how the content container should be announced to screenreaders
 					*/

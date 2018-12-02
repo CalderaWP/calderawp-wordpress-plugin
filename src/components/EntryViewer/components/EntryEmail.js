@@ -1,5 +1,6 @@
 import Iframe from 'react-iframe'
 import React, {	Fragment} from 'react';
+import {entryViewUrl} from "./entryViewUrl";
 
 
 export const EntryEmail = (props) => {
@@ -7,10 +8,10 @@ export const EntryEmail = (props) => {
 		formId,
 		entryId,
 	} = props;
-	const iFrameUrl = `http://localhost:8218/Layout/162?entryId=${entryId}&formId=${formId}`
+
 	return(
 		<Fragment>
-			<Iframe url={iFrameUrl}
+			<Iframe url={entryViewUrl(entryId,formId)}
 					width="90%"
 					height="100%"
 					id="myId"
