@@ -4,7 +4,6 @@ import {EntryRow} from "./EntryRow";
 import {EntryActions} from "./components/EntryActions";
 import {EntryEmail} from "./components/EntryEmail";
 import {
-	entryViewUrl,
 	entryViewQueryString
 } from "./components/entryViewUrl";
 

@@ -6,6 +6,8 @@ import {CFProLogout} from "./components/Login/CFProLogout";
 import {CFProLogin} from "./components/Login/CFProKeys";
 
 
+import '@frontkom/gutenberg-js/build/css/block-library/style.css';
+import '@frontkom/gutenberg-js/build/css/style.css';
 
 class App extends React.Component {
 
@@ -29,13 +31,11 @@ class App extends React.Component {
 			keys,
 		} = this.props;
 		const {
-			token,
 			onLogout
 		} = this.state;
 
 		return (
 			<div>
-				<div>{token}</div>
 
 				{this.isLoggedIn() ? (
 					<div>

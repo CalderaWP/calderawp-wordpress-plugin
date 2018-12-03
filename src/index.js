@@ -1,11 +1,10 @@
 import 'babel-polyfill';
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as cfApi from '@caldera-labs/api-client';
 import {set as setCookie, get as getCookie, remove as deleteCookie } from 'es-cookie';
-import {CFProLogin} from "./components/Login/CFProKeys";
-import {CFProLogout} from "./components/Login/CFProLogout";
+
 
 
 const API_URL = 'http://localhost:8218/wp-json/cf-api/v2';

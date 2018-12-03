@@ -4,9 +4,7 @@ import React, {Fragment} from 'react';
 import type {Entry,EntriesCollection} from "../../flow-types/entryTypes";
 import type {FormType} from "../../flow-types/formType";
 import {EntryHeaders} from "./EntryHeaders";
-import {EntryRow} from "./EntryRow";
 import {EntryRows} from "./EntryRows";
-import {EntryActions} from "./components/EntryActions";
 import {SingleEntry} from "./SingleEntry";
 
 type EntryViewerProps = {
@@ -30,7 +28,6 @@ export const EntryViewer = (props: EntryViewerProps) => {
 			<tbody>
 				{currentEntryId &&
 					<Fragment>
-
 						<SingleEntry
 							entry={getCurrentEntry()}
 							entryId={currentEntryId}

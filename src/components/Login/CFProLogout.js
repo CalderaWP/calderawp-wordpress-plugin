@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react';
+import React from 'react';
 import {Button} from '@wordpress/components';
 
 export const CFProLogout = ({onLogout}) => {

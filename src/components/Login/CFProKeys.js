@@ -1,4 +1,4 @@
-import React, {Fragment,Component} from 'react';
+import React, {Component} from 'react';
 import {TextControl} from '@wordpress/components'
 import sha1 from  'locutus/php/strings/sha1';
 
