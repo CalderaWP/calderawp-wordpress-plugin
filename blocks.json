@@ -4,7 +4,7 @@
   "plugins": [
     {
       "title" : "Layout Preview Settings",
-      "slug" : "layout-preview"
+      "slug" : "layout"
     }
   ],
   "blocks":
@@ -57,6 +57,26 @@
           "after": {
             "type" : "string",
             "default": ""
+          }
+        }
+      },
+      {
+        "title": "Caldera Forms Entry Table",
+        "slug": "entryTable",
+        "icon": "editor-justify",
+        "category": "common",
+        "wpDependencies": [
+          "editor",
+          "components"
+        ],
+        "attributes": {
+          "formId": {
+            "type": "string",
+            "default": ""
+          },
+          "page": {
+            "type": "number",
+            "default": 1
           }
         }
       }

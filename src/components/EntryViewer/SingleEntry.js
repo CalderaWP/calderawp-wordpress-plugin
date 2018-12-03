@@ -9,12 +9,7 @@ import {
 } from "./components/entryViewUrl";
 
 export class SingleEntry extends Component {
-	state = {
-		modalOpen: false,
-		sendPending: false,
-		message: ''
 
-	}
 
 	constructor(props) {
 		super(props);
@@ -22,6 +17,12 @@ export class SingleEntry extends Component {
 		this.setOpened = this.setOpened.bind(this);
 		this.handleDownload = this.handleDownload.bind(this);
 		this.handleResend = this.handleResend.bind(this);
+		this.state =  {
+			modalOpen: false,
+			sendPending: false,
+			message: ''
+
+		}
 	}
 
 	setClosed() {

@@ -20,7 +20,6 @@ import {EntryValueInlineEditor} from "../../components/Entry/Edit/Inline";
 import {CALDERA_FORMS_ENTRIES_SLUG, entryStore} from '../entryStore';
 import {ChooseEntryField, getFormFieldsOfForm} from "../../components/controls/ChooseEntryField";
 import React from "react";
-import Inline from "../../components/Entry/Edit/Inline";
 
 const Edit = ({
 				  attributes,
