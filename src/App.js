@@ -35,7 +35,6 @@ class App extends React.Component {
 
 		return (
 			<div>
-				<div>{this.isLoggedIn() ? 'yes' : 'no'}</div>
 				<div>{token}</div>
 
 				{this.isLoggedIn() ? (
