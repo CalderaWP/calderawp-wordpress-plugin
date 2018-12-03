@@ -112,7 +112,10 @@ const config = {
 			}
 		]
 	},
-	plugins: [cssExtractTextPlugin, FlowBabelWebpackPlugin],
+	plugins: [
+		cssExtractTextPlugin,
+		FlowBabelWebpackPlugin,
+	],
 	stats: {
 		children: false
 	}

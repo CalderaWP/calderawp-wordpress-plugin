@@ -91,11 +91,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 	$keyAuth = new \calderawp\WordPressPlugin\RestApi\CheckProKeys();
 	$callback = [$keyAuth, 'checkRequest' ];
-	$callback = '__return_true';
 	add_filter( 'caldera_forms_pro_is_active', '__return_true' );
-	add_filter( 'caldera_forms_pro_get_public_key', function(){ return 'pub1';});
-	add_filter( 'caldera_forms_pro_get_secret_key', function(){ return 'sr1';});
-
 	add_filter('caldera_forms_api_allow_entry_view', $callback, 100,3 );
 	add_filter('caldera_forms_api_allow_form_view', $callback, 100,3 );
 }, 3);
@@ -356,6 +352,12 @@ add_action('caldera_forms_includes_complete', function () {
 			}
 			$data[ 'forms' ][ $form ][ 'formId' ] = $form;
 		}
+		/**
+		$data[ 'proAuth' ] = [
+			'public' => \calderawp\calderaforms\pro\container::get_instance()->get_api_client()->get_keys()->get_public(),
+			'token' => \calderawp\calderaforms\pro\container::get_instance()->get_api_client()->get_keys()->get_token(),
+		];
+		 * */
 		return $data;
 	});
 });
