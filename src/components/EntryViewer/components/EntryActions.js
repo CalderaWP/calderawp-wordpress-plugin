@@ -1,7 +1,7 @@
 import React, {Fragment} from  'react';
 import ReactModal from 'react-modal';
 
-ReactModal.setAppElement('#app');
+//ReactModal.setAppElement('#app');
 
 export const EntryActions = (props) => {
 	const {

@@ -43,7 +43,6 @@ function _getForms(page: number): Promise<any> {
 }
 
 function getEntries(formId: string, page: number): Promise<any> {
-	console.log(formId);
 	return entryApiClient.makeRequest(`entries/${formId}`, {page});
 }
 

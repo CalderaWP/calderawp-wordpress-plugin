@@ -76,7 +76,7 @@ add_action('init', function () {
 	register_post_type(LAYOUT_POST_TYPE, $args);
 });
 
-
+//Load blocks
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
 	$container->initBlocks(
 		json_decode(
@@ -86,6 +86,20 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	);
 }, 1);
 
+//Add Pro API key auth
+add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
+
+	$keyAuth = new \calderawp\WordPressPlugin\RestApi\CheckProKeys();
+	$callback = [$keyAuth, 'checkRequest' ];
+	$callback = '__return_true';
+	add_filter( 'caldera_forms_pro_is_active', '__return_true' );
+	add_filter( 'caldera_forms_pro_get_public_key', function(){ return 'pub1';});
+	add_filter( 'caldera_forms_pro_get_secret_key', function(){ return 'sr1';});
+
+	add_filter('caldera_forms_api_allow_entry_view', $callback, 100,3 );
+	add_filter('caldera_forms_api_allow_form_view', $callback, 100,3 );
+}, 3);
+
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
 	add_filter('show_admin_bar', function($show){
 		if( LAYOUT_POST_TYPE === get_post_type( ) ){
@@ -93,6 +107,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		}
 		return $show;
 	});
+
 
 	add_filter( 'template_include', function ( $template ) {
 
@@ -141,7 +156,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 			}
 		});
 		add_filter('allowed_block_types', function ($allowed_block_types, $post) use ($container) {
-			if ( $post->post_type !== LAYOUT_POST_TYPE ) {
+			if ( $post->post_type === LAYOUT_POST_TYPE ) {
 				$allowed_block_types = [
 					'core/paragraph',
 					'core/image',
@@ -156,13 +171,43 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 				return array_merge($container->getBlockCollection()->getBlockSlugs(), $allowed_block_types);
 			}
-			return $allowed_block_types;
 		}, 101, 2);
 		add_action('wp_print_scripts', function () {
 			if( ! is_admin() && LAYOUT_POST_TYPE === get_post_type() ) {
 				global $wp_scripts;
 				$wp_scripts->queue = array();
 			}
+			if( ! wp_style_is( 'wp-block-library', 'registered') ){
+				wp_register_script(
+					'wp-block-library',
+					gutenberg_url( 'build/block-library/index.js' ),
+					array(
+						'editor',
+						'lodash',
+						'moment',
+						'wp-api-fetch',
+						'wp-autop',
+						'wp-blob',
+						'wp-blocks',
+						'wp-components',
+						'wp-compose',
+						'wp-core-data',
+						'wp-data',
+						'wp-editor',
+						'wp-element',
+						'wp-html-entities',
+						'wp-i18n',
+						'wp-keycodes',
+						'wp-polyfill',
+						'wp-url',
+						'wp-viewport',
+					),
+					filemtime( gutenberg_dir_path() . 'build/block-library/index.js' ),
+					true
+				);
+			}
+			wp_enqueue_style( 'wp-block-library' );
+
 
 		}, 100);
 
@@ -339,14 +384,11 @@ add_action('rest_api_init', function () {
 		header('Access-Control-Allow-Origin: *');
 		header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 		header('Access-Control-Allow-Credentials: true');
+		header('Access-Control-Allow-Headers: x-cs-public, x-cs-token');
 		return $value;
 	});
 
-	/**
-	 * Auth
-	 */
-	add_filter('caldera_forms_api_allow_entry_view', '__return_true', 100);
-	add_filter('caldera_forms_api_allow_form_view', '__return_true', 100);
+
 
 
 }, 5000);
@@ -415,10 +457,3 @@ add_action('init', function () {
 	register_post_type(LAYOUT_POST_TYPE, $args);
 });
 
-add_action( 'template_include', function($template){
-	if( LAYOUT_POST_TYPE === get_post_type() ){
-
-		return __DIR__ . '/layout-view.php';
-	}
-	return $template;
-},10,2);

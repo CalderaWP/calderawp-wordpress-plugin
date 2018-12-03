@@ -69,6 +69,7 @@
           "editor",
           "components"
         ],
+        "frontScript" : true,
         "attributes": {
           "formId": {
             "type": "string",
@@ -77,6 +78,10 @@
           "page": {
             "type": "number",
             "default": 1
+          },
+          "title": {
+              "type": "string",
+              "default" : ""
           }
         }
       }

@@ -55,6 +55,7 @@ entryPointNames.forEach(entryPointName => {
 	};
 });
 
+
 const wpDependencies = [
 	"components",
 	"element",
@@ -76,16 +77,18 @@ wpDependencies.forEach(wpDependency => {
 	};
 });
 
+const entry = entryPointNames.reduce((memo, entryPointName) => {
+	if (blockSlugs.includes(entryPointName)) {
+		memo[entryPointName] = "./src/blocks/" + entryPointName + "/index.js";
+	} else {
+		memo[entryPointName] = "./src/plugins/" + entryPointName + "/index.js";
+	}
+	return memo;
+}, {});
+entry.entryTableFront = "./src/blocks/" + 'entryTable' + "/front.js";
 const config = {
 	mode: process.env.NODE_ENV === "production" ? "production" : "development",
-	entry: entryPointNames.reduce((memo, entryPointName) => {
-		if (blockSlugs.includes(entryPointName)) {
-			memo[entryPointName] = "./src/blocks/" + entryPointName + "/index.js";
-		} else {
-			memo[entryPointName] = "./src/plugins/" + entryPointName + "/index.js";
-		}
-		return memo;
-	}, {}),
+	entry,
 	externals,
 	output: {
 		filename: "build/[name]/index.js",

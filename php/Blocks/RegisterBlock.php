@@ -92,13 +92,29 @@ class RegisterBlock
             throw new Exception(sprintf('Can not register block %s', $this->blockName()));
         }
 
-        add_action( 'enqueue_block_editor_assets', function() use ($index_js) {
-            wp_enqueue_script($this->handle(false),
+        //dumb hack
+		add_action( 'enqueue_block_editor_assets', function() use ($index_js) {
+            wp_enqueue_script(
+            	$this->handle(false),
                 $this->url($index_js),
                 $this->blockType->getWpDependencies(),
-                filemtime($this->filePath($index_js)));
-           // wp_enqueue_style($this->handle(true));
+                filemtime($this->filePath($index_js))
+			);
+
         });
+		$frontJs = "/build/{$slug}Front/index.js";
+
+        //real dumb hack
+        if( ! is_admin() && $this->blockType->getFrontScript() ){
+        	add_action( 'wp_enqueue_scripts', function() use( $frontJs ){
+				wp_enqueue_script(
+					$this->handle(true),
+					$this->url($frontJs),
+					$this->blockType->getWpDependencies(),
+					filemtime($this->filePath($frontJs))
+				);
+			} );
+		}
 
     }
 

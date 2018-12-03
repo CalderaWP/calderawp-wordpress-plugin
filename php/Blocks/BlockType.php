@@ -20,6 +20,8 @@ class BlockType extends BlockRelated
     protected $category;
     /** @var string */
     protected $icon;
+	/** @var string */
+	protected $frontScript;
     /** @var Attribute[] */
     protected $attributes;
 
@@ -174,6 +176,16 @@ class BlockType extends BlockRelated
         return $this;
     }
 
+
+    public function setFrontScript(string $frontScript){
+    	$this->frontScript = $frontScript;
+    	return $this;
+	}
+
+	public function getFrontScript() : string
+	{
+		return ! empty( $this->frontScript ) ? $this->frontScript : '';
+	}
 
 
 }
