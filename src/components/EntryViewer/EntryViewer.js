@@ -16,6 +16,7 @@ type EntryViewerProps = {
 
 export const EntryViewer = (props: EntryViewerProps) => {
 	const {currentEntryId,entries,getCurrentEntry,form} = props;
+
 	if( JSON.stringify(entries) === JSON.stringify({}) ){
 		return <div>No Entries</div>
 	}

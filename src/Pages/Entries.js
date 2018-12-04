@@ -1,9 +1,17 @@
 //import { BrowserRouter as Router, Link } from "react-router-dom";
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import {EntryViewer} from "../components/EntryViewer/EntryViewer";
 import {ChooseForm} from "../components/controls/ChooseForm";
 import {ChooseEntry} from "../components/controls/ChooseEntry";
+import {JwtLogin} from "../components/Login/JwtLogin";
+import {SingleEntry} from "../components/EntryViewer/SingleEntry";
+import {cfProHooks} from "../App";
+import {entryViewQueryString} from "../components/EntryViewer/components/entryViewUrl";
+import {EntryActions} from "../components/EntryViewer/components/EntryActions";
+import {EntryEmail} from "../components/EntryViewer/components/EntryEmail";
+import {EntryHeaders} from "../components/EntryViewer/EntryHeaders";
+
 
 
 
@@ -11,7 +19,7 @@ import {ChooseEntry} from "../components/controls/ChooseEntry";
 class Entries extends React.Component {
 
 
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.getCurrentEntry = this.getCurrentEntry.bind(this);
 		this.getCurrentForm = this.getCurrentForm.bind(this);
@@ -21,36 +29,61 @@ class Entries extends React.Component {
 
 		this.setEntriesViaApi = this.setEntriesViaApi.bind(this);
 		this.setFormsViaApi = this.setFormsViaApi.bind(this);
+
+		this.handleDownload = this.handleDownload.bind(this);
+		this.handleResend = this.handleResend.bind(this);
+		this.handleView = this.handleView.bind(this);
+		this.handleCloseView = this.handleCloseView.bind(this);
+		this.resetEntry = this.resetEntry.bind(this);
+
 		this.state = {
 			forms: [],
 			entries: {},
 			currentPage: 1,
-			currentEntryId: '2',
-			currentFormId: props.formId ? props.formId :'CF5be77c7b45877'
+			currentEntryId: 0,
+			currentFormId: props.formId ? props.formId : '',
+			sendPending: false,
+			message: '',
+			viewOpen: ''
 		};
 
 	}
 
 	componentDidMount() {
 		this.setFormsViaApi();
-		this.setEntriesViaApi();
+		const {currentFormId} = this.state;
+		if (currentFormId) {
+			this.setEntriesViaApi(currentFormId);
+		}
 
 
 	}
 
-	setEntriesViaApi(){
-		const {getEntries} = this.props;
+	resetEntry(){
+		this.setState({currentEntryId:0})
+	}
 
+	handleView() {
+		this.setState({viewOpen: true})
+	}
+
+	handleCloseView() {
+		this.setState({viewOpen: false})
+	}
+
+	setEntriesViaApi(formId) {
+		const {getEntries} = this.props;
 		const {
 			currentFormId,
 			currentPage,
 		} = this.state;
-		getEntries(currentFormId, currentPage)
+		const _formId = currentFormId ? currentFormId : formId;
+		getEntries(_formId, currentPage)
 			.then(r => r.json())
 			.then(entries => this.setState({entries}))
 	}
 
-	setFormsViaApi(){
+	setFormsViaApi() {
 		const {getForms} = this.props;
 		getForms()
 			.then(r => r.json())
@@ -62,7 +95,7 @@ class Entries extends React.Component {
 			});
 	}
 
-	getCurrentEntry(){
+	getCurrentEntry() {
 		const {
 			currentEntryId,
 			entries
@@ -71,24 +104,53 @@ class Entries extends React.Component {
 		return entries.hasOwnProperty(currentEntryId) ? entries[currentEntryId] : {};
 	};
 
-	getCurrentForm(){
+	getCurrentForm() {
 		const {
 			currentFormId,
 			forms
 		} = this.state;
-		return forms.find( form => currentFormId === form.ID );
+		return forms.find(form => currentFormId === form.ID);
 	}
 
-	setCurrentForm(currentFormId){
-		this.setState({currentFormId,currentEntryId: 0});
-		if( '' !== currentFormId ){
+	setCurrentForm(currentFormId) {
+		this.setState({currentFormId: currentFormId, currentEntryId: 0});
+		if ('' !== currentFormId) {
 			this.setFormsViaApi();
-			this.setEntriesViaApi();
+			this.setEntriesViaApi(currentFormId);
 		}
 	}
 
-	setCurrentEntry(currentEntryId){
+	setCurrentEntry(currentEntryId) {
 		this.setState({currentEntryId});
+	}
+
+	handleResend() {
+		this.setState({sendPending: true, message: ''});
+		fetch('/api/send')
+			.then(r => r.json())
+			.then(r => {
+				if (r.sent) {
+					this.setState({sendPending: false, message: r.message});
+				}
+
+				setTimeout(() => {
+					this.setState({message: ''});
+				}, 2000);
+			})
+			.catch(e => {
+				this.setState({sendPending: false, message: e.message});
+
+			})
+	}
+
+	handleDownload() {
+		const {
+			formId,
+			entryId,
+		} = this.props;
+		const url = 'http://localhost:5000/pdf' + entryViewQueryString(entryId, formId);
+		window.open(url, '_blank');
+		window.open(url);
 	}
 
 	render() {
@@ -96,16 +158,22 @@ class Entries extends React.Component {
 			currentEntryId,
 			currentFormId,
 			entries,
-			forms
+			forms,
+			message,
+			viewOpen,
+			sendPending
 		} = this.state;
+
+
+		const {
+			hooks
+		} = this.props;
 
 		const form = this.getCurrentForm();
 		const currentEntry = this.getCurrentEntry();
 
-
-
-		return (
-			<div>
+		if (!form) {
+			return (
 				<div>
 					<ChooseForm
 						forms={forms}
@@ -113,24 +181,103 @@ class Entries extends React.Component {
 						onSetForm={this.setCurrentForm}
 						instanceId={'entry-viewer-form-chooser-in-app'}
 					/>
-					<ChooseEntry
-						entries={entries}
-						currentEntry={currentEntry}
-						onSetEntry={this.setCurrentEntry}
-						instanceId={'entry-viewer-entry-chooser-in-app'}
-						form={form}
-					/>
 				</div>
-				<EntryViewer
-					currentEntryId={currentEntryId}
-					entries={entries}
-					getCurrentEntry={this.getCurrentEntry}
-					form={form}
-				/>
-			</div>
-		)
+			);
+		}
 
+		if (viewOpen) {
+			return (
+				<Fragment>
+					<EntryEmail
+						entryId={currentEntryId}
+						formId={currentFormId}
+					/>
+					<button
+						onClick={this.handleCloseView}
+					>
+						Close
+					</button>
+
+				</Fragment>
+			);
+		}
+
+
+		return (
+			<div>
+
+				<Fragment>
+					{!currentEntryId ? (
+						<Fragment>
+							<ChooseForm
+								forms={forms}
+								currentFormId={currentFormId}
+								onSetForm={this.setCurrentForm}
+								instanceId={'entry-viewer-form-chooser-in-app'}
+							/>
+							<ChooseEntry
+								key={'choose-entry'}
+
+								entries={entries}
+								currentEntry={currentEntry}
+								onSetEntry={this.setCurrentEntry}
+								instanceId={'entry-viewer-entry-chooser-in-app'}
+								form={form}
+							/>
+						</Fragment>
+
+					) : (
+						<Fragment>
+							<button
+								onClick={this.resetEntry}
+							>
+								Close
+							</button>
+							<EntryActions
+								entryId={currentEntryId}
+								formId={currentFormId}
+								onView={this.handleView}
+								onDownload={this.handleDownload}
+								onResend={this.handleResend}
+							/>
+
+						</Fragment>
+					)}
+
+				</Fragment>
+				<Fragment>
+					{!currentEntryId ? (
+						<Fragment>
+							<EntryViewer
+								currentEntryId={currentEntryId}
+								entries={entries}
+								getCurrentEntry={this.getCurrentEntry}
+								form={form}
+							/>
+						</Fragment>
+
+					) : (
+						<Fragment>
+							<EntryHeaders entries={entries} formFields={form.fields}/>
+							<SingleEntry
+								entry={this.getCurrentEntry()}
+								entryId={currentEntryId}
+								formId={currentFormId}
+							/>
+						</Fragment>
+
+
+					)}
+				</Fragment>
+
+
+			</div>
+
+		);
 	}
+
 }
 
 export default Entries;
+
+

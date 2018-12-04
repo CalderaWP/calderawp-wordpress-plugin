@@ -11,6 +11,7 @@ export const EntryRow = (props: {entry: Entry} ) => {
 		id,
 		fields
 	} = entry;
+
 	return (
 		<tr>
 			<th scope="row">{id}</th>
