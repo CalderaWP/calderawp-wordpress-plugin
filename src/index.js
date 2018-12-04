@@ -37,6 +37,10 @@ ReactDOM.render(
 			auth.setToken(token);
 			window.location.reload();
 		}}
+		onLogout={() => {
+			auth.forget();
+			window.location.reload();
+		}}
 		isLoggedIn={isLoggedIn}
 		getForms={getForms}
 		getEntries={getEntries}

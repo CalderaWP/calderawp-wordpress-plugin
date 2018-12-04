@@ -14,6 +14,11 @@ export default function Jwt(token,displayName){
 		setCookie(TOKEN,token);
 		this.token = token;
 	};
+
+	this.forget = () => {
+		deleteCookie(DISPLAY_NAME);
+		deleteCookie(TOKEN);
+	}
 	this.getToken = () => {
 		if( this.token){
 			return this.token;

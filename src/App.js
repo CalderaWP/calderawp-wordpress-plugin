@@ -2,44 +2,29 @@
 import React from 'react';
 import Entries from "./Pages/Entries";
 import "./app.css";
-import {CFProLogout} from "./components/Login/CFProLogout";
-import {CFProLogin} from "./components/Login/CFProKeys";
+import {LogoutButton} from "./components/Login/LogoutButton";
 import {JwtLogin} from "./components/Login/JwtLogin";
-
 
 class App extends React.Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			isLoggedIn: false,
-			onLogout: () => {}
-		};
-		this.isLoggedIn = this.isLoggedIn.bind(this);
-	}
 
-	isLoggedIn(){
-		return this.props.isLoggedIn;
-	}
 
 	render() {
 		const {
 			getForms,
 			getEntries,
 			keys,
-			onJwtToken
+			onJwtToken,
+			onLogout,
+			isLoggedIn
 		} = this.props;
-		const {
-			onLogout
-		} = this.state;
-
 
 
 		return(
 			<div>
-				{this.isLoggedIn() ? (
+				{isLoggedIn ? (
 					<div>
-						<CFProLogout onLogout={onLogout}/>
+						<LogoutButton onLogout={onLogout}/>
 						<Entries
 							getForms={getForms}
 							getEntries={getEntries}
