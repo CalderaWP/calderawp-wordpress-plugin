@@ -4,17 +4,18 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "032292cf83025707819dcf6041780267",
+    "content-hash": "3ceae493caabc4db19320507cf3e443d",
     "packages": [
         {
             "name": "Desertsnowman/caldera-forms",
-            "version": "dev-feature/2766",
+            "version": "dev-feature/2843-2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CalderaWP/caldera-forms",
-                "reference": "a49d116a5ef7a67fdc0d07413083b3c996556da0"
+                "reference": "92c71911467b447d8985a01a921b91b481023070"
             },
             "require": {
+                "a5hleyrich/wp-queue": "^1.3",
                 "calderawp/caldera-containers": "^0.2.0",
                 "calderawp/caldera-forms-query": "dev-master",
                 "composer/installers": "^1.6",
@@ -33,7 +34,10 @@
                 "psr-4": {
                     "calderawp\\calderaforms\\pro\\": "includes/cf-pro-client/classes/",
                     "calderawp\\calderaforms\\cf2\\": "cf2"
-                }
+                },
+                "files": [
+                    "./cf2/functions.php"
+                ]
             },
             "autoload-dev": {
                 "psr-4": {
@@ -123,11 +127,11 @@
                 "forms",
                 "wordpress"
             ],
-            "time": "2018-11-07T16:56:27+00:00"
+            "time": "2018-12-04T16:55:29+00:00"
         },
         {
             "name": "a5hleyrich/wp-queue",
-            "version": "dev-master",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/A5hleyRich/wp-queue.git",
@@ -462,12 +466,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "92ab93e18163df880458f31bd1d4a51239e53a9d"
+                "reference": "73b0d9ac2fd3d5aecc94f1e217b408fe59e3d265"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/92ab93e18163df880458f31bd1d4a51239e53a9d",
-                "reference": "92ab93e18163df880458f31bd1d4a51239e53a9d",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/73b0d9ac2fd3d5aecc94f1e217b408fe59e3d265",
+                "reference": "73b0d9ac2fd3d5aecc94f1e217b408fe59e3d265",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +527,7 @@
                 "iterators",
                 "php"
             ],
-            "time": "2018-10-15T15:10:34+00:00"
+            "time": "2018-11-17T21:20:15+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -531,12 +535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "51cb9063b8e07c2aa1e52f343de63ed08d822135"
+                "reference": "8db1967d92f55de1b94b175478ed16a7dfc53a90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/51cb9063b8e07c2aa1e52f343de63ed08d822135",
-                "reference": "51cb9063b8e07c2aa1e52f343de63ed08d822135",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8db1967d92f55de1b94b175478ed16a7dfc53a90",
+                "reference": "8db1967d92f55de1b94b175478ed16a7dfc53a90",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +551,7 @@
             "require-dev": {
                 "ext-curl": "*",
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
-                "psr/log": "^1.0"
+                "psr/log": "^1.1"
             },
             "suggest": {
                 "psr/log": "Required for using the Log middleware"
@@ -559,12 +563,12 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -588,7 +592,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-11-03T10:47:53+00:00"
+            "time": "2018-11-24T20:31:03+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -647,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68"
+                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68",
-                "reference": "23e7d3812a82bdbff4a5cb8e4628bcc06eec5d68",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/53662d6688033a5eccde987bdd5a4a98ebe2d952",
+                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952",
                 "shasum": ""
             },
             "require": {
@@ -706,7 +710,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-11-01T01:48:29+00:00"
+            "time": "2018-12-03T05:07:51+00:00"
         },
         {
             "name": "inpsyde/wonolog",
@@ -714,12 +718,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inpsyde/Wonolog.git",
-                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11"
+                "reference": "33fe59f2b271042a79ed7ed365eba80284f4fa34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
-                "reference": "01605cd9e5a471df4cf9b8ed5260fd1355e8da11",
+                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/33fe59f2b271042a79ed7ed365eba80284f4fa34",
+                "reference": "33fe59f2b271042a79ed7ed365eba80284f4fa34",
                 "shasum": ""
             },
             "require": {
@@ -773,7 +777,135 @@
                 "psr-3",
                 "wordpress"
             ],
-            "time": "2018-05-15T15:39:44+00:00"
+            "time": "2018-11-14T10:11:46+00:00"
+        },
+        {
+            "name": "johnpbloch/wordpress",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress.git",
+                "reference": "42f7e88d069cd003b55fab97d398b8270c9522d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/42f7e88d069cd003b55fab97d398b8270c9522d8",
+                "reference": "42f7e88d069cd003b55fab97d398b8270c9522d8",
+                "shasum": ""
+            },
+            "require": {
+                "johnpbloch/wordpress-core": "dev-master",
+                "johnpbloch/wordpress-core-installer": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "type": "package",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress Community",
+                    "homepage": "http://wordpress.org/about/"
+                }
+            ],
+            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "homepage": "http://wordpress.org/",
+            "keywords": [
+                "blog",
+                "cms",
+                "wordpress"
+            ],
+            "time": "2017-06-03T15:20:37+00:00"
+        },
+        {
+            "name": "johnpbloch/wordpress-core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress-core.git",
+                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
+                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "provide": {
+                "wordpress/core-implementation": "dev-master"
+            },
+            "type": "wordpress-core",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress Community",
+                    "homepage": "http://wordpress.org/about/"
+                }
+            ],
+            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "homepage": "http://wordpress.org/",
+            "keywords": [
+                "blog",
+                "cms",
+                "wordpress"
+            ],
+            "time": "2018-10-05T21:01:04+00:00"
+        },
+        {
+            "name": "johnpbloch/wordpress-core-installer",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
+                "reference": "fd12f5cfe27223b92b0f4bbc097059eb23cc56c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/fd12f5cfe27223b92b0f4bbc097059eb23cc56c4",
+                "reference": "fd12f5cfe27223b92b0f4bbc097059eb23cc56c4",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "conflict": {
+                "composer/installers": "<1.0.6"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "phpunit/phpunit": ">=4.8.35"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "johnpbloch\\Composer\\WordPressCorePlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "johnpbloch\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "John P. Bloch",
+                    "email": "me@johnpbloch.com"
+                }
+            ],
+            "description": "A custom installer to handle deploying WordPress with composer",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2018-11-09T20:10:38+00:00"
         },
         {
             "name": "league/fractal",
@@ -845,12 +977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "6bb347c040bb29f42c2c249714aac8c0e36c2454"
+                "reference": "daed05c3e5ed303ce3423a8afbb54e590e795fdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6bb347c040bb29f42c2c249714aac8c0e36c2454",
-                "reference": "6bb347c040bb29f42c2c249714aac8c0e36c2454",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/daed05c3e5ed303ce3423a8afbb54e590e795fdb",
+                "reference": "daed05c3e5ed303ce3423a8afbb54e590e795fdb",
                 "shasum": ""
             },
             "require": {
@@ -868,7 +1000,7 @@
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^6.5",
+                "phpunit/phpunit": "^7.3",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
                 "ruflin/elastica": ">=0.90 <3.0",
@@ -917,20 +1049,20 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-06T09:31:18+00:00"
+            "time": "2018-12-04T09:30:41+00:00"
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.34.0",
+            "version": "1.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33"
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
-                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
+                "reference": "63da8cdf89d7a5efe43aabc794365f6e7b7b8983",
                 "shasum": ""
             },
             "require": {
@@ -938,8 +1070,11 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
             },
             "type": "library",
             "extra": {
@@ -972,7 +1107,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-09-20T19:36:25+00:00"
+            "time": "2018-11-22T18:23:02+00:00"
         },
         {
             "name": "nilportugues/sql-query-builder",
@@ -1248,12 +1383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda"
+                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
-                "reference": "3490ba5925e6dcbe6de950c5c6b8dce9f6e96eda",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
+                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
                 "shasum": ""
             },
             "require": {
@@ -1262,7 +1397,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1287,7 +1422,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-04-03T15:59:15+00:00"
+            "time": "2018-11-21T13:42:00+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -1335,12 +1470,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62"
+                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/4a33574d5771f4b04334cd4f7d43de96a92efb62",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/3edf0ab943d1985a356721952cba36ff31bd6e5f",
+                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f",
                 "shasum": ""
             },
             "require": {
@@ -1395,7 +1530,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-10-31T08:00:32+00:00"
+            "time": "2018-11-24T09:35:08+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1462,12 +1597,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a2531c9f5be1790bf90fe9bccc930b4704010f09"
+                "reference": "012ec5a083f4177496df0ddc516d2b509e2ab8a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a2531c9f5be1790bf90fe9bccc930b4704010f09",
-                "reference": "a2531c9f5be1790bf90fe9bccc930b4704010f09",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/012ec5a083f4177496df0ddc516d2b509e2ab8a6",
+                "reference": "012ec5a083f4177496df0ddc516d2b509e2ab8a6",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1635,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -1527,7 +1662,49 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-05T06:48:19+00:00"
+            "time": "2018-11-27T07:40:59+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/gutenberg",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/gutenberg/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.zip?timestamp=1537547459",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/gutenberg/",
+            "time": "2018-09-21T16:30:59+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/jwt-authentication-for-wp-rest-api",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/jwt-authentication-for-wp-rest-api/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/jwt-authentication-for-wp-rest-api.zip?timestamp=1541608998",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/",
+            "time": "2018-11-07T16:43:18+00:00"
         }
     ],
     "packages-dev": [
@@ -1856,134 +2033,6 @@
             "description": "This tool check syntax of PHP files about 20x faster than serial check.",
             "homepage": "https://github.com/JakubOnderka/PHP-Parallel-Lint",
             "time": "2018-02-24T15:31:20+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "42f7e88d069cd003b55fab97d398b8270c9522d8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/42f7e88d069cd003b55fab97d398b8270c9522d8",
-                "reference": "42f7e88d069cd003b55fab97d398b8270c9522d8",
-                "shasum": ""
-            },
-            "require": {
-                "johnpbloch/wordpress-core": "dev-master",
-                "johnpbloch/wordpress-core-installer": "^1.0",
-                "php": ">=5.3.2"
-            },
-            "type": "package",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WordPress Community",
-                    "homepage": "http://wordpress.org/about/"
-                }
-            ],
-            "description": "WordPress is web software you can use to create a beautiful website or blog.",
-            "homepage": "http://wordpress.org/",
-            "keywords": [
-                "blog",
-                "cms",
-                "wordpress"
-            ],
-            "time": "2017-06-03T15:20:37+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress-core",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
-                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "provide": {
-                "wordpress/core-implementation": "dev-master"
-            },
-            "type": "wordpress-core",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "WordPress Community",
-                    "homepage": "http://wordpress.org/about/"
-                }
-            ],
-            "description": "WordPress is web software you can use to create a beautiful website or blog.",
-            "homepage": "http://wordpress.org/",
-            "keywords": [
-                "blog",
-                "cms",
-                "wordpress"
-            ],
-            "time": "2018-10-05T21:01:04+00:00"
-        },
-        {
-            "name": "johnpbloch/wordpress-core-installer",
-            "version": "1.0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/7941acd71725710a789daabe0557429da63e7ac6",
-                "reference": "7941acd71725710a789daabe0557429da63e7ac6",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0"
-            },
-            "conflict": {
-                "composer/installers": "<1.0.6"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0",
-                "phpunit/phpunit": ">=4.8.35"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "johnpbloch\\Composer\\WordPressCorePlugin"
-            },
-            "autoload": {
-                "psr-0": {
-                    "johnpbloch\\Composer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "John P. Bloch",
-                    "email": "me@johnpbloch.com"
-                }
-            ],
-            "description": "A custom installer to handle deploying WordPress with composer",
-            "keywords": [
-                "wordpress"
-            ],
-            "time": "2018-01-29T14:49:29+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -3271,12 +3320,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "146df9107d072b61018148666d4921f11a584c75"
+                "reference": "b53f64e10e41aa754ffa7c11999af1881e6c1780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/146df9107d072b61018148666d4921f11a584c75",
-                "reference": "146df9107d072b61018148666d4921f11a584c75",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b53f64e10e41aa754ffa7c11999af1881e6c1780",
+                "reference": "b53f64e10e41aa754ffa7c11999af1881e6c1780",
                 "shasum": ""
             },
             "require": {
@@ -3314,7 +3363,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-11-07T02:56:53+00:00"
+            "time": "2018-11-27T02:04:54+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3380,12 +3429,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "7228a3e2163ab5623231f126cf8d7701072f9d16"
+                "reference": "d4fc8a5d43d55a89c6baa856215ec39108fc33a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/7228a3e2163ab5623231f126cf8d7701072f9d16",
-                "reference": "7228a3e2163ab5623231f126cf8d7701072f9d16",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d4fc8a5d43d55a89c6baa856215ec39108fc33a0",
+                "reference": "d4fc8a5d43d55a89c6baa856215ec39108fc33a0",
                 "shasum": ""
             },
             "require": {
@@ -3404,7 +3453,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -3431,7 +3480,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-02T16:38:08+00:00"
+            "time": "2018-11-26T16:19:01+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -3482,34 +3531,12 @@
                 "validate"
             ],
             "time": "2018-05-29T14:25:02+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/gutenberg",
-            "version": "dev-trunk",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.zip?timestamp=1537547459",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/gutenberg/",
-            "time": "2018-09-21T16:30:59+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "calderawp/caldera-interop": 20,
-        "a5hleyrich/wp-queue": 20,
         "desertsnowman/caldera-forms": 20,
         "calderawp/ghost-runner": 20
     },

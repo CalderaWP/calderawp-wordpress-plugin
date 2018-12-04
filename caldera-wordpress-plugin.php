@@ -86,15 +86,18 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	);
 }, 1);
 
-//Add Pro API key auth
+/**
+ * REST API authentication
+ */
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
 
-	$keyAuth = new \calderawp\WordPressPlugin\RestApi\CheckProKeys();
+	$keyAuth = new \calderawp\WordPressPlugin\RestApi\CheckJwtToken();
 	$callback = [$keyAuth, 'checkRequest' ];
 	add_filter( 'caldera_forms_pro_is_active', '__return_true' );
 	add_filter('caldera_forms_api_allow_entry_view', $callback, 100,3 );
 	add_filter('caldera_forms_api_allow_form_view', $callback, 100,3 );
 }, 3);
+
 
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
 	add_filter('show_admin_bar', function($show){
@@ -375,7 +378,11 @@ add_action('caldera_forms_admin_init', function () {
 
 
 add_action('rest_api_init', function () {
-
+	if( ! defined('JWT_AUTH_SECRET_KEY') ){
+		define('JWT_AUTH_SECRET_KEY', 'DD3560122599086FCDB529109BB3C84C' );
+	}if( ! defined('JWT_AUTH_CORS_ENABLE') ){
+		define('JWT_AUTH_CORS_ENABLE', true );
+	}
 	/**
 	 * CORS
 	 */

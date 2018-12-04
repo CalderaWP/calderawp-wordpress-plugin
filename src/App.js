@@ -4,8 +4,7 @@ import Entries from "./Pages/Entries";
 import "./app.css";
 import {CFProLogout} from "./components/Login/CFProLogout";
 import {CFProLogin} from "./components/Login/CFProKeys";
-
-
+import {JwtLogin} from "./components/Login/JwtLogin";
 
 
 class App extends React.Component {
@@ -13,14 +12,14 @@ class App extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			isLoggedIn: props.keys.hasKeys(),
-			onLogout: props.keys.forget
+			isLoggedIn: false,
+			onLogout: () => {}
 		};
 		this.isLoggedIn = this.isLoggedIn.bind(this);
 	}
 
 	isLoggedIn(){
-		return this.state.isLoggedIn;
+		return this.props.isLoggedIn;
 	}
 
 	render() {
@@ -28,14 +27,16 @@ class App extends React.Component {
 			getForms,
 			getEntries,
 			keys,
+			onJwtToken
 		} = this.props;
 		const {
 			onLogout
 		} = this.state;
 
-		return (
-			<div>
 
+
+		return(
+			<div>
 				{this.isLoggedIn() ? (
 					<div>
 						<CFProLogout onLogout={onLogout}/>
@@ -46,18 +47,11 @@ class App extends React.Component {
 					</div>
 
 				) : (
-					<CFProLogin
-						onSubmit={({publicKey,token}) => {
-							keys.setPublicKey(publicKey);
-							keys.setToken(token);
-							window.location.reload();
-						}}
+					<JwtLogin
+						onTokenReceived={onJwtToken}
 					/>
 				)}
-
-
 			</div>
-
 		)
 
 	}

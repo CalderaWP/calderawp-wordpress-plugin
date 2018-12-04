@@ -30,8 +30,11 @@
         "php": "^7.1",
         "calderawp/caldera-containers": "^0.2.0",
         "calderawp/caldera-interop": "dev-vast-simplify",
-        "a5hleyrich/wp-queue": "dev-master",
-        "Desertsnowman/caldera-forms": "dev-feature/2766"
+        "a5hleyrich/wp-queue": "*",
+        "Desertsnowman/caldera-forms": "dev-feature/2843-2",
+        "wpackagist-plugin/gutenberg": "*",
+        "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "*",
+        "johnpbloch/wordpress": "*"
     },
     "autoload": {
         "psr-4": {
@@ -54,8 +57,6 @@
         "phpunit/phpunit": "~5.7.9",
         "squizlabs/php_codesniffer": "^3.2",
         "jakub-onderka/php-parallel-lint": "^1.0",
-        "wpackagist-plugin/gutenberg": "*",
-        "johnpbloch/wordpress": "*",
         "calderawp/ghost-runner": "dev-master"
     },
     "scripts": {
