@@ -145,10 +145,10 @@ class Entries extends React.Component {
 
 	handleDownload() {
 		const {
-			formId,
-			entryId,
-		} = this.props;
-		const url = 'http://localhost:5000/pdf' + entryViewQueryString(entryId, formId);
+			currentEntryId,
+			currentFormId,
+		} = this.state;
+		const url = 'http://localhost:5000/pdf' + entryViewQueryString(currentEntryId, currentFormId);
 		window.open(url, '_blank');
 		window.open(url);
 	}
@@ -159,9 +159,7 @@ class Entries extends React.Component {
 			currentFormId,
 			entries,
 			forms,
-			message,
 			viewOpen,
-			sendPending
 		} = this.state;
 
 

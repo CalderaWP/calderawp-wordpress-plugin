@@ -5,6 +5,8 @@ const port = process.env.PORT || 5000;
 const fetch = require('isomorphic-fetch')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+require('dotenv').load();
+
 var request = require("request");
 var base64 = require('file-base64');
 
@@ -40,8 +42,6 @@ function createPdf(entryId, formId, layoutId, callback) {
 
 app.get('/api/send', (req, res) => {
 	const sgMail = require('@sendgrid/mail');
-	require('dotenv').config();
-
 	sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 	const {
@@ -53,7 +53,6 @@ app.get('/api/send', (req, res) => {
 	getEntryHtml(entryId, formId, layoutId, (html) => {
 		createPdf(entryId, formId, layoutId, (pdf) => {
 			base64.encode(pdf, function (err, base64String) {
-
 				const msg = {
 					to: 'josh@calderawp.com',
 					from: 'test@example.com',
@@ -81,17 +80,19 @@ app.get('/api/send', (req, res) => {
 
 });
 app.get('/pdf', (async function (req, res) {
-	const puppeteer = require('puppeteer');
-	const http = require('http');
 
-	const {
+	let {
+		layoutId,
 		entryId,
 		formId,
 	} = req.query;
+
+	layoutId = layoutId ? layoutId : 162;
+
 	getEntryHtml(entryId, formId, layoutId, (body) => {
 		createPdf(entryId, formId, layoutId, (pdf) => {
 			res.setHeader('Content-Type', 'application/pdf');
-			res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
+			res.setHeader('Content-Disposition', 'attachment; filename=message.pdf');
 			res.send(pdf);
 		})
 	});
@@ -171,6 +172,10 @@ app.get('/entries/:formId', ((req, res) => {
 
 }));
 
+
+app.get( '/hi-roy', (req,res) =>{
+	res.status(418).send(process.env);
+});
 try {
 	app.listen(port, () => console.log(`Listening on port ${port}`));
 } catch (e) {
