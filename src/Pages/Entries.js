@@ -136,8 +136,11 @@ class Entries extends React.Component {
 	}
 
 	handleResend() {
+		const {
+			jwt
+		} = this.props;
 		this.setState({sendPending: true, message: ''});
-		fetch('/api/send')
+		fetch('/api/send?jwt=' + jwt )
 			.then(r => r.json())
 			.then(r => {
 				if (r.sent) {
@@ -156,10 +159,13 @@ class Entries extends React.Component {
 
 	handleDownload() {
 		const {
+			jwt
+		} = this.props;
+		const {
 			currentEntryId,
 			currentFormId,
 		} = this.state;
-		const url = 'http://localhost:5000/pdf' + entryViewQueryString(currentEntryId, currentFormId);
+		const url = 'http://localhost:5000/pdf' + entryViewQueryString(currentEntryId, currentFormId) + '?jwt=' + jwt;
 		window.open(url, '_blank');
 		window.open(url);
 	}

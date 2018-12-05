@@ -11,6 +11,9 @@
 */
 
 include_once __DIR__ . '/vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
 add_filter('caldera_forms_render_assets_minify', '__return_false');
 
 define('LAYOUT_POST_TYPE', 'layout');
@@ -76,7 +79,7 @@ add_action('init', function () {
 	register_post_type(LAYOUT_POST_TYPE, $args);
 });
 
-//Load blocks
+
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
 	$container->initBlocks(
 		json_decode(
@@ -100,6 +103,8 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 
 add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugin\Container $container) {
+
+	//Hide admin bar
 	add_filter('show_admin_bar', function($show){
 		if( LAYOUT_POST_TYPE === get_post_type( ) ){
 			return false;
@@ -107,6 +112,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		return $show;
 	});
 
+	//Add email data to entry api response
 	add_filter( 'caldera_forms_api_entry_data', function ($data,\Caldera_Forms_Entry $entry){
 		$form = $entry->get_form();
 		$mailData = ( new \calderawp\WordPressPlugin\MailData($entry->get_entry_id(), $form ) )->getEmailData();
@@ -114,6 +120,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		return $data;
 	},10,2);
 
+	//Use php partial, for now for layouts
 	add_filter( 'template_include', function ( $template ) {
 
 		if ( LAYOUT_POST_TYPE === get_post_type() ) {
@@ -124,6 +131,8 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	}, 99 );
 
 
+	//Set entryId and formId via _GET
+	//This is a hack.
 	add_filter( \calderawp\WordPressPlugin\Blocks\RenderCallback\EntryValue::DEFULAT_ATTS_FILTER, function($atts){
 		if ( LAYOUT_POST_TYPE === get_post_type() ) {
 			foreach([
@@ -139,8 +148,11 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	});
 
 
+	//Setup blocks and related features
 	add_action('init', function () use ($container) {
+		//Register blocks
 		$container->registerBlocks();
+		//Add sidebar
 		add_action( 'admin_enqueue_scripts', function(){
 			if( LAYOUT_POST_TYPE === get_post_type( ) ){
 				wp_enqueue_script(
@@ -159,6 +171,8 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 			}
 		});
+
+		//Controll allowed blocks
 		add_filter('allowed_block_types', function ($allowed_block_types, $post) use ($container) {
 			if ( $post->post_type === LAYOUT_POST_TYPE ) {
 				$allowed_block_types = [
@@ -176,11 +190,15 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 				return array_merge($container->getBlockCollection()->getBlockSlugs(), $allowed_block_types);
 			}
 		}, 101, 2);
+
+		//When rendering a layout load only the right CSS
 		add_action('wp_print_scripts', function () {
+			//No JavaScript!
 			if( ! is_admin() && LAYOUT_POST_TYPE === get_post_type() ) {
 				global $wp_scripts;
 				$wp_scripts->queue = array();
 			}
+			//Make sure we can use block library CSS
 			if( ! wp_style_is( 'wp-block-library', 'registered') ){
 				wp_register_script(
 					'wp-block-library',
@@ -210,12 +228,13 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 					true
 				);
 			}
+			//load block library CSS
 			wp_enqueue_style( 'wp-block-library' );
 
 
 		}, 100);
 
-
+		//No CSS!
 		add_action('wp_print_styles', function() {
 			if( ! is_admin() &&  LAYOUT_POST_TYPE === get_post_type() ){
 				global $wp_styles;
@@ -225,15 +244,20 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		}, 100);
 
 
+		//Block template for layout post type
 		add_action('init', function () use ($container) {
 
-
 			$post_type_object = get_post_type_object(LAYOUT_POST_TYPE);
+			//This is a problem!
 			$formId = 'CF5be77c7b45877';
 			$form = Caldera_Forms_Forms::get_form($formId);
 			$fields = \Caldera_Forms_Forms::get_fields($form);
 			$fieldBlocks = [];
+			//This is a problem!
+
 			$entryId = '2';
+
+			//Use site logo as default
 			$logoId = get_theme_mod('custom_logo');
 
 			$url = wp_get_attachment_image_url($logoId, 'full', FALSE);
@@ -270,7 +294,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 			}
 
 
-
+			//Create block template
 			$post_type_object->template = [
 				[
 					'core/columns',
@@ -322,6 +346,8 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 	add_action('save_post', function ($postId) {
 		wp_queue()->push(new \calderawp\WordPressPlugin\Jobs\WritePostToJson($postId, __DIR__ . '/wp-json'));
 	});
+
+
 	add_action('profile_update', function ($userId) {
 		if ( file_exists(__DIR__ . '/wp-json/users/' . $userId . '.json') ) {
 			wp_queue()->push(new \calderawp\WordPressPlugin\Jobs\WriteUserToJson($userId, __DIR__ . '/wp-json'));
@@ -384,7 +410,7 @@ add_action('caldera_forms_admin_init', function () {
 
 add_action('rest_api_init', function () {
 	if( ! defined('JWT_AUTH_SECRET_KEY') ){
-		define('JWT_AUTH_SECRET_KEY', 'DD3560122599086FCDB529109BB3C84C' );
+		define('JWT_AUTH_SECRET_KEY', $_ENV['JWT_AUTH_SECRET_KEY'] );
 	}if( ! defined('JWT_AUTH_CORS_ENABLE') ){
 		define('JWT_AUTH_CORS_ENABLE', true );
 	}

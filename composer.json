@@ -34,7 +34,8 @@
         "Desertsnowman/caldera-forms": "dev-feature/2843-2",
         "wpackagist-plugin/gutenberg": "*",
         "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "*",
-        "johnpbloch/wordpress": "*"
+        "johnpbloch/wordpress": "*",
+        "vlucas/phpdotenv": "^2.5@dev"
     },
     "autoload": {
         "psr-4": {

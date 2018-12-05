@@ -10,12 +10,28 @@ require('dotenv').load();
 var request = require("request");
 var base64 = require('file-base64');
 
+
 app.get('/api/hello', (req, res) => {
 	res.send({message: 'Hi Roy'});
 });
+function checkToken(jwtToken) {
+	// invalid token - synchronous
+	try {
+		var decoded = require('jsonwebtoken').verify(jwtToken, process.env.JWT_AUTH_SECRET_KEY);
+		return {
+			valid: true,
+			data: decoded
+		};
+	} catch(err) {
+		return {
+			valid: false,
+			data: err
+		};
+	}
+}
 
-function getEntryHtml(entryId, formId, layoutId, callback) {
-	const uri = `http://localhost:8218/Layout/${layoutId}?entryId=${entryId}&formId=${formId}`;
+function getEntryHtml(entryId, formId, layoutId,jwt, callback) {
+	const uri = `http://localhost:8218/Layout/${layoutId}?entryId=${entryId}&formId=${formId}&jwt=${jwt}`;
 	request({
 		uri,
 	}, (error, response, body) => {
@@ -23,11 +39,11 @@ function getEntryHtml(entryId, formId, layoutId, callback) {
 	});
 }
 
-function createPdf(entryId, formId, layoutId, callback) {
+function createPdf(entryId, formId, layoutId, jwt, callback) {
 	const convertHTMLToPDF = require('pdf-puppeteer');
 
 	try {
-		getEntryHtml(entryId, formId, layoutId, (body) => {
+		getEntryHtml(entryId, formId, layoutId,jwt, (body) => {
 			convertHTMLToPDF(body, pdf => {
 				callback(pdf)
 			})
@@ -47,11 +63,16 @@ app.get('/api/send', (req, res) => {
 	const {
 		entryId,
 		formId,
+		jwt
 	} = req.query;
+	const checked = checkToken(jwt);
+	if( ! checked.valid ){
+		return res.status(403).send(checked.data);
+	}
 	const layoutId = req.query.hasOwnProperty('layoutId') ? req.query.layoutId : 162;
 
-	getEntryHtml(entryId, formId, layoutId, (html) => {
-		createPdf(entryId, formId, layoutId, (pdf) => {
+	getEntryHtml(entryId, formId, layoutId,jwt, (html) => {
+		createPdf(entryId, formId, layoutId, jwt,(pdf) => {
 			base64.encode(pdf, function (err, base64String) {
 				const msg = {
 					to: 'josh@calderawp.com',
@@ -81,21 +102,28 @@ app.get('/api/send', (req, res) => {
 });
 app.get('/pdf', (async function (req, res) {
 
+
 	let {
 		layoutId,
 		entryId,
 		formId,
+		jwt
 	} = req.query;
+
 
 	layoutId = layoutId ? layoutId : 162;
 
-	getEntryHtml(entryId, formId, layoutId, (body) => {
-		createPdf(entryId, formId, layoutId, (pdf) => {
-			res.setHeader('Content-Type', 'application/pdf');
-			res.setHeader('Content-Disposition', 'attachment; filename=message.pdf');
-			res.send(pdf);
-		})
-	});
+	try{
+		getEntryHtml(entryId, formId, layoutId, jwt, (body) => {
+			createPdf(entryId, formId, layoutId,jwt, (pdf) => {
+				res.setHeader('Content-Type', 'application/pdf');
+				res.setHeader('Content-Disposition', 'attachment; filename=message.pdf');
+				res.send(pdf);
+			})
+		});
+	}catch (e) {
+		res.status(500).send(e);
+	}
 
 }));
 
@@ -128,7 +156,6 @@ app.post('/proxy-login', (async function (req, res) {
 
 }));
 
-
 app.get('/forms', ((req, res) => {
 	let {
 		page,
@@ -138,6 +165,10 @@ app.get('/forms', ((req, res) => {
 		page = 1;
 	}
 
+	const checked = checkToken(jwt);
+	if( ! checked.valid ){
+		return res.status(403).send(checked.data);
+	}
 
 	fetch(`http://localhost:8218/wp-json/cf-api/v2/forms?page=${page}&jwtToken=${jwt}&full=true&details=true`, {
 		headers: {'Authorization': `Bearer ${jwt}`}
@@ -161,6 +192,11 @@ app.get('/entries/:formId', ((req, res) => {
 	const {
 		formId
 	} = req.params;
+
+	const checked = checkToken(jwt);
+	if( ! checked.valid ){
+		return res.status(403).send(checked.data);
+	}
 
 	fetch(`http://localhost:8218/wp-json/cf-api/v2/entries/${formId}?${page}&jwtToken=${jwt}`, {
 		headers: {'Authorization': `Bearer ${jwt}`}

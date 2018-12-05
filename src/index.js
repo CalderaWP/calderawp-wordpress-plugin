@@ -32,6 +32,7 @@ const isLoggedIn =  auth.getToken();
 
 ReactDOM.render(
 	<App
+		jwt={auth.getToken()}
 		onJwtToken={({token,displayName}) => {
 			auth.setDisplayName(displayName);
 			auth.setToken(token);

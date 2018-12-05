@@ -54,7 +54,8 @@ class App extends React.Component {
 			getEntries,
 			keys,
 			onJwtToken,
-			isLoggedIn
+			isLoggedIn,
+			jwt
 		} = this.props;
 		return(
 			<div id={'caldera-pro-body'}>
@@ -62,6 +63,7 @@ class App extends React.Component {
 					{isLoggedIn ? (
 						<Fragment>
 							<Entries
+								jwt={jwt}
 								hooks={cfProHooks}
 								getForms={getForms}
 								getEntries={getEntries}
@@ -78,14 +80,6 @@ class App extends React.Component {
 		)
 	}
 	render() {
-		const {
-			getForms,
-			getEntries,
-			keys,
-			onJwtToken,
-			onLogout,
-			isLoggedIn
-		} = this.props;
 
 		let output = [];
 		output.push( cfProHooks.applyFilters( 'before', [] ) );
