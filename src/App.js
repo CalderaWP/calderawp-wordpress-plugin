@@ -1,8 +1,6 @@
 //import { BrowserRouter as Router, Link } from "react-router-dom";
 import React, {Fragment} from 'react';
 import Entries from "./Pages/Entries";
-import "./css/caldera-css/admin.css";
-import "./css/guten-css/post-editor.css";
 import "./app.css";
 import {LogoutButton} from "./components/Login/LogoutButton";
 import {JwtLogin} from "./components/Login/JwtLogin";

@@ -11,6 +11,7 @@ import {entryViewQueryString} from "../components/EntryViewer/components/entryVi
 import {EntryActions} from "../components/EntryViewer/components/EntryActions";
 import {EntryEmail} from "../components/EntryViewer/components/EntryEmail";
 import {EntryHeaders} from "../components/EntryViewer/EntryHeaders";
+import {EntryMailData} from "../components/EntryViewer/components/EntryMailData";
 
 
 
@@ -36,6 +37,8 @@ class Entries extends React.Component {
 		this.handleCloseView = this.handleCloseView.bind(this);
 		this.resetEntry = this.resetEntry.bind(this);
 
+		this.getMailData = this.getMailData.bind(this);
+
 		this.state = {
 			forms: [],
 			entries: {},
@@ -44,7 +47,7 @@ class Entries extends React.Component {
 			currentFormId: props.formId ? props.formId : '',
 			sendPending: false,
 			message: '',
-			viewOpen: ''
+			viewOpen: '',
 		};
 
 	}
@@ -104,6 +107,14 @@ class Entries extends React.Component {
 		return entries.hasOwnProperty(currentEntryId) ? entries[currentEntryId] : {};
 	};
 
+	getMailData(){
+		const entry = this.getCurrentEntry();
+		if( entry.hasOwnProperty( 'mailData' ) ){
+			return entry.mailData;
+		}
+		return false;
+	}
+
 	getCurrentForm() {
 		const {
 			currentFormId,
@@ -153,6 +164,7 @@ class Entries extends React.Component {
 		window.open(url);
 	}
 
+
 	render() {
 		const {
 			currentEntryId,
@@ -169,6 +181,7 @@ class Entries extends React.Component {
 
 		const form = this.getCurrentForm();
 		const currentEntry = this.getCurrentEntry();
+		const mailData = this.getMailData();
 
 		if (!form) {
 			return (
@@ -182,6 +195,7 @@ class Entries extends React.Component {
 				</div>
 			);
 		}
+
 
 		if (viewOpen) {
 			return (
@@ -256,12 +270,30 @@ class Entries extends React.Component {
 
 					) : (
 						<Fragment>
-							<EntryHeaders entries={entries} formFields={form.fields}/>
-							<SingleEntry
-								entry={this.getCurrentEntry()}
-								entryId={currentEntryId}
-								formId={currentFormId}
-							/>
+							<div className={'wp-block-columns has-2-columns'} >
+									<div className={'wp-block-column'}>
+										<EntryHeaders entries={entries} formFields={form.fields}/>
+										<SingleEntry
+											entry={this.getCurrentEntry()}
+											entryId={currentEntryId}
+											formId={currentFormId}
+										/>
+									</div>
+									<div className={'wp-block-column'}>
+										{ mailData &&
+											<EntryMailData
+												mailData={mailData}
+												onChange={(mailData) => console.log(mailData)}
+											/>
+
+										}
+									</div>
+
+							</div>
+
+
+
+
 						</Fragment>
 
 

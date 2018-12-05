@@ -107,6 +107,12 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 		return $show;
 	});
 
+	add_filter( 'caldera_forms_api_entry_data', function ($data,\Caldera_Forms_Entry $entry){
+		$form = $entry->get_form();
+		$mailData = ( new \calderawp\WordPressPlugin\MailData($entry->get_entry_id(), $form ) )->getEmailData();
+		$data[ 'mailData'] = $mailData;
+		return $data;
+	},10,2);
 
 	add_filter( 'template_include', function ( $template ) {
 
@@ -134,7 +140,6 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 
 	add_action('init', function () use ($container) {
-
 		$container->registerBlocks();
 		add_action( 'admin_enqueue_scripts', function(){
 			if( LAYOUT_POST_TYPE === get_post_type( ) ){
