@@ -54,7 +54,9 @@
     "build:app": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:e2e": "./node_modules/.bin/cypress open",
-    "test:e2e:run": "./node_modules/.bin/cypress run --record --key=abc123 --parallel"
+    "test:e2e:run": "./node_modules/.bin/cypress run --record --key=abc123 --parallel",
+    "test:once": "CI=true react-scripts test --env=jsdom",
+    "test:coverage": "npm test -- --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
