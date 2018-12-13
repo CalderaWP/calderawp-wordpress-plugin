@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JWT Login component Component matches snapshot 1`] = `
+exports[`JWT Login component UI Component matches snapshot 1`] = `
 <form
   id="caldera-pro-jwt-login"
   onSubmit={[Function]}
@@ -59,13 +59,14 @@ exports[`JWT Login component Component matches snapshot 1`] = `
     </div>
   </div>
   <input
+    id="caldera-pro-jwt-login-submit"
     type="submit"
     value="Login"
   />
 </form>
 `;
 
-exports[`JWT Login component Shows spinner when loading 1`] = `
+exports[`JWT Login component UI Shows spinner when loading 1`] = `
 <form
   id="caldera-pro-jwt-login"
   onSubmit={[Function]}
@@ -125,6 +126,7 @@ exports[`JWT Login component Shows spinner when loading 1`] = `
     </div>
   </div>
   <input
+    id="caldera-pro-jwt-login-submit"
     type="submit"
     value="Login"
   />

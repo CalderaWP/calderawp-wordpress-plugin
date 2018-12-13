@@ -35,7 +35,7 @@ export class JwtLogin extends Component {
 
 		requestTokenViaApi( userName,password,
 			(r) => {
-				this.setState({message:"logged in",loading:false});
+				this.setState({message:"Logged in",loading:false});
 				onTokenReceived({
 					token: r.token,
 					displayName: r.user_display_name
@@ -102,7 +102,7 @@ export class JwtLogin extends Component {
 				id={'caldera-pro-cfp-password'}
 				disabled={loading}
 			/>
-			<input type={'submit'} value={'Login'} />
+			<input type={'submit'} value={'Login'} id={'caldera-pro-jwt-login-submit'} />
 		</form>);
 	}
 }
