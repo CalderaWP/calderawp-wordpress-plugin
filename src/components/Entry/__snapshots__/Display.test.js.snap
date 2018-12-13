@@ -11,4 +11,6 @@ exports[`Entry display component Displays when all props are provided and matche
 </div>
 `;
 
+exports[`Entry display component Returns a fragment if entry has no fields 1`] = `null`;
+
 exports[`Entry display component Returns a fragment if not enough to display 1`] = `null`;

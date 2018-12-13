@@ -53,4 +53,30 @@ describe( 'Entry display component', () => {
 			/>
 		)).toMatchSnapshot();
 	});
+
+	test( 'Returns a fragment if entry has no fields',() => {
+		const entry = {
+			"id": "1",
+			"form_id": "CF5bde22b646ed0",
+			"datestamp": "2018-11-03 22:35:54",
+			"status": "active",
+			"user": {
+				"id": "",
+				"name": "admin",
+				"email": ""
+			},
+		};
+		expect( renderer.create(
+			<Display
+				form={form}
+				currentEntryId={entryId}
+				entryId={entryId}
+				entry={entry}
+				formId={formId}
+				entryFieldId={entryFieldId}
+				before={beforeText}
+				after={afterText}
+			/>
+		)).toMatchSnapshot();
+	});
 });
