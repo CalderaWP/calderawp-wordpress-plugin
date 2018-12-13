@@ -104,11 +104,5 @@
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
-  "proxy": "http://localhost:5000/",
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest",
-      "<rootDir>/node_modules/simple-html-tokenizer/dist/es6/tokenizer.js": "babel-jest"
-    }
-  }
+  "proxy": "http://localhost:5000/"
 }
