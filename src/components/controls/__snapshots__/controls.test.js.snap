@@ -167,5 +167,3 @@ exports[`Choosing controls Choose form with no forms selected 1`] = `
   </select>
 </div>
 `;
-
-exports[`Update items handler Passes the right data to the callback 1`] = `[Function]`;

@@ -15,6 +15,9 @@ Array [
         onChange={[Function]}
         value="CF5bde22b646ed0"
     >
+        <option>
+             -- 
+        </option>
         <option
             value="CF5bde22a843265"
         >
@@ -72,6 +75,9 @@ Array [
         onChange={[Function]}
         value="CF5bde22b646ed0"
     >
+        <option>
+             -- 
+        </option>
         <option
             value="CF5bde22a843265"
         >
@@ -128,6 +134,9 @@ exports[`EntryListControls component Matches snapshot with no form selected  1`]
     onChange={[Function]}
     value=""
   >
+    <option>
+       -- 
+    </option>
     <option
       value="CF5bde22a843265"
     >

@@ -12,6 +12,9 @@
         "output": "languages/dropit.pot"
       },
       "transform-flow-comments"
-    ]
+    ],
+    ["transform-es2015-modules-commonjs", {
+      "allowTopLevelThis": true
+    }]
   ]
 }

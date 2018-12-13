@@ -1,6 +1,5 @@
 import createBlockArgs, {findBlock} from './createBlockArgs';
-import {createElement} from '@wordpress/element';
-import registerBlock from './registerBlock';
+import {createElement} from 'react';
 
 const blocks = JSON.parse(`{
 	"packageName": "calderaWordPressPlugin",
@@ -47,7 +46,7 @@ const prepared = createBlockArgs(
 
 describe( 'findBlock', () => {
 	it( 'finds a block', () => {
-		expect( findBlock( 'hello', blocks.blocks ) ).toEqual(blocks.blocks[0]);
+		expect( findBlock( blocks.blocks[0].slug, blocks.blocks ) ).toEqual(blocks.blocks[0]);
 	});
 })
 describe('createBlockArgs', () => {
@@ -98,22 +97,5 @@ describe('createBlockArgs', () => {
 
 	it('Matches snapshot', () => {
 		expect(JSON.stringify(prepared)).toMatchSnapshot();
-	});
-});
-
-describe( 'registerBlock', () => {
-	const block = registerBlock(prepared,blocks.namespace);
-
-
-	it( 'returns well-formed object', () => {
-		expect( typeof block ).toBe('object');
-		expect( block.attributes.name.default).toBe( 'Roy' );
-		expect( typeof block.edit).toBe( 'function' );
-		expect( typeof block.save).toBe( 'function' );
-
-	});
-	it( 'Removed unheeded props', () => {
-		expect( block.hasOwnProperty('slug')).toBe( false );
-		expect( block.hasOwnProperty('wpDependencies')).toBe( false );
 	});
 });

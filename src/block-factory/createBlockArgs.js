@@ -25,6 +25,9 @@ export default function createBlockArgs(block: block, namespace: string, edit: N
 		block.category = 'common';
 	}
 
+	delete args.wpDependencies;
+	delete args.slug;
+
 
 	return {
 		...args,
