@@ -14,6 +14,7 @@ export const ChooseForm = (props: FormChooserProps) => {
 				Choose Form
 			</label>
 			<select
+				key={id}
 				id={id}
 				className={'caldera-forms-form-chooser'}
 				value={ props.currentFormId }

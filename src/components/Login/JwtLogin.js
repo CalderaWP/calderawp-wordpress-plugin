@@ -44,16 +44,13 @@ export class JwtLogin extends Component {
 			})
 		}).then( r => r.json() )
 			.then( r => {
-				console.log(r);
 				this.setState({message:"logged in",loading:false});
-
 				onTokenReceived({
 					token: r.token,
 					displayName: r.user_display_name
 				})
 			})
 			.catch( e => {
-				console.log(e);
 				if( e.hasOwnProperty('message') ){
 					console.log(e);
 					this.setState({message:e.message,loading:false});

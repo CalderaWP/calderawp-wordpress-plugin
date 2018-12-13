@@ -1,11 +1,9 @@
-//import { BrowserRouter as Router, Link } from "react-router-dom";
 import React, {Fragment} from 'react';
 import Entries from "./Pages/Entries";
 import "./app.css";
 import {LogoutButton} from "./components/Login/LogoutButton";
 import {JwtLogin} from "./components/Login/JwtLogin";
-import {Admin} from '@caldera-labs/components'
-import { NavigableMenu, TabbableContainer, Button } from '@wordpress/components';
+import { NavigableMenu } from '@wordpress/components';
 import logo from './globe.svg';
 import { createHooks } from '@wordpress/hooks';
 export const cfProHooks = createHooks();
@@ -32,7 +30,7 @@ class App extends React.Component {
 
 		return(
 			<div id={'caldera-pro-header'}>
-				<img src={logo} height={'40px'} width={'40px'} />
+				<img src={logo} height={'40px'} width={'40px'} alt={'Caldera Globe Logo'}/>
 				<h1 className="App-title">Caldera Pro </h1>
 				<div className={'edit-post-header-toolbar'}>
 					<NavigableMenu orientation="horizontal">
@@ -52,7 +50,6 @@ class App extends React.Component {
 		const {
 			getForms,
 			getEntries,
-			keys,
 			onJwtToken,
 			isLoggedIn,
 			jwt

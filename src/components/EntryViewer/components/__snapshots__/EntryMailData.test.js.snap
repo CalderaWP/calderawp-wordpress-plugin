@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntryMailData component  EntryMailDatau matches snapshot 1`] = `
+<div
+  className="cf-mail-headers-edit"
+>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="cf-mail-headers-edit-from"
+      >
+        From (reply-to)
+      </label>
+      <input
+        aria-describedby={null}
+        className="field-config field-config"
+        disabled={false}
+        id="cf-mail-headers-edit-from"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="email"
+        value="no-reply@calderawp.com"
+      />
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="cf-mail-headers-edit-from_name"
+      >
+        Name email is sent from
+      </label>
+      <input
+        aria-describedby={null}
+        className="field-config field-config"
+        disabled={false}
+        id="cf-mail-headers-edit-from_name"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value="Roy Sivan"
+      />
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="cf-mail-headers-edit-recipients"
+      >
+        Recipients
+      </label>
+      <input
+        aria-describedby={null}
+        className="field-config field-config"
+        disabled={false}
+        id="cf-mail-headers-edit-recipients"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value="roy@hiroy.club"
+      />
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="cf-mail-headers-edit-subject"
+      >
+        Message Subject
+      </label>
+      <input
+        aria-describedby={null}
+        className="field-config field-config"
+        disabled={false}
+        id="cf-mail-headers-edit-subject"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="text"
+        value="Hi Roy"
+      />
+    </div>
+  </div>
+  <div
+    className="caldera-config-group"
+  >
+    <div
+      className="caldera-config-field"
+    >
+      <label
+        htmlFor="cf-mail-headers-edit-html"
+      >
+        Content type
+      </label>
+      <select
+        className="field-config field-config"
+        disabled={false}
+        id="cf-mail-headers-edit-html"
+        onChange={[Function]}
+        value="<p>Hi Roy</p>"
+      >
+        <option
+          className="caldera-config-option"
+          value="false"
+        >
+          HTML
+        </option>
+        <option
+          className="caldera-config-option"
+          value="true"
+        >
+          Plain Text
+        </option>
+      </select>
+      <p
+        className="description"
+        id="cf-mail-headers-edit-html-description"
+      >
+        Choose content type, default is HTML
+      </p>
+    </div>
+  </div>
+</div>
+`;

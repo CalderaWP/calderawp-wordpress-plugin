@@ -92,6 +92,9 @@ Array [
         onChange={[Function]}
         value="CF5bde22b646ed0"
     >
+        <option>
+             -- 
+        </option>
         <option
             value="CF5bde22a843265"
         >
@@ -241,6 +244,9 @@ Array [
         onChange={[Function]}
         value="CF5bde22b646ed0"
     >
+        <option>
+             -- 
+        </option>
         <option
             value="CF5bde22a843265"
         >
@@ -390,6 +396,9 @@ Array [
         onChange={[Function]}
         value="CF5bde22b646ed0"
     >
+        <option>
+             -- 
+        </option>
         <option
             value="CF5bde22a843265"
         >
@@ -436,6 +445,9 @@ exports[`Controls component Match snapshot with just forms prop set 1`] = `
     onChange={[Function]}
     value=""
   >
+    <option>
+       -- 
+    </option>
     <option
       value="CF5bde22a843265"
     >
@@ -623,6 +635,9 @@ exports[`Inline component Match snapshot with just forms prop set 1`] = `
     onChange={[Function]}
     value=""
   >
+    <option>
+       -- 
+    </option>
     <option
       value="CF5bde22a843265"
     >

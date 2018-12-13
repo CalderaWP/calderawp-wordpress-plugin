@@ -1,3 +1,6 @@
+import "@babel/polyfill";
+
+
 import renderer from 'react-test-renderer';
 import React from 'react';
 import Enzyme, {shallow,mount} from 'enzyme';
