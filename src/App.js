@@ -3,41 +3,43 @@ import Entries from "./Pages/Entries";
 import "./app.css";
 import {LogoutButton} from "./components/Login/LogoutButton";
 import {JwtLogin} from "./components/Login/JwtLogin";
-import { NavigableMenu } from '@wordpress/components';
+import {NavigableMenu} from '@wordpress/components';
 import logo from './globe.svg';
-import { createHooks } from '@wordpress/hooks';
-export const cfProHooks = createHooks();
+import {createHooks} from '@wordpress/hooks';
 
+export const cfProHooks = createHooks();
 
 
 class App extends React.Component {
 
-	constructor( props ) {
+	constructor(props) {
 		super(props);
-		this.renderHeader= this.renderHeader.bind(this);
-		this.renderBody= this.renderBody.bind(this);
-		cfProHooks.addFilter( 'header', 'cfPro', this.renderHeader );
-		cfProHooks.addFilter( 'body', 'cfPro', this.renderBody );//mainMenuItems
+		this.renderHeader = this.renderHeader.bind(this);
+		this.renderBody = this.renderBody.bind(this);
+		cfProHooks.addFilter('header', 'cfPro', this.renderHeader);
+		cfProHooks.addFilter('body', 'cfPro', this.renderBody);//mainMenuItems
 	};
 
-	renderHeader(){
+	renderHeader() {
 		const {
 			onLogout,
 			isLoggedIn
 		} = this.props;
 
-		const output =  cfProHooks.applyFilters( 'mainMenuItems', [] );
+		const output = cfProHooks.applyFilters('mainMenuItems', []);
 
-		return(
+		return (
 			<div id={'caldera-pro-header'}>
-				<img src={logo} height={'40px'} width={'40px'} alt={'Caldera Globe Logo'}/>
+				<img
+					src={logo} height={'40px'} width={'40px'} alt={'Caldera Globe Logo'}
+				/>
 				<h1 className="App-title">Caldera Pro </h1>
 				<div className={'edit-post-header-toolbar'}>
 					<NavigableMenu orientation="horizontal">
 						{isLoggedIn &&
-							<LogoutButton
-								onLogout={onLogout}
-							/>
+						<LogoutButton
+							onLogout={onLogout}
+						/>
 						}
 						{output}
 					</NavigableMenu>
@@ -46,7 +48,7 @@ class App extends React.Component {
 		)
 	}
 
-	renderBody(){
+	renderBody() {
 		const {
 			getForms,
 			getEntries,
@@ -54,7 +56,7 @@ class App extends React.Component {
 			isLoggedIn,
 			jwt
 		} = this.props;
-		return(
+		return (
 			<div id={'caldera-pro-body'}>
 				<div className={'caldera-pro-inner'}>
 					{isLoggedIn ? (
@@ -76,17 +78,18 @@ class App extends React.Component {
 			</div>
 		)
 	}
+
 	render() {
 
 		let output = [];
-		output.push( cfProHooks.applyFilters( 'before', [] ) );
-		output.push( cfProHooks.applyFilters( 'header', [] ) );
-		output.push( cfProHooks.applyFilters( 'body', [] ) );
-		output.push( cfProHooks.applyFilters( 'footer', [] ) );
+		output.push(cfProHooks.applyFilters('before', []));
+		output.push(cfProHooks.applyFilters('header', []));
+		output.push(cfProHooks.applyFilters('body', []));
+		output.push(cfProHooks.applyFilters('footer', []));
 
 		return (
 			<div id="editor" className="gutenberg__editor caldera-pro-editor">
-				{ output }
+				{output}
 			</div>
 		);
 

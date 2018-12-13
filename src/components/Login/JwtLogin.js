@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {TextControl,Spinner} from '@wordpress/components'
+import {requestTokenViaApi} from "./requestTokenViaApi";
 
 export class JwtLogin extends Component {
 
@@ -31,31 +32,21 @@ export class JwtLogin extends Component {
 			wpApiUrl,
 			onTokenReceived
 		} = this.props;
-		fetch( '/proxy-login', {
-			method: 'post',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				username: userName,
-				password,
 
-			})
-		}).then( r => r.json() )
-			.then( r => {
+		requestTokenViaApi( userName,password,
+			(r) => {
 				this.setState({message:"logged in",loading:false});
 				onTokenReceived({
 					token: r.token,
 					displayName: r.user_display_name
 				})
-			})
-			.catch( e => {
+			},
+			(e) => {
 				if( e.hasOwnProperty('message') ){
-					console.log(e);
 					this.setState({message:e.message,loading:false});
 				}
-			})
+			}
+		);
 	}
 
 	setUserName(userName){
