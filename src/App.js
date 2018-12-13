@@ -6,6 +6,7 @@ import {JwtLogin} from "./components/Login/JwtLogin";
 import {NavigableMenu} from '@wordpress/components';
 import logo from './globe.svg';
 import {createHooks} from '@wordpress/hooks';
+import {requestTokenViaApi} from "./components/Login/requestTokenViaApi";
 
 export const cfProHooks = createHooks();
 
@@ -71,6 +72,7 @@ class App extends React.Component {
 
 					) : (
 						<JwtLogin
+							requestTokenViaApi={requestTokenViaApi}
 							onTokenReceived={onJwtToken}
 						/>
 					)}

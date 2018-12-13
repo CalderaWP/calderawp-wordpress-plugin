@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {TextControl,Spinner} from '@wordpress/components'
-import {requestTokenViaApi} from "./requestTokenViaApi";
 
 export class JwtLogin extends Component {
 
@@ -30,7 +29,8 @@ export class JwtLogin extends Component {
 		} = this.state;
 		const {
 			wpApiUrl,
-			onTokenReceived
+			onTokenReceived,
+			requestTokenViaApi
 		} = this.props;
 
 		requestTokenViaApi( userName,password,
