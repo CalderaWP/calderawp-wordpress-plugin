@@ -41,7 +41,7 @@ class ContainerTest extends TestCase
         $container->initBlocks(
             $blocksJson
         );
-        $this->assertEquals(2,
+        $this->assertEquals(count( $blocksJson[ 'blocks']),
             $container->
             getBlockCollection()
                 ->getCount()
