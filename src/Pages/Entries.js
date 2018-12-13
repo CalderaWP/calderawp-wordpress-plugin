@@ -37,7 +37,7 @@ class Entries extends React.Component {
 		this.handleCloseView = this.handleCloseView.bind(this);
 		this.resetEntry = this.resetEntry.bind(this);
 
-		this.getMailData = this.getMailData.bind(this);
+		this.setMailData = this.setMailData.bind(this);
 
 		this.state = {
 			forms: [],
@@ -48,6 +48,7 @@ class Entries extends React.Component {
 			sendPending: false,
 			message: '',
 			viewOpen: '',
+			mailDataUpdated: {}
 		};
 
 	}
@@ -107,12 +108,10 @@ class Entries extends React.Component {
 		return entries.hasOwnProperty(currentEntryId) ? entries[currentEntryId] : {};
 	};
 
-	getMailData(){
-		const entry = this.getCurrentEntry();
-		if( entry.hasOwnProperty( 'mailData' ) ){
-			return entry.mailData;
-		}
-		return false;
+
+
+	setMailData(mailDataUpdated){
+		this.setState({mailDataUpdated});
 	}
 
 	getCurrentForm() {
@@ -187,7 +186,6 @@ class Entries extends React.Component {
 
 		const form = this.getCurrentForm();
 		const currentEntry = this.getCurrentEntry();
-		const mailData = this.getMailData();
 
 		if (!form) {
 			return (
@@ -219,6 +217,10 @@ class Entries extends React.Component {
 				</Fragment>
 			);
 		}
+
+		const mailData = entries.hasOwnProperty(currentEntryId) && entries[currentEntryId].hasOwnProperty( 'mailData' )
+			? entries[currentEntryId].mailData
+			: false;
 
 
 		return (
@@ -289,7 +291,7 @@ class Entries extends React.Component {
 										{ mailData &&
 											<EntryMailData
 												mailData={mailData}
-												onChange={(mailData) => console.log(mailData)}
+												onChange={this.setMailData}
 											/>
 
 										}

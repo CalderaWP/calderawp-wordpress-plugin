@@ -1,27 +1,18 @@
-
-
 import {RenderGroup} from '@caldera-labs/components';
-import React, {Fragment} from  'react';
+import React, {Fragment} from 'react';
+
 const ID = 'cf-mail-headers-edit';
 
 
-function createConfigFields(mailData,onChange){
+function createConfigFields(mailData, onChange) {
 	const {
 		recipients,
 		subject,
 		replyto,
 		from_name,
 		html
-	}= mailData;
+	} = mailData;
 
-	function createChange(key) {
-		return (newValue) => {
-			onChange({
-				...mailData,
-				[key]: newValue
-			})
-		}
-	}
 
 	return [
 		{
@@ -30,8 +21,13 @@ function createConfigFields(mailData,onChange){
 			'desc': 'Reply-to email address',
 			'type': 'email',
 			'description': false,
-			value:replyto,
-			onValueChange: createChange('from')
+			value: replyto,
+			onValueChange: (from) => {
+				onChange({
+					...mailData,
+					from
+				})
+			}
 
 		},
 		{
@@ -40,8 +36,13 @@ function createConfigFields(mailData,onChange){
 			'desc': 'Comma separated list of recipients.',
 			'type': 'text',
 			'description': false,
-			value:from_name,
-			onValueChange: createChange('from_name')
+			value: from_name,
+			onValueChange: (from_name) => {
+				onChange({
+					...mailData,
+					from_name
+				})
+			}
 
 		},
 		{
@@ -50,16 +51,26 @@ function createConfigFields(mailData,onChange){
 			'desc': 'Comma separated list of recipients.',
 			'type': 'text',
 			'description': false,
-			value:recipients,
-			onValueChange: createChange('recipients')
+			value: recipients,
+			onValueChange: (recipients) => {
+				onChange({
+					...mailData,
+					recipients
+				})
+			}
 		},
 		{
 			'id': ID + '-subject',
 			'label': 'Message Subject',
 			'type': 'text',
 			'description': false,
-			value:subject,
-			onValueChange: createChange('subject')
+			value: subject,
+			onValueChange: (subject) => {
+				onChange({
+					...mailData,
+					subject
+				})
+			}
 
 		},
 		{
@@ -78,10 +89,14 @@ function createConfigFields(mailData,onChange){
 				}
 			],
 			value: html,
-			onValueChange: createChange('html')
+			onValueChange: (html) => {
+				onChange({
+					...mailData,
+					html
+				})
+			}
 		}
 	];
-
 
 
 }
@@ -93,10 +108,10 @@ export const EntryMailData = (props) => {
 		onChange
 	} = props;
 
-	return(
+	return (
 		<Fragment>
 			<RenderGroup
-				configFields={createConfigFields(mailData,onChange)}
+				configFields={createConfigFields(mailData, onChange)}
 				className={'cf-mail-headers-edit'}
 			/>
 

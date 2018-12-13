@@ -145,3 +145,5 @@ exports[`EntryMailData component  EntryMailDatau matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`EntryMailData component  Sends updates 1`] = `[Function]`;
