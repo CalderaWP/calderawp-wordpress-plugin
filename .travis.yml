@@ -1,10 +1,29 @@
-language: node_js
+sudo: required
+dist: trusty
+
+language: php
 node_js:
 - "8"
+
 cache:
   yarn: true
   directories:
   - node_modules
+
+php:
+- 7
+
+env:
+- NODE_RELEASE=8.x
+
+before_install:
+- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
+- sudo apt-get install -y nodejs
+
+install:
+- composer install
+- yarn
+
 script:
 - yarn test:coverage
 after_script:
