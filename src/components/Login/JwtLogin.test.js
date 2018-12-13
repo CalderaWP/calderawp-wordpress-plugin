@@ -19,4 +19,24 @@ describe( 'JWT Login component', () => {
 			)
 		).toMatchSnapshot();
 	});
+
+	it( 'sets password', () => {
+		const component = shallow(<JwtLogin/>);
+		component.instance().setPassword('password' );
+		expect( component.state('password' ) ).toBe( 'password') ;
+	});
+
+	it( 'sets username', () => {
+		const component = shallow(<JwtLogin/>);
+		component.instance().setUserName('userName' );
+		expect( component.state('userName' ) ).toBe( 'userName') ;
+	});
+
+	test('Shows spinner when loading', () => {
+		const component = shallow(<JwtLogin/>);
+		component.setState( {loading:true})
+		expect(
+			renderer.create(component)
+		).toMatchSnapshot();
+	});
 });

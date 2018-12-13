@@ -64,3 +64,69 @@ exports[`JWT Login component Component matches snapshot 1`] = `
   />
 </form>
 `;
+
+exports[`JWT Login component Shows spinner when loading 1`] = `
+<form
+  id="caldera-pro-jwt-login"
+  onSubmit={[Function]}
+>
+  <div>
+    <div>
+      Loading...
+      <span
+        className="components-spinner"
+      />
+    </div>
+  </div>
+  <div
+    className="components-base-control"
+  >
+    <div
+      className="components-base-control__field"
+    >
+      <label
+        className="components-base-control__label"
+        htmlFor="inspector-text-control-2"
+      >
+        User name
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="components-text-control__input"
+        disabled={true}
+        id="caldera-pro-cfp-username"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="components-base-control"
+  >
+    <div
+      className="components-base-control__field"
+    >
+      <label
+        className="components-base-control__label"
+        htmlFor="inspector-text-control-3"
+      >
+        Password
+      </label>
+      <input
+        aria-describedby={undefined}
+        className="components-text-control__input"
+        disabled={true}
+        id="caldera-pro-cfp-password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+  </div>
+  <input
+    type="submit"
+    value="Login"
+  />
+</form>
+`;
