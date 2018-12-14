@@ -1,6 +1,6 @@
 import {RenderGroup} from '@caldera-labs/components';
 import React, {Fragment} from 'react';
-
+import {withState} from '@wordpress/compose';
 const ID = 'cf-mail-headers-edit';
 
 
@@ -102,11 +102,11 @@ function createConfigFields(mailData, onChange) {
 }
 
 
-export const EntryMailData = (props) => {
-	const {
-		mailData,
-		onChange
-	} = props;
+export const EntryMailData = (
+	{ mailData,
+	  onChange,
+}) => {
+
 
 	return (
 		<Fragment>
@@ -117,5 +117,6 @@ export const EntryMailData = (props) => {
 
 		</Fragment>
 	)
-}
+};
+
 
