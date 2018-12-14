@@ -13,6 +13,10 @@ cache:
   - node_modules
   - vendor
 
+notifications:
+  email:
+    on_success: never
+    on_failure: never
 
 env:
 - NODE_RELEASE=8.x
@@ -29,22 +33,18 @@ install:
 stages:
 - unit
 - integration
-- coverage
+#- coverage
 #- deploy
 
 jobs:
   include:
   - stage: unit
+    name: "JavaScript Unit Tests"
     script: yarn test:once
   - # stage name not required, will continue to use `unit`
+    name: "PHP Unit Tests"
     script: composer test:unit
   - stage: integration
-    script: composer wp:install
-  - # stage name not required, will continue to use `integration`
-    script: composer test:unit
-  - stage: coverage
-    script: COVERALLS_REPO_TOKEN=$COVERALLS_TOKEN
-  - # stage name not required, will continue to use `coverage`
-    script: yarn test:coverage-report
-
+    name: "WordPress Integration Tests"
+    script: composer wp:install && composer wp:tests
 

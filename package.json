@@ -110,5 +110,15 @@
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:5000/",
+  "jest" : {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "!**/wordpress/**",
+      "!**/wp-content/**"
+    ]
+  }
 }
