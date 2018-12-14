@@ -1,11 +1,11 @@
 import renderer from "react-test-renderer";
 import React from "react";
-import {EntryMailData} from "./EntryMailData";
+import {EditEntryMailData} from "./EditEntryMailData";
 import Enzyme, {shallow,mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()});
 
-describe( 'EntryMailData component ', () => {
+describe( 'EditEntryMailData component ', () => {
 
 	const onChange =jest.fn();
 	const mailData=  {
@@ -18,7 +18,7 @@ describe( 'EntryMailData component ', () => {
 	test('EntryMailDatau matches snapshot', () => {
 		expect(
 			renderer.create(
-				<EntryMailData
+				<EditEntryMailData
 					mailData={mailData}
 					onChange={onChange}
 
@@ -30,7 +30,7 @@ describe( 'EntryMailData component ', () => {
 
 	it( 'Sends updates', () => {
 		const onChange = jest.fn();
-		const component = mount( <EntryMailData
+		const component = mount( <EditEntryMailData
 			mailData={mailData}
 			onChange={onChange}
 

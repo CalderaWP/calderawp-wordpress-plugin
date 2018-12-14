@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EntryAndMessage component matches snapshot 1`] = `
-<div
-  className="wp-block-columns has-2-columns"
->
-  <div
-    className="wp-block-column"
-  >
+<div>
+  <div>
     <h2>
       Entry Data
     </h2>
@@ -49,9 +45,7 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
       </td>
     </tr>
   </div>
-  <div
-    className="wp-block-column"
-  >
+  <div>
     <h2>
       Primary Message
     </h2>

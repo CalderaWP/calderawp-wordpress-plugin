@@ -3,6 +3,7 @@ import React, {Component, Fragment} from 'react';
 import {MailDataView} from "./Message/MailDataView";
 import {EntryHeaders} from "./EntryViewer/EntryHeaders";
 import {SingleEntry} from "./EntryViewer/SingleEntry";
+import {MailDataEdit} from "./Message/MailDataEdit";
 
 export class EntryAndMessage extends Component {
 
@@ -24,7 +25,6 @@ export class EntryAndMessage extends Component {
 		this.setState({mailData});
 
 	}
-
 
 	updateMessage(message){
 		const {mailData} = this.state;
@@ -54,8 +54,8 @@ export class EntryAndMessage extends Component {
 		const openMessage = props.openMessage ? props.openMessage : 'Edit Message';
 		return(
 			<Fragment>
-				<div className={'wp-block-columns has-2-columns'} >
-					<div className={'wp-block-column'}>
+				<div>
+					<div>
 						<h2>Entry Data</h2>
 						<EntryHeaders
 							entries={entries}
@@ -67,7 +67,7 @@ export class EntryAndMessage extends Component {
 							formId={formId}
 						/>
 					</div>
-					<div className={'wp-block-column'}>
+					<div>
 						{ mailData &&
 						<Fragment>
 							<h2>Primary Message</h2>
@@ -82,9 +82,20 @@ export class EntryAndMessage extends Component {
 									<Fragment>{openMessage}</Fragment>
 								)}
 							</button>
-							<MailDataView
-								mailData={mailData}
-							/>
+							{showEdit ? (
+								<MailDataEdit
+									mailData={mailData}
+									onEditMessage={this.updateMessage}
+									onChangeMailData={this.setMailData}
+								/>
+
+							) : (
+								<MailDataView
+									mailData={mailData}
+								/>
+							)}
+
+
 						</Fragment>
 
 

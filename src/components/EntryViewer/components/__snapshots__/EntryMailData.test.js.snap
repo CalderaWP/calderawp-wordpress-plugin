@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EntryMailData component  EntryMailDatau matches snapshot 1`] = `
+exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
 <div
   className="cf-mail-headers-edit"
 >
@@ -146,4 +146,4 @@ exports[`EntryMailData component  EntryMailDatau matches snapshot 1`] = `
 </div>
 `;
 
-exports[`EntryMailData component  Sends updates 1`] = `[Function]`;
+exports[`EditEntryMailData component  Sends updates 1`] = `[Function]`;

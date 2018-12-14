@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@babel/polyfill";
 import {MailDataView} from "./MailDataView";
+import {MailDataEdit} from "./MailDataEdit";
 
 const mailData = {
 	attachments: [],
@@ -18,9 +19,17 @@ const mailData = {
 	replyto: "test@test.com",
 	subject: "Contact Form 1"
 };
-describe( 'MailDataView' , () => {
+describe( 'MailDataEdit' , () => {
 	it( 'matches snapshot', () => {
-		expect(renderer.create(<MailDataView mailData={mailData}/>).toJSON()
+		expect(
+			renderer.create(
+				<MailDataEdit
+					mailData={mailData}
+					onEditMessage={jest.fn()}
+					onChangeMailData={jest.fn()}
+				/>
+
+			).toJSON()
 		).toMatchSnapshot()
 	})
 });

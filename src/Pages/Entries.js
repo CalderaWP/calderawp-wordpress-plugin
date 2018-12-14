@@ -11,7 +11,7 @@ import {entryViewQueryString} from "../components/EntryViewer/components/entryVi
 import {EntryActions} from "../components/EntryViewer/components/EntryActions";
 import {EntryEmail} from "../components/EntryViewer/components/EntryEmail";
 import {EntryHeaders} from "../components/EntryViewer/EntryHeaders";
-import {EntryMailData} from "../components/EntryViewer/components/EntryMailData";
+import {EditEntryMailData} from "../components/EntryViewer/components/EntryMailData";
 import {EntryAndMessage} from "../components/EntryAndMessage";
 
 

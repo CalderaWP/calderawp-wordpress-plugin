@@ -102,7 +102,7 @@ function createConfigFields(mailData, onChange) {
 }
 
 
-export const EntryMailData = (
+export const EditEntryMailData = (
 	{ mailData,
 	  onChange,
 }) => {
