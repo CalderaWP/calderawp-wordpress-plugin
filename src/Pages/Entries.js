@@ -70,7 +70,7 @@ class Entries extends React.Component {
 	}
 
 	resetEntry(){
-		this.setState({currentEntryId:0})
+		this.setState({currentEntryId:0,viewOpen:false})
 	}
 
 	handleView() {
@@ -175,7 +175,12 @@ class Entries extends React.Component {
 		window.open(url);
 	}
 
-
+	/**
+	 * Adjust menus before component updates
+	 *
+	 * @param nextProps
+	 * @param nextState
+	 */
 	componentWillUpdate(nextProps, nextState){
 		const {
 			addMenuItem,
@@ -184,19 +189,14 @@ class Entries extends React.Component {
 
 		const {
 			currentEntryId,
-			currentFormId
+			currentFormId,
+			viewOpen
 		} = nextState;
 
 		const ENTRY_ACTIONS_KEY = 'entryActions';
 		const CLOSE_BUTTON_KEY  = 'closeEntry';
 		if( currentEntryId ){
-			addMenuItem(CLOSE_BUTTON_KEY, <button
-					key={CLOSE_BUTTON_KEY}
-					onClick={this.resetEntry}
-				>
-					Close
-				</button>
-			);
+
 			addMenuItem(ENTRY_ACTIONS_KEY, <EntryActions
 				key={ENTRY_ACTIONS_KEY}
 				entryId={currentEntryId}
@@ -208,6 +208,17 @@ class Entries extends React.Component {
 
 		}else{
 			removeMenuItem(ENTRY_ACTIONS_KEY );
+		}
+
+		if( currentEntryId || viewOpen ){
+			addMenuItem(CLOSE_BUTTON_KEY, <button
+					key={CLOSE_BUTTON_KEY}
+					onClick={this.resetEntry}
+				>
+					Close
+				</button>
+			);
+		}else{
 			removeMenuItem(CLOSE_BUTTON_KEY );
 		}
 
@@ -299,6 +310,7 @@ class Entries extends React.Component {
 						<Fragment>
 							<div className={'wp-block-columns has-2-columns'} >
 									<div className={'wp-block-column'}>
+										<h2>Entry Data</h2>
 										<EntryHeaders entries={entries} formFields={form.fields}/>
 										<SingleEntry
 											entry={this.getCurrentEntry()}
@@ -308,10 +320,14 @@ class Entries extends React.Component {
 									</div>
 									<div className={'wp-block-column'}>
 										{ mailData &&
-											<EntryMailData
-												mailData={mailData}
-												onChange={this.setMailData}
-											/>
+											<Fragment>
+												<h2>Primary Message</h2>
+												<EntryMailData
+													mailData={mailData}
+													onChange={this.setMailData}
+												/>
+											</Fragment>
+
 
 										}
 									</div>
