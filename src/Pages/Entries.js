@@ -176,6 +176,45 @@ class Entries extends React.Component {
 	}
 
 
+	componentWillUpdate(nextProps, nextState){
+		const {
+			addMenuItem,
+			removeMenuItem
+		} = this.props;
+
+		const {
+			currentEntryId,
+			currentFormId
+		} = nextState;
+
+		const ENTRY_ACTIONS_KEY = 'entryActions';
+		const CLOSE_BUTTON_KEY  = 'closeEntry';
+		if( currentEntryId ){
+			addMenuItem(CLOSE_BUTTON_KEY, <button
+					key={CLOSE_BUTTON_KEY}
+					onClick={this.resetEntry}
+				>
+					Close
+				</button>
+			);
+			addMenuItem(ENTRY_ACTIONS_KEY, <EntryActions
+				key={ENTRY_ACTIONS_KEY}
+				entryId={currentEntryId}
+				formId={currentFormId}
+				onView={this.handleView}
+				onDownload={this.handleDownload}
+				onResend={this.handleResend}
+			/>);
+
+		}else{
+			removeMenuItem(ENTRY_ACTIONS_KEY );
+			removeMenuItem(CLOSE_BUTTON_KEY );
+		}
+
+
+	}
+
+
 	render() {
 		const {
 			currentEntryId,
@@ -186,9 +225,6 @@ class Entries extends React.Component {
 		} = this.state;
 
 
-		const {
-			hooks
-		} = this.props;
 
 		const form = this.getCurrentForm();
 		const currentEntry = this.getCurrentEntry();
@@ -214,12 +250,6 @@ class Entries extends React.Component {
 						entryId={currentEntryId}
 						formId={currentFormId}
 					/>
-					<button
-						onClick={this.handleCloseView}
-					>
-						Close
-					</button>
-
 				</Fragment>
 			);
 		}
@@ -233,7 +263,7 @@ class Entries extends React.Component {
 			<div>
 
 				<Fragment>
-					{!currentEntryId ? (
+					{!currentEntryId &&
 						<Fragment>
 							<ChooseForm
 								forms={forms}
@@ -251,24 +281,7 @@ class Entries extends React.Component {
 								form={form}
 							/>
 						</Fragment>
-
-					) : (
-						<Fragment>
-							<button
-								onClick={this.resetEntry}
-							>
-								Close
-							</button>
-							<EntryActions
-								entryId={currentEntryId}
-								formId={currentFormId}
-								onView={this.handleView}
-								onDownload={this.handleDownload}
-								onResend={this.handleResend}
-							/>
-
-						</Fragment>
-					)}
+					}
 
 				</Fragment>
 				<Fragment>

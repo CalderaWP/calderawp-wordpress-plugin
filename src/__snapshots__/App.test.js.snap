@@ -17,7 +17,7 @@ exports[`Main app component snapshot Logged in and forms 1`] = `
     <h1
       className="App-title"
     >
-      Caldera Pro 
+      Caldera Pro
     </h1>
     <div
       className="edit-post-header-toolbar"
@@ -28,9 +28,6 @@ exports[`Main app component snapshot Logged in and forms 1`] = `
         onKeyDown={[Function]}
         role="menu"
       >
-        <div>
-          Hi Roy
-        </div>
         <button
           className="components-button"
           disabled={undefined}
@@ -90,7 +87,7 @@ exports[`Main app component snapshot Logged in and no forms 1`] = `
     <h1
       className="App-title"
     >
-      Caldera Pro 
+      Caldera Pro
     </h1>
     <div
       className="edit-post-header-toolbar"
@@ -160,7 +157,7 @@ exports[`Main app component snapshot Logged out 1`] = `
     <h1
       className="App-title"
     >
-      Caldera Pro 
+      Caldera Pro
     </h1>
     <div
       className="edit-post-header-toolbar"

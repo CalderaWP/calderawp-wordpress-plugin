@@ -83,6 +83,19 @@ describe('Main app component methods', () => {
 
 	});
 
+	test( 'can not use addMenuItem to update menu', () => {
+		const item = <MenuItem name={'roy'}/>;
+		const component = shallow(<App
+			getForms={getFormsWithForms}
+			getEntries={jest.fn()}
+			onJwtToken={jest.fn()}
+			isLoggedIn={true}
+			jwt={'aa'}/>);
+		component.instance().addMenuItem('hello', item);
+		component.instance().addMenuItem('hello', <div>Hi Roy!</div>);
+		expect(component.state('mainMenuItems').hello).toEqual(item);
+	});
+
 	test( 'Removing menu items', () => {
 		const component = shallow(<App
 			getForms={getFormsWithForms}
@@ -95,7 +108,7 @@ describe('Main app component methods', () => {
 		component.instance().addMenuItem('hello3', <MenuItem name={'Pants!!'}/>);
 		component.instance().addMenuItem('hello', <MenuItem name={'Pants!'}/>);
 		component.instance().addMenuItem('hello2', item);
-	
+
 
 		component.instance().removeMenuItem('hello' );
 		expect(component.state('mainMenuItems').hasOwnProperty('hello')).toBe(false);
@@ -103,6 +116,20 @@ describe('Main app component methods', () => {
 		expect(component.state('mainMenuItems').hasOwnProperty('hello3')).toBe(true);
 
 	});
+
+	it( 'Shows the added menu items', () => {
+		const component = shallow(<App
+			getForms={getFormsWithForms}
+			getEntries={jest.fn()}
+			onJwtToken={jest.fn()}
+			isLoggedIn={true}
+			jwt={'aa'}/>);
+
+		const className = 'the-class';
+		const item = <MenuItem name={'roy'} className={className}/>;
+		component.instance().addMenuItem('hello2', item);
+		expect( component.find( '.' + className ).length ).toBe(1);
+	})
 
 
 });

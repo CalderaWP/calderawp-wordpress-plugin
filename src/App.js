@@ -28,20 +28,22 @@ class App extends React.Component {
 
 	/**
 	 * Add an item to the main menu
-	 * @param {string} key Unique identifier of item to add or replace
+	 * @param {string} key Unique identifier of item to add
 	 * @param {Node} render What to render for item
 	 */
 	addMenuItem(key,render){
 		const {mainMenuItems} = this.state;
+		if (!mainMenuItems.hasOwnProperty(key)) {
+			this.setState({
+				mainMenuItems: {
+					...mainMenuItems,
+					[key]: render
+				}
 
-		this.setState({
-			mainMenuItems: {
-				...mainMenuItems,
-				[key]: render
-			}
-
-		})
+			})
+		}
 	}
+	
 
 	/**
 	 * Remove an item from main menu
@@ -61,23 +63,32 @@ class App extends React.Component {
 			onLogout,
 			isLoggedIn
 		} = this.props;
+		const {mainMenuItems} = this.state;
 
-		const output = cfProHooks.applyFilters('mainMenuItems', []);
+
 		if( isLoggedIn ){
-			output.push( <LogoutButton
+			mainMenuItems['logOut'] = ( <LogoutButton key={'logout'}
 				onLogout={onLogout}
 			/>);
 		}
 
 		return (
-			<div id={'caldera-pro-header'}>
+			<div
+				id={'caldera-pro-header'}
+				key={'caldera-pro-header'}
+			>
 				<img
-					src={logo} height={'40px'} width={'40px'} alt={'Caldera Globe Logo'}
+					src={logo}
+					height={'40px'}
+					width={'40px'}
+					alt={'Caldera Globe Logo'}
 				/>
-				<h1 className="App-title">Caldera Pro </h1>
+				<h1 className="App-title">
+					Caldera Pro
+				</h1>
 				<div className={'edit-post-header-toolbar'}>
 					<NavigableMenu orientation="horizontal">
-						{output}
+						{Object.values(mainMenuItems)}
 					</NavigableMenu>
 				</div>
 			</div>
@@ -93,7 +104,10 @@ class App extends React.Component {
 			jwt
 		} = this.props;
 		return (
-			<div id={'caldera-pro-body'}>
+			<div
+				id={'caldera-pro-body'}
+				key={'caldera-pro-body'}
+			>
 				<div className={'caldera-pro-inner'}>
 					{isLoggedIn ? (
 						<Fragment>
@@ -102,6 +116,8 @@ class App extends React.Component {
 								hooks={cfProHooks}
 								getForms={getForms}
 								getEntries={getEntries}
+								addMenuItem={this.addMenuItem}
+								removeMenuItem={this.removeMenuItem}
 							/>
 						</Fragment>
 
