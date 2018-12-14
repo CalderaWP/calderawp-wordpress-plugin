@@ -1,7 +1,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-export const app = express();
+const app = express();
 const port = process.env.PORT || 5000;
 const fetch = require('isomorphic-fetch');
 app.use(bodyParser.json());
