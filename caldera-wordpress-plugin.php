@@ -428,6 +428,9 @@ add_action('rest_api_init', function () {
 		return $value;
 	});
 
+	$apiNamespace = 'caldera-pro/v2';
+	(new \calderawp\WordPressPlugin\RestApi\GetLayouts() )->add_routes($apiNamespace);
+	(new \calderawp\WordPressPlugin\RestApi\GetLayout() )->add_routes($apiNamespace);
 
 
 
