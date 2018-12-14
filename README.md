@@ -33,16 +33,26 @@ See: `cypress/README.md`
 
 * Launch the test runner for cypress:
     `yarn test:e2e`
-### JavaScript
-
+    
+### JavaScript Development
+* Start everything
+    - `yarn start`
 * Start dev server for React app
     - `yarn start:app`
-* Run JavaScript Unit Tests
+* Start dev server for blocks
+    - `yarn start:blocks`
+
+### JavaScript Tests
+
+* Unit tests
     - `yarn test`
-* Run Flow analysis
-    - `yarn flow`
-
-
+* Launch the test runner for cypress:
+    - `yarn test:e2e`
+* Do a Cypress.io Test Run
+    - `yarn test:e2e:run`
+* Generate coverage report locally
+    - `yarn test:coverage-report`
+    
 ### PHP
 * All PHP is developed in `/php`
 

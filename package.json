@@ -57,7 +57,9 @@
     "test:e2e": "./node_modules/.bin/cypress open",
     "test:e2e:run": "./node_modules/.bin/cypress run --record --key=abc123 --parallel",
     "test:once": "CI=true react-scripts test --env=jsdom",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage",
+    "test:coverage-report": "npm test -- --coverage --coverageReporters=text-lcov",
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
