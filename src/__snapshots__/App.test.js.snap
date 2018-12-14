@@ -1,5 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Main app component snapshot Logged in and forms 1`] = `
+<div
+  className="gutenberg__editor caldera-pro-editor"
+  id="editor"
+>
+  <div
+    id="caldera-pro-header"
+  >
+    <img
+      alt="Caldera Globe Logo"
+      height="40px"
+      src="globe.svg"
+      width="40px"
+    />
+    <h1
+      className="App-title"
+    >
+      Caldera Pro 
+    </h1>
+    <div
+      className="edit-post-header-toolbar"
+    >
+      <div
+        aria-orientation="horizontal"
+        onFocus={undefined}
+        onKeyDown={[Function]}
+        role="menu"
+      >
+        <div>
+          Hi Roy
+        </div>
+        <button
+          className="components-button"
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    id="caldera-pro-body"
+  >
+    <div
+      className="caldera-pro-inner"
+    >
+      <div>
+        <div>
+          <label
+            className=""
+            htmlFor="caldera-forms-form-chooser-entry-viewer-form-chooser-in-app"
+          >
+            Choose Form
+          </label>
+          <select
+            className="caldera-forms-form-chooser"
+            id="caldera-forms-form-chooser-entry-viewer-form-chooser-in-app"
+            onChange={[Function]}
+            value=""
+          >
+            <option>
+               -- 
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Main app component snapshot Logged in and no forms 1`] = `
+<div
+  className="gutenberg__editor caldera-pro-editor"
+  id="editor"
+>
+  <div
+    id="caldera-pro-header"
+  >
+    <img
+      alt="Caldera Globe Logo"
+      height="40px"
+      src="globe.svg"
+      width="40px"
+    />
+    <h1
+      className="App-title"
+    >
+      Caldera Pro 
+    </h1>
+    <div
+      className="edit-post-header-toolbar"
+    >
+      <div
+        aria-orientation="horizontal"
+        onFocus={undefined}
+        onKeyDown={[Function]}
+        role="menu"
+      >
+        <button
+          className="components-button"
+          disabled={undefined}
+          onClick={[Function]}
+          type="button"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    id="caldera-pro-body"
+  >
+    <div
+      className="caldera-pro-inner"
+    >
+      <div>
+        <div>
+          <label
+            className=""
+            htmlFor="caldera-forms-form-chooser-entry-viewer-form-chooser-in-app"
+          >
+            Choose Form
+          </label>
+          <select
+            className="caldera-forms-form-chooser"
+            id="caldera-forms-form-chooser-entry-viewer-form-chooser-in-app"
+            onChange={[Function]}
+            value=""
+          >
+            <option>
+               -- 
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Main app component snapshot Logged out 1`] = `
 <div
   className="gutenberg__editor caldera-pro-editor"

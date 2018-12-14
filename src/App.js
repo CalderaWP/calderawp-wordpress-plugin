@@ -19,18 +19,41 @@ class App extends React.Component {
 		this.renderBody = this.renderBody.bind(this);
 		cfProHooks.addFilter('header', 'cfPro', this.renderHeader);
 		cfProHooks.addFilter('body', 'cfPro', this.renderBody);//mainMenuItems
+		this.addMenuItem = this.addMenuItem.bind(this);
+		this.removeMenuItem = this.removeMenuItem.bind(this);
 		this.state =  {
 			mainMenuItems: []
 		}
 	};
 
-
+	/**
+	 * Add an item to the main menu
+	 * @param {string} key Unique identifier of item to add or replace
+	 * @param {Node} render What to render for item
+	 */
 	addMenuItem(key,render){
+		const {mainMenuItems} = this.state;
 
+		this.setState({
+			mainMenuItems: {
+				...mainMenuItems,
+				[key]: render
+			}
+
+		})
 	}
 
+	/**
+	 * Remove an item from main menu
+	 *
+	 * @param {string} key Unique identifier of item to remove
+	 */
 	removeMenuItem(key){
 		const {mainMenuItems} = this.state;
+		if (mainMenuItems.hasOwnProperty(key)) {
+			delete mainMenuItems[key];
+			this.setState({mainMenuItems});
+		}
 	}
 
 	renderHeader() {

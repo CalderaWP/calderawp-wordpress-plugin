@@ -58,7 +58,6 @@ class Entries extends React.Component {
 
 	componentDidMount() {
 		this.props.hooks.addFilter('mainMenuItems', 'cfPro', (items) => {
-			console.log(items);
 			return [...items, [<div>Hi Roy</div>]]
 		});
 		this.setFormsViaApi();
