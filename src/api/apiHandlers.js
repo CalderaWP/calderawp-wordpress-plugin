@@ -1,6 +1,6 @@
 const getEntryHtml = require( './getEntryHtml' );
 const createPdf = require( './createPdf' );
-
+const wpUrls = require( './wpUrls');
 module.exports = {
 	sendMessage:(req,res) => {
 		const sgMail = require('@sendgrid/mail');
@@ -53,18 +53,19 @@ module.exports = {
 			page = 1;
 		}
 
-		const checked = {valid:true};;
+		const checked = {valid:true};
 		if( ! checked.valid ){
 			return res.status(403).send(checked.data);
 		}
 
-		fetch(`http://localhost:8218/wp-json/cf-api/v2/forms?page=${page}&jwtToken=${jwt}&full=true&details=true`, {
-			headers: {'Authorization': `Bearer ${jwt}`}
-		}).then(r => r.json())
-			.then(forms => {
-				res.send(forms)
-			})
-			.catch(e => res.send(e));
+		fetch(
+			wpUrls.getForms(page,jwt),
+			{}
+		).then(r => r.json())
+		.then(forms => {
+			res.status(200).send(forms)
+		})
+		.catch(e => res.send(e));
 	},
 	getEntries: (req, res) => {
 
@@ -79,19 +80,15 @@ module.exports = {
 			formId
 		} = req.params;
 
-		const checked = {valid:true};;
+		const checked = {valid:true};
 		if( ! checked.valid ){
 			return res.status(403).send(checked.data);
 		}
 
-		fetch(`http://localhost:8218/wp-json/cf-api/v2/entries/${formId}?${page}&jwtToken=${jwt}`, {
-			headers: {'Authorization': `Bearer ${jwt}`}
-		})
+		fetch(wpUrls.getEntries(page,jwt,formId), {})
 			.then(r => r.json())
 			.then(entries => res.send(entries))
 			.catch(e => res.status(500).send(e));
-
-
 	},
 	getPdf:(async function (req, res) {
 
@@ -123,7 +120,7 @@ module.exports = {
 			username,
 			password,
 		} = req.body;
-		fetch('http://localhost:8218/wp-json/jwt-auth/v1/token', {
+		fetch(wpUrls.proxyLogin(), {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json',
