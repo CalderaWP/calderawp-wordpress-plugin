@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main app component snapshot Logged out 1`] = `
+<div
+  className="gutenberg__editor caldera-pro-editor"
+  id="editor"
+>
+  <div
+    id="caldera-pro-header"
+  >
+    <img
+      alt="Caldera Globe Logo"
+      height="40px"
+      src="globe.svg"
+      width="40px"
+    />
+    <h1
+      className="App-title"
+    >
+      Caldera Pro 
+    </h1>
+    <div
+      className="edit-post-header-toolbar"
+    >
+      <div
+        aria-orientation="horizontal"
+        onFocus={undefined}
+        onKeyDown={[Function]}
+        role="menu"
+      />
+    </div>
+  </div>
+  <div
+    id="caldera-pro-body"
+  >
+    <div
+      className="caldera-pro-inner"
+    >
+      <form
+        id="caldera-pro-jwt-login"
+        onSubmit={[Function]}
+      >
+        <div>
+          <div
+            className="alert"
+          >
+            
+          </div>
+        </div>
+        <div
+          className="components-base-control"
+        >
+          <div
+            className="components-base-control__field"
+          >
+            <label
+              className="components-base-control__label"
+              htmlFor="inspector-text-control-0"
+            >
+              User name
+            </label>
+            <input
+              aria-describedby={undefined}
+              className="components-text-control__input"
+              disabled={false}
+              id="caldera-pro-cfp-username"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="components-base-control"
+        >
+          <div
+            className="components-base-control__field"
+          >
+            <label
+              className="components-base-control__label"
+              htmlFor="inspector-text-control-1"
+            >
+              Password
+            </label>
+            <input
+              aria-describedby={undefined}
+              className="components-text-control__input"
+              disabled={false}
+              id="caldera-pro-cfp-password"
+              onChange={[Function]}
+              type="password"
+              value=""
+            />
+          </div>
+        </div>
+        <input
+          id="caldera-pro-jwt-login-submit"
+          type="submit"
+          value="Login"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+`;

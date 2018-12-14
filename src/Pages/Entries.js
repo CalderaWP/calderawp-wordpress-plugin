@@ -39,6 +39,9 @@ class Entries extends React.Component {
 
 		this.setMailData = this.setMailData.bind(this);
 
+
+
+
 		this.state = {
 			forms: [],
 			entries: {},
@@ -54,6 +57,10 @@ class Entries extends React.Component {
 	}
 
 	componentDidMount() {
+		this.props.hooks.addFilter('mainMenuItems', 'cfPro', (items) => {
+			console.log(items);
+			return [...items, [<div>Hi Roy</div>]]
+		});
 		this.setFormsViaApi();
 		const {currentFormId} = this.state;
 		if (currentFormId) {

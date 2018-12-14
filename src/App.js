@@ -19,7 +19,19 @@ class App extends React.Component {
 		this.renderBody = this.renderBody.bind(this);
 		cfProHooks.addFilter('header', 'cfPro', this.renderHeader);
 		cfProHooks.addFilter('body', 'cfPro', this.renderBody);//mainMenuItems
+		this.state =  {
+			mainMenuItems: []
+		}
 	};
+
+
+	addMenuItem(key,render){
+
+	}
+
+	removeMenuItem(key){
+		const {mainMenuItems} = this.state;
+	}
 
 	renderHeader() {
 		const {
@@ -28,6 +40,11 @@ class App extends React.Component {
 		} = this.props;
 
 		const output = cfProHooks.applyFilters('mainMenuItems', []);
+		if( isLoggedIn ){
+			output.push( <LogoutButton
+				onLogout={onLogout}
+			/>);
+		}
 
 		return (
 			<div id={'caldera-pro-header'}>
@@ -37,11 +54,6 @@ class App extends React.Component {
 				<h1 className="App-title">Caldera Pro </h1>
 				<div className={'edit-post-header-toolbar'}>
 					<NavigableMenu orientation="horizontal">
-						{isLoggedIn &&
-						<LogoutButton
-							onLogout={onLogout}
-						/>
-						}
 						{output}
 					</NavigableMenu>
 				</div>
@@ -83,11 +95,13 @@ class App extends React.Component {
 
 	render() {
 
-		let output = [];
-		output.push(cfProHooks.applyFilters('before', []));
-		output.push(cfProHooks.applyFilters('header', []));
-		output.push(cfProHooks.applyFilters('body', []));
-		output.push(cfProHooks.applyFilters('footer', []));
+		let output = [
+			cfProHooks.applyFilters('before', []),
+			cfProHooks.applyFilters('header', []),
+			cfProHooks.applyFilters('body', []),
+			cfProHooks.applyFilters('footer', [])
+		];
+
 
 		return (
 			<div id="editor" className="gutenberg__editor caldera-pro-editor">
