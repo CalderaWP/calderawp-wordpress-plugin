@@ -133,7 +133,11 @@ module.exports = {
 			})
 		}).then(r => r.json())
 			.then(r => {
-				res.status(200).send(r);
+				const status = r.hasOwnProperty('data') && r.data.hasOwnProperty( 'status')
+				? r.data.status : 200;
+				const response = r.hasOwnProperty('data') && r.data.hasOwnProperty( 'message')
+				? { message: r.data.message} : {message: ''};
+				res.status(status).send(response);
 			})
 			.catch(e => {
 				res.status(e.status).send(e);

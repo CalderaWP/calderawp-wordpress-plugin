@@ -1,13 +1,14 @@
 <?php
 
 
-namespace calderawp\WordPressPlugin\RestApi;
+namespace calderawp\WordPressPlugin\RestApi\Layout;
 
 
 use calderawp\calderaforms\cf2\RestApi\Endpoint;
-use calderawp\WordPressPlugin\Layouts;
+use calderawp\WordPressPlugin\Data\Layouts;
+use calderawp\WordPressPlugin\RestApi\ChecksRequestWithJWT;
 
-class GetLayouts  extends Endpoint
+class GetLayouts extends Endpoint
 {
 	use ChecksRequestWithJWT;
 

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace calderawp\WordPressPlugin;
+namespace calderawp\WordPressPlugin\Data;
 
 
 use calderawp\WordPressPlugin\RestApi\Response;
 
-class Layouts
+class Layouts extends PostsCollection
 {
 
 	protected $layouts;
@@ -34,13 +34,15 @@ class Layouts
 	public static function fromWpPosts(array $posts )
 	{
 		$collection = [];
-		foreach ($posts as $post ){
-			$collection[] = Layout::fromWpPost($post);
+		if (! empty( $posts)) {
+			foreach ( $posts as $post ) {
+				$collection[] = Layout::fromWpPost($post);
+			}
 		}
 		return new static($collection);
 	}
 
-	public function toArray()
+	public function toArray() : array
 	{
 		$output = [];
 		if (! empty( $this->layouts)) {
@@ -51,14 +53,4 @@ class Layouts
 		return $output;
 	}
 
-	/**
-	 * @param int $statusCode
-	 * @param array $headers
-	 *
-	 * @return Response
-	 */
-	public function toResponse($statusCode = 200, array $headers = []): Response
-	{
-		return (new Response($this->toArray($statusCode, $headers)));
-	}
 }

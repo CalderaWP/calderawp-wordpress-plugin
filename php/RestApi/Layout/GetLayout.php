@@ -1,11 +1,12 @@
 <?php
 
 
-namespace calderawp\WordPressPlugin\RestApi;
+namespace calderawp\WordPressPlugin\RestApi\Layout;
 
 
 use calderawp\calderaforms\cf2\RestApi\Endpoint;
-use calderawp\WordPressPlugin\Layout;
+use calderawp\WordPressPlugin\Data\Layout;
+use calderawp\WordPressPlugin\RestApi\ChecksRequestWithJWT;
 
 class GetLayout  extends Endpoint
 {

@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CalderaWP/caldera-forms",
-                "reference": "92c71911467b447d8985a01a921b91b481023070"
+                "reference": "a32ce6a2842dbf1865cb648d13f15f465c6009ff"
             },
             "require": {
                 "a5hleyrich/wp-queue": "^1.3",
@@ -127,7 +127,7 @@
                 "forms",
                 "wordpress"
             ],
-            "time": "2018-12-04T16:55:29+00:00"
+            "time": "2018-12-11T09:04:31+00:00"
         },
         {
             "name": "a5hleyrich/wp-queue",
@@ -535,15 +535,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8db1967d92f55de1b94b175478ed16a7dfc53a90"
+                "reference": "9799bbcb90ed2df488adb0924169163156483e52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8db1967d92f55de1b94b175478ed16a7dfc53a90",
-                "reference": "8db1967d92f55de1b94b175478ed16a7dfc53a90",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9799bbcb90ed2df488adb0924169163156483e52",
+                "reference": "9799bbcb90ed2df488adb0924169163156483e52",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.4",
                 "php": ">=5.5"
@@ -592,7 +593,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-11-24T20:31:03+00:00"
+            "time": "2018-12-07T08:18:25+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -651,24 +652,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952"
+                "reference": "5e61346ab1e1ca7d01d2f633bad9574d35717781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/53662d6688033a5eccde987bdd5a4a98ebe2d952",
-                "reference": "53662d6688033a5eccde987bdd5a4a98ebe2d952",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5e61346ab1e1ca7d01d2f633bad9574d35717781",
+                "reference": "5e61346ab1e1ca7d01d2f633bad9574d35717781",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
                 "psr/http-message": "~1.0",
-                "ralouphie/getallheaders": "^2.0.5"
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
             },
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+            },
+            "suggest": {
+                "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
             },
             "type": "library",
             "extra": {
@@ -710,7 +714,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-12-03T05:07:51+00:00"
+            "time": "2018-12-07T15:04:46+00:00"
         },
         {
             "name": "inpsyde/wonolog",
@@ -718,12 +722,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inpsyde/Wonolog.git",
-                "reference": "33fe59f2b271042a79ed7ed365eba80284f4fa34"
+                "reference": "87ed9a60c6f5cc3a057db857273dc504efc5ad9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/33fe59f2b271042a79ed7ed365eba80284f4fa34",
-                "reference": "33fe59f2b271042a79ed7ed365eba80284f4fa34",
+                "url": "https://api.github.com/repos/inpsyde/Wonolog/zipball/87ed9a60c6f5cc3a057db857273dc504efc5ad9f",
+                "reference": "87ed9a60c6f5cc3a057db857273dc504efc5ad9f",
                 "shasum": ""
             },
             "require": {
@@ -777,7 +781,7 @@
                 "psr-3",
                 "wordpress"
             ],
-            "time": "2018-11-14T10:11:46+00:00"
+            "time": "2018-12-12T17:06:45+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -824,12 +828,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e"
+                "reference": "5411b841d241ec7de4d2ac1a06d4ca19257ca689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
-                "reference": "bed407d2c51c239502e8dc3fab20d7e5a57efc5e",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/5411b841d241ec7de4d2ac1a06d4ca19257ca689",
+                "reference": "5411b841d241ec7de4d2ac1a06d4ca19257ca689",
                 "shasum": ""
             },
             "require": {
@@ -856,7 +860,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-10-05T21:01:04+00:00"
+            "time": "2018-12-14T12:27:15+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -977,12 +981,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "daed05c3e5ed303ce3423a8afbb54e590e795fdb"
+                "reference": "3fbaff7a633319ccd1d7d8d2d1c96a5d2ebccc81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/daed05c3e5ed303ce3423a8afbb54e590e795fdb",
-                "reference": "daed05c3e5ed303ce3423a8afbb54e590e795fdb",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/3fbaff7a633319ccd1d7d8d2d1c96a5d2ebccc81",
+                "reference": "3fbaff7a633319ccd1d7d8d2d1c96a5d2ebccc81",
                 "shasum": ""
             },
             "require": {
@@ -995,12 +999,13 @@
             "require-dev": {
                 "aws/aws-sdk-php": "^2.4.9 || ^3.0",
                 "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^6.0",
                 "graylog2/gelf-php": "^1.4.2",
                 "jakub-onderka/php-parallel-lint": "^0.9",
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpspec/prophecy": "^1.6.1",
-                "phpunit/phpunit": "^7.3",
+                "phpunit/phpunit": "^7.5",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
                 "ruflin/elastica": ">=0.90 <3.0",
@@ -1010,6 +1015,7 @@
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
@@ -1049,7 +1055,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-12-04T09:30:41+00:00"
+            "time": "2018-12-11T10:11:47+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1470,12 +1476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f"
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/3edf0ab943d1985a356721952cba36ff31bd6e5f",
-                "reference": "3edf0ab943d1985a356721952cba36ff31bd6e5f",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
                 "shasum": ""
             },
             "require": {
@@ -1530,7 +1536,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-11-24T09:35:08+00:00"
+            "time": "2018-12-05T08:06:11+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1597,17 +1603,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "012ec5a083f4177496df0ddc516d2b509e2ab8a6"
+                "reference": "5c111fac40dc3ed9b62e33aa641b35c9b5ef5cd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/012ec5a083f4177496df0ddc516d2b509e2ab8a6",
-                "reference": "012ec5a083f4177496df0ddc516d2b509e2ab8a6",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/5c111fac40dc3ed9b62e33aa641b35c9b5ef5cd0",
+                "reference": "5c111fac40dc3ed9b62e33aa641b35c9b5ef5cd0",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/contracts": "^1.0",
+                "symfony/contracts": "^1.0.2",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -1662,7 +1668,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-27T07:40:59+00:00"
+            "time": "2018-12-13T12:43:21+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3370,12 +3376,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b53f64e10e41aa754ffa7c11999af1881e6c1780"
+                "reference": "ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b53f64e10e41aa754ffa7c11999af1881e6c1780",
-                "reference": "b53f64e10e41aa754ffa7c11999af1881e6c1780",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e",
+                "reference": "ab6caa0a7e23bbe48d8a12c5c7a3c2f1ab1dad9e",
                 "shasum": ""
             },
             "require": {
@@ -3413,7 +3419,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-11-27T02:04:54+00:00"
+            "time": "2018-12-12T03:06:35+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3479,12 +3485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "d4fc8a5d43d55a89c6baa856215ec39108fc33a0"
+                "reference": "3a51c82e368190e2c829926bf7b512ac6902a853"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/d4fc8a5d43d55a89c6baa856215ec39108fc33a0",
-                "reference": "d4fc8a5d43d55a89c6baa856215ec39108fc33a0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/3a51c82e368190e2c829926bf7b512ac6902a853",
+                "reference": "3a51c82e368190e2c829926bf7b512ac6902a853",
                 "shasum": ""
             },
             "require": {
@@ -3530,7 +3536,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26T16:19:01+00:00"
+            "time": "2018-12-13T12:43:21+00:00"
         },
         {
             "name": "webmozart/assert",

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace calderawp\WordPressPlugin;
+namespace calderawp\WordPressPlugin\Data;
 
 
 use calderawp\WordPressPlugin\RestApi\Response;
 
-class Layout
+class Layout extends PostEntity
 {
 	/** @var string */
 	protected $title;
@@ -18,12 +18,8 @@ class Layout
 	protected $slug;
 
 
-	/**
-	 * @param \WP_Post $post
-	 *
-	 * @return Layout
-	 */
-	public static function fromWpPost( \WP_Post $post ): Layout{
+	/** @inheritdoc */
+	public static function fromWpPost( \WP_Post $post ) {
 		$obj = new static;
 		$obj->setContent($post->post_content )
 			->setTitle( $post->post_title )
@@ -31,6 +27,8 @@ class Layout
 			->setID($post->ID );
 		return $obj;
 	}
+
+	/** @inheritdoc */
 	public function toArray(): array {
 		return [
 			'title' => $this->getTitle(),
@@ -41,16 +39,6 @@ class Layout
 
 	}
 
-
-	/**
-	 * @param int $statusCode
-	 * @param array $headers
-	 *
-	 * @return Response
-	 */
-	public function toResponse($statusCode = 200, array $headers = [] ): Response{
-		return new Response( $this->toArray(), $statusCode, $headers );
-	}
 
 	/**
 	 * @return string

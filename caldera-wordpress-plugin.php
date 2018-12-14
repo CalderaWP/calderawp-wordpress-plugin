@@ -409,6 +409,7 @@ add_action('caldera_forms_admin_init', function () {
 
 
 add_action('rest_api_init', function () {
+
 	if( ! defined('JWT_AUTH_SECRET_KEY') ){
 		define('JWT_AUTH_SECRET_KEY', $_ENV['JWT_AUTH_SECRET_KEY'] );
 	}if( ! defined('JWT_AUTH_CORS_ENABLE') ){
@@ -429,10 +430,8 @@ add_action('rest_api_init', function () {
 	});
 
 	$apiNamespace = 'caldera-pro/v2';
-	(new \calderawp\WordPressPlugin\RestApi\GetLayouts() )->add_routes($apiNamespace);
-	(new \calderawp\WordPressPlugin\RestApi\GetLayout() )->add_routes($apiNamespace);
-
-
+	(new \calderawp\WordPressPlugin\RestApi\Layout\GetLayouts() )->add_routes($apiNamespace);
+	(new \calderawp\WordPressPlugin\RestApi\Layout\GetLayout() )->add_routes($apiNamespace);
 
 }, 5000);
 
