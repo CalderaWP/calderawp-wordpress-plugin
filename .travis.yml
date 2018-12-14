@@ -7,7 +7,6 @@ node_js:
 php:
 - 7.1
 
-
 cache:
   yarn: true
   directories:
@@ -26,10 +25,26 @@ install:
 - composer install
 - yarn
 
-script:
-- yarn test:coverage
-after_script:
-- COVERALLS_REPO_TOKEN=$COVERALLS_TOKEN
-- yarn test:coverage-report
-- yarn coveralls
+
+stages:
+- unit
+- integration
+- coverage
+#- deploy
+
+jobs:
+  include:
+  - stage: unit
+    script: yarn test:once
+  - # stage name not required, will continue to use `unit`
+    script: composer test:unit
+  - stage: integration
+    script: composer wp:install
+  - # stage name not required, will continue to use `integration`
+    script: composer test:unit
+  - stage: coverage
+    script: COVERALLS_REPO_TOKEN=$COVERALLS_TOKEN
+  - # stage name not required, will continue to use `coverage`
+    script: yarn test:coverage-report
+
 
