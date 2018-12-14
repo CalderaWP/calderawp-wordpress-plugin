@@ -9,7 +9,7 @@ class EntryValue implements RenderCallbackContract
 
 	protected  $atts;
 
-	const DEFULAT_ATTS_FILTER = 'calderawp/WordPressPlugin/Blocks/RenderCallback/EntryValue/getArgs';
+	const DEFUALT_ATTS_FILTER = 'calderawp/WordPressPlugin/Blocks/RenderCallback/EntryValue/getArgs';
 	protected  function parseAtts($atts)
 	{
 		$this->atts = array_merge($this->getDefaultAtts(), $atts);
@@ -43,7 +43,7 @@ class EntryValue implements RenderCallbackContract
 	public function getAtts()
 	{
 
-		return apply_filters( self::DEFULAT_ATTS_FILTER, ! empty($this->atts) ? $this->atts : $this->getDefaultAtts() );
+		return apply_filters( self::DEFUALT_ATTS_FILTER, ! empty($this->atts) ? $this->atts : $this->getDefaultAtts() );
 	}
 
 	public function render(array $atts)

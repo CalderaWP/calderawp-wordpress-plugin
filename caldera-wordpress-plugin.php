@@ -133,7 +133,7 @@ add_action('calderawp/WordPressPlugin/init', function (\calderawp\WordPressPlugi
 
 	//Set entryId and formId via _GET
 	//This is a hack.
-	add_filter( \calderawp\WordPressPlugin\Blocks\RenderCallback\EntryValue::DEFULAT_ATTS_FILTER, function($atts){
+	add_filter( \calderawp\WordPressPlugin\Blocks\RenderCallback\EntryValue::DEFUALT_ATTS_FILTER, function($atts){
 		if ( LAYOUT_POST_TYPE === get_post_type() ) {
 			foreach([
 				'entryId',
