@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MailDataView matches snapshot 1`] = `
+<div
+  className="wp-block-columns has-2-columns"
+>
+  <div
+    className="wp-block-column"
+  >
+    <h3>
+      Headers
+    </h3>
+    <ul>
+      <li>
+        <span>
+          From
+          :
+        </span>
+         
+        test@test.com
+      </li>
+      <li>
+        <span>
+          From_name
+          :
+        </span>
+         
+        Caldera Forms Notification
+      </li>
+      <li>
+        <span>
+          Html
+          :
+        </span>
+         
+        HTML
+      </li>
+      <li>
+        <span>
+          Recipients
+          :
+        </span>
+         
+        roy@hiroy.club
+        alsoroy@hiroy.club
+      </li>
+      <li>
+        <span>
+          Replyto
+          :
+        </span>
+         
+        test@test.com
+      </li>
+      <li>
+        <span>
+          Subject
+          :
+        </span>
+         
+        Contact Form 1
+      </li>
+    </ul>
+  </div>
+  <div
+    className="wp-block-column"
+  >
+    <h3>
+      Message
+    </h3>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p><strong></strong></p>
+        <div style=\\"margin-bottom:20px;\\">Mike</div>
+        <p><strong></strong></p>
+        <div style=\\"margin-bottom:20px;\\">Pollock</div>
+        <p><strong></strong></p>
+        <div style=\\"margin-bottom:20px;\\">j…",
+        }
+      }
+    />
+  </div>
+</div>
+`;

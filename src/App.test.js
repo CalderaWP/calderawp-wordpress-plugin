@@ -66,7 +66,7 @@ describe('Main app component', () => {
 });
 
 describe('Main app component methods', () => {
-	const MenuItem = ({name}) => (<div>{name}</div>);
+	const MenuItem = ({name}) => (<div key={name}>{name}</div>);
 
 	test('addMenuItem adds a menu item', () => {
 		const component = shallow(<App

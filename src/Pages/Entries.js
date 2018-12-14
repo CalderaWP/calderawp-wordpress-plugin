@@ -12,6 +12,7 @@ import {EntryActions} from "../components/EntryViewer/components/EntryActions";
 import {EntryEmail} from "../components/EntryViewer/components/EntryEmail";
 import {EntryHeaders} from "../components/EntryViewer/EntryHeaders";
 import {EntryMailData} from "../components/EntryViewer/components/EntryMailData";
+import {EntryAndMessage} from "../components/EntryAndMessage";
 
 
 
@@ -308,34 +309,14 @@ class Entries extends React.Component {
 
 					) : (
 						<Fragment>
-							<div className={'wp-block-columns has-2-columns'} >
-									<div className={'wp-block-column'}>
-										<h2>Entry Data</h2>
-										<EntryHeaders entries={entries} formFields={form.fields}/>
-										<SingleEntry
-											entry={this.getCurrentEntry()}
-											entryId={currentEntryId}
-											formId={currentFormId}
-										/>
-									</div>
-									<div className={'wp-block-column'}>
-										{ mailData &&
-											<Fragment>
-												<h2>Primary Message</h2>
-												<EntryMailData
-													mailData={mailData}
-													onChange={this.setMailData}
-												/>
-											</Fragment>
-
-
-										}
-									</div>
-
-							</div>
-
-
-
+							<EntryAndMessage
+								entries={entries}
+								entry={this.getCurrentEntry()}
+								formFields={form.fields}
+								formId={currentFormId}
+								entryId={currentEntryId}
+								mailData={mailData}
+							/>
 
 						</Fragment>
 

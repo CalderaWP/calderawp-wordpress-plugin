@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntryAndMessage component matches snapshot 1`] = `
+<div
+  className="wp-block-columns has-2-columns"
+>
+  <div
+    className="wp-block-column"
+  >
+    <h2>
+      Entry Data
+    </h2>
+    <tr>
+      <th
+        scope="col"
+      >
+        ID
+      </th>
+      <th>
+        first_name
+      </th>
+      <th>
+        last_name
+      </th>
+      <th>
+        email_address
+      </th>
+      <th>
+        comments_questions
+      </th>
+    </tr>
+    <tr>
+      <th
+        scope="row"
+      >
+        2
+      </th>
+      <td>
+        Roy
+      </td>
+      <td>
+        Sivan
+      </td>
+      <td>
+        roy@hiroy.club
+      </td>
+      <td>
+        fs
+      </td>
+    </tr>
+  </div>
+  <div
+    className="wp-block-column"
+  >
+    <h2>
+      Primary Message
+    </h2>
+    <button
+      className="toggle-edit-view"
+      onClick={[Function]}
+    >
+      Edit Message
+    </button>
+    <div
+      className="wp-block-columns has-2-columns"
+    >
+      <div
+        className="wp-block-column"
+      >
+        <h3>
+          Headers
+        </h3>
+        <ul>
+          <li>
+            <span>
+              From
+              :
+            </span>
+             
+            test@test.com
+          </li>
+          <li>
+            <span>
+              From_name
+              :
+            </span>
+             
+            Caldera Forms Notification
+          </li>
+          <li>
+            <span>
+              Html
+              :
+            </span>
+             
+            HTML
+          </li>
+          <li>
+            <span>
+              Recipients
+              :
+            </span>
+             
+            roy@hiroy.club
+            alsoroy@hiroy.club
+          </li>
+          <li>
+            <span>
+              Replyto
+              :
+            </span>
+             
+            test@test.com
+          </li>
+          <li>
+            <span>
+              Subject
+              :
+            </span>
+             
+            Contact Form 1
+          </li>
+        </ul>
+      </div>
+      <div
+        className="wp-block-column"
+      >
+        <h3>
+          Message
+        </h3>
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p><strong></strong></p>
+            <div style=\\"margin-bottom:20px;\\">Mike</div>
+            <p><strong></strong></p>
+            <div style=\\"margin-bottom:20px;\\">Pollock</div>
+            <p><strong></strong></p>
+            <div style=\\"margin-bottom:20px;\\">j…",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
