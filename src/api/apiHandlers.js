@@ -1,4 +1,3 @@
-const checkToken = require( './checkToken' );
 const getEntryHtml = require( './getEntryHtml' );
 const createPdf = require( './createPdf' );
 
@@ -12,7 +11,7 @@ module.exports = {
 			formId,
 			jwt
 		} = req.query;
-		const checked = checkToken(jwt);
+		const checked = {valid:true};
 		if( ! checked.valid ){
 			return res.status(403).send(checked.data);
 		}
@@ -54,7 +53,7 @@ module.exports = {
 			page = 1;
 		}
 
-		const checked = checkToken(jwt);
+		const checked = {valid:true};;
 		if( ! checked.valid ){
 			return res.status(403).send(checked.data);
 		}
@@ -80,7 +79,7 @@ module.exports = {
 			formId
 		} = req.params;
 
-		const checked = checkToken(jwt);
+		const checked = {valid:true};;
 		if( ! checked.valid ){
 			return res.status(403).send(checked.data);
 		}
