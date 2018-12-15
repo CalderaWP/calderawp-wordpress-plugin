@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`EntryAndMessage component matches snapshot 1`] = `
 <div>
   <div>
@@ -8,8 +6,7 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
     </h2>
     <tr>
       <th
-        scope="col"
-      >
+        scope="col">
         ID
       </th>
       <th>
@@ -27,8 +24,7 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
     </tr>
     <tr>
       <th
-        scope="row"
-      >
+        scope="row">
         2
       </th>
       <td>
@@ -51,16 +47,13 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
     </h2>
     <button
       className="toggle-edit-view"
-      onClick={[Function]}
-    >
+      onClick={[Function]}>
       Edit Message
     </button>
     <div
-      className="wp-block-columns has-2-columns"
-    >
+      className="wp-block-columns has-2-columns">
       <div
-        className="wp-block-column"
-      >
+        className="wp-block-column">
         <h3>
           Headers
         </h3>
@@ -117,8 +110,7 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
         </ul>
       </div>
       <div
-        className="wp-block-column"
-      >
+        className="wp-block-column">
         <h3>
           Message
         </h3>
@@ -126,14 +118,13 @@ exports[`EntryAndMessage component matches snapshot 1`] = `
           dangerouslySetInnerHTML={
             Object {
               "__html": "<p><strong></strong></p>
-            <div style=\\"margin-bottom:20px;\\">Mike</div>
+            <div style=\"margin-bottom:20px;\">Mike</div>
             <p><strong></strong></p>
-            <div style=\\"margin-bottom:20px;\\">Pollock</div>
+            <div style=\"margin-bottom:20px;\">Pollock</div>
             <p><strong></strong></p>
-            <div style=\\"margin-bottom:20px;\\">j…",
+            <div style=\"margin-bottom:20px;\">j…",
             }
-          }
-        />
+          } />
       </div>
     </div>
   </div>

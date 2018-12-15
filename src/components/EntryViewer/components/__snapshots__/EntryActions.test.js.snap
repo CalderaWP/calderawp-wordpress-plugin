@@ -1,20 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`EntryActions component  EntryActions matches snapshot 1`] = `
 Array [
   <button
-    onClick={[Function]}
->
+    onClick={[Function]}>
     View
 </button>,
   <button
-    onClick={[Function]}
->
+    onClick={[Function]}>
     Download
 </button>,
   <button
-    onClick={[Function]}
->
+    onClick={[Function]}>
     Resend
 </button>,
 ]

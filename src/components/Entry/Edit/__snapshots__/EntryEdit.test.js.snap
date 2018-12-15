@@ -1,11 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`AfterControl After editor with label hidden matches spapshots 1`] = `
 Array [
   <label
     className="sr-only screen-reader-text"
-    htmlFor="caldera-after-entryValue-edit-54fds"
->
+    htmlFor="caldera-after-entryValue-edit-54fds">
     Text After Value
 </label>,
   <input
@@ -13,22 +10,18 @@ Array [
     onChange={[Function]}
     placeholder="Text to show after value"
     type="text"
-    value="After"
-/>,
+    value="After" />,
 ]
 `;
 
 exports[`AfterControl After editor with label visible matches spapshots 1`] = `
 <div
-  className="components-base-control caldera-after-entryValue-edit"
->
+  className="components-base-control caldera-after-entryValue-edit">
   <div
-    className="components-base-control__field"
-  >
+    className="components-base-control__field">
     <label
       className="components-base-control__label"
-      htmlFor="inspector-text-control-0"
-    >
+      htmlFor="inspector-text-control-0">
       Text After Value
     </label>
     <input
@@ -37,8 +30,7 @@ exports[`AfterControl After editor with label visible matches spapshots 1`] = `
       id="caldera-after-entryValue-edit-54fds"
       onChange={[Function]}
       type="text"
-      value="After"
-    />
+      value="After" />
   </div>
 </div>
 `;
@@ -47,16 +39,14 @@ exports[`Before editor Before editor with label hidden matches spapshots 1`] = `
 Array [
   <label
     className="sr-only screen-reader-text"
-    htmlFor="caldera-before-entryValue-edit-54fds"
->
+    htmlFor="caldera-before-entryValue-edit-54fds">
     Text Before Value
 </label>,
   <input
     onChange={[Function]}
     placeholder="Text to show before value"
     type="text"
-    value="Before"
-/>,
+    value="Before" />,
 ]
 `;
 
@@ -64,16 +54,14 @@ exports[`Before editor Before editor with label visible matches spapshots 1`] = 
 Array [
   <label
     className="sr-only screen-reader-text"
-    htmlFor="caldera-before-entryValue-edit-54fds"
->
+    htmlFor="caldera-before-entryValue-edit-54fds">
     Text Before Value
 </label>,
   <input
     onChange={[Function]}
     placeholder="Text to show before value"
     type="text"
-    value="Before"
-/>,
+    value="Before" />,
 ]
 `;
 
@@ -82,116 +70,95 @@ Array [
   <div>
     <label
         className=""
-        htmlFor="caldera-forms-form-chooser-54fds"
-    >
+        htmlFor="caldera-forms-form-chooser-54fds">
         Choose Form
     </label>
     <select
         className="caldera-forms-form-chooser"
         id="caldera-forms-form-chooser-54fds"
         onChange={[Function]}
-        value="CF5bde22b646ed0"
-    >
+        value="CF5bde22b646ed0">
         <option>
              -- 
         </option>
         <option
-            value="CF5bde22a843265"
-        >
+            value="CF5bde22a843265">
             Not Contact Form
         </option>
         <option
-            value="CF5bde22b646ed0"
-        >
+            value="CF5bde22b646ed0">
             Contact Form
         </option>
     </select>
 </div>,
   <label
-    htmlFor="caldera-forms-entry-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-chooser-54fds">
     Choose Entry
 </label>,
   <select
     className="caldera-forms-entry-chooser"
     id="caldera-forms-entry-chooser-54fds"
     onChange={[Function]}
-    value="1"
->
+    value="1">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
     <option
-        value="1"
-    >
+        value="1">
         1
     </option>
     <option
-        value="2"
-    >
+        value="2">
         2
     </option>
 </select>,
   <label
     className=""
-    htmlFor="caldera-forms-entry-field-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-field-chooser-54fds">
     Choose Field
 </label>,
   <select
     className="caldera-forms-entry-field-chooser"
     id="caldera-forms-entry-field-chooser-54fds"
     onChange={[Function]}
-    value="fld_8768091"
->
+    value="fld_8768091">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
     <option
-        value="id"
-    >
+        value="id">
         ID
     </option>
     <option
-        value="datestamp"
-    >
+        value="datestamp">
         Submitted
     </option>
     <option
-        value="fld_8768091"
-    >
+        value="fld_8768091">
         First Name
     </option>
     <option
-        value="fld_9970286"
-    >
+        value="fld_9970286">
         Last Name
     </option>
     <option
-        value="fld_6009157"
-    >
+        value="fld_6009157">
         Email Address
     </option>
     <option
-        value="fld_7683514"
-    >
+        value="fld_7683514">
         Comments / Questions
     </option>
 </select>,
   <div
-    className="components-base-control caldera-before-entryValue-edit"
->
+    className="components-base-control caldera-before-entryValue-edit">
     <div
-        className="components-base-control__field"
-    >
+        className="components-base-control__field">
         <label
             className="components-base-control__label"
-            htmlFor="inspector-text-control-4"
-        >
+            htmlFor="inspector-text-control-4">
             Text Before Value
         </label>
         <input
@@ -200,20 +167,16 @@ Array [
             id="caldera-before-entryValue-edit-54fds"
             onChange={[Function]}
             type="text"
-            value="Before"
-        />
+            value="Before" />
     </div>
 </div>,
   <div
-    className="components-base-control caldera-after-entryValue-edit"
->
+    className="components-base-control caldera-after-entryValue-edit">
     <div
-        className="components-base-control__field"
-    >
+        className="components-base-control__field">
         <label
             className="components-base-control__label"
-            htmlFor="inspector-text-control-5"
-        >
+            htmlFor="inspector-text-control-5">
             Text After Value
         </label>
         <input
@@ -222,8 +185,7 @@ Array [
             id="caldera-after-entryValue-edit-54fds"
             onChange={[Function]}
             type="text"
-            value="After"
-        />
+            value="After" />
     </div>
 </div>,
 ]
@@ -234,116 +196,95 @@ Array [
   <div>
     <label
         className=""
-        htmlFor="caldera-forms-form-chooser-54fds"
-    >
+        htmlFor="caldera-forms-form-chooser-54fds">
         Choose Form
     </label>
     <select
         className="caldera-forms-form-chooser"
         id="caldera-forms-form-chooser-54fds"
         onChange={[Function]}
-        value="CF5bde22b646ed0"
-    >
+        value="CF5bde22b646ed0">
         <option>
              -- 
         </option>
         <option
-            value="CF5bde22a843265"
-        >
+            value="CF5bde22a843265">
             Not Contact Form
         </option>
         <option
-            value="CF5bde22b646ed0"
-        >
+            value="CF5bde22b646ed0">
             Contact Form
         </option>
     </select>
 </div>,
   <label
-    htmlFor="caldera-forms-entry-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-chooser-54fds">
     Choose Entry
 </label>,
   <select
     className="caldera-forms-entry-chooser"
     id="caldera-forms-entry-chooser-54fds"
     onChange={[Function]}
-    value="1"
->
+    value="1">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
     <option
-        value="1"
-    >
+        value="1">
         1
     </option>
     <option
-        value="2"
-    >
+        value="2">
         2
     </option>
 </select>,
   <label
     className=""
-    htmlFor="caldera-forms-entry-field-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-field-chooser-54fds">
     Choose Field
 </label>,
   <select
     className="caldera-forms-entry-field-chooser"
     id="caldera-forms-entry-field-chooser-54fds"
     onChange={[Function]}
-    value=""
->
+    value="">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
     <option
-        value="id"
-    >
+        value="id">
         ID
     </option>
     <option
-        value="datestamp"
-    >
+        value="datestamp">
         Submitted
     </option>
     <option
-        value="fld_8768091"
-    >
+        value="fld_8768091">
         First Name
     </option>
     <option
-        value="fld_9970286"
-    >
+        value="fld_9970286">
         Last Name
     </option>
     <option
-        value="fld_6009157"
-    >
+        value="fld_6009157">
         Email Address
     </option>
     <option
-        value="fld_7683514"
-    >
+        value="fld_7683514">
         Comments / Questions
     </option>
 </select>,
   <div
-    className="components-base-control caldera-before-entryValue-edit"
->
+    className="components-base-control caldera-before-entryValue-edit">
     <div
-        className="components-base-control__field"
-    >
+        className="components-base-control__field">
         <label
             className="components-base-control__label"
-            htmlFor="inspector-text-control-2"
-        >
+            htmlFor="inspector-text-control-2">
             Text Before Value
         </label>
         <input
@@ -352,20 +293,16 @@ Array [
             id="caldera-before-entryValue-edit-54fds"
             onChange={[Function]}
             type="text"
-            value=""
-        />
+            value="" />
     </div>
 </div>,
   <div
-    className="components-base-control caldera-after-entryValue-edit"
->
+    className="components-base-control caldera-after-entryValue-edit">
     <div
-        className="components-base-control__field"
-    >
+        className="components-base-control__field">
         <label
             className="components-base-control__label"
-            htmlFor="inspector-text-control-3"
-        >
+            htmlFor="inspector-text-control-3">
             Text After Value
         </label>
         <input
@@ -374,8 +311,7 @@ Array [
             id="caldera-after-entryValue-edit-54fds"
             onChange={[Function]}
             type="text"
-            value=""
-        />
+            value="" />
     </div>
 </div>,
 ]
@@ -386,45 +322,38 @@ Array [
   <div>
     <label
         className=""
-        htmlFor="caldera-forms-form-chooser-54fds"
-    >
+        htmlFor="caldera-forms-form-chooser-54fds">
         Choose Form
     </label>
     <select
         className="caldera-forms-form-chooser"
         id="caldera-forms-form-chooser-54fds"
         onChange={[Function]}
-        value="CF5bde22b646ed0"
-    >
+        value="CF5bde22b646ed0">
         <option>
              -- 
         </option>
         <option
-            value="CF5bde22a843265"
-        >
+            value="CF5bde22a843265">
             Not Contact Form
         </option>
         <option
-            value="CF5bde22b646ed0"
-        >
+            value="CF5bde22b646ed0">
             Contact Form
         </option>
     </select>
 </div>,
   <label
-    htmlFor="caldera-forms-entry-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-chooser-54fds">
     Choose Entry
 </label>,
   <select
     className="caldera-forms-entry-chooser"
     id="caldera-forms-entry-chooser-54fds"
     onChange={[Function]}
-    value=""
->
+    value="">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
 </select>,
@@ -435,27 +364,23 @@ exports[`Controls component Match snapshot with just forms prop set 1`] = `
 <div>
   <label
     className=""
-    htmlFor="caldera-forms-form-chooser-54fds"
-  >
+    htmlFor="caldera-forms-form-chooser-54fds">
     Choose Form
   </label>
   <select
     className="caldera-forms-form-chooser"
     id="caldera-forms-form-chooser-54fds"
     onChange={[Function]}
-    value=""
-  >
+    value="">
     <option>
        -- 
     </option>
     <option
-      value="CF5bde22a843265"
-    >
+      value="CF5bde22a843265">
       Not Contact Form
     </option>
     <option
-      value="CF5bde22b646ed0"
-    >
+      value="CF5bde22b646ed0">
       Contact Form
     </option>
   </select>
@@ -467,63 +392,52 @@ Array [
   <span>
     <label
         className="sr-only screen-reader-text"
-        htmlFor="caldera-before-entryValue-edit-54fds"
-    >
+        htmlFor="caldera-before-entryValue-edit-54fds">
         Text Before Value
     </label>
     <input
         onChange={[Function]}
         placeholder="Text to show before value"
         type="text"
-        value="Before"
-    />
+        value="Before" />
 </span>,
   <span>
     <label
         className="sr-only screen-reader-text"
-        htmlFor="caldera-forms-entry-field-chooser-54fds"
-    >
+        htmlFor="caldera-forms-entry-field-chooser-54fds">
         Choose Field
     </label>
     <select
         className="caldera-forms-entry-field-chooser"
         id="caldera-forms-entry-field-chooser-54fds"
         onChange={[Function]}
-        value="fld_8768091"
-    >
+        value="fld_8768091">
         <option
-            value={null}
-        >
+            value={null}>
             --
         </option>
         <option
-            value="id"
-        >
+            value="id">
             ID
         </option>
         <option
-            value="datestamp"
-        >
+            value="datestamp">
             Submitted
         </option>
         <option
-            value="fld_8768091"
-        >
+            value="fld_8768091">
             First Name
         </option>
         <option
-            value="fld_9970286"
-        >
+            value="fld_9970286">
             Last Name
         </option>
         <option
-            value="fld_6009157"
-        >
+            value="fld_6009157">
             Email Address
         </option>
         <option
-            value="fld_7683514"
-        >
+            value="fld_7683514">
             Comments / Questions
         </option>
     </select>
@@ -531,8 +445,7 @@ Array [
   <span>
     <label
         className="sr-only screen-reader-text"
-        htmlFor="caldera-after-entryValue-edit-54fds"
-    >
+        htmlFor="caldera-after-entryValue-edit-54fds">
         Text After Value
     </label>
     <input
@@ -540,8 +453,7 @@ Array [
         onChange={[Function]}
         placeholder="Text to show after value"
         type="text"
-        value="After"
-    />
+        value="After" />
 </span>,
 ]
 `;
@@ -550,49 +462,40 @@ exports[`Inline component Match snapshot with form and entry selected only 1`] =
 Array [
   <label
     className=""
-    htmlFor="caldera-forms-entry-field-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-field-chooser-54fds">
     Choose Field
 </label>,
   <select
     className="caldera-forms-entry-field-chooser"
     id="caldera-forms-entry-field-chooser-54fds"
     onChange={[Function]}
-    value=""
->
+    value="">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
     <option
-        value="id"
-    >
+        value="id">
         ID
     </option>
     <option
-        value="datestamp"
-    >
+        value="datestamp">
         Submitted
     </option>
     <option
-        value="fld_8768091"
-    >
+        value="fld_8768091">
         First Name
     </option>
     <option
-        value="fld_9970286"
-    >
+        value="fld_9970286">
         Last Name
     </option>
     <option
-        value="fld_6009157"
-    >
+        value="fld_6009157">
         Email Address
     </option>
     <option
-        value="fld_7683514"
-    >
+        value="fld_7683514">
         Comments / Questions
     </option>
 </select>,
@@ -602,19 +505,16 @@ Array [
 exports[`Inline component Match snapshot with form selected only 1`] = `
 Array [
   <label
-    htmlFor="caldera-forms-entry-chooser-54fds"
->
+    htmlFor="caldera-forms-entry-chooser-54fds">
     Choose Entry
 </label>,
   <select
     className="caldera-forms-entry-chooser"
     id="caldera-forms-entry-chooser-54fds"
     onChange={[Function]}
-    value=""
->
+    value="">
     <option
-        value={null}
-    >
+        value={null}>
         --
     </option>
 </select>,
@@ -625,27 +525,23 @@ exports[`Inline component Match snapshot with just forms prop set 1`] = `
 <div>
   <label
     className=""
-    htmlFor="caldera-forms-form-chooser-54fds"
-  >
+    htmlFor="caldera-forms-form-chooser-54fds">
     Choose Form
   </label>
   <select
     className="caldera-forms-form-chooser"
     id="caldera-forms-form-chooser-54fds"
     onChange={[Function]}
-    value=""
-  >
+    value="">
     <option>
        -- 
     </option>
     <option
-      value="CF5bde22a843265"
-    >
+      value="CF5bde22a843265">
       Not Contact Form
     </option>
     <option
-      value="CF5bde22b646ed0"
-    >
+      value="CF5bde22b646ed0">
       Contact Form
     </option>
   </select>
@@ -657,16 +553,14 @@ Array [
   <span>
     <label
         className="sr-only screen-reader-text"
-        htmlFor="caldera-before-entryValue-edit-54fds"
-    >
+        htmlFor="caldera-before-entryValue-edit-54fds">
         Text Before Value
     </label>
     <input
         onChange={[Function]}
         placeholder="Text to show before value"
         type="text"
-        value="Before"
-    />
+        value="Before" />
 </span>,
   <span>
     <div>
@@ -676,8 +570,7 @@ Array [
   <span>
     <label
         className="sr-only screen-reader-text"
-        htmlFor="caldera-after-entryValue-edit-54fds"
-    >
+        htmlFor="caldera-after-entryValue-edit-54fds">
         Text After Value
     </label>
     <input
@@ -685,8 +578,7 @@ Array [
         onChange={[Function]}
         placeholder="Text to show after value"
         type="text"
-        value="After"
-    />
+        value="After" />
 </span>,
 ]
 `;

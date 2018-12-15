@@ -1,6 +1,5 @@
 import {RenderGroup} from '@caldera-labs/components';
 import React, {Fragment} from 'react';
-import {withState} from '@wordpress/compose';
 const ID = 'cf-mail-headers-edit';
 
 

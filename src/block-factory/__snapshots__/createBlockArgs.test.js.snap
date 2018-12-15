@@ -1,3 +1,1 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`createBlockArgs Matches snapshot 1`] = `"{\\"title\\":\\"Say Hi\\",\\"attributes\\":{\\"name\\":{\\"type\\":\\"string\\",\\"default\\":\\"Roy\\"},\\"salutation\\":{\\"type\\":\\"string\\",\\"default\\":\\"Hi\\"}},\\"icon\\":\\"smiley\\",\\"category\\":\\"common\\"}"`;
+exports[`createBlockArgs Matches snapshot 1`] = `"{\"title\":\"Say Hi\",\"attributes\":{\"name\":{\"type\":\"string\",\"default\":\"Roy\"},\"salutation\":{\"type\":\"string\",\"default\":\"Hi\"}},\"icon\":\"smiley\",\"category\":\"common\"}"`;

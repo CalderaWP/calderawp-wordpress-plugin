@@ -1,5 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`Entry Viewer components  EntryFieldView matches snapshot 1`] = `"Josh"`;
 
 exports[`Entry Viewer components  EntryFieldView matches snapshot 2`] = `"Josh"`;
@@ -11,8 +9,7 @@ exports[`Entry Viewer components  EntryHeader matches snapshot without label 1`]
 exports[`Entry Viewer components  EntryHeaders matches snapshot  1`] = `
 <tr>
   <th
-    scope="col"
-  >
+    scope="col">
     ID
   </th>
   <th>
@@ -33,8 +30,7 @@ exports[`Entry Viewer components  EntryHeaders matches snapshot  1`] = `
 exports[`Entry Viewer components  EntryRow matches snapshot 1`] = `
 <tr>
   <th
-    scope="row"
-  >
+    scope="row">
     1
   </th>
   <td>
@@ -58,8 +54,7 @@ exports[`Entry Viewer components  EntryRow matches snapshot 2`] = `
 Array [
   <tr>
     <th
-        scope="row"
-    >
+        scope="row">
         1
     </th>
     <td>
@@ -79,8 +74,7 @@ Array [
 </tr>,
   <tr>
     <th
-        scope="row"
-    >
+        scope="row">
         2
     </th>
     <td>

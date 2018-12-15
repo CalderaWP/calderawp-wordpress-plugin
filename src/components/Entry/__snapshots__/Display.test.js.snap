@@ -1,10 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`Entry display component Displays when all props are provided and matches snapshot 1`] = `
 <div
   className="sc-bdVaJa eHjUkg"
-  width={320}
->
+  width={320}>
   Before
   Josh
   After

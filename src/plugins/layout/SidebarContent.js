@@ -18,7 +18,6 @@ const {
 
 
 export const maybeUpdateBlocks = (allblocks,formId,entryId) => {
-	console.log(allblocks,formId,entryId);
 	if( allblocks.length){
 		const entryValueBlocks = [];
 		allblocks.forEach( block => {

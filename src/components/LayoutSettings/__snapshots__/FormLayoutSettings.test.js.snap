@@ -1,0 +1,105 @@
+exports[`Form layout settings matches snapshot 1`] = `
+<div
+  className="cf-mail-form-layout-settings">
+  <div
+    className="caldera-config-group">
+    <div
+      className="caldera-config-field">
+      <label
+        htmlFor="caldera-forms-pro-layout-settings-layout">
+        Layout
+      </label>
+      <select
+        className="field-config field-config"
+        disabled={false}
+        id="caldera-forms-pro-layout-settings-layout"
+        onChange={[Function]}
+        value={0}>
+        <option
+          className="caldera-config-option"
+          value={null}>
+          --
+        </option>
+        <option
+          className="caldera-config-option"
+          value={2}>
+          Layout 2
+        </option>
+        <option
+          className="caldera-config-option"
+          value={3}>
+          Layout 3
+        </option>
+      </select>
+      <p
+        className="description"
+        id="caldera-forms-pro-layout-settings-layout-description">
+        Main Message Layout
+      </p>
+    </div>
+  </div>
+  <div
+    className="caldera-config-group">
+    <div
+      className="caldera-config-field">
+      <label
+        htmlFor="caldera-forms-pro-layout-settings-pdf_layout">
+        PDF Layout
+      </label>
+      <select
+        className="field-config field-config"
+        disabled={false}
+        id="caldera-forms-pro-layout-settings-pdf_layout"
+        onChange={[Function]}
+        value={0}>
+        <option
+          className="caldera-config-option"
+          value={null}>
+          --
+        </option>
+        <option
+          className="caldera-config-option"
+          value={2}>
+          Layout 2
+        </option>
+        <option
+          className="caldera-config-option"
+          value={3}>
+          Layout 3
+        </option>
+      </select>
+      <p
+        className="description"
+        id="caldera-forms-pro-layout-settings-pdf_layout-description">
+        PDF Layout
+      </p>
+    </div>
+  </div>
+  <div
+    className="caldera-config-group">
+    <div
+      className="caldera-config-field">
+      <label
+        htmlFor="caldera-forms-pro-layout-settings-pdf_link">
+        PDF Link
+      </label>
+      <input
+        aria-describedby="caldera-forms-pro-layout-settings-pdf_link-description"
+        className="field-config field-config"
+        defaultChecked={0}
+        disabled={false}
+        id="caldera-forms-pro-layout-settings-pdf_link"
+        onBlur={undefined}
+        onChange={[Function]}
+        onFocus={undefined}
+        required={false}
+        type="checkbox" />
+      <p
+        className="description"
+        id="caldera-forms-pro-layout-settings-pdf_link-description">
+        Main Message Layout
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -55,6 +55,7 @@
     "start:blocks": "npm run blocks",
     "start:server": "nodemon server.js",
     "build:app": "react-scripts build",
+    "eject": "react-scripts eject",
     "test": "react-scripts test --env=jsdom",
     "test:e2e": "./node_modules/.bin/cypress open",
     "test:e2e:run": "./node_modules/.bin/cypress run --record --key=abc123 --parallel",

@@ -1,27 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`JWT Login component UI Component matches snapshot 1`] = `
 <form
   id="caldera-pro-jwt-login"
-  onSubmit={[Function]}
->
+  onSubmit={[Function]}>
   <div>
     <div
-      className="alert"
-    >
+      className="alert">
       
     </div>
   </div>
   <div
-    className="components-base-control"
-  >
+    className="components-base-control">
     <div
-      className="components-base-control__field"
-    >
+      className="components-base-control__field">
       <label
         className="components-base-control__label"
-        htmlFor="inspector-text-control-0"
-      >
+        htmlFor="inspector-text-control-0">
         User name
       </label>
       <input
@@ -31,20 +24,16 @@ exports[`JWT Login component UI Component matches snapshot 1`] = `
         id="caldera-pro-cfp-username"
         onChange={[Function]}
         type="text"
-        value=""
-      />
+        value="" />
     </div>
   </div>
   <div
-    className="components-base-control"
-  >
+    className="components-base-control">
     <div
-      className="components-base-control__field"
-    >
+      className="components-base-control__field">
       <label
         className="components-base-control__label"
-        htmlFor="inspector-text-control-1"
-      >
+        htmlFor="inspector-text-control-1">
         Password
       </label>
       <input
@@ -54,41 +43,34 @@ exports[`JWT Login component UI Component matches snapshot 1`] = `
         id="caldera-pro-cfp-password"
         onChange={[Function]}
         type="password"
-        value=""
-      />
+        value="" />
     </div>
   </div>
   <input
     id="caldera-pro-jwt-login-submit"
     type="submit"
-    value="Login"
-  />
+    value="Login" />
 </form>
 `;
 
 exports[`JWT Login component UI Shows spinner when loading 1`] = `
 <form
   id="caldera-pro-jwt-login"
-  onSubmit={[Function]}
->
+  onSubmit={[Function]}>
   <div>
     <div>
       Loading...
       <span
-        className="components-spinner"
-      />
+        className="components-spinner" />
     </div>
   </div>
   <div
-    className="components-base-control"
-  >
+    className="components-base-control">
     <div
-      className="components-base-control__field"
-    >
+      className="components-base-control__field">
       <label
         className="components-base-control__label"
-        htmlFor="inspector-text-control-2"
-      >
+        htmlFor="inspector-text-control-2">
         User name
       </label>
       <input
@@ -98,20 +80,16 @@ exports[`JWT Login component UI Shows spinner when loading 1`] = `
         id="caldera-pro-cfp-username"
         onChange={[Function]}
         type="text"
-        value=""
-      />
+        value="" />
     </div>
   </div>
   <div
-    className="components-base-control"
-  >
+    className="components-base-control">
     <div
-      className="components-base-control__field"
-    >
+      className="components-base-control__field">
       <label
         className="components-base-control__label"
-        htmlFor="inspector-text-control-3"
-      >
+        htmlFor="inspector-text-control-3">
         Password
       </label>
       <input
@@ -121,14 +99,12 @@ exports[`JWT Login component UI Shows spinner when loading 1`] = `
         id="caldera-pro-cfp-password"
         onChange={[Function]}
         type="password"
-        value=""
-      />
+        value="" />
     </div>
   </div>
   <input
     id="caldera-pro-jwt-login-submit"
     type="submit"
-    value="Login"
-  />
+    value="Login" />
 </form>
 `;

@@ -1,18 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
 exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
 <div
-  className="cf-mail-headers-edit"
->
+  className="cf-mail-headers-edit">
   <div
-    className="caldera-config-group"
-  >
+    className="caldera-config-group">
     <div
-      className="caldera-config-field"
-    >
+      className="caldera-config-field">
       <label
-        htmlFor="cf-mail-headers-edit-from"
-      >
+        htmlFor="cf-mail-headers-edit-from">
         From (reply-to)
       </label>
       <input
@@ -25,19 +19,15 @@ exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
         onFocus={undefined}
         required={false}
         type="email"
-        value="no-reply@calderawp.com"
-      />
+        value="no-reply@calderawp.com" />
     </div>
   </div>
   <div
-    className="caldera-config-group"
-  >
+    className="caldera-config-group">
     <div
-      className="caldera-config-field"
-    >
+      className="caldera-config-field">
       <label
-        htmlFor="cf-mail-headers-edit-from_name"
-      >
+        htmlFor="cf-mail-headers-edit-from_name">
         Name email is sent from
       </label>
       <input
@@ -50,19 +40,15 @@ exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
         onFocus={undefined}
         required={false}
         type="text"
-        value="Roy Sivan"
-      />
+        value="Roy Sivan" />
     </div>
   </div>
   <div
-    className="caldera-config-group"
-  >
+    className="caldera-config-group">
     <div
-      className="caldera-config-field"
-    >
+      className="caldera-config-field">
       <label
-        htmlFor="cf-mail-headers-edit-recipients"
-      >
+        htmlFor="cf-mail-headers-edit-recipients">
         Recipients
       </label>
       <input
@@ -75,19 +61,15 @@ exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
         onFocus={undefined}
         required={false}
         type="text"
-        value="roy@hiroy.club"
-      />
+        value="roy@hiroy.club" />
     </div>
   </div>
   <div
-    className="caldera-config-group"
-  >
+    className="caldera-config-group">
     <div
-      className="caldera-config-field"
-    >
+      className="caldera-config-field">
       <label
-        htmlFor="cf-mail-headers-edit-subject"
-      >
+        htmlFor="cf-mail-headers-edit-subject">
         Message Subject
       </label>
       <input
@@ -100,19 +82,15 @@ exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
         onFocus={undefined}
         required={false}
         type="text"
-        value="Hi Roy"
-      />
+        value="Hi Roy" />
     </div>
   </div>
   <div
-    className="caldera-config-group"
-  >
+    className="caldera-config-group">
     <div
-      className="caldera-config-field"
-    >
+      className="caldera-config-field">
       <label
-        htmlFor="cf-mail-headers-edit-html"
-      >
+        htmlFor="cf-mail-headers-edit-html">
         Content type
       </label>
       <select
@@ -120,25 +98,21 @@ exports[`EditEntryMailData component  EntryMailDatau matches snapshot 1`] = `
         disabled={false}
         id="cf-mail-headers-edit-html"
         onChange={[Function]}
-        value="<p>Hi Roy</p>"
-      >
+        value="<p>Hi Roy</p>">
         <option
           className="caldera-config-option"
-          value="false"
-        >
+          value="false">
           HTML
         </option>
         <option
           className="caldera-config-option"
-          value="true"
-        >
+          value="true">
           Plain Text
         </option>
       </select>
       <p
         className="description"
-        id="cf-mail-headers-edit-html-description"
-      >
+        id="cf-mail-headers-edit-html-description">
         Choose content type, default is HTML
       </p>
     </div>
